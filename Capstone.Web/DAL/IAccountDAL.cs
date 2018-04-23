@@ -15,3 +15,4 @@ namespace Capstone.Web.DAL
         bool UpdateUser(User user);
 
     }
+}
