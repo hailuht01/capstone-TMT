@@ -28,8 +28,6 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Register()
         {
-
-
             return View();
         }
 
