@@ -11,7 +11,11 @@ namespace Capstone.Web.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; private set; }
-        public byte Permission { get; set; }
+        public bool IsAdmin { get; }
+        public string UserName { get; set; }
+
+
+
 
     }
 }
