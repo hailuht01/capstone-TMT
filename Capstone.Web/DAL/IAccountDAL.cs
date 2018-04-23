@@ -12,7 +12,7 @@ namespace Capstone.Web.DAL
    bool CreateUser(User user);
     bool DeleteUser(string emailPK);
     User GetUser(string emailPK);
-    bool UpdateUser(User user);
+   bool UpdateUser(User user);
 
   }
 }
