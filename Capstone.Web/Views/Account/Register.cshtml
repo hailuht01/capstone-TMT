@@ -1,14 +1,27 @@
-﻿@model Capstone.Web.Models.RegistrationForm
+﻿
+@model Capstone.Web.Models.RegistrationForm
 
-<h2>Registration Page</h2>
+<title>Register</title>
 
-<form id="registration" method="get" action="@Url.Action("Register", "Account")">
+<form id="registerform" method="get" action="@Url.Action("Register", "Account")">
 
-    <div id="#firstName">First Name: @Html.TextBoxFor(c => c.FirstName, new { placeholder = "First Name" })</div>
-    <div id="#lastName">Last Name: @Html.TextBoxFor(c => c.LastName, new { placeholder = "Last Name" })</div>
-    <div id="#email">Email Address: @Html.TextBoxFor(c => c.Email, new { placeholder = "Email Address" })</div>
-    <div id="#password">Password: @Html.TextBoxFor(c => c.Password, new { placeholder = "Password" })</div>
+    <div id="fName">
+        <label for="fName">First Name: @Html.TextBoxFor(c => c.FirstName, new { placeholder = "First Name" })</label>
+       
+    </div>
+    <div id="#lName">
+        <lable for="lName">Last Name: @Html.TextBoxFor(c => c.LastName, new { placeholder = "Last Name" })</lable>
+        
+    </div>
+    <div id="#email">
+        <lable for="email">Email Address: @Html.TextBoxFor(c => c.Email, new { placeholder = "Email Address" })</lable>
+       
+    </div>
+    <div id="#password">
+        <lable for="password">Password: @Html.TextBoxFor(c => c.Password, new { placeholder = "Password" })</lable>
+      
+    </div>
 
     <br />
-    <input type="submit" name="submitButton" value="Submit via GET" />
+    <input type="submit" name="submitButton" value="Submit Form" />
 </form>
