@@ -1,1 +1,12 @@
-﻿
+﻿@model Capstone.Web.Models.User
+
+
+<h2>Registration Page</h2>
+
+<form method="get" action="@Url.Action("", "Account")>
+
+    First Name: @Html.TextBoxFor(c => c.FirstName, new { placeholder = "First Name" })
+    Last Name: @Html.TextBoxFor(c => c.LastName, new { placeholder = "Last Name" })
+    Email Address: @Html.TextBoxFor(c => c.Email, new { placeholder = "Email Address"})
+
+</form>
