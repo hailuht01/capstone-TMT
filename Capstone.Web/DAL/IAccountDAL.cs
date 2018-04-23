@@ -1,14 +1,16 @@
-﻿using Microsoft.Analytics.Interfaces;
-using Microsoft.Analytics.Types.Sql;
+﻿using Capstone.Web.Models;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
+using System.Web;
 
 namespace Capstone.Web.DAL
 {
-    class IAccountDAL
-    {
-    }
+  public interface IAccountDAL
+  {
+    User GetUser(string emailPK);
+    bool CreateUser(User user);
+    bool UpdateUser(User user);
+    bool DeleteUser(string emailPK);
+  }
 }
