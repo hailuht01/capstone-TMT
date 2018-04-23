@@ -13,7 +13,7 @@ namespace Capstone.Web.DAL
 
     public AccountDAL(string connectionString)
     {
-      connectionString = this.connectionString;
+      this.connectionString = connectionString;
     }
 
     public bool CreateUser(User user)
