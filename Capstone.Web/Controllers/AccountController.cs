@@ -1,4 +1,5 @@
-﻿using Capstone.Web.Models;
+﻿using Capstone.Web.DAL;
+using Capstone.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace Capstone.Web.Controllers
 {
     public class AccountController : Controller
     {
+        IAccountDAL accountDAL;
+        public AccountController(IAccountDAL _accountDAL)
+        {
+            this.accountDAL = _accountDAL;
+        }
+
         public ActionResult Index()
         { 
             return View();
@@ -22,14 +29,15 @@ namespace Capstone.Web.Controllers
         public ActionResult Register()
         {
 
+
             return View();
         }
 
         [HttpPost]
         public ActionResult Register(User user)
         {
-
-            return View();
+            accountDAL.CreateUser(user);
+            return RedirectToAction(Request.UrlReferrer.ToString());
         }
     }
 }
