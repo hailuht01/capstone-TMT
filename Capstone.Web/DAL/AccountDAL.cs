@@ -25,13 +25,12 @@ namespace Capstone.Web.DAL
         conn.Open();
         var cmd = new SqlCommand();
         cmd.Parameters.AddWithValue("@Email", user.Email);
-        cmd.Parameters.AddWithValue("@Username", user.Username);
+        cmd.Parameters.AddWithValue("@Username", user.UserName);
         cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
         cmd.Parameters.AddWithValue("@LastName", user.FirstName);
         cmd.Parameters.AddWithValue("@Password", user.Password);
         cmd.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
       }
-
 
 
       throw new NotImplementedException();
