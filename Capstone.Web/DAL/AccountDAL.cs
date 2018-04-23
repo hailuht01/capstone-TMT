@@ -10,6 +10,7 @@ namespace Capstone.Web.DAL
   public class AccountDAL : IAccountDAL
   {
     private string connectionString;
+
     public AccountDAL(string connectionString)
     {
       connectionString = this.connectionString;
@@ -17,38 +18,83 @@ namespace Capstone.Web.DAL
 
     public bool CreateUser(User user)
     {
-      //Insert into survey_result(parkCode, emailAddress, state, activityLevel) Values(@parkCode, @email, @state, @activity)";
-      const string createUserQuery = "insert into user(Email, Username, FirstName, LastName, Password, isAdmin) Values(@Email, @Username, @FirstName, @)"; 
-
+      const string createUserQuery = "insert into " +
+        "users(Email, Username, FirstName, LastName, Password, isAdmin) " +
+        "Values(@Email, @Username, @FirstName,@LastName, @Password, @isAdmin)";
+      bool isSuccess = false;
       using (SqlConnection conn = new SqlConnection())
       {
         conn.Open();
-        var cmd = new SqlCommand();
+        var cmd = new SqlCommand(createUserQuery, conn);
         cmd.Parameters.AddWithValue("@Email", user.Email);
         cmd.Parameters.AddWithValue("@Username", user.UserName);
         cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
         cmd.Parameters.AddWithValue("@LastName", user.FirstName);
         cmd.Parameters.AddWithValue("@Password", user.Password);
         cmd.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
+
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
       }
 
-
-      throw new NotImplementedException();
+      return isSuccess;
     }
 
     public bool DeleteUser(string emailPK)
     {
-      throw new NotImplementedException();
+      const string deleteUserQuery = "delete * where Email = @Email";
+      bool isSuccess = false;
+      using (SqlConnection conn = new SqlConnection())
+      {
+        conn.Open();
+        var cmd = new SqlCommand(deleteUserQuery, conn);
+        cmd.Parameters.AddWithValue("@Email", emailPK);
+
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
+      }
+
+      return isSuccess;
     }
 
     public User GetUser(string emailPK)
     {
-      throw new NotImplementedException();
+      var user = new User();
+      const string getUserQuery = "select * where Email = @Email";
+      bool isSuccess = false;
+      using (SqlConnection conn = new SqlConnection())
+      {
+        conn.Open();
+        var cmd = new SqlCommand(getUserQuery, conn);
+        cmd.Parameters.AddWithValue("@Email", emailPK);
+
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
+      }
+
+      return user;
     }
 
     public bool UpdateUser(User user)
     {
-      throw new NotImplementedException();
+      const string updateUserQuery = @"update users 
+                                      set UserName = @UserName 
+                                      set FirstName = @FirstName
+                                      set LastName = @LastName
+                                      set Password = @Password
+                                      where Email = @Email)";
+      bool isSuccess = false;
+      using (SqlConnection conn = new SqlConnection())
+      {
+        conn.Open();
+        var cmd = new SqlCommand(updateUserQuery, conn);
+        cmd.Parameters.AddWithValue("@Email", user.Email);
+        cmd.Parameters.AddWithValue("@Username", user.UserName);
+        cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+        cmd.Parameters.AddWithValue("@LastName", user.FirstName);
+        cmd.Parameters.AddWithValue("@Password", user.Password);
+
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
+      }
+
+      return isSuccess;
     }
   }
 }
