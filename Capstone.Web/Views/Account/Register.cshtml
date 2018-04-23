@@ -1,17 +1,14 @@
 ﻿@model Capstone.Web.Models.User
 
-
 <h2>Registration Page</h2>
 
 <form id="registration" method="get" action="@Url.Action("Register", "Account")">
 
-   <div id="#firstName">First Name: @Html.TextBoxFor(c => c.FirstName, new { placeholder = "First Name" })</div>
-   <div id="#lastName">Last Name: @Html.TextBoxFor(c => c.LastName, new { placeholder = "Last Name" })</div>
-   <div id="#email">Email Address: @Html.TextBoxFor(c => c.Email, new { placeholder = "Email Address" })</div>
-   <div id="#password">Password: @Html.TextBoxFor(c => c.Password, new { placeholder = "Password" })</div>
-
+    <div id="#firstName">First Name: @Html.TextBoxFor(c => c.FirstName, new { placeholder = "First Name" })</div>
+    <div id="#lastName">Last Name: @Html.TextBoxFor(c => c.LastName, new { placeholder = "Last Name" })</div>
+    <div id="#email">Email Address: @Html.TextBoxFor(c => c.Email, new { placeholder = "Email Address" })</div>
+    <div id="#password">Password: @Html.TextBoxFor(c => c.Password, new { placeholder = "Password" })</div>
 
     <br />
     <input type="submit" name="submitButton" value="Submit via GET" />
-
 </form>
