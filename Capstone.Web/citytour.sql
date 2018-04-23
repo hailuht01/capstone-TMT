@@ -1,14 +1,16 @@
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/23/2018 12:49:43 PM ******/
+ALTER TABLE [dbo].[Users] DROP CONSTRAINT [DF_Users_isAdmin]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 4/23/2018 1:32:15 PM ******/
 DROP TABLE [dbo].[Users]
 GO
 USE [master]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/23/2018 12:49:43 PM ******/
+/****** Object:  Database [citytour]    Script Date: 4/23/2018 1:32:15 PM ******/
 DROP DATABASE [citytour]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/23/2018 12:49:43 PM ******/
+/****** Object:  Database [citytour]    Script Date: 4/23/2018 1:32:15 PM ******/
 CREATE DATABASE [citytour]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -105,7 +107,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/23/2018 12:49:43 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/23/2018 1:32:16 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -125,7 +127,11 @@ CREATE TABLE [dbo].[Users](
 GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'admin@citytour.com', N'Admin', N'Admin', N'Jones', N'Password', 1)
 GO
+INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'test@citytour.com', N'User', N'User', N'User', N'Password', 0)
+GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
+GO
+ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [DF_Users_isAdmin]  DEFAULT ((0)) FOR [isAdmin]
 GO
 USE [master]
 GO
