@@ -9,7 +9,7 @@ namespace Capstone.Web.Models
     {
         public int Id { get; set; }
         public DateTime Time { get; set; } // private set? 
-        public IList<Landmark> Landmark { get; set; } = new List<Landmark>();
+        public IList<Landmarks> Landmark { get; set; } = new List<Landmarks>();
         //public int Route { get; set; }
     }
 }
