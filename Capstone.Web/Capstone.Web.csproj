@@ -116,6 +116,7 @@
     <Content Include="citytour.sql" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\site.css" />
+    <Content Include="Content\user-registration.css" />
     <Content Include="Global.asax" />
     <Content Include="app.config" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -130,13 +131,13 @@
     <Content Include="Scripts\esm\popper-utils.js.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\user-registration.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Scripts\README.md" />
     <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -179,7 +181,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Home\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

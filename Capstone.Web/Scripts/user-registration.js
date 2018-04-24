@@ -3,25 +3,28 @@ $(document).ready(function () {
     $("#registerform").validate({
         debug: true,
         rules: {
-            fName: {
+            UserName: {
                 required: true
             },
-            lName: {
+            FirstName: {
+                required: true
+            },
+            LastName: {
                 required: true,
                 minlength: 2,
                 lettersonly: true
             },
-            email: {
+            Email: {
                 email: true,
-
+                required: true
             },
-            password: {
+            Password: {
                 required: true,
                 minlength: 8,
                 strongPassword: true
             },
-            verifyPassword: {
-                equalTo: "#password"
+            VerifyPassword: {
+                equalTo: "#Password"
             }
         },
         messages: {

@@ -29,7 +29,7 @@ namespace Capstone.Web.DAL
         cmd.Parameters.AddWithValue("@Email", user.Email);
         cmd.Parameters.AddWithValue("@Username", user.UserName);
         cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
-        cmd.Parameters.AddWithValue("@LastName", user.FirstName);
+        cmd.Parameters.AddWithValue("@LastName", user.LastName);
         cmd.Parameters.AddWithValue("@Password", user.Password);
 
         isSuccess = (cmd.ExecuteNonQuery() > 0);

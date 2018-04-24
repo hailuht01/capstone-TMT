@@ -1,28 +1,35 @@
-﻿
+﻿@{ 
+    ViewBag.
+}
 @model Capstone.Web.Models.RegistrationForm
 
 <title>Register</title>
 
 <form id="registerform" method="post" action="@Url.Action("Register", "Account")">
-    <div id="username">
+    <div >
         @Html.LabelFor(m => m.UserName)
         @Html.TextBoxFor(m => m.UserName, new { id = "username" })
     </div>
-    <div id="fName">
+    <div >
         @Html.LabelFor(m => m.FirstName)
-        @Html.TextBoxFor(m => m.FirstName,new { id="fName"})
+        @Html.TextBoxFor(m => m.FirstName, new { id = "fName" })
     </div>
-    <div id="#lName">
+    <div >
         @Html.LabelFor(m => m.LastName)
         @Html.TextBoxFor(m => m.LastName, new { id = "lName" })
     </div>
-    <div id="#email">
+    <div >
         @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { id = "email",})
+        @Html.TextBoxFor(m => m.Email, new { id = "email", })
     </div>
-    <div id="#password">
+    <div >
         @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m=> m.Password, new { id="password" })
+        @Html.PasswordFor(m => m.Password, new { id = "password" })
+    </div>
+
+    <div >
+        @Html.Label("Confirm Password", new  { @for="passwordConfirm" })
+        @Html.Password("VerifyPassword", null, new { id = "VerifyPassword"})
     </div>
     <br />
     <input type="submit" name="submitButton" value="Submit Form" />
