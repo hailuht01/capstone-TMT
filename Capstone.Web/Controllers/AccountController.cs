@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Capstone.Web.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         IAccountDAL accountDAL;
         public AccountController(IAccountDAL _accountDAL)

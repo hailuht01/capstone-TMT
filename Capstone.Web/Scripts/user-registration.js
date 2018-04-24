@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
     $("#registerform").validate({
-        debug: true,
         rules: {
             UserName: {
                 required: true
@@ -24,7 +23,7 @@ $(document).ready(function () {
                 strongPassword: true
             },
             VerifyPassword: {
-                equalTo: "#Password"
+                equalTo: "#password"
             }
         },
         messages: {
