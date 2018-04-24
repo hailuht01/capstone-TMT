@@ -1,1 +1,20 @@
-﻿
+﻿@model Capstone.Web.Models.Login
+@section extraCSS {
+    <link href="~/Content/css/register-login.css" rel="stylesheet" />
+}
+<title>Register</title>
+
+<form id="loginform" method="post" action="@Url.Action("Login", "Account")">
+
+    <div>
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { id = "email", })
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { id = "password" })
+    </div>
+
+    <br />
+    <input type="submit" name="submitButton" value="Submit Form" />
+</form>

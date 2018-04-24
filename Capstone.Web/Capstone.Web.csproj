@@ -117,7 +117,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\site.css" />
-    <Content Include="Content\user-registration.css" />
+    <Content Include="Content\css\register-login.css" />
     <Content Include="Global.asax" />
     <Content Include="app.config" />
     <Content Include="Scripts\bootstrap.min.js" />
