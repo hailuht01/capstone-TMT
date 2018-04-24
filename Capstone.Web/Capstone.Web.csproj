@@ -153,6 +153,10 @@
     <Compile Include="Controllers\LandmarksController.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\IAccountDAL.cs" />
+    <Compile Include="DAL\IItineraryDAL.cs" />
+    <Compile Include="DAL\ILandmarkDAL.cs" />
+    <Compile Include="DAL\ItineraryDAL.cs" />
+    <Compile Include="DAL\LandmarkDAL.cs" />
     <Compile Include="fonts\Itinerary.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
