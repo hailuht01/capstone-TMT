@@ -1,20 +1,29 @@
-﻿@model Capstone.Web.Models.Login
+﻿
+@model Capstone.Web.Models.Login
 @section extraCSS {
     <link href="~/Content/css/register-login.css" rel="stylesheet" />
 }
-<title>Register</title>
 
-<form id="loginform" method="post" action="@Url.Action("Login", "Account")">
-
-    <div>
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { id = "email", })
+<title>Login</title>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <form id="loginform" method="post" action="@Url.Action("Login", "Account")">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { id = "email", @class = "form-control", placeholder = "please enter valid email address" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { id = "password", @class = "form-control", placeholder = "8 charactors, 1 uppercase, 1 lowercase, 1 number" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <br />
+                <input class="btn btn-primary" type="submit" name="submitButton" value="Submit Form" />
+            </form>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
     </div>
-    <div>
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password, new { id = "password" })
-    </div>
-
-    <br />
-    <input type="submit" name="submitButton" value="Submit Form" />
-</form>
+</div>
