@@ -1,14 +1,14 @@
 USE [citytour]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] DROP CONSTRAINT [FK_Itenerary_Landmark_Landmark]
+ALTER TABLE [dbo].[Itinerary_Landmark] DROP CONSTRAINT [FK_Itinerary_Landmark_Landmark]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] DROP CONSTRAINT [FK_Itenerary_Landmark_Itenerary]
+ALTER TABLE [dbo].[Itinerary_Landmark] DROP CONSTRAINT [FK_Itinerary_Landmark_Itinerary]
 GO
-ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [FK_Itenerary_Users]
+ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [FK_Itinerary_Users]
 GO
 ALTER TABLE [dbo].[Users] DROP CONSTRAINT [DF_Users_isAdmin]
 GO
-ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itenerary_Title]
+ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itinerary_Title]
 GO
 /****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 1:04:53 PM ******/
 DROP TABLE [dbo].[Users]
@@ -136,7 +136,7 @@ CREATE TABLE [dbo].[Itinerary](
 	[Rating] [int] NOT NULL,
 	[CreationDate] [date] NOT NULL,
 	[DepartureDate] [date] NULL,
- CONSTRAINT [PK_Itenerary] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Itinerary] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -152,7 +152,7 @@ CREATE TABLE [dbo].[Itinerary_Landmark](
 	[Itinerary_Id] [int] NOT NULL,
 	[Landmark_Id] [int] NOT NULL,
 	[DurationInMin] [int] NOT NULL,
- CONSTRAINT [PK_Itenerary_Landmark] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Itinerary_Landmark] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -199,24 +199,24 @@ INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], 
 GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
 GO
-ALTER TABLE [dbo].[Itinerary] ADD  CONSTRAINT [DF_Itenerary_Title]  DEFAULT ('Untitled') FOR [Title]
+ALTER TABLE [dbo].[Itinerary] ADD  CONSTRAINT [DF_Itinerary_Title]  DEFAULT ('Untitled') FOR [Title]
 GO
 ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [DF_Users_isAdmin]  DEFAULT ((0)) FOR [isAdmin]
 GO
-ALTER TABLE [dbo].[Itinerary]  WITH CHECK ADD  CONSTRAINT [FK_Itenerary_Users] FOREIGN KEY([User_Email])
+ALTER TABLE [dbo].[Itinerary]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Users] FOREIGN KEY([User_Email])
 REFERENCES [dbo].[Users] ([Email])
 GO
-ALTER TABLE [dbo].[Itinerary] CHECK CONSTRAINT [FK_Itenerary_Users]
+ALTER TABLE [dbo].[Itinerary] CHECK CONSTRAINT [FK_Itinerary_Users]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itenerary_Landmark_Itenerary] FOREIGN KEY([Itinerary_Id])
+ALTER TABLE [dbo].[Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Landmark_Itinerary] FOREIGN KEY([Itinerary_Id])
 REFERENCES [dbo].[Itinerary] ([Id])
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itenerary_Landmark_Itenerary]
+ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_Itinerary]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itenerary_Landmark_Landmark] FOREIGN KEY([Landmark_Id])
+ALTER TABLE [dbo].[Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Landmark_Landmark] FOREIGN KEY([Landmark_Id])
 REFERENCES [dbo].[Landmark] ([Id])
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itenerary_Landmark_Landmark]
+ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_Landmark]
 GO
 USE [master]
 GO
