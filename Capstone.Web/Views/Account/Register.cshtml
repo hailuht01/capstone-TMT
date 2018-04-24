@@ -1,14 +1,36 @@
-﻿@model Capstone.Web.Models.RegistrationForm
+﻿@{ 
+    ViewBag.
+}
+@model Capstone.Web.Models.RegistrationForm
 
-<h2>Registration Page</h2>
+<title>Register</title>
 
-<form id="registration" method="get" action="@Url.Action("Register", "Account")">
+<form id="registerform" method="post" action="@Url.Action("Register", "Account")">
+    <div >
+        @Html.LabelFor(m => m.UserName)
+        @Html.TextBoxFor(m => m.UserName, new { id = "username" })
+    </div>
+    <div >
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName, new { id = "fName" })
+    </div>
+    <div >
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { id = "lName" })
+    </div>
+    <div >
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { id = "email", })
+    </div>
+    <div >
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { id = "password" })
+    </div>
 
-    <div id="#firstName">First Name: @Html.TextBoxFor(c => c.FirstName, new { placeholder = "First Name" })</div>
-    <div id="#lastName">Last Name: @Html.TextBoxFor(c => c.LastName, new { placeholder = "Last Name" })</div>
-    <div id="#email">Email Address: @Html.TextBoxFor(c => c.Email, new { placeholder = "Email Address" })</div>
-    <div id="#password">Password: @Html.TextBoxFor(c => c.Password, new { placeholder = "Password" })</div>
-
+    <div >
+        @Html.Label("Confirm Password", new  { @for="passwordConfirm" })
+        @Html.Password("VerifyPassword", null, new { id = "VerifyPassword"})
+    </div>
     <br />
-    <input type="submit" name="submitButton" value="Submit via GET" />
+    <input type="submit" name="submitButton" value="Submit Form" />
 </form>

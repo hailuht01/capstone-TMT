@@ -16,33 +16,23 @@ namespace Capstone.Web.DAL
       this.connectionString = connectionString;
     }
 
-    public bool CreateUser(User user)
+    public bool CreateUser(RegistrationForm user)
     {
       const string createUserQuery = "insert into " +
-        "users(Email, Username, FirstName, LastName, Password, isAdmin) " +
-        "Values(@Email, @Username, @FirstName,@LastName, @Password, @isAdmin)";
+        "users(Email, Username, FirstName, LastName, Password) " +
+        "Values(@Email, @Username, @FirstName,@LastName, @Password)";
       bool isSuccess = false;
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
-        try
-        {
-          conn.Open();
-          var cmd = new SqlCommand(createUserQuery, conn);
-          cmd.Parameters.AddWithValue("@Email", user.Email);
-          cmd.Parameters.AddWithValue("@Username", user.UserName);
-          cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
-          cmd.Parameters.AddWithValue("@LastName", user.LastName);
-          cmd.Parameters.AddWithValue("@Password", user.Password);
-          cmd.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
+        conn.Open();
+        var cmd = new SqlCommand(createUserQuery, conn);
+        cmd.Parameters.AddWithValue("@Email", user.Email);
+        cmd.Parameters.AddWithValue("@Username", user.UserName);
+        cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+        cmd.Parameters.AddWithValue("@LastName", user.LastName);
+        cmd.Parameters.AddWithValue("@Password", user.Password);
 
-          isSuccess = (cmd.ExecuteNonQuery() > 0);
-        }
-        catch (Exception e)
-        {
-
-          throw;
-        }
-
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
       }
 
       return isSuccess;
@@ -50,43 +40,15 @@ namespace Capstone.Web.DAL
 
     public bool DeleteUser(string emailPK)
     {
-      const string deleteUserQuery = "delete from Users where Email = @Email";
-      bool isSuccess = false;
-      //using (SqlConnection conn = new SqlConnection(connectionString))
-      //{
-      //  conn.Open();
-      //  var cmd = new SqlCommand(deleteUserQuery, conn);
-      //  cmd.Parameters.AddWithValue("@Email", emailPK);
-
-      //  isSuccess = (cmd.ExecuteNonQuery() > 0);
-      //}
-
-      return isSuccess;
-    }
-
-    public bool UpdateUser(User user)  // needs work still
-    {
-      const string updateUserQuery = @"update users 
-                                      set UserName = @UserName, 
-                                      FirstName = @FirstName,
-                                      LastName = @LastName,
-                                      Password = @Password
-                                      where Email = @Email";
+      const string deleteUserQuery = "delete * where Email = @Email";
       bool isSuccess = false;
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
-        user.Password = "test";
-
         conn.Open();
-        var cmd = new SqlCommand(updateUserQuery, conn);
-        cmd.Parameters.AddWithValue("@Email", user.Email);
-        cmd.Parameters.AddWithValue("@Username", user.UserName);
-        cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
-        cmd.Parameters.AddWithValue("@LastName", user.FirstName);
-        cmd.Parameters.AddWithValue("@Password", user.Password);
+        var cmd = new SqlCommand(deleteUserQuery, conn);
+        cmd.Parameters.AddWithValue("@Email", emailPK);
 
-        cmd.ExecuteNonQuery();
-
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
       }
 
       return isSuccess;
@@ -95,44 +57,42 @@ namespace Capstone.Web.DAL
     public User GetUser(string emailPK)
     {
       var user = new User();
-      const string getUserQuery = "select Username, FirstName, LastName, isAdmin from Users where email = @Email";
-
+      const string getUserQuery = "select * where Email = @Email";
+      bool isSuccess = false;
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
         conn.Open();
         var cmd = new SqlCommand(getUserQuery, conn);
         cmd.Parameters.AddWithValue("@Email", emailPK);
-        var read = cmd.ExecuteReader();
-        if (read.Read())
-        {
-          user = PopulateUser(read);
-        }
-        user.Email = emailPK;
-      }
 
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
+      }
       return user;
     }
 
-    private User PopulateUser(SqlDataReader reader)
+    public bool UpdateUser(User user)
     {
-      var user = new User();
-      try
+      const string updateUserQuery = @"update users 
+                                      set UserName = @UserName 
+                                      set FirstName = @FirstName
+                                      set LastName = @LastName
+                                      set Password = @Password
+                                      where Email = @Email)";
+      bool isSuccess = false;
+      using (SqlConnection conn = new SqlConnection(connectionString))
       {
-        if (reader.HasRows)
-        {
-          user.UserName = reader["Username"].ToString();
-          user.FirstName = reader["FirstName"].ToString();
-          user.LastName = reader["LastName"].ToString();
-          user.IsAdmin = bool.Parse(reader["isAdmin"].ToString());
-        }
-      }
-      catch (SqlException e)
-      {
-        throw;
+        conn.Open();
+        var cmd = new SqlCommand(updateUserQuery, conn);
+        cmd.Parameters.AddWithValue("@Email", user.Email);
+        cmd.Parameters.AddWithValue("@Username", user.UserName);
+        cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+        cmd.Parameters.AddWithValue("@LastName", user.FirstName);
+        cmd.Parameters.AddWithValue("@Password", user.Password);
+
+        isSuccess = (cmd.ExecuteNonQuery() > 0);
       }
 
-      return user;
-
+      return isSuccess;
     }
   }
 }
