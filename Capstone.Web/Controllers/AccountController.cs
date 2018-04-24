@@ -32,7 +32,7 @@ namespace Capstone.Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(User user)
+        public ActionResult Register(RegistrationForm user)
         {
             accountDAL.CreateUser(user);
             return RedirectToAction(Request.UrlReferrer.ToString());

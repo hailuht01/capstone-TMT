@@ -3,25 +3,27 @@
 
 <title>Register</title>
 
-<form id="registerform" method="get" action="@Url.Action("Register", "Account")">
-
+<form id="registerform" method="post" action="@Url.Action("Register", "Account")">
+    <div id="username">
+        @Html.LabelFor(m => m.UserName)
+        @Html.TextBoxFor(m => m.UserName, new { id = "username" })
+    </div>
     <div id="fName">
-        <label for="fName">First Name: @Html.TextBoxFor(c => c.FirstName, new { placeholder = "First Name" })</label>
-       
+        @Html.LabelFor(m => m.FirstName)
+        @Html.TextBoxFor(m => m.FirstName,new { id="fName"})
     </div>
     <div id="#lName">
-        <lable for="lName">Last Name: @Html.TextBoxFor(c => c.LastName, new { placeholder = "Last Name" })</lable>
-        
+        @Html.LabelFor(m => m.LastName)
+        @Html.TextBoxFor(m => m.LastName, new { id = "lName" })
     </div>
     <div id="#email">
-        <lable for="email">Email Address: @Html.TextBoxFor(c => c.Email, new { placeholder = "Email Address" })</lable>
-       
+        @Html.LabelFor(m => m.Email)
+        @Html.TextBoxFor(m => m.Email, new { id = "email",})
     </div>
     <div id="#password">
-        <lable for="password">Password: @Html.TextBoxFor(c => c.Password, new { placeholder = "Password" })</lable>
-      
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m=> m.Password, new { id="password" })
     </div>
-
     <br />
     <input type="submit" name="submitButton" value="Submit Form" />
 </form>

@@ -13,16 +13,16 @@ namespace Capstone.Web.DAL
 
     public AccountDAL(string connectionString)
     {
-      connectionString = this.connectionString;
+      this.connectionString = connectionString;
     }
 
-    public bool CreateUser(User user)
+    public bool CreateUser(RegistrationForm user)
     {
       const string createUserQuery = "insert into " +
-        "users(Email, Username, FirstName, LastName, Password, isAdmin) " +
-        "Values(@Email, @Username, @FirstName,@LastName, @Password, @isAdmin)";
+        "users(Email, Username, FirstName, LastName, Password) " +
+        "Values(@Email, @Username, @FirstName,@LastName, @Password)";
       bool isSuccess = false;
-      using (SqlConnection conn = new SqlConnection())
+      using (SqlConnection conn = new SqlConnection(connectionString))
       {
         conn.Open();
         var cmd = new SqlCommand(createUserQuery, conn);
@@ -31,7 +31,6 @@ namespace Capstone.Web.DAL
         cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
         cmd.Parameters.AddWithValue("@LastName", user.FirstName);
         cmd.Parameters.AddWithValue("@Password", user.Password);
-        cmd.Parameters.AddWithValue("@isAdmin", user.IsAdmin);
 
         isSuccess = (cmd.ExecuteNonQuery() > 0);
       }
@@ -43,7 +42,7 @@ namespace Capstone.Web.DAL
     {
       const string deleteUserQuery = "delete * where Email = @Email";
       bool isSuccess = false;
-      using (SqlConnection conn = new SqlConnection())
+      using (SqlConnection conn = new SqlConnection(connectionString))
       {
         conn.Open();
         var cmd = new SqlCommand(deleteUserQuery, conn);
@@ -60,7 +59,7 @@ namespace Capstone.Web.DAL
       var user = new User();
       const string getUserQuery = "select * where Email = @Email";
       bool isSuccess = false;
-      using (SqlConnection conn = new SqlConnection())
+      using (SqlConnection conn = new SqlConnection(connectionString))
       {
         conn.Open();
         var cmd = new SqlCommand(getUserQuery, conn);
@@ -68,7 +67,6 @@ namespace Capstone.Web.DAL
 
         isSuccess = (cmd.ExecuteNonQuery() > 0);
       }
-
       return user;
     }
 
@@ -81,7 +79,7 @@ namespace Capstone.Web.DAL
                                       set Password = @Password
                                       where Email = @Email)";
       bool isSuccess = false;
-      using (SqlConnection conn = new SqlConnection())
+      using (SqlConnection conn = new SqlConnection(connectionString))
       {
         conn.Open();
         var cmd = new SqlCommand(updateUserQuery, conn);
