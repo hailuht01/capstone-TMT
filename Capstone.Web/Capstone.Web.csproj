@@ -153,9 +153,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\IAccountDAL.cs" />
+    <Compile Include="fonts\Itinerary.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Itinerary.cs" />
+    <Compile Include="Models\Landmark.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\RegistrationForm.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

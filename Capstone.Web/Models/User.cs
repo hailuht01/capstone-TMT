@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,12 +8,28 @@ namespace Capstone.Web.Models
 {
     public class User
     {
+       [ Required]
         public string FirstName { get; set; }
+
+        [Required]
         public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; private set; }
-        public bool IsAdmin { get; }
+
+        [Required]
         public string UserName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+
+        [Required]
+        public string Password { get; private set; }
+
+        [Required]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
+
+        public bool IsAdmin { get; }
+        
 
 
 
