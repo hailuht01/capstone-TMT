@@ -31,11 +31,13 @@ $(document).ready(function () {
             lName: {
                 required: "Last Name is required",
                 minlength: "Last Name must be at least 2 charactors long."
-            }
+            },
+            password: "Please enter valid password"
         },
         errorClass: "error",
         validClass: "valid"
     });
+
 
     $.validator.addMethod("strongPassword", function(value, element, params) {
         return value.match(/[A-Z]/) && value.match(/[a-z]/) && value.match(/\d/);
