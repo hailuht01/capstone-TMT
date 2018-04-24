@@ -10,24 +10,24 @@ ALTER TABLE [dbo].[Users] DROP CONSTRAINT [DF_Users_isAdmin]
 GO
 ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itenerary_Title]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 1:04:53 PM ******/
 DROP TABLE [dbo].[Users]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 1:04:53 PM ******/
 DROP TABLE [dbo].[Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/24/2018 1:04:53 PM ******/
 DROP TABLE [dbo].[Itinerary_Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/24/2018 1:04:53 PM ******/
 DROP TABLE [dbo].[Itinerary]
 GO
 USE [master]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Database [citytour]    Script Date: 4/24/2018 1:04:53 PM ******/
 DROP DATABASE [citytour]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Database [citytour]    Script Date: 4/24/2018 1:04:53 PM ******/
 CREATE DATABASE [citytour]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -124,7 +124,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/24/2018 1:04:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -134,13 +134,15 @@ CREATE TABLE [dbo].[Itinerary](
 	[Title] [varchar](50) NOT NULL,
 	[User_Email] [varchar](50) NOT NULL,
 	[Rating] [int] NOT NULL,
+	[CreationDate] [date] NOT NULL,
+	[DepartureDate] [date] NULL,
  CONSTRAINT [PK_Itenerary] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/24/2018 1:04:53 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -156,7 +158,7 @@ CREATE TABLE [dbo].[Itinerary_Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 1:04:54 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -168,13 +170,14 @@ CREATE TABLE [dbo].[Landmark](
 	[Name] [varchar](50) NOT NULL,
 	[Description] [varchar](200) NOT NULL,
 	[address] [varchar](100) NOT NULL,
+	[PicName] [varchar](10) NOT NULL,
  CONSTRAINT [PK_Landmark] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 12:47:14 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 1:04:54 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
