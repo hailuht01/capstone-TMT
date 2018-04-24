@@ -1,5 +1,6 @@
 ﻿using Capstone.Web.DAL;
 using Ninject;
+using Ninject.Web.Common.WebHost;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,8 +12,8 @@ using System.Web.Routing;
 
 namespace Capstone.Web
 {
-  public class MvcApplication : Ninject.Web.Common.NinjectHttpApplication
-  {
+  public class MvcApplication : NinjectHttpApplication
+    {
     protected override void OnApplicationStarted()
     {
       base.OnApplicationStarted();
