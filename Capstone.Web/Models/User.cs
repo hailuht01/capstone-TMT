@@ -28,7 +28,7 @@ namespace Capstone.Web.Models
     [Compare("Password")]
     public string ConfirmPassword { get; set; }
 
-    public bool IsAdmin { get; }
+    public bool IsAdmin { get; set; }
 
     public IList<Itinerary> Itinerarys = new List<Itinerary>();
 

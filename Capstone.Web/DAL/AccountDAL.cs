@@ -58,18 +58,65 @@ namespace Capstone.Web.DAL
     {
       var user = new User();
       const string getUserQuery = "select * from Users where Email = @Email and Password = @Password";
+      const string getUserItineraryQuery = "select * from Itenerary where User_Email = @Email";
 
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
         conn.Open();
         var cmd = new SqlCommand(getUserQuery, conn);
         cmd.Parameters.AddWithValue("@Email", emailPK);
-        cmd.Parameters.AddWithValue("@Password", emailPK);
+        cmd.Parameters.AddWithValue("@Password", password);
 
-        cmd.ExecuteReader();
+        var reader = cmd.ExecuteReader();
+        if (reader.Read())
+        {
+          user = PopulateUser(reader);
+          cmd = new SqlCommand(getUserItineraryQuery, conn);
+          cmd.Parameters.AddWithValue("@Email", emailPK);
+          reader.Close();
+
+          // pop user itinerarys 
+          reader = cmd.ExecuteReader();
+          user.Itinerarys = PopulateUserItinerarys(reader);
+
+          else
+          {
+
+            //user.Itinerarys = sampleitinerary
+          }          
+        }
       }
       return user;
     }
+
+    private List<Itinerary> PopulateUserItinerarys(SqlDataReader reader)
+    {
+      var itinerarys = new List<Itinerary>();
+      while(reader.Read())
+      {
+        var itinerary = new Itinerary();
+        itinerary.Id = int.Parse(reader["Id"].ToString());
+        itinerary.Title = reader["Title"].ToString();
+
+        itinerarys.Add(itinerary);
+      }
+
+      return itinerarys;
+    }
+
+    private User PopulateUser(SqlDataReader reader)
+    {
+      var user = new User();
+
+      user.Email = reader["Email"].ToString();
+      user.UserName = reader["Username"].ToString();
+      user.FirstName = reader["FirstName"].ToString();
+      user.LastName = reader["LastName"].ToString();
+      //user.IsAdmin = int.Parse(reader["isAdmin"].ToString()) == 1 ? true : false;
+
+      return user;
+    }
+
 
     public bool UpdateUser(User user)
     {

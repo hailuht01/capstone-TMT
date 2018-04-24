@@ -18,13 +18,13 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Index()
         {
-
-            return View();
+      accountDAL.GetUser("user@citytour.com", "Password");
+      return View();
         }
 
         public ActionResult Login(string email, string password)
         {
-      accountDAL.GetUser("jake@neels.io", "Password1");
+      accountDAL.GetUser(email, password);
             return View();
         }
 
