@@ -10,24 +10,24 @@ ALTER TABLE [dbo].[Users] DROP CONSTRAINT [DF_Users_isAdmin]
 GO
 ALTER TABLE [dbo].[Itenerary] DROP CONSTRAINT [DF_Itenerary_Title]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 11:03:07 AM ******/
 DROP TABLE [dbo].[Users]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 11:03:07 AM ******/
 DROP TABLE [dbo].[Landmark]
 GO
-/****** Object:  Table [dbo].[Itenerary_Landmark]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Itenerary_Landmark]    Script Date: 4/24/2018 11:03:07 AM ******/
 DROP TABLE [dbo].[Itenerary_Landmark]
 GO
-/****** Object:  Table [dbo].[Itenerary]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Itenerary]    Script Date: 4/24/2018 11:03:07 AM ******/
 DROP TABLE [dbo].[Itenerary]
 GO
 USE [master]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Database [citytour]    Script Date: 4/24/2018 11:03:07 AM ******/
 DROP DATABASE [citytour]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Database [citytour]    Script Date: 4/24/2018 11:03:07 AM ******/
 CREATE DATABASE [citytour]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -124,13 +124,13 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Itenerary]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Itenerary]    Script Date: 4/24/2018 11:03:07 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Itenerary](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Title] [varchar](50) NOT NULL,
 	[User_Email] [varchar](50) NOT NULL,
  CONSTRAINT [PK_Itenerary] PRIMARY KEY CLUSTERED 
@@ -139,13 +139,13 @@ CREATE TABLE [dbo].[Itenerary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Itenerary_Landmark]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Itenerary_Landmark]    Script Date: 4/24/2018 11:03:07 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Itenerary_Landmark](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Itenerary_Id] [int] NOT NULL,
 	[Landmark_Id] [int] NOT NULL,
  CONSTRAINT [PK_Itenerary_Landmark] PRIMARY KEY CLUSTERED 
@@ -154,13 +154,13 @@ CREATE TABLE [dbo].[Itenerary_Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 11:03:08 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[Landmark](
-	[Id] [int] NOT NULL,
+	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Latitude] [float] NOT NULL,
 	[Longitude] [float] NOT NULL,
 	[Name] [varchar](50) NOT NULL,
@@ -171,7 +171,7 @@ CREATE TABLE [dbo].[Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 1:05:10 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 11:03:08 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,8 +190,6 @@ CREATE TABLE [dbo].[Users](
 ) ON [PRIMARY]
 GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'admin@citytour.com', N'Admin', N'Admin', N'Jones', N'Password', 1)
-GO
-INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'test@citytour.com', N'User', N'User', N'User', N'Password', 0)
 GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
 GO

@@ -115,8 +115,9 @@
   <ItemGroup>
     <Content Include="citytour.sql" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\site.css" />
-    <Content Include="Content\user-registration.css" />
+    <Content Include="Content\css\register-login.css" />
     <Content Include="Global.asax" />
     <Content Include="app.config" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -132,6 +133,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\Main.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
@@ -146,6 +148,7 @@
       <SubType>Designer</SubType>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\IAccountDAL.cs" />
@@ -185,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

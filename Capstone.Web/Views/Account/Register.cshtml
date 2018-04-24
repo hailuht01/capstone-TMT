@@ -1,34 +1,34 @@
 ﻿
 @model Capstone.Web.Models.RegistrationForm
+@section extraCSS {
+    <link href="~/Content/css/register-login.css" rel="stylesheet" />
+}
 
 <title>Register</title>
+<div class="container-fluid">
+    <form id="registerform" method="post" action="@Url.Action("Register", "Account")">
+        <div class="form-group">
+            @Html.LabelFor(m => m.UserName)
+            @Html.TextBoxFor(m => m.UserName, new { id = "username" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.FirstName)
+            @Html.TextBoxFor(m => m.FirstName, new { id = "fName" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.LastName)
+            @Html.TextBoxFor(m => m.LastName, new { id = "lName" })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Email)
+            @Html.TextBoxFor(m => m.Email, new { id = "email", })
+        </div>
+        <div>
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new { id = "password" })
+        </div>
 
-<form id="registerform" method="post" action="@Url.Action("Register", "Account")">
-    <div >
-        @Html.LabelFor(m => m.UserName)
-        @Html.TextBoxFor(m => m.UserName, new { id = "username" })
-    </div>
-    <div >
-        @Html.LabelFor(m => m.FirstName)
-        @Html.TextBoxFor(m => m.FirstName, new { id = "fName" })
-    </div>
-    <div >
-        @Html.LabelFor(m => m.LastName)
-        @Html.TextBoxFor(m => m.LastName, new { id = "lName" })
-    </div>
-    <div >
-        @Html.LabelFor(m => m.Email)
-        @Html.TextBoxFor(m => m.Email, new { id = "email", })
-    </div>
-    <div >
-        @Html.LabelFor(m => m.Password)
-        @Html.PasswordFor(m => m.Password, new { id = "password" })
-    </div>
-
-    <div >
-        @Html.Label("Confirm Password", new  { @for="passwordConfirm" })
-        @Html.Password("VerifyPassword", null, new { id = "VerifyPassword"})
-    </div>
-    <br />
-    <input type="submit" name="submitButton" value="Submit Form" />
-</form>
+        <br />
+        <input class="btn btn-primary" type="submit" name="submitButton" value="Submit Form" />
+    </form>
+</div>
