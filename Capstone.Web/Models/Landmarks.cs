@@ -15,6 +15,7 @@ namespace Capstone.Web.Models
         public int Latitude { get; set; }
         public int Longtiude { get; set; }
         public string PicName { get; set; }
+        public bool ThumbsUp { get; set; }
         public string QueryString
         {
             get

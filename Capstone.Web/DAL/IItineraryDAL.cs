@@ -9,10 +9,10 @@ namespace Capstone.Web.DAL
 {
     interface IItineraryDAL
     {
-        bool CreatItinerary();
-        Itinerary GetItenerary();
-        bool UpdateItinerary();
-        bool DeleteItinerary();
+        bool SaveItinerary(Itinerary itinerary);
+        Itinerary GetItenerary(int id);
+        bool UpdateItinerary(Itinerary itinerary);
+        bool DeleteItinerary(int id);
 
     }
 }

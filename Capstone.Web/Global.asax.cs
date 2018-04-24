@@ -30,9 +30,11 @@ namespace Capstone.Web
       string connectionString = ConfigurationManager.ConnectionStrings["citytour"].ConnectionString;
 
       // Set up the bindings
-      kernel.Bind<IAccountDAL>().To<AccountDAL>().WithConstructorArgument("connectionString", connectionString);
+        kernel.Bind<IAccountDAL>().To<AccountDAL>().WithConstructorArgument("connectionString", connectionString);
+        kernel.Bind<IItineraryDAL>().To<ItineraryDAL>().WithConstructorArgument("connectionString", connectionString);
+        kernel.Bind<ILandmarkDAL>().To<LandmarkDAL>().WithConstructorArgument("connectionString", connectionString);
 
-      return kernel;
+        return kernel;
     }
   }
 }
