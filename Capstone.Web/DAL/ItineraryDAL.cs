@@ -18,7 +18,7 @@ namespace Capstone.Web.DAL
             throw new NotImplementedException();
         }
 
-        public Itinerary GetItenerary()
+        public Itinerary GetItinerary()
         {
             throw new NotImplementedException();
         }

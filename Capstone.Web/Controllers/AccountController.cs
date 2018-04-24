@@ -18,7 +18,7 @@ namespace Capstone.Web.Controllers
 
     public ActionResult Index()
     {
-      accountDAL.GetUser("user@citytour.com", "Password");
+      accountDAL.GetUser("userrrrr@citytour.com", "Password");
       return View();
     }
 
