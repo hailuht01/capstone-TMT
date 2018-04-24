@@ -17,12 +17,14 @@ namespace Capstone.Web.Controllers
         }
 
         public ActionResult Index()
-        { 
+        {
+
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string email, string password)
         {
+      accountDAL.GetUser("jake@neels.io", "Password1");
             return View();
         }
 

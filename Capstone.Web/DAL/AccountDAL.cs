@@ -19,7 +19,7 @@ namespace Capstone.Web.DAL
     public bool CreateUser(RegistrationForm user)
     {
       const string createUserQuery = "insert into " +
-        "users(Email, Username, FirstName, LastName, Password) " +
+        "Users(Email, Username, FirstName, LastName, Password) " +
         "Values(@Email, @Username, @FirstName,@LastName, @Password)";
       bool isSuccess = false;
       using (SqlConnection conn = new SqlConnection(connectionString))
@@ -40,7 +40,7 @@ namespace Capstone.Web.DAL
 
     public bool DeleteUser(string emailPK)
     {
-      const string deleteUserQuery = "delete * where Email = @Email";
+      const string deleteUserQuery = "delete from Users where Email = @Email";
       bool isSuccess = false;
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
@@ -54,18 +54,19 @@ namespace Capstone.Web.DAL
       return isSuccess;
     }
 
-    public User GetUser(string emailPK)
+    public User GetUser(string emailPK, string password)
     {
       var user = new User();
-      const string getUserQuery = "select * where Email = @Email";
-      bool isSuccess = false;
+      const string getUserQuery = "select * from Users where Email = @Email and Password = @Password";
+
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
         conn.Open();
         var cmd = new SqlCommand(getUserQuery, conn);
         cmd.Parameters.AddWithValue("@Email", emailPK);
+        cmd.Parameters.AddWithValue("@Password", emailPK);
 
-        isSuccess = (cmd.ExecuteNonQuery() > 0);
+        cmd.ExecuteReader();
       }
       return user;
     }
