@@ -15,12 +15,8 @@ namespace Capstone.Web.Models
         public int Latitude { get; set; }
         public int Longtiude { get; set; }
         public string PicName { get; set; }
-        public string QueryString
-        {
-            get
-            {
-                return Name.Trim().Replace(' ', '+');
-            } 
-        }
-    }
+        public string QueryString => Name.Trim().Replace(' ', '+');
+
+        public DateTime LastUpdated { get; set; }
+  }
 }
