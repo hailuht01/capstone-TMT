@@ -10,7 +10,7 @@ namespace Capstone.Web.Models
 
     public string Title { get; set; }
     public int Id { get; set; }
-    public DateTime CreationDate { get; set; } // private set?
+    public DateTime CreationDate { get { return DateTime.Now; } } // private set?
     public DateTime? DepartureDate { get; set; }
     public double Rating { get; set; }
     public string User_Email { get; set; }
@@ -18,19 +18,17 @@ namespace Capstone.Web.Models
     public IList<Landmark> Landmarks { get; set; } = new List<Landmark>();
     //public int Route { get; set; }
 
-    public static Itinerary GetSample()
+    public static List<Itinerary> GetSamples()
     {
-      return new Itinerary("Sample Itinerary", 999999, DateTime.Now, DateTime.Now.AddDays(1), 4.4, "jake@neels.io", "itsJake", Landmark.GetSamples());
+      return new List<Itinerary>() { new Itinerary("Sample Itinerary", 999999, DateTime.Now.AddDays(1), 4.4, "jake@neels.io", "itsJake", Landmark.GetSamples()) };
     }
 
-    //ctor for testing and first time users
     public Itinerary() { }
 
-    public Itinerary(string Title, int Id, DateTime CreationDate, DateTime? DepartureDate, double Rating, string User_Email, string UserName, List<Landmark> Landmarks)
+    public Itinerary(string Title, int Id, DateTime? DepartureDate, double Rating, string User_Email, string UserName, List<Landmark> Landmarks)
     {
       this.Title = Title;
       this.Id = Id;
-      this.CreationDate = CreationDate;
       this.DepartureDate = DepartureDate;
       this.Rating = Rating;
       this.User_Email = User_Email;
@@ -38,6 +36,5 @@ namespace Capstone.Web.Models
       this.Landmarks = Landmarks;
 
     }
-
   }
 }

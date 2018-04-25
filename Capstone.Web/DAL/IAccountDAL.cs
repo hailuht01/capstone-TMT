@@ -8,8 +8,5 @@ namespace Capstone.Web.DAL
         bool CreateUser(RegistrationForm user);
         bool UpdateUser(User user);
         bool DeleteUser(string emailPK);
-           
-
-
     }
 }
