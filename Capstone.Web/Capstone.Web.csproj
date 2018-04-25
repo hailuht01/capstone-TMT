@@ -118,6 +118,9 @@
     <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\register-login.css" />
+    <Content Include="Content\img\Cincinnati-Museum.jpg" />
+    <Content Include="Content\img\Cincinnati-Zoo.jpg" />
+    <Content Include="Content\img\Krohn-Conservatory.jpg" />
     <Content Include="Global.asax" />
     <Content Include="app.config" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -151,7 +154,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItineraryController.cs" />
-    <Compile Include="Controllers\LandmarksController.cs" />
+    <Compile Include="Controllers\LandmarkController.cs" />
     <Compile Include="DAL\AccountDAL.cs" />
     <Compile Include="DAL\IAccountDAL.cs" />
     <Compile Include="DAL\IItineraryDAL.cs" />
@@ -162,6 +165,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\FullUserModel.cs" />
     <Compile Include="Models\Itinerary.cs" />
     <Compile Include="Models\Landmark.cs" />
     <Compile Include="Models\Login.cs" />
@@ -186,7 +190,8 @@
     <Content Include="Scripts\README.md" />
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Landmarks\Landmarks.cshtml" />
+    <Content Include="Views\Landmark\Index.cshtml" />
+    <Content Include="Views\Landmark\LandmarkPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

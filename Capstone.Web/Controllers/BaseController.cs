@@ -1,5 +1,4 @@
-﻿using Capstone.Web.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,15 +8,14 @@ namespace Capstone.Web.Controllers
 {
     public class BaseController : Controller
     {
-        protected UserSession GetActiveUser()
+        protected string GetActiveSession()
         {
-            UserSession session = null;
+            string user = null;
 
-            if (Session["session"] != null)
+            if (Session["User"] != null)
             {
-                session = Session["User"] as UserSession;
+                user = Session["User"] as string;
             }
-            return session;
-        }
+            return user;
     }
 }
