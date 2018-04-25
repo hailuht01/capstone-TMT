@@ -18,18 +18,20 @@ namespace Capstone.Web.Controllers
 
     public ActionResult Index()
     {
+      UserSession userSession = GetActiveUser();
       return View();
     }
 
     public ActionResult Login()
     {
+      UserSession userSession = GetActiveUser();
       return View();
     }
 
     [HttpPost]
     public ActionResult Login(string email, string password)
     {
-      User user = accountDAL.AuthUser("user@citytour.com", "Password");
+      User user = accountDAL.AuthUser(email, password);
 
       Session["User.Session"] = new UserSession(user.Email, user.IsAdmin);
       return View();

@@ -20,5 +20,5 @@ namespace Capstone.Web.Models
       Email = email;
       isAdmin = admin; 
     }
-  }
+  }//@HttpContext.Current.Session["User.Session"].ToString()
 }

@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-
+@model Capstone.Web.Models.UserSession
 <!DOCTYPE html>
 
 <html>
@@ -44,7 +44,9 @@
                         User
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">[User Name]</a>
+                        <a class="dropdown-item" href="#">
+                           @Model.Email
+                        </a>
                         <a class="dropdown-item" href="#">Edit Profile</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Log Out</a>

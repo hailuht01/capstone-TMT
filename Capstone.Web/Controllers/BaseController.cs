@@ -23,7 +23,8 @@ namespace Capstone.Web.Controllers
                 userSession = new UserSession()
                 {
                     Email = "user@citytour.com",
-                    isAdmin = false
+                    isAdmin = false,
+                    //UserName = "Anonymous"
                 };
             }
             return userSession;

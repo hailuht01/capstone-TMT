@@ -77,16 +77,21 @@ namespace Capstone.Web.DAL
         catch (Exception e)
         {
           throw e;
-        }
-       
+        }    
       }
       return user;
     }
 
-    public User GetUser(string emailPK, string password) // works, 
+    /// <summary>
+    ///   only used with user.session
+    /// </summary>
+    /// <param name="password"></param>
+    /// <returns></returns>
+
+    public User GetUser(string emailPK) // works, 
     {
       var user = new User();
-      const string getUserQuery = "select * from Users where Email = @Email and Password = @Password";
+      const string getUserQuery = "select * from Users where Email = @Email";
 
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
@@ -95,7 +100,7 @@ namespace Capstone.Web.DAL
           conn.Open();
           var cmd = new SqlCommand(getUserQuery, conn);
           cmd.Parameters.AddWithValue("@Email", emailPK);
-          cmd.Parameters.AddWithValue("@Password", password);
+
 
           var reader = cmd.ExecuteReader();
           if (reader.Read())
@@ -142,7 +147,7 @@ namespace Capstone.Web.DAL
         cmd.Parameters.AddWithValue("@Username", user.UserName);
         cmd.Parameters.AddWithValue("@FirstName", user.FirstName);
         cmd.Parameters.AddWithValue("@LastName", user.LastName);
-        cmd.Parameters.AddWithValue("@Password", user.Password);
+        //cmd.Parameters.AddWithValue("@Password", user.Password);
 
         isSuccess = (cmd.ExecuteNonQuery() > 0);
       }
