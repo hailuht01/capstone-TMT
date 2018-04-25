@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     $("#registerform").validate({
-        debug: true,
+        debug: false,
         rules: {
             UserName: {
                 required: true
@@ -54,7 +54,7 @@ $(document).ready(function () {
     });
 
     $("#loginform").validate({
-        debug: true,
+        debug: false,
         rules: {
             Email: {
                 email: true,
@@ -62,12 +62,9 @@ $(document).ready(function () {
             },
             Password: {
                 required: true,
-                minlength: 8,
-                strongPassword: true
             },
         },
         messages: {
-
             Email: {
                 email: "Please enter valid email address",
                 required: "Email address required"

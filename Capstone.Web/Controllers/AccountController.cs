@@ -22,6 +22,12 @@ namespace Capstone.Web.Controllers
           return View();
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Login(string email, string password)
         {
           accountDAL.GetUser(email, password);
@@ -37,7 +43,7 @@ namespace Capstone.Web.Controllers
         public ActionResult Register(RegistrationForm user)
         {
           accountDAL.CreateUser(user);
-          return RedirectToAction(Request.UrlReferrer.ToString());
+            return View(); //RedirectToAction(Request.UrlReferrer.ToString());
         }
     }
 }
