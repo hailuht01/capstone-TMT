@@ -30,7 +30,7 @@ namespace Capstone.Web.Controllers
     public ActionResult Login(string email, string password)
     {
       //UserSession user = new UserSession(accountDAL.GetUser("user@citytour.com", "Password"), Itinerary.GetSamples());
-      UserSession user = new UserSession(accountDAL.GetUser(email, password), Itinerary.GetSamples());
+      //UserSession user = new UserSession(accountDAL.GetUser(email, password), Itinerary.GetSamples());
       return View();
     }
 
