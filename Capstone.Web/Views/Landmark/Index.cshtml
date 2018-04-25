@@ -1,0 +1,25 @@
+﻿@model Capstone.Web.Models.Landmark
+
+
+@*@model Capstone.Web.Models.Landmark*@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Landmark</title>
+</head>
+<body>
+    <div>
+
+        @*@{Html.Partial("LandmarkPartial", Model);}*@
+
+        @{Html.RenderPartial("LandmarkPartial", Model);}
+    </div>
+</body>
+</html>

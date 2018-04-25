@@ -28,7 +28,7 @@ namespace Capstone.Web.Models
       this.Address = Address;
       this.Description = Description;
       this.Latitude = Latitude;
-      this.Longtiude = Latitude;
+      this.Longtiude = Longitude;
       this.PicName = PicName;
     }
 

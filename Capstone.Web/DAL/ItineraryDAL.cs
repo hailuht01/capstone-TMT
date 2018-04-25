@@ -28,7 +28,7 @@ namespace Capstone.Web.DAL
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(SaveItinSQL, conn);
-                    cmd.Parameters.AddWithValue("@Name", itinerary.Name);
+                    cmd.Parameters.AddWithValue("@Name", itinerary.Title);
                     cmd.Parameters.AddWithValue("@Email", itinerary.User_Email);
                     cmd.Parameters.AddWithValue("@CreateDate", DateTime.Now);
                     cmd.Parameters.AddWithValue("@Departure", itinerary.DepartureDate);
