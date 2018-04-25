@@ -1,4 +1,5 @@
-﻿using Capstone.Web.Models;
+﻿using Capstone.Web.DAL;
+using Capstone.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,17 @@ namespace Capstone.Web.Controllers
     {
         protected UserSession GetActiveUser()
         {
-            UserSession session = null;
+            UserSession userSession = Session["User.Session"] as UserSession;
 
-            if (Session["session"] != null)
+            if (userSession == null)
             {
-                session = Session["User"] as UserSession;
+                userSession = new UserSession()
+                {
+                    Email = "user@citytour.com",
+                    isAdmin = false
+                };
             }
-            return session;
+            return userSession;
         }
     }
 }

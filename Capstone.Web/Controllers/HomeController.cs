@@ -13,6 +13,7 @@ namespace Capstone.Web.Controllers
         private IAccountDAL acctDAL;
         private ILandmarkDAL landDAL;
         private IItineraryDAL itinDAL;
+
         public HomeController(IAccountDAL _acctDAL, ILandmarkDAL _landDAL, IItineraryDAL _itinDAL)
         {
             this.acctDAL = _acctDAL;
@@ -23,17 +24,9 @@ namespace Capstone.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            //Default session if User isn't logged in
             UserSession userSession = GetActiveUser();
-
-            if (userSession == null)
-            {
-                UserSession tempSession = new UserSession()
-                {
-                    User = acctDAL.GetUser("admin", "Password"),
-                    Itinerary = Itinerary.GetSample()
-                };
-                return View(tempSession);
-            }
+            
             return View(userSession);
         }
     }
