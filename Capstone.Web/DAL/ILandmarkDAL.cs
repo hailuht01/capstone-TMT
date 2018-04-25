@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Capstone.Web.DAL
 {
-    interface ILandmarkDAL
+    public interface ILandmarkDAL
     {
         bool CreatLandmark();
         Landmark GetLandmark();

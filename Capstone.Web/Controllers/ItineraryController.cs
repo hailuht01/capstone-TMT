@@ -11,15 +11,20 @@ namespace Capstone.Web.Controllers
     public class ItineraryController : BaseController
     {
         IItineraryDAL itineraryDAL;
-        public ItineraryController(IItineraryDAL dal)
+        ILandmarkDAL landmarkDAL;
+        IAccountDAL accountDAL;
+
+        public ItineraryController(IItineraryDAL dal, IAccountDAL _accountDAL, ILandmarkDAL _landmarkDAL)
         {
             this.itineraryDAL = dal;
+            this.landmarkDAL = _landmarkDAL;
+            this.accountDAL = _accountDAL;
         }
-        
+
 
         // GET: Itinerary
         public ActionResult Index()
-        {
+        { 
             return View();
         }
 

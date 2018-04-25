@@ -184,7 +184,5 @@ namespace Capstone.Web.DAL
 
             return itinerary;
         }
-
-        
     }
 }
