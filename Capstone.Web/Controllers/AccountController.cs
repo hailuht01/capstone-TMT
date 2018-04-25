@@ -22,10 +22,21 @@ namespace Capstone.Web.Controllers
           return View();
         }
 
+        public ActionResult Login()
+        {
+            
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult Login(string email, string password)
         {
-          accountDAL.GetUser(email, password);
-          return View();
+            if (accountDAL.GetUser(email, password) != null)
+            {
+                
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register()

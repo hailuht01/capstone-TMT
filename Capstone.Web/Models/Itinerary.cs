@@ -38,6 +38,5 @@ namespace Capstone.Web.Models
       this.Landmarks = Landmarks;
 
     }
-
   }
 }
