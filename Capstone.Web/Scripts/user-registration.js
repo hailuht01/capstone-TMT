@@ -28,6 +28,9 @@ $(document).ready(function () {
             }
         },
         messages: {
+            UserName: {
+                required: "Please Enter User Name"
+            },
             fName: {
                 required: "First Name is required"
             },
@@ -35,12 +38,43 @@ $(document).ready(function () {
                 required: "Last Name is required",
                 minlength: "Last Name must be at least 2 charactors long."
             },
+            Email: {
+                email: "Please enter valid email address",
+                required: "Email address required"
+            },
             password: {
                 required: "Please enter valid password"
             },
             verifypassword: {
                 equalTo: "Passwords must match"
             }
+        },
+        errorClass: "error",
+        validClass: "valid"
+    });
+
+    $("#loginform").validate({
+        debug: true,
+        rules: {
+            Email: {
+                email: true,
+                required: true
+            },
+            Password: {
+                required: true,
+                minlength: 8,
+                strongPassword: true
+            },
+        },
+        messages: {
+
+            Email: {
+                email: "Please enter valid email address",
+                required: "Email address required"
+            },
+            password: {
+                required: "Please enter valid password"
+            },
         },
         errorClass: "error",
         validClass: "valid"
