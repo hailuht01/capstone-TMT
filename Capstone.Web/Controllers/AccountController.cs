@@ -18,26 +18,32 @@ namespace Capstone.Web.Controllers
 
     public ActionResult Index()
     {
-      accountDAL.GetUser("userrrrr@citytour.com", "Password");
       return View();
     }
 
-    public ActionResult Login(string email, string password)
-    {
-      accountDAL.GetUser(email, password);
-      return View();
-    }
-
-    public ActionResult Register()
+    public ActionResult Login()
     {
       return View();
     }
 
     [HttpPost]
-    public ActionResult Register(RegistrationForm user)
+    public ActionResult Login(string email, string password)
     {
-      accountDAL.CreateUser(user);
-      return RedirectToAction(Request.UrlReferrer.ToString());
+      //UserSession user = new UserSession(accountDAL.GetUser("user@citytour.com", "Password"), Itinerary.GetSamples());
+      UserSession user = new UserSession(accountDAL.GetUser(email, password), Itinerary.GetSamples());
+      return View();
     }
-  }
+
+    public ActionResult Register()
+        {
+          return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegistrationForm user)
+        {
+          accountDAL.CreateUser(user);
+          return RedirectToAction(Request.UrlReferrer.ToString());
+        }
+    }
 }

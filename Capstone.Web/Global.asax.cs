@@ -25,9 +25,9 @@ namespace Capstone.Web
     // Configure the dependency injection container.
     protected override IKernel CreateKernel()
     {
-      var kernel = new StandardKernel();
+        var kernel = new StandardKernel();
 
-      string connectionString = ConfigurationManager.ConnectionStrings["citytour"].ConnectionString;
+        string connectionString = ConfigurationManager.ConnectionStrings["citytour"].ConnectionString;
 
       // Set up the bindings
         kernel.Bind<IAccountDAL>().To<AccountDAL>().WithConstructorArgument("connectionString", connectionString);

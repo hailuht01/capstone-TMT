@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Capstone.Web.DAL;
+using Capstone.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,11 +8,23 @@ using System.Web.Mvc;
 
 namespace Capstone.Web.Controllers
 {
-    public class ItineraryController : Controller
+    public class ItineraryController : BaseController
     {
+        IItineraryDAL itineraryDAL;
+        ILandmarkDAL landmarkDAL;
+        IAccountDAL accountDAL;
+
+        public ItineraryController(IItineraryDAL dal, IAccountDAL _accountDAL, ILandmarkDAL _landmarkDAL)
+        {
+            this.itineraryDAL = dal;
+            this.landmarkDAL = _landmarkDAL;
+            this.accountDAL = _accountDAL;
+        }
+
+
         // GET: Itinerary
         public ActionResult Index()
-        {
+        { 
             return View();
         }
 

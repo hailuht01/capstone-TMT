@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $("#registerform").validate({
+        debug: false,
         rules: {
             UserName: {
                 required: true
@@ -27,12 +28,50 @@ $(document).ready(function () {
             }
         },
         messages: {
-            fName: "First Name is required",
+            UserName: {
+                required: "Please Enter User Name"
+            },
+            fName: {
+                required: "First Name is required"
+            },
             lName: {
                 required: "Last Name is required",
                 minlength: "Last Name must be at least 2 charactors long."
             },
-            password: "Please enter valid password"
+            Email: {
+                email: "Please enter valid email address",
+                required: "Email address required"
+            },
+            password: {
+                required: "Please enter valid password"
+            },
+            verifypassword: {
+                equalTo: "Passwords must match"
+            }
+        },
+        errorClass: "error",
+        validClass: "valid"
+    });
+
+    $("#loginform").validate({
+        debug: false,
+        rules: {
+            Email: {
+                email: true,
+                required: true
+            },
+            Password: {
+                required: true,
+            },
+        },
+        messages: {
+            Email: {
+                email: "Please enter valid email address",
+                required: "Email address required"
+            },
+            password: {
+                required: "Please enter valid password"
+            },
         },
         errorClass: "error",
         validClass: "valid"
