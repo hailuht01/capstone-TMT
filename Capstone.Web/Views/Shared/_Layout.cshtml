@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    string username = ViewBag.Username as string;
 }
 @model Capstone.Web.Models.FullUserModel
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
                         <a class="nav-link" href="@Url.Action("Index", "Home")">New Itinerary</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Landmarks")">My Itineraries</a>
+                        <a class="nav-link" href="@Url.Action("Index", "Landmark")">My Itineraries</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index", "Landmark")">Landmark</a>
@@ -45,26 +46,26 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">
-                            @if (Model.User.IsAdmin)
+                            @if (ViewBag.IsAdmin)
                             {
-                              <span style="color:red">@Model.User.UserName</span> 
+                                <span style="color:red">@ViewBag.UserName</span>
                             }
                             else
                             {
-                              <span style="color:blue">@Model.User.UserName</span>
+                                <span style="color:blue">@ViewBag.UserName</span>
                             }
-                      
+
                         </a>
-                            <a class="dropdown-item" href="#">Edit Profile</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Log Out</a>
-                        </div>
+                        <a class="dropdown-item" href="@Url.Action("Account", "Profile")">Edit Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="@Url.Action("Account", "Logout")">Log Out</a>
                     </div>
                 </div>
-            </nav>
-        </header>
-        <div class="container-fluid">
-            @RenderBody()
-        </div>
-    </body>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
 </html>

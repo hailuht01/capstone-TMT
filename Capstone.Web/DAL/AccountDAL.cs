@@ -110,7 +110,7 @@ namespace Capstone.Web.DAL
         }
         catch (Exception e)
         {
-          throw e;
+         
         }
 
       }
