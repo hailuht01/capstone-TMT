@@ -11,7 +11,7 @@
             <form id="loginform" method="post" action="@Url.Action("Login", "Account")">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new { id = "email", @class = "form-control", placeholder = "please enter valid email address" })
+                    @Html.TextBoxFor(m => m.Email, new { id = "email", @class = "form-control", placeholder = "please enter an email address" })
                     @Html.ValidationMessageFor(m => m.Email)
                 </div>
                 <div>
