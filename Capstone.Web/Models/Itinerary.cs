@@ -10,7 +10,7 @@ namespace Capstone.Web.Models
 
     public string Title { get; set; }
     public int Id { get; set; }
-    public DateTime CreationDate { get { return DateTime.Now; } } // private set?
+    public DateTime CreationDate { get; set; } // private set?
     public DateTime? DepartureDate { get; set; }
     public double Rating { get; set; }
     public string User_Email { get; set; }

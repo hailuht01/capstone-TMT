@@ -17,6 +17,5 @@ namespace Capstone.Web.Controllers
                 user = Session["User"] as string;
             }
             return user;
-        }
     }
 }
