@@ -29,21 +29,22 @@ namespace Capstone.Web.Controllers
     [HttpPost]
     public ActionResult Login(string email, string password)
     {
-      //UserSession user = new UserSession(accountDAL.GetUser("user@citytour.com", "Password"), Itinerary.GetSamples());
-      //UserSession user = new UserSession(accountDAL.GetUser(email, password), Itinerary.GetSamples());
+      User user = accountDAL.AuthUser("user@citytour.com", "Password");
+
+      Session["User.Session"] = new UserSession(user.Email, user.IsAdmin);
       return View();
     }
 
     public ActionResult Register()
-        {
-          return View();
-        }
-
-        [HttpPost]
-        public ActionResult Register(RegistrationForm user)
-        {
-          accountDAL.CreateUser(user);
-          return RedirectToAction(Request.UrlReferrer.ToString());
-        }
+    {
+      return View();
     }
+
+    [HttpPost]
+    public ActionResult Register(RegistrationForm user)
+    {
+      accountDAL.CreateUser(user);
+      return RedirectToAction(Request.UrlReferrer.ToString());
+    }
+  }
 }
