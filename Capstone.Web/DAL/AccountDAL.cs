@@ -58,57 +58,32 @@ namespace Capstone.Web.DAL
     {
       var user = new User();
       const string getUserQuery = "select * from Users where Email = @Email and Password = @Password";
-      const string getUserItineraryQuery = "select * from Itinerary where User_Email = @Email";
 
       using (SqlConnection conn = new SqlConnection(connectionString))
       {
-        conn.Open();
-        var cmd = new SqlCommand(getUserQuery, conn);
-        cmd.Parameters.AddWithValue("@Email", emailPK);
-        cmd.Parameters.AddWithValue("@Password", password);
-
-        var reader = cmd.ExecuteReader();
-        if (reader.Read())
+        try
         {
-          user = PopulateUser(reader);
-          cmd = new SqlCommand(getUserItineraryQuery, conn);
+          conn.Open();
+          var cmd = new SqlCommand(getUserQuery, conn);
           cmd.Parameters.AddWithValue("@Email", emailPK);
-          reader.Close();
+          cmd.Parameters.AddWithValue("@Password", password);
 
-          // pop user itinerarys 
-          reader = cmd.ExecuteReader();
-          user.Itinerarys = PopulateUserItinerarys(reader, user.UserName);
+          var reader = cmd.ExecuteReader();
+          if (reader.Read())
+          {
+            user = MapUser(reader);
+          }
         }
-        else // give user smaple itinerary so grow familiar with the app
+        catch (Exception e)
         {
-          user.Itinerarys.Add(Itinerary.GetSample());
+          throw e;
         }
+       
       }
       return user;
     }
 
-    private List<Itinerary> PopulateUserItinerarys(SqlDataReader reader, string username)
-    {
-      var itinerarys = new List<Itinerary>();
-      while (reader.Read())
-      {
-        var itinerary = new Itinerary();
-        itinerary.Id = int.Parse(reader["Id"].ToString());
-        itinerary.Title = reader["Title"].ToString();
-        itinerary.UserName = username;
-        itinerary.Rating = int.Parse(reader["rating"].ToString());
-        itinerary.User_Email = reader["User_Email"].ToString();
-        DateTime.TryParse(reader["DepartureDate"].ToString(), out DateTime date);
-
-        itinerary.CreationDate = DateTime.Parse(reader["CreationDate"].ToString());
-
-        itinerarys.Add(itinerary);
-      }
-
-      return itinerarys;
-    }
-
-    private User PopulateUser(SqlDataReader reader)
+    private User MapUser(SqlDataReader reader)
     {
       var user = new User();
 

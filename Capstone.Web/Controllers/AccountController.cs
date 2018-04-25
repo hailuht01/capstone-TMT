@@ -18,13 +18,15 @@ namespace Capstone.Web.Controllers
 
         public ActionResult Index()
         {
-          accountDAL.GetUser("userrrrr@citytour.com", "Password");
+      //accountDAL.GetUser("userrrrr@citytour.com", "Password");
+      UserSession user = new UserSession(accountDAL.GetUser("user@citytour.com", "Password"), Itinerary.GetSamples());
+
           return View();
         }
 
         public ActionResult Login(string email, string password)
         {
-          accountDAL.GetUser(email, password);
+          //accountDAL.GetUser(email, password);
           return View();
         }
 
