@@ -33,7 +33,7 @@ namespace Capstone.Web.Controllers
     {
       User user = accountDAL.AuthUser(email, password);
 
-      Session["User.Session"] = new UserSession(user.Email, user.IsAdmin);
+      Session["User.Session"] = new UserSession(user.Email, user.UserName, user.IsAdmin);
       return View();
     }
 

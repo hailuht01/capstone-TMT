@@ -24,7 +24,7 @@ namespace Capstone.Web.Controllers
                 {
                     Email = "user@citytour.com",
                     isAdmin = false,
-                    //UserName = "Anonymous"
+                    UserName = "Anonymous"
                 };
             }
             return userSession;
