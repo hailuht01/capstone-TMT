@@ -8,29 +8,33 @@ using System.Web.Mvc;
 
 namespace Capstone.Web.Controllers
 {
-    public class AccountController : BaseController
+  public class AccountController : BaseController
+  {
+    IAccountDAL accountDAL;
+    public AccountController(IAccountDAL _accountDAL)
     {
-        IAccountDAL accountDAL;
-        public AccountController(IAccountDAL _accountDAL)
-        {
-          this.accountDAL = _accountDAL;
-        }
+      this.accountDAL = _accountDAL;
+    }
 
-        public ActionResult Index()
-        {
-      //accountDAL.GetUser("userrrrr@citytour.com", "Password");
-      UserSession user = new UserSession(accountDAL.GetUser("user@citytour.com", "Password"), Itinerary.GetSamples());
+    public ActionResult Index()
+    {
+      return View();
+    }
 
-          return View();
-        }
+    public ActionResult Login()
+    {
+      return View();
+    }
 
-        public ActionResult Login(string email, string password)
-        {
-          //accountDAL.GetUser(email, password);
-          return View();
-        }
+    [HttpPost]
+    public ActionResult Login(string email, string password)
+    {
+      //UserSession user = new UserSession(accountDAL.GetUser("user@citytour.com", "Password"), Itinerary.GetSamples());
+      UserSession user = new UserSession(accountDAL.GetUser(email, password), Itinerary.GetSamples());
+      return View();
+    }
 
-        public ActionResult Register()
+    public ActionResult Register()
         {
           return View();
         }
