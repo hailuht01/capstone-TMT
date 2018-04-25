@@ -26,8 +26,20 @@ namespace Capstone.Web.Controllers
         {
             //Default session if User isn't logged in
             UserSession userSession = GetActiveUser();
+            FullUserModel fullUser = new FullUserModel();
+
+            if (userSession.Email == "user@citytour.com")
+            {
+                fullUser.User = acctDAL.GetUser(userSession.Email, "Password");
+                fullUser.Itineraries = Itinerary.GetSamples();
+            }
+            else
+            {
+                fullUser.User = acctDAL.GetUser(userSession.Email, "Password");
+                fullUser.Itineraries = itinDAL.GetAllItineraries(userSession.Email);
+            }
             
-            return View(userSession);
+            return View(fullUser);
         }
     }
 }

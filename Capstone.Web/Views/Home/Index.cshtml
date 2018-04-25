@@ -1,16 +1,59 @@
-﻿@section extraCss{
+﻿@using Capstone.Web.Models
+@model FullUserModel
+
+@section extraCss{
     <link href="~/Content/css/Home.css" rel="stylesheet" />
 }
 
 <div id="preferred-container" class="row">
-
+    <div class="col">
+        <nav class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link disabled" href="#">Popular Itineraries:</a>
+            <a class="nav-item nav-link" href="#">Museums</a>
+            <a class="nav-item nav-link" href="#">Parks</a>
+            <a class="nav-item nav-link" href="#">Restaurants</a>
+        </nav>
+    </div>
 </div>
 
+<div id="itinerary-container" class="row">
+    <div id="itin-controls" class="col-md-3">
+        <div class="row">
+            <div id="itn-form-control" class="col">
+                <nav class="nav nav-pills">
+                    <a id="new-itn" class="nav-item nav-link btn-warning" href="#">New</a>
+                    <a id="save-itn" class="nav-item nav-link btn-success" href="#">Save</a>
+                </nav>
+            </div>
+        </div>
 
-<div id="map-container" class="row">
-    <div></div>
-    <iframe id="map" src="//www.google.com/maps/embed/v1/directions?origin=Tate+Modern
+
+        <div class="row">
+            <div class="col">
+                @foreach (var itin in Model.Itineraries)
+                {
+                    <ul>
+                        <li>Title: @itin.Title</li>
+                        <li>Departure Date: @itin.DepartureDate</li>
+                        <li>Created On: @itin.CreationDate</li>
+                    </ul>
+                    foreach (var landmark in itin.Landmarks)
+                    {
+                        <ul>
+                            <li>@landmark.Name</li>
+                            <li>@landmark.Address</li>
+                            <li>@landmark.Description</li>
+                        </ul>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <div id="map-container" class="col-md-9">
+        <iframe id="map" src="//www.google.com/maps/embed/v1/directions?origin=Tate+Modern
     &destination=Tower+of+London&waypoints=Ministry+of+sound
-    &key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ">
-    </iframe>
+    &key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ"></iframe>
+    </div>
 </div>
