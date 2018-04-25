@@ -31,8 +31,8 @@ $(document).ready(function () {
             UserName: {
                 required: "Please Enter User Name"
             },
-            fName: {
-                required: "First Name is required"
+            FirstName: {
+                required: "First Name is required, sir."
             },
             lName: {
                 required: "Last Name is required",

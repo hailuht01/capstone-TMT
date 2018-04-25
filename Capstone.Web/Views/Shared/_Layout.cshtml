@@ -2,7 +2,7 @@
 @{
     Layout = null;
 }
-@model Capstone.Web.Models.UserSession
+@model Capstone.Web.Models.FullUserModel
 <!DOCTYPE html>
 
 <html>
@@ -45,13 +45,13 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">
-                            @if (Model.isAdmin)
+                            @if (Model.User.IsAdmin)
                             {
-                              <span style="color:red">@Model.UserName</span> 
+                              <span style="color:red">@Model.User.UserName</span> 
                             }
                             else
                             {
-                              <span style="color:blue">@Model.UserName</span>
+                              <span style="color:blue">@Model.User.UserName</span>
                             }
                       
                         </a>
@@ -63,7 +63,7 @@
                 </div>
             </nav>
         </header>
-        <div class="container">
+        <div class="container-fluid">
             @RenderBody()
         </div>
     </body>
