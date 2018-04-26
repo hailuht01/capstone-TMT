@@ -8,26 +8,28 @@ using System.Web.Mvc;
 
 namespace Capstone.Web.Controllers
 {
-    public class BaseController : Controller
+  public class BaseController : Controller
+  {
+    /// <summary>
+    /// Return User Session Data
+    /// </summary>
+    /// <returns></returns>
+    protected UserSession GetActiveUser()
     {
-        /// <summary>
-        /// Return User Session Data
-        /// </summary>
-        /// <returns></returns>
-        protected UserSession GetActiveUser()
-        {
-            UserSession userSession = Session["User.Session"] as UserSession;
+      UserSession userSession = Session["User.Session"] as UserSession;
 
-            if (userSession == null)
-            {
-                userSession = new UserSession()
-                {
-                    Email = "user@citytour.com",
-                    isAdmin = false,
-                    UserName = "Anonymous"
-                };
-            }
-            return userSession;
-        }
+      if (userSession == null)
+      {
+        userSession = new UserSession()
+        {
+          Email = "user@citytour.com",
+          isAdmin = false,
+          UserName = "Anonymous"
+        };
+      }
+      ViewBag.Username = userSession.UserName;
+      ViewBag.IsAdmin = userSession.isAdmin;
+      return userSession;
     }
+  }
 }
