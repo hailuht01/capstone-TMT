@@ -27,7 +27,10 @@ function toggleBounce() {
 
 
 function AddMarker(props) {
-
+    var windowHtml = `<h3>${props.name}</h3>
+                        <p>${props.address}</p>
+                        <p>${props.description}</p>
+`
     //Add Marker
     var marker = new google.maps.Marker({
         map: map,
@@ -38,7 +41,7 @@ function AddMarker(props) {
 
     //Add InfoWindow
     var infoWindow = new google.maps.InfoWindow({
-        content: '<h3>Cincinnati Museum</h3>'
+        content: windowHtml
     });
     marker.addListener('mouseover', function () {
         infoWindow.open(map, marker);
