@@ -1,7 +1,6 @@
 ﻿@model Capstone.Web.Models.Landmark
 
 
-@*@model Capstone.Web.Models.Landmark*@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -19,7 +18,8 @@
 
         @*@{Html.Partial("LandmarkPartial", Model);}*@
 
-        @{Html.RenderPartial("LandmarkPartial", Model);}
+        @{
+            Html.RenderPartial("Landmark", Model);}
     </div>
 </body>
 </html>

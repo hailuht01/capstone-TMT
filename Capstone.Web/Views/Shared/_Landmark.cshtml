@@ -1,18 +1,20 @@
 ﻿
 
+
 @model Capstone.Web.Models.Landmark
 <style>
-    .img{
-        width: 300px;
-        padding-bottom:10px;
-        clear:both;      
-            
+    .landmark{
+        background-color:lightgray
     }
-    .detail{
-        display:block
+    .img {
+        width: 100px;
+        padding-bottom:5px;
+        clear: both;
     }
 
-
+    .detail {
+        display: block;
+    }
 </style>
 
 <div class="landmark">
@@ -20,16 +22,16 @@
 
     <div class="img">
         @*<img src="~/Content/img/@(Model.PicName)*@
-        
-      <img src="~/Content/img/Cincinnati-Zoo.jpg"  alt="Alternate Text" />
+
+        <img src="~/Content/img/Cincinnati-Zoo.jpg" alt="Alternate Text" />
     </div>
     <div class="detail">
 
         <div>  @Model.Name </div>
         <div>  @Model.Address </div>
         <div>  @Model.Description </div>
-        <div>  @Model.Latitude</div>
-        <div>  @Model.Longtiude </div>
+        <div>  @Model.Rating</div>
+        
     </div>
 
 </div>
