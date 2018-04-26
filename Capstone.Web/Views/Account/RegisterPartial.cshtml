@@ -1,0 +1,50 @@
+﻿
+
+@model Capstone.Web.Models.RegistrationForm
+@section extraCSS {
+    <link href="~/Content/css/register-login.css" rel="stylesheet" />
+}
+
+<title>Register</title>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <form id="registerform" method="post" action="@Url.Action("Register", "Account")">
+                <div class="form-group">
+                    @Html.LabelFor(m => m.UserName, new { @class = "label" })
+                    @Html.TextBoxFor(m => m.UserName, new { id = "username", @class = "form-control", placeholder = "please pick a user name" })
+                    @Html.ValidationMessageFor(m => m.UserName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.FirstName)
+                    @Html.TextBoxFor(m => m.FirstName, new { id = "FirstName", @class = "form-control", placeholder = "please enter first name" })
+                    @Html.ValidationMessageFor(m => m.FirstName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.LastName)
+                    @Html.TextBoxFor(m => m.LastName, new { id = "LastName", @class = "form-control", placeholder = "please enter last name" })
+                    @Html.ValidationMessageFor(m => m.LastName)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Email)
+                    @Html.TextBoxFor(m => m.Email, new { id = "email", @class = "form-control", placeholder = "please enter valid email address" })
+                    @Html.ValidationMessageFor(m => m.Email)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.Password)
+                    @Html.PasswordFor(m => m.Password, new { id = "password", @class = "form-control", placeholder = "8 charactors, 1 uppercase, 1 lowercase, 1 number" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+                <div>
+                    @Html.LabelFor(m => m.VerifyPassword)
+                    @Html.PasswordFor(m => m.VerifyPassword, new { id = "verifypassword", @class = "form-control", placeholder = "please re-type password to confirm" })
+                    @Html.ValidationMessageFor(m => m.VerifyPassword)
+                </div>
+                <br />
+                <input class="btn btn-primary" type="submit" name="submitButton" value="Submit Form" />
+            </form>
+        </div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+</div>

@@ -38,6 +38,12 @@ namespace Capstone.Web.Controllers
       return RedirectToAction("Index", "Home");
     }
 
+    public ActionResult Logout()
+    {
+      Session.Abandon();
+      return RedirectToAction("Index", "Home");
+    }
+
     public ActionResult UserProfile()
     {
       UserSession userSession = GetActiveUser();
@@ -56,8 +62,17 @@ namespace Capstone.Web.Controllers
     public ActionResult Register(RegistrationForm user)
     {
       UserSession userSession = GetActiveUser();
-      accountDAL.CreateUser(user);
-      return RedirectToAction("Index", "Home");
+      if (userSession.Email == "user@citytour.com")
+      {
+        accountDAL.CreateUser(user);
+        Session["User.Session"] = new UserSession(user.Email, user.UserName, false);
+        userSession = GetActiveUser();
+        return RedirectToAction("Index", "Home");
+      }
+      else
+      {
+        return RedirectToAction("Account", "Login");
+      } 
     }
 
     //private void UserSessionTransfer()
