@@ -12,12 +12,12 @@
             <form id="loginform" method="post" action="@Url.Action("Login", "Account")">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new { id = "email", @class = "form-control", placeholder = "please enter an email address" })
+                    @Html.TextBoxFor(m => m.Email, new { id = "Email", @class = "form-control", placeholder = "please enter an email address" })
                     @Html.ValidationMessageFor(m => m.Email)
                 </div>
                 <div>
                     @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { id = "password", @class = "form-control", placeholder = "8 charactors, 1 uppercase, 1 lowercase, 1 number" })
+                    @Html.PasswordFor(m => m.Password, new { id = "Password", @class = "form-control", placeholder = "8 charactors, 1 uppercase, 1 lowercase, 1 number" })
                     @Html.ValidationMessageFor(m => m.Password)
                 </div>
                 <br />
