@@ -3,7 +3,7 @@ $(document).ready(function () {
     $("#registerform").validate({
         debug: false,
         rules: {
-            username: {
+            UserName: {
                 required: true
             },
             FirstName: {
@@ -14,21 +14,21 @@ $(document).ready(function () {
                 minlength: 2,
                 lettersonly: true
             },
-            email: {
+            Email: {
                 email: true,
                 required: true
             },
-            password: {
+            Password: {
                 required: true,
                 minlength: 8,
                 strongPassword: true
             },
-            verifypassword: {
+            VerifyPassword: {
                 equalTo: "#password"
             }
         },
         messages: {
-            username: {
+            UserName: {
                 required: "Please Enter User Name"
             },
             FirstName: {
@@ -38,14 +38,14 @@ $(document).ready(function () {
                 required: "Last Name is required",
                 minlength: "Last Name must be at least 2 charactors long."
             },
-            email: {
+            Email: {
                 email: "Please enter valid email address",
                 required: "Email address required"
             },
-            password: {
+            Password: {
                 required: "Please enter valid password"
             },
-            verifypassword: {
+            VerifyPassword: {
                 equalTo: "Passwords must match"
             }
         },
@@ -56,25 +56,36 @@ $(document).ready(function () {
     $("#loginform").validate({
         debug: false,
         rules: {
-            email: {
+            Email: {
                 email: true,
                 required: true
             },
-            password: {
+            Password: {
                 required: true,
             },
         },
         messages: {
-            email: {
+            Email: {
                 email: "Please enter valid email address",
                 required: "Email address required"
             },
-            password: {
+            Password: {
                 required: "Please enter valid password"
             },
         },
         errorClass: "error",
         validClass: "valid"
+    });
+
+    $.get({
+        url: "~/Account/Register",
+        dataType: "html",
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus + ": Couldn't add form. " + errorThrown);
+        },
+        success: function (newFormHTML) {
+
+        }
     });
 
 
