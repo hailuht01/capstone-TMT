@@ -8,6 +8,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
+            <h2>Login</h2>
             <form id="loginform" method="post" action="@Url.Action("Login", "Account")">
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email)
@@ -20,10 +21,10 @@
                     @Html.ValidationMessageFor(m => m.Password)
                 </div>
                 <br />
-                <input class="btn btn-primary" type="submit" name="submitButton" value="Submit Form" />
+                <input class="btn btn-primary" type="submit" name="submitButton" value="Login" />
             </form>
         </div>
-        <div class="col">@Html.Partial("RegisterPartial")</div>
+        <div class="col">@Html.Partial("Register")</div>
 
     </div>
 </div>
