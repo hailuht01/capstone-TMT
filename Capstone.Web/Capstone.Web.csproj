@@ -192,6 +192,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Landmark\Index.cshtml" />
     <Content Include="Views\Landmark\LandmarkPartial.cshtml" />
+    <Content Include="Views\Account\RegisterPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
