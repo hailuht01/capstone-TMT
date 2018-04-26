@@ -8,8 +8,18 @@ namespace Capstone.Web.DAL
 {
     public class LandmarkDAL : ILandmarkDAL
     {
+        private string connectionString;
+
+        public LandmarkDAL(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+       
         public bool CreatLandmark()
         {
+            //bool IsAdmin = true;
+            //if (IsAdmin)
             throw new NotImplementedException();
         }
 
