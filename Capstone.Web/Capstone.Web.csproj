@@ -120,7 +120,14 @@
     <Content Include="Content\css\register-login.css" />
     <Content Include="Content\img\Cincinnati-Museum.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.jpg" />
+    <Content Include="Content\img\Cincinnati-Zoo.png" />
+    <Content Include="Content\img\Cincinnati-Zoo1.jpg" />
+    <Content Include="Content\img\FionaBaby.png" />
+    <Content Include="Content\img\Fountain Square.jpg" />
     <Content Include="Content\img\Krohn-Conservatory.jpg" />
+    <Content Include="Content\img\Music Hall.jpg" />
+    <Content Include="Content\img\Newport On the Levee.jpg" />
+    <Content Include="Content\img\zoo.jpg" />
     <Content Include="Global.asax" />
     <Content Include="app.config" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -191,8 +198,10 @@
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Landmark\Index.cshtml" />
-    <Content Include="Views\Landmark\LandmarkPartial.cshtml" />
     <Content Include="Views\Account\RegisterPartial.cshtml" />
+    <Content Include="Views\Landmark\Landmark.cshtml" />
+    <Content Include="Views\Shared\_Landmark.cshtml" />
+    <Content Include="Views\Shared\_Itinerary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -202,6 +211,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Itinerary\" />
   </ItemGroup>
   <ItemGroup>
