@@ -18,6 +18,7 @@
 
 <div id="itinerary-container" class="row">
     <div id="itin-controls" class="col-md-3">
+        <h2 class="text-center">My Intineraries</h2>
         <div class="row">
             <div id="itn-form-control" class="col">
                 <nav class="nav nav-pills">
@@ -52,6 +53,80 @@
 
 
     <div id="map-container" class="col-md-9">
-        <iframe id="map" src=""></iframe>
+        <div id="map">
+
+        </div>
     </div>
 </div>
+
+<!--Modal-->
+<div class="modal fade" id="landmark-detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Cincinnati Museum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function initMap() {
+        //Map Options
+        var options = {
+            zoom: 10,
+            center: { lat: 39.103118, lng: -84.512020 },
+            clickableIcons: true,
+            gestureHandling: 'auto',
+        }
+
+
+        var map = new google.maps.Map(document.getElementById('map'), options);
+
+        //Add Marker
+        var marker = new google.maps.Marker({
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            position: { lat: 39.110019, lng: -84.537781 },
+        });
+
+        //Add InfoWindow
+        var infoWindow = new google.maps.InfoWindow({
+            content: '<h3>Cincinnati Museum</h3>'
+        });
+        marker.addListener('mouseover', function () {
+            infoWindow.open(map, marker);
+        });
+        marker.addListener('mouseout', function () {
+            infoWindow.close();
+        });
+
+        //Add Modal Detail
+        marker.addListener('click', function () {
+            $('#landmark-detail').modal('show');
+        });
+    }
+
+    function toggleBounce() {
+        if (marker.getAnimation() != null) {
+            marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        }
+    }
+</script>
+
+<script async defer 
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ&callback=initMap">
+</script>
