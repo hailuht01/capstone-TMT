@@ -64,14 +64,22 @@ namespace Capstone.Web.Controllers
       UserSession userSession = GetActiveUser();
       if (userSession.Email == "user@citytour.com")
       {
-        accountDAL.CreateUser(user);
-        Session["User.Session"] = new UserSession(user.Email, user.UserName, false);
-        userSession = GetActiveUser();
-        return RedirectToAction("Index", "Home");
+            try
+            {
+                accountDAL.CreateUser(user);
+                Session["User.Session"] = new UserSession(user.Email, user.UserName, false);
+                userSession = GetActiveUser();
+                return RedirectToAction("Index", "Home");
+            }
+            catch
+            {
+                return RedirectToAction("Register", "Account");
+            }            
+
       }
       else
       {
-        return RedirectToAction("Account", "Login");
+          return RedirectToAction("Login", "Account");
       } 
     }
 
