@@ -14,6 +14,11 @@ function initMap() {
     }
 
     map = new google.maps.Map(document.getElementById('map'), options);
+
+    map.addListener('click', function (e) {
+        alert(e.latlng);
+    });
+
 }
 
 function toggleBounce() {
@@ -30,13 +35,13 @@ function AddMarker(props) {
     var windowHtml = `<h3>${props.name}</h3>
                         <p>${props.address}</p>
                         <p>${props.description}</p>
-`
+                        `
     //Add Marker
     var marker = new google.maps.Marker({
         map: map,
         draggable: false,
         animation: google.maps.Animation.DROP,
-        position: props.coords,
+        position: props.coords
     });
 
     //Add InfoWindow
@@ -51,7 +56,8 @@ function AddMarker(props) {
     });
 
     //Add Modal Detail
-    marker.addListener('click', function () {
-        $('#landmark-detail').modal('show');
+    marker.addListener('click', function (e) {
+        //$('#landmark-detail').modal('show');
+        
     });
 }

@@ -9,9 +9,10 @@ namespace Capstone.Web.DAL
 {
     public interface ILandmarkDAL
     {
-        bool CreatLandmark();
-        Landmark GetLandmark();
-        bool UpdateLandmark();
-        bool DeleteLandmark();
+        bool AddLandmark(Landmark landmark);
+        Landmark GetLandmark(string id);
+        List<Landmark> GetAllLandmark(string itinId);
+        bool UpdateLandmark(Landmark landmark);
+        bool DeleteLandmark(string id);
     }
 }

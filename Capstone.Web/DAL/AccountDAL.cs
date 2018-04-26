@@ -108,7 +108,7 @@ namespace Capstone.Web.DAL
             user = MapUser(reader);
           }
         }
-        catch (Exception e)
+        catch (Exception)
         {
          
         }

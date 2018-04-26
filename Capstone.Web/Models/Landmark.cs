@@ -8,15 +8,16 @@ namespace Capstone.Web.Models
   public class Landmark
   {
 
-    public string placeId { get; set; }
+    public string PlaceId { get; set; }
     public string Name { get; set; }
+    public string Type { get; set; }
     public string Address { get; set; }
     public string Description { get; set; }
     public double Latitude { get; set; }
     public double Longtiude { get; set; }
     public string PicName { get; set; }
     public string QueryString => Name.Trim().Replace(' ', '+');
-    public double Rating { get; set; }
+    public bool? ThumbsUp { get; set; }
 
         public DateTime LastUpdated { get; set; }
 
@@ -24,7 +25,7 @@ namespace Capstone.Web.Models
 
     public Landmark(string ID, string Name, string Address, string Description, double Latitude, double Longitude, string PicName)
     {
-      this.placeId = ID;
+      this.PlaceId = ID;
       this.Name = Name;
       this.Address = Address;
       this.Description = Description;
