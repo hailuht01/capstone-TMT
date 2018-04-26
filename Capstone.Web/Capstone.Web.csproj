@@ -118,8 +118,6 @@
     <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\register-login.css" />
-    <Content Include="Content\img\d486a69d-89eb-4128-a345-ee1ff91ca9ac-large16x9_Fiona5.png" />
-    <Content Include="Content\img\zoo.jpg" />
     <Content Include="Content\img\Cincinnati-Museum.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.jpg" />
     <Content Include="Content\img\Krohn-Conservatory.jpg" />
@@ -193,10 +191,8 @@
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Landmark\Index.cshtml" />
-    <Content Include="Views\Landmark\Landmark.cshtml" />
-    <Content Include="Views\Itinerary\Index.cshtml" />
-    <Content Include="Views\Shared\_Landmark.cshtml" />
-    <Content Include="Views\Shared\_Itinerary.cshtml" />
+    <Content Include="Views\Landmark\LandmarkPartial.cshtml" />
+    <Content Include="Views\Account\RegisterPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,6 +202,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Itinerary\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

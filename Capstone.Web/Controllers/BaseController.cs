@@ -18,7 +18,7 @@ namespace Capstone.Web.Controllers
     {
       UserSession userSession = Session["User.Session"] as UserSession;
 
-      if (userSession == null)
+      if (userSession == null || userSession.Email == null)
       {
         userSession = new UserSession()
         {
@@ -29,6 +29,7 @@ namespace Capstone.Web.Controllers
       }
       ViewBag.Username = userSession.UserName;
       ViewBag.IsAdmin = userSession.isAdmin;
+      ViewBag.Email = userSession.Email;
       return userSession;
     }
   }

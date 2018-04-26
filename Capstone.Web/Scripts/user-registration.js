@@ -32,9 +32,9 @@ $(document).ready(function () {
                 required: "Please Enter User Name"
             },
             FirstName: {
-                required: "First Name is required, sir."
+                required: "First Name is required."
             },
-            lName: {
+            LastName: {
                 required: "Last Name is required",
                 minlength: "Last Name must be at least 2 charactors long."
             },
@@ -42,10 +42,10 @@ $(document).ready(function () {
                 email: "Please enter valid email address",
                 required: "Email address required"
             },
-            password: {
+            Password: {
                 required: "Please enter valid password"
             },
-            verifypassword: {
+            VerifyPassword: {
                 equalTo: "Passwords must match"
             }
         },
@@ -69,7 +69,7 @@ $(document).ready(function () {
                 email: "Please enter valid email address",
                 required: "Email address required"
             },
-            password: {
+            Password: {
                 required: "Please enter valid password"
             },
         },

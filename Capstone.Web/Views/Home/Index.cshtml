@@ -18,6 +18,7 @@
 
 <div id="itinerary-container" class="row">
     <div id="itin-controls" class="col-md-3">
+        <h2 class="text-center">My Intineraries</h2>
         <div class="row">
             <div id="itn-form-control" class="col">
                 <nav class="nav nav-pills">
@@ -52,13 +53,41 @@
 
 
     <div id="map-container" class="col-md-9">
-        <iframe id="map" src="//www.google.com/maps/embed/v1/directions?origin=Tate+Modern
-    &destination=Tower+of+London&waypoints=Ministry+of+sound
-    &key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ"></iframe>
+        <div id="map">
+
+        </div>
     </div>
-
 </div>
-@*<div>
-    @Html.Partial("_landmark", Landmark)
-</div>*@
 
+<!--Modal-->
+<div class="modal fade" id="landmark-detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Cincinnati Museum</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('document').ready(function() {
+        @foreach (var itin in Model.Itineraries)
+        {
+            foreach (var land in itin.Landmarks)
+            {
+                @: AddMarker({lat:@land.Latitude, lng:@land.Longtiude});
+            }
+        }
+    })
+</script>

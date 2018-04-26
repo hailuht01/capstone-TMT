@@ -1,29 +1,37 @@
 ﻿
 @{
     Layout = null;
+    string username = ViewBag.Username as string;
 }
-
+@model Capstone.Web.Models.FullUserModel
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>CityTours</title>
+    <!--CSS-->
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/site.css" rel="stylesheet" />
     @RenderSection("extraCSS", false)
+    <!--JS-->
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/user-registration.js"></script>
+    <script src="~/Scripts/Main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ">
+    </script>
+
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">CityTour</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+
+                <a href="~/Views/Shared/_Layout.cshtml">~/Views/Shared/_Layout.cshtml</a>            <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -32,22 +40,50 @@
                         <a class="nav-link" href="@Url.Action("Index", "Home")">New Itinerary</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Landmarks")">My Itineraries</a>
+                        <a class="nav-link" href="@Url.Action("Index", "Itinerary")">My Itineraries</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Landmark")">Landmark</a>
+                        @if (ViewBag.IsAdmin)
+                        {
+                            <a class="nav-link" href="@Url.Action("Index", "Manage Landmark")">Landmark</a>
+                        }
+                        else { }
+
                     </li>
 
                 </ul>
                 <div class="nav-item dropdown dropleft">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        User
-                    </a>
+
+                    @if (ViewBag.Email == "user@citytour.com")
+                    {<button class="btn btn-submit">
+                            <a class="nav-link" href="@Url.Action("Login", "Account")"  role="button" >
+                                <span>Login</span>
+                            </a>
+                        </button>
+                    }
+                    else
+                    {
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span>My Account</span>
+                        </a>
+                    }
+
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">[User Name]</a>
-                        <a class="dropdown-item" href="#">Edit Profile</a>
+
+                        <a class="dropdown-item" href="#">
+                            @if (ViewBag.IsAdmin)
+                            {
+                                <span style="color:red">@ViewBag.UserName</span>
+                            }
+                            else
+                            {
+                                <span style="color:blue">@ViewBag.UserName</span>
+                            }
+
+                        </a>
+                        <a class="dropdown-item" href="@Url.Action("Account", "Profile")">Edit Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Log Out</a>
+                        <a class="dropdown-item" href="@Url.Action("Logout", "Account")">Log Out</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +92,5 @@
     <div class="container-fluid">
         @RenderBody()
     </div>
- 
-
 </body>
 </html>

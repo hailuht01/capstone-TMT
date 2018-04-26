@@ -128,7 +128,7 @@ namespace Capstone.Web.DAL
     /// <returns>A List of itineraries</returns>
     public List<Itinerary> GetAllItineraries(string userEmail)
     {
-      string getAllItinerariesSQL = "SELECT * From Itinerary Join Users On users.email = itinerary.user_email Where User.email = @Email";
+      string getAllItinerariesSQL = "SELECT * From Itinerary Join Users On users.email = itinerary.user_email Where Users.email = @Email";
       List<Itinerary> itineraries = new List<Itinerary>();
 
       try
