@@ -81,7 +81,7 @@
 </div>
 
 <script>
-    $("#save-itn").on('click', function() {
+    @*$('document').ready(function() {
         @foreach (var itin in Model.Itineraries)
         {
             foreach (var land in itin.Landmarks)
@@ -89,5 +89,5 @@
                 @: AddMarker({lat:@land.Latitude, lng:@land.Longtiude});
             }
         }
-    });
+    })*@
 </script>
