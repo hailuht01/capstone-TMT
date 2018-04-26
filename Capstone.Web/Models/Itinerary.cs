@@ -34,6 +34,7 @@ namespace Capstone.Web.Models
       this.User_Email = User_Email;
       this.UserName = UserName;
       this.Landmarks = Landmarks;
+      this.CreationDate = DateTime.Now;
 
     }
   }
