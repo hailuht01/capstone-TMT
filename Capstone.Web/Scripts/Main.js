@@ -24,6 +24,8 @@ function toggleBounce() {
     }
 }
 
+
+
 function AddMarker(props) {
 
     //Add Marker
@@ -31,7 +33,7 @@ function AddMarker(props) {
         map: map,
         draggable: false,
         animation: google.maps.Animation.DROP,
-        position: { lat: 39.1100, lng: 84.5378 },
+        position: props.coords,
     });
 
     //Add InfoWindow
