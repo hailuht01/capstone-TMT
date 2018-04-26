@@ -76,7 +76,7 @@ namespace Capstone.Web.DAL
         }
         catch (Exception e)
         {
-          throw e;
+          throw new Exception(e.Message);
         }    
       }
       return user;

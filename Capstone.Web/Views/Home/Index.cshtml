@@ -90,7 +90,7 @@
             {
                 foreach (var land in itin.Landmarks)
                 {
-                    @: AddMarker(coords: {lat:@land.Latitude, lng:@land.Longtiude});
+                    @: AddMarker({ coords:{ lat:@land.Latitude, lng:@land.Longtiude} });
                 }
             }
         })

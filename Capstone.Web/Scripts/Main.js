@@ -29,9 +29,9 @@ function AddMarker(props) {
     //Add Marker
     var marker = new google.maps.Marker({
         map: map,
-        draggable: true,
+        draggable: false,
         animation: google.maps.Animation.DROP,
-        position: props.coords,
+        position: { lat: 39.1100, lng: 84.5378 },
     });
 
     //Add InfoWindow
