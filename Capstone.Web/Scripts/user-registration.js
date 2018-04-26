@@ -77,16 +77,6 @@ $(document).ready(function () {
         validClass: "valid"
     });
 
-    $.get({
-        url: "~/Account/Register",
-        dataType: "html",
-        error: function (jqXHR, textStatus, errorThrown) {
-            alert(textStatus + ": Couldn't add form. " + errorThrown);
-        },
-        success: function (newFormHTML) {
-
-        }
-    });
 
 
     $.validator.addMethod("strongPassword", function(value, element, params) {
