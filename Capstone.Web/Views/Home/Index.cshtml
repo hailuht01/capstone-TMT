@@ -3,6 +3,7 @@
 
 @section extraCss{
     <link href="~/Content/css/Home.css" rel="stylesheet" />
+    <script src="~/Scripts/Main.js"></script>
 }
 
 <div id="preferred-container" class="row">
@@ -37,9 +38,10 @@
                     if (itin.DepartureDate.HasValue)
                     {
                         <p>Departure Date: @itin.DepartureDate.Value.Month/@itin.DepartureDate.Value.Day/@itin.DepartureDate.Value.Year @itin.DepartureDate.Value.Month/, Created On: @itin.CreationDate.Date.Month/@itin.CreationDate.Date.Day/@itin.CreationDate.Date.Year</p>
-                    }else
+                    }
+                    else
                     {
-                     <p>Departure Date: Undecided</p>
+                        <p>Departure Date: Undecided</p>
                     }
 
                     foreach (var landmark in itin.Landmarks)
@@ -88,7 +90,7 @@
         {
             foreach (var land in itin.Landmarks)
             {
-                @: AddMarker({lat:@land.Latitude, lng:@land.Longtiude});
+                @:AddMarker({lat:@land.Latitude, lng:@land.Longtiude});
             }
         }
     })
