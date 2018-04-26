@@ -29,6 +29,7 @@ namespace Capstone.Web.Controllers
       }
       ViewBag.Username = userSession.UserName;
       ViewBag.IsAdmin = userSession.isAdmin;
+      ViewBag.Email = userSession.Email;
       return userSession;
     }
   }
