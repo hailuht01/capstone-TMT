@@ -18,7 +18,7 @@ namespace Capstone.Web.Controllers
     {
       UserSession userSession = Session["User.Session"] as UserSession;
 
-      if (userSession == null)
+      if (userSession == null || userSession.Email == null)
       {
         userSession = new UserSession()
         {
