@@ -24,14 +24,16 @@ function toggleBounce() {
     }
 }
 
-function AddMarker(coords) {
+
+
+function AddMarker(props) {
 
     //Add Marker
     var marker = new google.maps.Marker({
         map: map,
-        draggable: true,
+        draggable: false,
         animation: google.maps.Animation.DROP,
-        position: coords,
+        position: props.coords,
     });
 
     //Add InfoWindow
