@@ -1,7 +1,9 @@
 ﻿var map;
+var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
+var itinArr = [];
 
 $("document").ready(function () {
-    initMap()
+  initMap();
 })
 
 function initMap() {
@@ -14,11 +16,6 @@ function initMap() {
     }
 
     map = new google.maps.Map(document.getElementById('map'), options);
-
-    map.addListener('click', function (e) {
-        alert(e.latlng);
-    });
-
 }
 
 function toggleBounce() {
@@ -30,18 +27,17 @@ function toggleBounce() {
 }
 
 
-
 function AddMarker(props) {
     var windowHtml = `<h3>${props.name}</h3>
                         <p>${props.address}</p>
                         <p>${props.description}</p>
-                        `
+`
     //Add Marker
     var marker = new google.maps.Marker({
         map: map,
         draggable: false,
         animation: google.maps.Animation.DROP,
-        position: props.coords
+        position: props.coords,
     });
 
     //Add InfoWindow
@@ -56,8 +52,16 @@ function AddMarker(props) {
     });
 
     //Add Modal Detail
-    marker.addListener('click', function (e) {
-        //$('#landmark-detail').modal('show');
-        
+    marker.addListener('click', function () {
+      var detailQuery = "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJi77WfdCzQYgRGbJHVBDHy-g&key=" + APIKey;
+      $('#landmark-detail').modal('show');
+      console.log(props.placeId);
+      var modalHTML = `Description: ${props.description}`;
+      $('.modal-title').text(props.name)
+      $('.modal-body').text(modalHTML);
     });
+
 }
+$('#addToItin').addListener('click', function () {
+  addToItin(marker.placeId);
+});
