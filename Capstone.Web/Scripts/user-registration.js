@@ -3,7 +3,7 @@ $(document).ready(function () {
     $("#registerform").validate({
         debug: false,
         rules: {
-            UserName: {
+            username: {
                 required: true
             },
             FirstName: {
@@ -14,31 +14,31 @@ $(document).ready(function () {
                 minlength: 2,
                 lettersonly: true
             },
-            Email: {
+            email: {
                 email: true,
                 required: true
             },
-            Password: {
+            password: {
                 required: true,
                 minlength: 8,
                 strongPassword: true
             },
-            VerifyPassword: {
+            verifypassword: {
                 equalTo: "#password"
             }
         },
         messages: {
-            UserName: {
+            username: {
                 required: "Please Enter User Name"
             },
             FirstName: {
-                required: "First Name is required, sir."
+                required: "First Name is required."
             },
-            lName: {
+            LastName: {
                 required: "Last Name is required",
                 minlength: "Last Name must be at least 2 charactors long."
             },
-            Email: {
+            email: {
                 email: "Please enter valid email address",
                 required: "Email address required"
             },
@@ -56,16 +56,16 @@ $(document).ready(function () {
     $("#loginform").validate({
         debug: false,
         rules: {
-            Email: {
+            email: {
                 email: true,
                 required: true
             },
-            Password: {
+            password: {
                 required: true,
             },
         },
         messages: {
-            Email: {
+            email: {
                 email: "Please enter valid email address",
                 required: "Email address required"
             },
