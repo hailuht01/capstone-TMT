@@ -1,7 +1,9 @@
 ﻿var map;
+var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
+var itinArr = [];
 
 $("document").ready(function () {
-    initMap()
+  initMap();
 })
 
 function initMap() {
@@ -23,7 +25,6 @@ function toggleBounce() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
 }
-
 
 
 function AddMarker(props) {
@@ -52,6 +53,15 @@ function AddMarker(props) {
 
     //Add Modal Detail
     marker.addListener('click', function () {
-        $('#landmark-detail').modal('show');
+      var detailQuery = "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJi77WfdCzQYgRGbJHVBDHy-g&key=" + APIKey;
+      $('#landmark-detail').modal('show');
+      console.log(props.placeId);
+      var modalHTML = `Description: ${props.description}`;
+      $('.modal-title').text(props.name)
+      $('.modal-body').text(modalHTML);
     });
+
 }
+$('#addToItin').addListener('click', function () {
+  addToItin(marker.placeId);
+});
