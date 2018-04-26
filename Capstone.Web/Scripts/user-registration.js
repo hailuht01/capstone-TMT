@@ -78,7 +78,6 @@ $(document).ready(function () {
     });
 
 
-
     $.validator.addMethod("strongPassword", function(value, element, params) {
         return value.match(/[A-Z]/) && value.match(/[a-z]/) && value.match(/\d/);
     }, "Must enter a strong password (one upper and one lower case letter plus a number)");

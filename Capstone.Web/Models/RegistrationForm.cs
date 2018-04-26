@@ -12,12 +12,8 @@ namespace Capstone.Web.Models
         [Required]
         public string FirstName { get; set; }
         [Required]
-
         public string LastName { get; set; }
-
         [Required]
-        [Remote(action: "Register", controller: "Account")]
-        [EmailAddress]
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }

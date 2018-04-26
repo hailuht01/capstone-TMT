@@ -81,52 +81,13 @@
 </div>
 
 <script>
-    function initMap() {
-        //Map Options
-        var options = {
-            zoom: 10,
-            center: { lat: 39.103118, lng: -84.512020 },
-            clickableIcons: true,
-            gestureHandling: 'auto',
+    $('document').ready(function() {
+        @foreach (var itin in Model.Itineraries)
+        {
+            foreach (var land in itin.Landmarks)
+            {
+                @: AddMarker({lat:@land.Latitude, lng:@land.Longtiude});
+            }
         }
-
-
-        var map = new google.maps.Map(document.getElementById('map'), options);
-
-        //Add Marker
-        var marker = new google.maps.Marker({
-            map: map,
-            draggable: true,
-            animation: google.maps.Animation.DROP,
-            position: { lat: 39.110019, lng: -84.537781 },
-        });
-
-        //Add InfoWindow
-        var infoWindow = new google.maps.InfoWindow({
-            content: '<h3>Cincinnati Museum</h3>'
-        });
-        marker.addListener('mouseover', function () {
-            infoWindow.open(map, marker);
-        });
-        marker.addListener('mouseout', function () {
-            infoWindow.close();
-        });
-
-        //Add Modal Detail
-        marker.addListener('click', function () {
-            $('#landmark-detail').modal('show');
-        });
-    }
-
-    function toggleBounce() {
-        if (marker.getAnimation() != null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        }
-    }
-</script>
-
-<script async defer 
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ&callback=initMap">
+    })
 </script>

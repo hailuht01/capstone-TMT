@@ -40,7 +40,7 @@ namespace Capstone.Web.Controllers
         fullUser.Itineraries = Itinerary.GetSamples();
       }
 
-      return View(fullUser);
+       return View(fullUser);
     }
   }
 }
