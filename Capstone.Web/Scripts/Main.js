@@ -1,6 +1,7 @@
 ﻿var map;
 var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
 var itinArr = [];
+var modalHTML;
 
 $("document").ready(function () {
     initMap();
@@ -9,7 +10,7 @@ $("document").ready(function () {
 function initMap() {
     //Map Options
     var options = {
-        zoom: 10,
+        zoom: 13,
         center: {lat: 39.103118, lng: -84.512020},
         clickableIcons: true,
         gestureHandling: 'auto',
@@ -56,11 +57,11 @@ function AddMarker(props) {
     marker.addListener('click', function () {
         $('#landmark-detail').modal('show');
         console.log(props.placeId);
-        var modalHTML = `Description: ${props.description}`;
+
         $('.modal-title').text(props.name);
 
-        var modalHTML = genLandmarkModalHTML(props.placeId);
-        $('.modal-body').text(modalHTML);
+        modalHTML = genLandmarkModalHTML(props.placeId, props.description);
+        $('.modal-body').html(modalHTML);
     });
 }
 
@@ -75,19 +76,43 @@ $('#addToItin').addListener('click', function () {
 
 });
 
-function genLandmarkModalHTML(placeId) {
-    var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + APIKey;
+function genLandmarkModalHTML(Id, description) {
+    var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=" + APIKey;
     //var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
-    var modalHTML = "not assigned";
+
     $.ajax({
         url: detailRequest,
         type: "GET",
         dataType: "text"
     })
         .done(function (data) {
-            console.log("ajax Detail placeID: " + placeId);
+            console.log("ajax Detail placeID: " + Id);
             json = JSON.parse(data);
-            console.log(json["result"].name);
+            var j = json['result'];
+
+            var website = j.website;  // html var
+            var phone = j.formatted_phone_number;
+            var now = new Date();
+            var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var day = days[ now.getDay() ];
+
+            var todaysHours; // html var
+            try   {
+                todaysHours = j.opening_hours['weekday_text'][days.indexOf(day)];
+            }catch(Exception){console.warn("no open time for this place")}
+
+            console.log(todaysHours + "hrs" + phone);
+
+
+             modalHTML = `
+<div class="row">
+<div class='col-4'><img src=''</div><div class='col-3'><b>Hours: ${todaysHours}</b></div><div class='col-3'><b>${phone}</b></div> <div class='col-2'><h5><a href='${website}' target="_blank">Landmark Website</a></h5></div>
+
+
+
+</div>
+<h5>Description:</h5><p>${description}</p>
+`
         })
 
         .fail(function (data) {
@@ -97,6 +122,7 @@ function genLandmarkModalHTML(placeId) {
 
     return modalHTML;
 }
+
 
 
 
