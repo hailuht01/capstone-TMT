@@ -36,7 +36,7 @@ $(document).ready(function () {
             },
             LastName: {
                 required: "Last Name is required",
-                minlength: "Last Name must be at least 2 charactors long."
+                minlength: "Last Name must be at least 2 characters long."
             },
             Email: {
                 email: "Please enter valid email address",

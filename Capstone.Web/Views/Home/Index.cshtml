@@ -4,6 +4,10 @@
 @section extraCss{
     <link href="~/Content/css/Home.css" rel="stylesheet" />
 }
+@section topJS{
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ">
+    </script>
+}
 
 <div id="preferred-container" class="row">
     <div class="col">
@@ -18,7 +22,7 @@
 
 <div id="itinerary-container" class="row">
     <div id="itin-controls" class="col-md-5">
-        <h2 class="text-center">My Itineraries</h2>
+        <h2 class="text-center">My Intineraries</h2>
         <div class="row">
             <div id="itn-form-control" class="col">
                 <nav class="nav nav-pills">
@@ -41,15 +45,15 @@
                     else
                     {
                         <p>Departure Date: Undecided</p>
-                    }
+                    } 
+                }
 
-                    foreach (var landmark in itin.Landmarks)
+                @foreach (var landmark in Model.Landmarks)
                     {
 
                         <h5>@landmark.Name</h5>
 
                     }
-                }
             </div>
         </div>
     </div>
@@ -70,12 +74,10 @@
 @section BottomJS{
     <script>
         $('document').ready(function() {
-            @foreach (var itin in Model.Itineraries)
+
+            @foreach (var land in Model.Landmarks)
             {
-                foreach (var land in itin.Landmarks)
-                {
-                    @: AddMarker({ coords:{ lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address:'@land.Address', description:'@land.Description', placeId: "@land.PlaceId" });
-                }
+                @: AddMarker({ coords:{ lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address:'@land.Address', description:'@land.Description', placeId: "@land.PlaceId" });
             }
         })
     </script>
