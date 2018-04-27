@@ -26,12 +26,11 @@ function toggleBounce() {
     }
 }
 
-
 function AddMarker(props) {
-    var windowHtml = `<h3>${props.name}</h3>
+  var windowHtml = `<h3>${props.name}</h3>
                         <p>${props.address}</p>
                         <p>${props.description}</p>
-`
+`;
     //Add Marker
     var marker = new google.maps.Marker({
         map: map,
@@ -60,8 +59,14 @@ function AddMarker(props) {
       $('.modal-title').text(props.name)
       $('.modal-body').text(modalHTML);
     });
-
 }
+
+function addToItin(placeId) {
+  itinArr.push(placeId);
+  console.log("lana del rey" + placeId);
+}
+
 $('#addToItin').addListener('click', function () {
   addToItin(marker.placeId);
+
 });
