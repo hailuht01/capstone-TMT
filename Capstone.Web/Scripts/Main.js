@@ -30,6 +30,8 @@ function AddMarker(props) {
   var windowHtml = `<h3>${props.name}</h3>
                         <p>${props.address}</p>
                         <p>${props.description}</p>
+                        <p>${props.placeId}</p>
+                        <input id="markerPlaceId" type="hidden" value="${props.placeId}"/>
 `;
     //Add Marker
     var marker = new google.maps.Marker({
@@ -52,21 +54,29 @@ function AddMarker(props) {
 
     //Add Modal Detail
     marker.addListener('click', function () {
-      var detailQuery = "https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJi77WfdCzQYgRGbJHVBDHy-g&key=" + APIKey;
       $('#landmark-detail').modal('show');
       console.log(props.placeId);
       var modalHTML = `Description: ${props.description}`;
       $('.modal-title').text(props.name)
+
       $('.modal-body').text(modalHTML);
     });
 }
 
 function addToItin(placeId) {
   itinArr.push(placeId);
-  console.log("lana del rey" + placeId);
+  console.log(placeId);
 }
 
 $('#addToItin').addListener('click', function () {
   addToItin(marker.placeId);
 
 });
+
+function landmarkModalQuery(placeId)
+{
+    var detailQuery = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+placeId+"&key=" + APIKey;
+    var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
+
+    $()
+}
