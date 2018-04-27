@@ -74,7 +74,7 @@
             {
                 foreach (var land in itin.Landmarks)
                 {
-                    @: AddMarker({ coords:{ lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address:'@land.Address', description:'@land.Description', placeId: "@land.placeId" });
+                    @: AddMarker({ coords:{ lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address:'@land.Address', description:'@land.Description', placeId: "@land.PlaceId" });
                 }
             }
         })
