@@ -52,6 +52,17 @@ namespace Capstone.Web.DAL
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="landmarkID"></param>
+        /// <param name="itinId"></param>
+        /// <returns></returns>
+        public bool AddLandmarkToItinerary(string landmarkID, int itinId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         public bool DeleteLandmark(string id)

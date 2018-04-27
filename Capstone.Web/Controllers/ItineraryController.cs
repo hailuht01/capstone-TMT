@@ -37,22 +37,21 @@ namespace Capstone.Web.Controllers
         // GET: Itinerary/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
         // POST: Itinerary/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Itinerary itin)
         {
-            try
+            if(itineraryDAL.CreateItinerary(itin))
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                return RedirectToAction(Request.UrlReferrer.ToString());
             }
-            catch
+            else
             {
-                return View();
+                return View(Request.UrlReferrer.ToString());
             }
         }
 
