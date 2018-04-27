@@ -5,36 +5,36 @@ using System.Web;
 
 namespace Capstone.Web.Models
 {
-  public class Landmark
-  {
+    public class Landmark
+    {
 
-    public string PlaceId { get; set; }
-    public string Name { get; set; }
-    public string Type { get; set; }
-    public string Address { get; set; }
-    public string Description { get; set; }
-    public double Latitude { get; set; }
-    public double Longtiude { get; set; }
-    public string PicName { get; set; }
-    public string QueryString => Name.Trim().Replace(' ', '+');
-    public bool? ThumbsUp { get; set; }
+        public string PlaceId { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
+        public double Latitude { get; set; }
+        public double Longtiude { get; set; }
+        public string PicName { get; set; }
+        public string QueryString => Name.Trim().Replace(' ', '+');
+        public bool? ThumbsUp { get; set; }
 
         public DateTime LastUpdated { get; set; }
 
-    public Landmark() { }
+        public Landmark() { }
 
-    public Landmark(string ID, string Name, string Address, string Description, double Latitude, double Longitude, string PicName)
-    {
-      this.PlaceId = ID;
-      this.Name = Name;
-      this.Address = Address;
-      this.Description = Description;
-      this.Latitude = Latitude;
-      this.Longtiude = Longitude;
-      this.PicName = PicName;
-    }
+        public Landmark(string ID, string Name, string Address, string Description, double Latitude, double Longitude, string PicName)
+        {
+            this.PlaceId = ID;
+            this.Name = Name;
+            this.Address = Address;
+            this.Description = Description;
+            this.Latitude = Latitude;
+            this.Longtiude = Longitude;
+            this.PicName = PicName;
+        }
 
-    public static List<Landmark> GetSamples() => new List<Landmark>()
+        public static List<Landmark> GetSamples() => new List<Landmark>()
     {
         new Landmark("ChIJ7Qfv_ZqzQYgRSV2kwAcCB4s", "Cincinnati Zoo", "3400 Vine St, Cincinnati, OH 45220", " The second oldest Zoo in the United States. Wide variety of animal collection.The Zoo was founded on 65 acres in the middle of the city, and since then has acquired some of the surrounding blocks and several reserves in Cincinnati’s suburbs.", 39.144573, -84.508617, "Cincinnati-Zoo.jpg"),
         new Landmark("ChIJuZQ4_x20QYgR2QLQxS_400g", "Cincinnati Museum Center", "1301 Western Ave, Cincinnati, OH 45203", "Family Friendly Museum! This place its awesome! You are really going to love it.", 39.110019, -84.537781, "Cincinnati-Museum.jpg"),
@@ -46,5 +46,5 @@ namespace Capstone.Web.Models
 
     };
 
-  }
+    }
 }
