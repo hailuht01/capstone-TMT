@@ -1,0 +1,70 @@
+﻿@model Capstone.Web.Models.Itinerary
+@section extraCSS {
+    
+    <link href="~/Content/css/ItineraryForm.css" rel="stylesheet" />
+}
+
+
+<title>My Itinerary</title>
+<a id="new-itn" class="nav-item nav-link btn-warning" href="#">New</a>
+
+<div class="row">
+    <div class="create">
+        <form id="ItineraryForm" method="post" action="@Url.Action("Create", "Itinerary")">
+
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Title</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+                </div>
+            </div>
+            <br/>
+            <div class="form-group row">
+                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Description</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+                </div>
+            </div>
+            <br/>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-2 col-form-label">Departure Date</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control" id="colFormLabel" placeholder="col-form-label">
+                </div>
+            </div>
+            <br />
+            <a id="save-itn" class="nav-item nav-link btn-success" href="#">Save</a>
+        </form>
+    </div>
+
+</div>
+<br/>
+
+
+<div class="row">
+    <div class="form-group row">
+        <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">Title</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+        </div>
+    </div>
+    <br />
+
+    Creation Date
+    <div class="form-group row">
+        <label for="colFormLabel" class="col-sm-2 col-form-label">  Creation Date</label>
+        <div class="col-sm-10">
+            <input type="date" class="form-control" id="colFormLabel" placeholder="col-form-label">
+        </div>
+    </div>
+    <br />
+    <li>
+        <ul>List of Landmark</ul>
+    </li>
+    <button type="button" class="btn btn-danger">Delete</button>
+    <br />
+    <button type="submit" class="btn btn-primary mb-2">Save</button>
+
+
+</div>
+

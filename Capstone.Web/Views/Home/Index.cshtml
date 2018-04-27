@@ -3,6 +3,7 @@
 
 @section extraCss{
     <link href="~/Content/css/Home.css" rel="stylesheet" />
+    <link href="~/Content/css/ItineraryForm.css" rel="stylesheet" />
 }
 
 <div id="preferred-container" class="row">
@@ -19,42 +20,71 @@
 <div id="itinerary-container" class="row">
     <div id="itin-controls" class="col-md-5">
         <h2 class="text-center">My Intineraries</h2>
-        <div class="row">
-            <div id="itn-form-control" class="col">
-                <nav class="nav nav-pills">
-                    <a id="new-itn" class="nav-item nav-link btn-warning" href="#">New</a>
-                    <a id="save-itn" class="nav-item nav-link btn-success" href="#">Save</a>
-                </nav>
+
+        <button id="new-itn" class="nav-item nav-link btn-warning" href="#">New</button>
+
+        <div class="col">
+            <div class="row">
+                <div class="form">
+                    <form id="ItineraryForm" method="post" action="@Url.Action("Create", "Itinerary")">
+
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="colFormLabel" placeholder="Title">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                       
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Departure Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="colFormLabel" placeholder="Departure Date">
+                            </div>
+                        </div>
+                       <button type="submit" class="btn btn-success" href="#">Save</button>
+                        
+                    </form>
+
+                    <div class="col">
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="colFormLabel" placeholder="Title">
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group row">
+                            <label for="colFormLabel" class="col-sm-2 col-form-label">Creation Date</label>
+                            <div class="col-sm-10">
+                                <input type="date" class="form-control" id="colFormLabel" placeholder="Date Created">
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="footer">
+                            <div class="Landmark list">
+                                Landark List
+                                <ul class="list-group">
+                                    <li class="list-group-item"></li>
+                                    <li class="list-group-item"></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                    <button type="submit" class="btn btn-success" >Save</button>
+
+                </div>
             </div>
         </div>
 
-
-        <div class="row">
-            <div class="col">
-                @foreach (var itin in Model.Itineraries)
-                {
-                    <h4>@itin.Title</h4>
-                    if (itin.DepartureDate.HasValue)
-                    {
-                        <p>Departure Date: @itin.DepartureDate.Value.Month/@itin.DepartureDate.Value.Day/@itin.DepartureDate.Value.Year @itin.DepartureDate.Value.Month/, Created On: @itin.CreationDate.Date.Month/@itin.CreationDate.Date.Day/@itin.CreationDate.Date.Year</p>
-                    }
-                    else
-                    {
-                        <p>Departure Date: Undecided</p>
-                    }
-
-                    foreach (var landmark in itin.Landmarks)
-                    {
-
-                        <h5>@landmark.Name</h5>
-
-                    }
-                }
-            </div>
-        </div>
     </div>
-
-
     <div id="map-container" class="col-md-7">
         <div id="map">
 
