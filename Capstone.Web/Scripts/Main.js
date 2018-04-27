@@ -3,14 +3,14 @@ var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
 var itinArr = [];
 
 $("document").ready(function () {
-  initMap();
+    initMap();
 })
 
 function initMap() {
     //Map Options
     var options = {
         zoom: 10,
-        center: { lat: 39.103118, lng: -84.512020 },
+        center: {lat: 39.103118, lng: -84.512020},
         clickableIcons: true,
         gestureHandling: 'auto',
     }
@@ -27,7 +27,7 @@ function toggleBounce() {
 }
 
 function AddMarker(props) {
-  var windowHtml = `<h3>${props.name}</h3>
+    var windowHtml = `<h3>${props.name}</h3>
                         <p>${props.address}</p>
                         <p>${props.description}</p>
                         <p>${props.placeId}</p>
@@ -54,29 +54,75 @@ function AddMarker(props) {
 
     //Add Modal Detail
     marker.addListener('click', function () {
-      $('#landmark-detail').modal('show');
-      console.log(props.placeId);
-      var modalHTML = `Description: ${props.description}`;
-      $('.modal-title').text(props.name)
+        $('#landmark-detail').modal('show');
+        console.log(props.placeId);
+        var modalHTML = `Description: ${props.description}`;
+        $('.modal-title').text(props.name);
 
-      $('.modal-body').text(modalHTML);
+        var modalHTML = genLandmarkModalHTML(props.placeId);
+        $('.modal-body').text(modalHTML);
     });
 }
 
-function addToItin(placeId) {
-  itinArr.push(placeId);
-  console.log(placeId);
+function addToItin() {
+    $("#markerPlaceId").value();
+    itinArr.push();
+    console.log("add to itin");
 }
 
 $('#addToItin').addListener('click', function () {
-  addToItin(marker.placeId);
+    addToItin(marker.placeId);
 
 });
 
-function landmarkModalQuery(placeId)
-{
-    var detailQuery = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+placeId+"&key=" + APIKey;
-    var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
+function genLandmarkModalHTML(placeId) {
+    var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + APIKey;
+    //var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
+    var modalHTML = "not assigned";
+    $.ajax({
+        url: detailRequest,
+        type: "GET",
+        dataType: "text"
+    })
+        .done(function (data) {
+            console.log("ajax Detail placeID: " + placeId);
+            json = JSON.parse(data);
+            console.log(json["result"].name);
+        })
 
-    $()
+        .fail(function (data) {
+            console.error("ajax fail" + error);
+        });
+
+
+    return modalHTML;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
