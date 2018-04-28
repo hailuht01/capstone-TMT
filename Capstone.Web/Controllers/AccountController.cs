@@ -15,7 +15,41 @@ namespace Capstone.Web.Controllers
     {
       this.accountDAL = _accountDAL;
     }
-
+    public ActionResult Home()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
+    public ActionResult MockCreateItinerary()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
+    public ActionResult MockMYItinerary()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
+    public ActionResult Museums()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
+    public ActionResult Parks()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
+    public ActionResult Restaurants()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
+    public ActionResult PopularItineraries()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
     public ActionResult Index()
     {
       UserSession userSession = GetActiveUser();
