@@ -1,7 +1,7 @@
 ﻿var map;
 var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
 var itinArr = [];
-var modalHTML;
+
 
 $("document").ready(function () {
     initMap();
@@ -59,16 +59,15 @@ function AddMarker(props) {
         console.log(props.placeId);
 
         $('.modal-title').text(props.name);
-
-genLandmarkModalHTML(props.placeId, props.description);
+        genLandmarkModalHTML(props.placeId, props.description);
 
     });
 }
 
-function addToItin() {
-    $("#markerPlaceId").value();
+function addToItin(placeIdSr) {
+    //$("#markerPlaceId").value();
     itinArr.push();
-    console.log("add to itin");
+    console.log("add to itin" + placeIdSr);
 }
 
 //$('#addToItin').addListener('click', function () {
@@ -88,6 +87,7 @@ function genLandmarkModalHTML(Id, description) {
             console.log("ajax Detail placeID: " + Id);
             json = JSON.parse(data);
             var j = json['result'];
+
 
             var website = j.website;  // html var
             var phone = j.formatted_phone_number;
