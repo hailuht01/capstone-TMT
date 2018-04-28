@@ -298,6 +298,12 @@
     <Content Include="Views\Shared\LandmarkModal.cshtml" />
     <Content Include="Views\Landmark\Create.cshtml" />
     <Content Include="Views\Account\Home.cshtml" />
+    <Content Include="Views\Account\MockCreateItinerary.cshtml" />
+    <Content Include="Views\Account\Museums.cshtml" />
+    <Content Include="Views\Account\Restaurants.cshtml" />
+    <Content Include="Views\Account\Parks.cshtml" />
+    <Content Include="Views\Account\MockMYItinerary.cshtml" />
+    <Content Include="Views\Account\PopularItineraries.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,9 +1,9 @@
 ﻿
-@model Capstone.Web.Models.Login
+@model Capstone.Web.Models.FullUserModel
 @section extraCSS {
     <link href="~/Content/css/register-login.css" rel="stylesheet" />
 }
-<h1>ACCOUNT HOME Page</h1>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col"></div>
@@ -23,7 +23,7 @@
                             <h1>Cincinnati Museum Center</h1>
                             <p>what a nice place to visit!</p>
                             <p>
-                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Create", "Itinerary")">Click here to get started!</a>
+                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("MockCreateItinerary", "Account")">Click here to get started!</a>
                             </p>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                             <h1>Fountain Square</h1>
                             <p>baby, if you've ever wondered whatever became of me...</p>
                             <p>
-                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Create", "Itinerary")">Click here to get started!</a>
+                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("MockCreateItinerary", "Account")">Click here to get started!</a>
                             </p>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                             <h1>Krohn Conservatory</h1>
                             <p>flowers and cactus and butterflies, oh my!</p>
                             <p>
-                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Create", "Itinerary")">Click here to get started!</a>
+                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("MockCreateItinerary", "Account")">Click here to get started!</a>
                             </p>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                             <h1>Cincinnati Music Hall</h1>
                             <p>Queen City Rocks, Rolls and Symphonizes...</p>
                             <p>
-                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Create", "Itinerary")">Click here to get started!</a>
+                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("MockCreateItinerary", "Account")">Click here to get started!</a>
                             </p>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             <h1>Newport On the Levee</h1>
                             <p>over the river and through the woods...</p>
                             <p>
-                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Create", "Itinerary")">Click here to get started!</a>
+                                <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("MockCreateItinerary", "Account")">Click here to get started!</a>
                             </p>
                         </div>
                     </div>
@@ -83,10 +83,60 @@
 <div id="preferred-container" class="row">
     <div class="col">
         <nav class="nav nav-pills nav-fill">
-            <a class="nav-item nav-link disabled" href="#">Popular Itineraries:</a>
-            <a class="nav-item nav-link" href="#">Museums</a>
-            <a class="nav-item nav-link" href="#">Parks</a>
-            <a class="nav-item nav-link" href="#">Restaurants</a>
+            <a class="nav-item nav-link" href="@Url.Action("PopularItineraries", "Account")">Popular Itineraries:</a>
+            <a class="nav-item nav-link" href="@Url.Action("Museums", "Account")">Museums</a>
+            <a class="nav-item nav-link" href="@Url.Action("Parks", "Account")">Parks</a>
+            <a class="nav-item nav-link" href="@Url.Action("Restaurants", "Account")">Restaurants</a>
         </nav>
     </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            <h1>Popular</h1>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Popular Itineraries</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Highly Rated Tours</h6>
+                    <p class="card-text">Not sure where to go? Check out some of our most higly rated city tours.</p>
+                    <a href="@Url.Action("PopularItineraries", "Account")" class="card-link">Check out our Popular Itineraries</a>                    
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <h1>Museums</h1>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Museums</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">World Class Museums</h6>
+                    <p class="card-text"></p>
+                    <<a href="@Url.Action("PopularItineraries", "Account")">Card link</a>                    
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <h1>Parks</h1>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="@Url.Action("PopularItineraries", "Account")" class="card-link">Card link</a>                   
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <h1>Restaurants</h1>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    <a href="@Url.Action("PopularItineraries", "Account")" class="card-link">Card link</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
