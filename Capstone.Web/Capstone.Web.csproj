@@ -297,6 +297,7 @@
     <Content Include="Views\Shared\_Landmark.cshtml" />
     <Content Include="Views\Shared\LandmarkModal.cshtml" />
     <Content Include="Views\Landmark\Create.cshtml" />
+    <Content Include="Views\Account\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
