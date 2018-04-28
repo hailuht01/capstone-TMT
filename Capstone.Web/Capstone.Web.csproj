@@ -188,12 +188,14 @@
     <Content Include="Content\css\LandmarkCreate.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\register-login.css" />
+    <Content Include="Content\img\Bravo! City tour.jpg" />
     <Content Include="Content\img\Cincinnati-Museum.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.png" />
     <Content Include="Content\img\Cincinnati-Zoo1.jpg" />
     <Content Include="Content\img\FionaBaby.png" />
     <Content Include="Content\img\Fountain Square.jpg" />
+    <Content Include="Content\img\Johnny_Bravo.png" />
     <Content Include="Content\img\Krohn-Conservatory.jpg" />
     <Content Include="Content\img\Music Hall.jpg" />
     <Content Include="Content\img\Newport On the Levee.jpg" />
