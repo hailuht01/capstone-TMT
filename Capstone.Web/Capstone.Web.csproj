@@ -228,6 +228,7 @@
     <Content Include="obj\Debug\Capstone.Web.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tsc.out" />
+    <Content Include="Models\PlacesModel.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -297,6 +298,7 @@
     <Content Include="Views\Shared\LandmarkModal.cshtml" />
     <Content Include="Views\Landmark\Create.cshtml" />
     <Content Include="Views\Itinerary\ItineraryForm.cshtml" />
+    <Content Include="Views\Account\Home.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
