@@ -60,8 +60,8 @@ function AddMarker(props) {
 
         $('.modal-title').text(props.name);
 
-        modalHTML = genLandmarkModalHTML(props.placeId, props.description);
-        $('.modal-body').html(modalHTML);
+genLandmarkModalHTML(props.placeId, props.description);
+
     });
 }
 
@@ -71,14 +71,13 @@ function addToItin() {
     console.log("add to itin");
 }
 
-$('#addToItin').addListener('click', function () {
-    addToItin(marker.placeId);
+//$('#addToItin').addListener('click', function () {
+//    addToItin(marker.placeId);
 
-});
+//});
 
 function genLandmarkModalHTML(Id, description) {
     var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=" + APIKey;
-    //var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
 
     $.ajax({
         url: detailRequest,
@@ -92,8 +91,9 @@ function genLandmarkModalHTML(Id, description) {
 
             var website = j.website;  // html var
             var phone = j.formatted_phone_number;
+            //phone = (phone == "undefined") ? "No Phone Number" : phone;
             var now = new Date();
-            var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
             var day = days[ now.getDay() ];
 
             var todaysHours; // html var
@@ -102,25 +102,28 @@ function genLandmarkModalHTML(Id, description) {
             }catch(Exception){console.warn("no open time for this place")}
 
             console.log(todaysHours + "hrs" + phone);
+            var photoReference = j['photos'][0].photo_reference;
+            console.warn(photoReference);
+            var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
 
 
-             modalHTML = `
+            $('.modal-body').html(`
 <div class="row">
-<div class='col-4'><img src=''</div><div class='col-3'><b>Hours: ${todaysHours}</b></div><div class='col-3'><b>${phone}</b></div> <div class='col-2'><h5><a href='${website}' target="_blank">Landmark Website</a></h5></div>
+<div class='col-sm-12 col-6'><img src='${photoQuery}'/></div><div class='col-sm-12 col-6'><b>Departure Date ${todaysHours}</b></div>
+
+<div class='col-sm-6 col-6'><b>${phone}</b></div> <div class='col-sm-6 col-3'><h5><a href='${website}' target="_blank">Website</a></h5></div>
 
 
 
 </div>
 <h5>Description:</h5><p>${description}</p>
-`
+`);
         })
 
         .fail(function (data) {
             console.error("ajax fail" + error);
+            ('.modal-body').html("Offline Error");
         });
-
-
-    return modalHTML;
 }
 
 
