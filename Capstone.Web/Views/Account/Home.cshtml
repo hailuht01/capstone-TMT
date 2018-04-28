@@ -3,6 +3,7 @@
 @section extraCSS {
     <link href="~/Content/css/register-login.css" rel="stylesheet" />
 }
+<h1>ACCOUNT HOME Page</h1>
 <div class="container-fluid">
     <div class="row">
         <div class="col"></div>
@@ -69,7 +70,7 @@
                         </div>
                     </div>
                 </div>
- 
+
             </div>
         </div>
         <div class="col"></div>
@@ -87,31 +88,5 @@
             <a class="nav-item nav-link" href="#">Parks</a>
             <a class="nav-item nav-link" href="#">Restaurants</a>
         </nav>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-        <div class="col"></div>
-        <div class="col">
-            <h2 title="Bravo! City Tours">Login</h2>
-            <form id="loginform" method="post" action="@Url.Action("Login", "Account")">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new { id = "Email", @class = "form-control", placeholder = "please enter an email address" })
-                    @Html.ValidationMessageFor(m => m.Email)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { id = "Password", @class = "form-control", placeholder = "8 charactors, 1 uppercase, 1 lowercase, 1 number" })
-                    @Html.ValidationMessageFor(m => m.Password)
-                </div>
-              
-                <input class="btn btn-primary" type="submit" name="submitButton" value="Login" />
-            </form>
-            <div class="col"></div>
-        </div>
-
-
     </div>
 </div>
