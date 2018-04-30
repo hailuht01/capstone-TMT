@@ -1,6 +1,21 @@
-﻿body{
+﻿
+
+body {
+    
     box-sizing: border-box;
+    background-color: aliceblue;
 }
+
+header .navbar {
+    background-color: #11BFC1;
+    height: 100px;
+}
+
+    header .navbar img {
+        height: 100px;
+        float: left;
+        width: 100px;
+    }
 /*client-side validation css*/
 label {
     display: inline-block;
@@ -14,3 +29,17 @@ label {
     label.valid {
         color: green;
     }
+
+.footer {
+    height: 50px;
+    background-color: #11BFC1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+}
+
+.footer p {
+        text-align: right;
+        display: inline-block;
+}

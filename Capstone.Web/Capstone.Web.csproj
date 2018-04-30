@@ -188,8 +188,10 @@
     <Content Include="Content\css\LandmarkCreate.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\register-login.css" />
+    <Content Include="Content\img\Bravo! City tour %286%29.jpg" />
     <Content Include="Content\img\Bravo! City tour.jpg" />
     <Content Include="Content\img\Cincinnati-Museum.jpg" />
+    <Content Include="Content\img\Cincinnati-Museum1.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.png" />
     <Content Include="Content\img\Cincinnati-Zoo1.jpg" />
@@ -245,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -303,6 +306,10 @@
     <Content Include="Views\Account\Parks.cshtml" />
     <Content Include="Views\Account\MockMYItinerary.cshtml" />
     <Content Include="Views\Account\PopularItineraries.cshtml" />
+    <Content Include="Views\About\About.cshtml" />
+    <Content Include="Views\About\Contact.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -33,30 +33,10 @@
                 </nav>
             </div>
         </div>
-
+        @Html.Partial("_Itinerary")
 
         <div class="row">
-            <div class="col">
-                @foreach (var itin in Model.Itineraries)
-                {
-                    <h4>@itin.Title</h4>
-                    if (itin.DepartureDate.HasValue)
-                    {
-                        <p>Departure Date: @itin.DepartureDate.Value.Month/@itin.DepartureDate.Value.Day/@itin.DepartureDate.Value.Year @itin.DepartureDate.Value.Month, Created On: @itin.CreationDate.Date.Month/@itin.CreationDate.Date.Day/@itin.CreationDate.Date.Year</p>
-                    }
-                    else
-                    {
-                        <p>Departure Date: Undecided</p>
-                    }
-                }
-
-                @foreach (var landmark in Model.Landmarks)
-                {
-
-                    <h5>@landmark.Name</h5>
-
-                }
-            </div>
+            
         </div>
     </div>
 
