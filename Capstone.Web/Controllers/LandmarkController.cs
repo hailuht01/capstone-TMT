@@ -24,12 +24,6 @@ namespace Capstone.Web.Controllers
 
             return View(landmark[0]);
         }
-        //GET: Landmarks
-        //public ActionResult GetAllLandmarks(ILandmarkDAL landmarkDAL)
-        //{
-
-        //    return PartialView();
-        //}
 
         // GET: Itinerary/Create
         public ActionResult Create()
