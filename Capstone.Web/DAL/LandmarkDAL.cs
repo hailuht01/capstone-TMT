@@ -10,6 +10,7 @@ namespace Capstone.Web.DAL
     public class LandmarkDAL : ILandmarkDAL
     {
         private string connectionString;
+        string LastIdCreatedSQL = "SELECT CAST( SCOPE_IDENTITY() as int );";
 
         public LandmarkDAL(string connectionString)
         {
@@ -17,128 +18,57 @@ namespace Capstone.Web.DAL
         }
 
         /// <summary>
-        /// 
+        /// Create landmark and persist to Database
         /// </summary>
-        /// <param name="landmark"></param>
-        /// <returns></returns>
-        public bool AddLandmark(Landmark landmark)
+        /// <param name="landmark">Poplated landmark object</param>
+        /// <returns>Id of Created Landmark</returns>
+        public int CreateLandmark(Landmark landmark)
         {
-            bool wasSuccessful = false;
-            string AddLandmarkDAL = "INSERT INTO Landmark ([Id],[Latitude],[Longitude],[Name],[Description],[address],[PicName],[ThumbsUp],[Type]) " +
-                "VALUES(@PlaceId, @Lat, @Lng, @Name, @description, @Address, @PicName , @ThumbsUp)";
+            int lastIdCreated = 0;
+            string AddLandmarkDAL = "INSERT INTO Landmark (PlaceId, Latitude, Longitude, Name, Description, Address, PicName, ThumbsUp, Type) " +
+                "VALUES (@PlaceId, @Lat, @Lng, @Name, @Description, @Address, @PicName, @ThumbsUp, @Type);";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(AddLandmarkDAL, conn);
-                    wasSuccessful = cmd.ExecuteNonQuery() == 1;
+                    SqlCommand cmd = new SqlCommand(AddLandmarkDAL + LastIdCreatedSQL, conn);
+                    cmd.Parameters.AddWithValue("@PlaceId", landmark.PlaceId);
+                    cmd.Parameters.AddWithValue("@Lat", landmark.Latitude);
+                    cmd.Parameters.AddWithValue("@Lng", landmark.Longtiude);
+                    cmd.Parameters.AddWithValue("@Name", landmark.Name);
+                    cmd.Parameters.AddWithValue("@Description", landmark.Description);
+                    cmd.Parameters.AddWithValue("@Address", landmark.Address);
+                    cmd.Parameters.AddWithValue("@PicName", landmark.PicName);
+                    cmd.Parameters.AddWithValue("@ThumbsUp", landmark.ThumbsUp);
+                    cmd.Parameters.AddWithValue("@Type", landmark.Type);
+                    lastIdCreated = (int)cmd.ExecuteScalar();
                 }
             }
             catch (SqlException e)
             {
-
                 Console.WriteLine("Landmark wasn't added" + e.Message);
+                throw new Exception(e.Message);
             }
             catch (Exception e)
             {
 
                 Console.WriteLine("Something Went Wrong> Try again later." + e.Message);
+                throw new Exception(e.Message);
             }
 
-            return wasSuccessful;
+            return lastIdCreated;
         }
 
         /// <summary>
-        /// 
+        /// Retrieves Landmark from DB
         /// </summary>
-        /// <param name="landmarkID"></param>
-        /// <param name="itinId"></param>
-        /// <returns></returns>
-        public bool AddLandmarkToItinerary(string landmarkID, int itinId)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public bool DeleteLandmark(string id)
-        {
-            string DeleteLandmarkDAL = "DELETE FROM [Landmark] WHERE Id = @Id";
-            bool wasSuccessful = false;
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(DeleteLandmarkDAL, conn);
-                    cmd.Parameters.AddWithValue("@Id", id);
-                    wasSuccessful = cmd.ExecuteNonQuery() == 1;
-                }
-                
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine("Deletion failed" + e.Message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Something Went Wrong> Try again later." + e.Message);
-            }
-            return wasSuccessful;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="itinId"></param>
-        /// <returns></returns>
-        public List<Landmark> GetAllLandmark(string itinId)
-        {
-            List<Landmark> landmarks = new List<Landmark>();
-            string getAllLandmarksSQL = "SELECT Landmark.Id,[Latitude],[Longitude],[Name],[Description],[address],[PicName],[ThumbsUp],[Type] FROM [dbo].[Landmark] " +
-                "JOIN Itinerary_Landmark ON Itinerary_Landmark.Landmark_Id = Landmark.Id WHERE Itinerary_Landmark.Id = @Id";
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(getAllLandmarksSQL, conn);
-                    cmd.Parameters.AddWithValue("@Id", itinId);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        landmarks.Add(MapLandmarkFromReader(reader));
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine("Couldn't retrieve landmark." + e.Message);
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine("Something Went Wrong Try again later." + e.Message);
-            }
-            return landmarks;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public Landmark GetLandmark(string id)
+        /// <param name="id">ID of Landmark</param>
+        /// <returns>Returns a Landmark</returns>
+        public Landmark GetLandmark(int id)
         {
             Landmark landmark = null;
-            string getLandMarkDAL = "SELECT [Id],[Latitude],[Longitude],[Name],[Description],[address],[PicName],[ThumbsUp],[Type] " +
-                "FROM [dbo].[Landmark] WHERE Id = @Id";
+            string getLandMarkDAL = "SELECT * FROM Landmark WHERE Id = @Id";
 
             try
             {
@@ -161,6 +91,43 @@ namespace Capstone.Web.DAL
             }
             catch (Exception e)
             {
+                Console.WriteLine("Something Went Wrong> Try again later." + e.Message);
+            }
+            return landmark;
+        }
+
+        /// <summary>
+        /// Retrieves a Landmark from the DB
+        /// </summary>
+        /// <param name="PlaceId">Uniquee PlaceId from Google</param>
+        /// <returns>Populated landmark Object</returns>
+        public Landmark GetLandmark(string PlaceId)
+        {
+            Landmark landmark = null;
+            string getLandMarkDAL = "SELECT [PlaceId],[Latitude],[Longitude],[Name],[Description],[address],[PicName],[ThumbsUp],[Type] " +
+                "FROM [dbo].[Landmark] WHERE PlaceId = @PlaceId";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(getLandMarkDAL, conn);
+                    cmd.Parameters.AddWithValue("@PlaceId", PlaceId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        landmark = MapLandmarkFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Couldn't retrieve landmark" + e.Message);
+            }
+            catch (Exception e)
+            {
 
                 Console.WriteLine("Something Went Wrong> Try again later." + e.Message);
             }
@@ -168,15 +135,55 @@ namespace Capstone.Web.DAL
         }
 
         /// <summary>
-        /// 
+        /// Get's a landmarks associated with a certain Itinerary
         /// </summary>
-        /// <param name="landmark"></param>
-        /// <returns></returns>
+        /// <param name="itinId">Itienrary's ID</param>
+        /// <returns>Returns a list of Landmarks</returns>
+        public List<Landmark> GetAllLandmarks(int itineraryId)
+        {
+            List<Landmark> landmarks = new List<Landmark>();
+            string getAllLandmarksSQL = "SELECT Landmark.* FROM Landmark " +
+                "JOIN Itinerary_Landmark ON Itinerary_Landmark.Landmark_Id = Landmark.Id " +
+                "JOIN Itinerary ON Itinerary.Id = Itinerary_Landmark.Itinerary_Id " +
+                "WHERE Itinerary.Id = @Id";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(getAllLandmarksSQL, conn);
+                    cmd.Parameters.AddWithValue("@Id", itineraryId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        landmarks.Add(MapLandmarkFromReader(reader));
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Couldn't retrieve landmark." + e.Message);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Something Went Wrong Try again later." + e.Message);
+            }
+            return landmarks;
+        }
+
+        /// <summary>
+        /// Updates a landmark already in the Databse
+        /// </summary>
+        /// <param name="landmark">A Populated landmark object with IDs</param>
+        /// <returns>Returns a boolean specifying if the operation was successful</returns>
         public bool UpdateLandmark(Landmark landmark)
         {
             bool wasSuccessful = false;
             string UpdateLandmarkSQL = "UPDATE Landmark SET [Latitude] = @Lat, [Longitude] = @Lng, [Name] = @Name," +
-                "[Description] = @Description, [address] = @address, [PicName] = @PicName, [ThumbsUp] = @ThumbsUp, [Type] = @Type WHERE Id = @Id";
+                "[Description] = @Description, [address] = @address, [PicName] = @PicName, [ThumbsUp] = @ThumbsUp, [Type] = @Type WHERE PlaceId = @PlaceId";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -191,7 +198,7 @@ namespace Capstone.Web.DAL
                     cmd.Parameters.AddWithValue("@PicName", landmark.PicName);
                     cmd.Parameters.AddWithValue("@ThumbsUp", landmark.ThumbsUp);
                     cmd.Parameters.AddWithValue("@Type", landmark.Type);
-                    cmd.Parameters.AddWithValue("@Id", landmark.PlaceId);
+                    cmd.Parameters.AddWithValue("@PlaceId", landmark.PlaceId);
 
                     wasSuccessful = cmd.ExecuteNonQuery() == 1;
                 }
@@ -209,7 +216,38 @@ namespace Capstone.Web.DAL
         }
 
         /// <summary>
-        /// 
+        /// Removes a landmark from the DB
+        /// </summary>
+        /// <param name="PlaceId">Unique PlaceId from Google</param>
+        /// <returns>Boolean specifying if the operation was succesful</returns>
+        public bool DeleteLandmark(string PlaceId)
+        {
+            string DeleteLandmarkDAL = "DELETE FROM [Landmark] WHERE PlaceId = @PlaceId";
+            bool wasSuccessful = false;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(DeleteLandmarkDAL, conn);
+                    cmd.Parameters.AddWithValue("@PlaceId", PlaceId);
+                    wasSuccessful = cmd.ExecuteNonQuery() == 1;
+                }
+                
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Deletion failed" + e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Something Went Wrong> Try again later." + e.Message);
+            }
+            return wasSuccessful;
+        }
+
+        /// <summary>
+        /// Maps properties from DB to a landmark object
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
@@ -217,15 +255,16 @@ namespace Capstone.Web.DAL
         {
             Landmark landmark = new Landmark()
             {
-                PlaceId = Convert.ToString(reader["Id"]),
+                Id = Convert.ToInt32(reader["Id"]),
+                PlaceId = Convert.ToString(reader["PlaceId"]),
                 Type = Convert.ToString(reader["Type"]),
-                Latitude = Convert.ToSingle(reader["Latitude"]),
-                Longtiude = Convert.ToSingle(reader["Longitude"]),
+                Latitude = Convert.ToDouble(reader["Latitude"]),
+                Longtiude = Convert.ToDouble(reader["Longitude"]),
                 Name = Convert.ToString(reader["Name"]),
                 Description = Convert.ToString("Description"),
                 Address = Convert.ToString("Address"),
                 PicName = Convert.ToString("PicName"),
-                ThumbsUp = Convert.ToBoolean("ThumbsUp")
+                ThumbsUp = Convert.ToString("ThumbsUp") == "1" ? true : false,
             };
             return landmark;
         }

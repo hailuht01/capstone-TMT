@@ -7,15 +7,12 @@ namespace Capstone.Web.Models
 {
     public class Itinerary
     {
-
+        public int? Id { get; set; }
         public string Title { get; set; }
-        public int Id { get; set; }
         public DateTime CreationDate { get; set; } // private set?
         public DateTime? DepartureDate { get; set; }
-        public double Rating { get; set; }
-        public string User_Email { get; set; }
-        public string UserName { get; set; }
         public string Description { get; set; }
+        public string UserEmail { get; set; }
 
         //public int Route { get; set; }
 
@@ -23,21 +20,19 @@ namespace Capstone.Web.Models
         {
             return new List<Itinerary>()
             {
-                new Itinerary("Sample Itinerary", 999999, DateTime.Now.AddDays(1), 4.4, "jake@neels.io", "itsJake")
+                new Itinerary("Sample Itinerary", DateTime.Now.AddDays(1), 4.4, "This is a test description", "Jake@CityTour.io")
             };
         }
 
         public Itinerary() { }
 
-        public Itinerary(string Title, int Id, DateTime? DepartureDate, double Rating, string User_Email, string UserName)
+        public Itinerary(string Title, DateTime? DepartureDate, double Rating, string description, string userEmail)
         {
             this.Title = Title;
-            this.Id = Id;
             this.DepartureDate = DepartureDate;
-            this.Rating = Rating;
-            this.User_Email = User_Email;
-            this.UserName = UserName;
             this.CreationDate = DateTime.Now;
+            this.Description = description;
+            this.UserEmail = userEmail;
 
         }
     }
