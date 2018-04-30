@@ -1,10 +1,14 @@
 ﻿var map;
 var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
 var itinArr = [];
+var activeItinId;
+var prevItinId;
 
 
 $("document").ready(function () {
     initMap();
+    $('#createItinForm').hide();
+    $("element[id$='Itin-']>#activeItin")
 })
 
 function initMap() {
@@ -64,16 +68,46 @@ function AddMarker(props) {
     });
 }
 
-function addToItin(placeIdSr) {
-    //$("#markerPlaceId").value();
-    itinArr.push();
-    console.log("add to itin" + placeIdSr);
+function toggleActiveItin(itinId){
+    activeItinId = itinId;
+    console.log("prev itin: " + prevItinId);
+    console.log("active itin: " + activeItinId);
+    $('#Itin-'+activeItinId+'>#activeItin').show();
+    if(activeItinId != prevItinId) {
+        $('#Itin-' + prevItinId + '>#activeItin').hide();
+    }
+
+    prevItinId = activeItinId;
+
 }
 
-//$('#addToItin').addListener('click', function () {
-//    addToItin(marker.placeId);
+function addToItin(placeIdStr, activeItinId) {
+    //$("#markerPlaceId").value();
+    {
+        itinArr.push(placeIdStr);
+        console.log("add to itin: " + placeIdStr);
+        console.warn(itinArr);
+    }
+}
 
-//});
+function createItin()
+{
+    console.log("create itin");
+    $('#createItinForm').show();
+}
+
+function saveItin(activeItinId, itinArr)
+{
+
+}
+
+function removeLandmark(i)
+{
+    if(itinArr.length >= i-1) {
+        itinArr.splice(i, 1);
+        console.log("removed landmark index= "+ i);
+    }
+}
 
 function genLandmarkModalHTML(Id, description) {
     var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=" + APIKey;
@@ -101,9 +135,9 @@ function genLandmarkModalHTML(Id, description) {
                 todaysHours = j.opening_hours['weekday_text'][days.indexOf(day)];
             }catch(Exception){console.warn("no open time for this place")}
 
-            console.log(todaysHours + "hrs" + phone);
+
             var photoReference = j['photos'][0].photo_reference;
-            console.warn(photoReference);
+
             var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
 
 

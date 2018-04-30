@@ -1,5 +1,5 @@
 ﻿
-<div class="row">
+<div id="createItinForm" class="row">
     <div class="col">
         <form id="itineraryform" method="post" action="@Url.Action("Create", "Itinerary")">
 
@@ -18,9 +18,31 @@
                 <input type="date" class="form-control" id="colFormLabel" placeholder="Departure Date">
             </div>
             <br />
-            <button type="submit" class="btn btn-success" href="#">Save</button>
+            <button type="submit" class="btn btn-success" action="@Url.Action("Create", "Itinerary")">Create Itinerary</button>
 
         </form>
     </div>
-
 </div>
+@foreach (var itin in Model.Itineraries)
+{
+    <div class="row" id="Itin-@itin.Id" onclick="toggleActiveItin(@itin.Id)">
+        <h3>@itin.Title</h3>created: @itin.CreationDate<br>
+        <p>@itin.Description</p>
+
+
+        @*toggle active itin*@
+        <div  style="display: none;" class="row " id="activeItin">
+            <div class="error">Active Itin</div>
+            <ol>
+                @foreach (var land in Model.Landmarks)
+                {
+
+                    <li id="">@land.Name</li>
+                    
+
+                }
+            </ol>
+
+        </div>
+    </div>
+}
