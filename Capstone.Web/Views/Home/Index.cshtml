@@ -28,7 +28,7 @@
         <div class="row">
             <div id="itn-form-control" class="col">
                 <nav class="nav nav-pills">
-                    <a id="new-itn" class="nav-item nav-link btn-warning" href="#" onclick="createItin()">New</a>
+                    <a id="new-itn" class="nav-item nav-link btn-warning" href="#" onclick="createItin(@Model.Itineraries.Count+1)">New</a>
                     @*<a id="save-itn" class="nav-item nav-link btn-success" href="#">Save</a>*@
                 </nav>
             </div>

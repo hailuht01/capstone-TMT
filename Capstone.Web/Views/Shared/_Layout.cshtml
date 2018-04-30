@@ -55,17 +55,27 @@
                     </div>
                     <div class="nav-item dropdown dropleft">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span>My Account</span></a>
+                            <span>My Account</span>
+                        </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="@Url.Action("Account", "Profile")">Edit Profile</a>
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")">Login</a>
-                            <a class="dropdown-item" href="@Url.Action("Logout", "Account")">Log Out</a>
-                            <a class="dropdown-item" href="@Url.Action("Register", "Account")">Register</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("Account", "Profile")">@ViewBag.Username.ToString()</a>
+                            @if (ViewBag.Email.ToString() == "user@citytour.com")
+                            {
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")">Login</a>
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Register", "Account")">Register</a>
+                            }
+                            else
+                            {
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Logout", "Account")">Log Out</a>
+                            }
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </nav>
     </header>
     <div class="container-fluid">

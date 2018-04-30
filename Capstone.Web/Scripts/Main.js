@@ -1,8 +1,9 @@
 ﻿var map;
 var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
-var itinArr = [];
-var activeItinId;
-var prevItinId;
+var la
+ndmarkArr = [];
+var activeItinIdIndex;
+var prevItinIdIndex;
 
 
 $("document").ready(function () {
@@ -69,32 +70,35 @@ function AddMarker(props) {
 }
 
 function toggleActiveItin(itinId){
-    activeItinId = itinId;
-    console.log("prev itin: " + prevItinId);
-    console.log("active itin: " + activeItinId);
-    $('#Itin-'+activeItinId+'>#activeItin').show();
-    if(activeItinId != prevItinId) {
-        $('#Itin-' + prevItinId + '>#activeItin').hide();
+    activeItinIdIndex = itinId;
+    console.log("prev itin: " + prevItinIdIndex);
+    console.log("active itin: " + activeItinIdIndex);
+    $('#Itin-'+activeItinIdIndex+'>#activeItin').show();
+    if(activeItinIdIndex != prevItinIdIndex) {
+        $('#Itin-' + prevItinIdIndex + '>#activeItin').hide();
     }
 
-    prevItinId = activeItinId;
+    prevItinIdIndex = activeItinIdIndex;
 
 }
 
 function addToItin(placeIdStr, activeItinId) {
     //$("#markerPlaceId").value();
     {
-        if(!itinArr.includes(placeIdStr)) {
-            itinArr.push(placeIdStr);
+        if(!landmarkArr.includes(placeIdStr)) {
+            landmarkArr.push(placeIdStr);
             console.log("add to itin: " + placeIdStr);
-            console.warn(itinArr);
+            console.warn(landmarkArr);
         }
     }
 }
 
-function createItin()
+function createItin(newIndex)
 {
-    console.log("create itin");
+    $('#Itin-' + activeItinIdIndex + '>#activeItin').hide();
+    $('#Itin-' + prevItinIdIndex + '>#activeItin').hide();
+    activeItinIdIndex=newIndex;
+    console.log("create itin new index" + activeItinIdIndex);
     $('#createItinForm').show();
 }
 
@@ -105,8 +109,8 @@ function saveItin(activeItinId, itinArr)
 
 function removeLandmark(i)
 {
-    if(itinArr.length >= i-1) {
-        itinArr.splice(i, 1);
+    if(landmarkArr.length >= i-1) {
+        landmarkArr.splice(i, 1);
         console.log("removed landmark index= "+ i);
     }
 }
