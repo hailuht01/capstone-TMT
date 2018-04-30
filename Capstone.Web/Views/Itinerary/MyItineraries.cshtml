@@ -1,0 +1,22 @@
+﻿@model Capstone.Web.Models.FullUserModel
+@section extraCSS {
+
+    <link href="~/Content/css/ItineraryForm.css" rel="stylesheet" />
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ol>               
+                @foreach (var itinerary in Model.Itineraries)
+                {
+                    <li id="">@itinerary.Title</li>
+                    <li id="">@itinerary.DepartureDate</li>
+                    <li id="">@itinerary.Description</li>
+
+                }
+            </ol>
+        </div>
+
+    </div>
+</div>
