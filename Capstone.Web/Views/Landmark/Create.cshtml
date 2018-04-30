@@ -1,16 +1,73 @@
-﻿
+﻿@using Capstone.Web.Models
+@model List<Landmark>
+
 @section extraCSS{
     <link href="~/Content/css/LandmarkCreate.css" rel="stylesheet" />
 }
 @section topJS{
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ&libraries=places&callback=initAutocomplete"></script>
+    <script src="~/Scripts/CreateLandmark.js"></script>
 }
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div id="map"></div>
+<div id="map-container" class="row">
+    <div id="landmark-list-container" class="col-md-3">
+        @foreach (var landmark in Model)
+        {
+            <div class="card" style="width: 100%;">
+                <div class="card-body">
+                    <h5 class="card-title">@landmark.Name</h5>
+                </div>
+            </div>
 
+        }
+    </div>
+    <div class="col-md-6">
+        <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+        <div id="map"></div>
+    </div>
+
+    <div id="place-detail-form" class="col-md-3">
+        <div class="row">
+            <div class="col">
+                <h3 class="text-left">Details</h3>
+                <form id="LandmarkCreate" action="@Url.Action("Create", "Landmark")" method="post">
+                    <div class="form-group">
+                        <label for="PlaceId">Place ID</label>
+                        <input id="PlaceId" class="form-control" type="text" name="PlaceId" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input id="Name" class="form-control" type="text" name="Name" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Address">Address</label>
+                        <input id="Address" class="form-control" type="text" name="Address" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Type">Type</label>
+                        <input id="Type" class="form-control" type="text" name="Type" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Latitude">Latitude</label>
+                        <input id="Latitude" class="form-control" type="text" name="Latitude" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Longitude">Longitude</label>
+                        <input id="Longitude" class="form-control" type="text" name="Longitude" value="" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <textarea id="Description" class="form-control" type="text" name="Description" value=""></textarea>
+                    </div>
+                    <input type="submit" value="Save" class="btn btn-info btn-block" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!------Body-->
 @section BottomJS{
-    <script>
-        
-    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ&libraries=places&callback=initAutocomplete"
+            async defer></script>
 }
 

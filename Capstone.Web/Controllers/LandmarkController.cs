@@ -10,11 +10,11 @@ namespace Capstone.Web.Controllers
 {
     public class LandmarkController : BaseController
     {
-        private ILandmarkDAL _dal;
-        public LandmarkController(ILandmarkDAL landmarkDAL)
+        private ILandmarkDAL landmarkDAL;
+        public LandmarkController(ILandmarkDAL _landmarkDAL)
         {
 
-            _dal = landmarkDAL;
+            this.landmarkDAL = _landmarkDAL;
         }
 
         public ActionResult Index()
@@ -29,7 +29,8 @@ namespace Capstone.Web.Controllers
         public ActionResult Create()
         {
             UserSession session = GetActiveUser();
-            return View();
+            List<Landmark> landmarks = landmarkDAL.GetAllLandmarks();
+            return View(landmarks);
         }
 
         // POST: Itinerary/Create

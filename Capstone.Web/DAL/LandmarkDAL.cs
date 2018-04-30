@@ -139,6 +139,42 @@ namespace Capstone.Web.DAL
         /// </summary>
         /// <param name="itinId">Itienrary's ID</param>
         /// <returns>Returns a list of Landmarks</returns>
+        public List<Landmark> GetAllLandmarks()
+        {
+            List<Landmark> landmarks = new List<Landmark>();
+            string getAllLandmarksSQL = "SELECT Landmark.* FROM Landmark ORDER BY Landmark.Name ASC";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(getAllLandmarksSQL, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        landmarks.Add(MapLandmarkFromReader(reader));
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Couldn't retrieve landmark." + e.Message);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("Something Went Wrong Try again later." + e.Message);
+            }
+            return landmarks;
+        }
+
+        /// <summary>
+        /// Get's a landmarks associated with a certain Itinerary
+        /// </summary>
+        /// <param name="itinId">Itienrary's ID</param>
+        /// <returns>Returns a list of Landmarks</returns>
         public List<Landmark> GetAllLandmarks(int itineraryId)
         {
             List<Landmark> landmarks = new List<Landmark>();

@@ -12,6 +12,7 @@ namespace Capstone.Web.DAL
         int CreateLandmark(Landmark landmark);
         Landmark GetLandmark(int id);
         Landmark GetLandmark(string Placeid);
+        List<Landmark> GetAllLandmarks();
         List<Landmark> GetAllLandmarks(int itinId);
         bool UpdateLandmark(Landmark landmark);
         bool DeleteLandmark(string id);
