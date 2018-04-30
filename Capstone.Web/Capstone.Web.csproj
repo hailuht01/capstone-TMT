@@ -209,6 +209,7 @@
     <Content Include="obj\Debug\Capstone.Web.pdb" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Scripts\CreateLandmark.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
