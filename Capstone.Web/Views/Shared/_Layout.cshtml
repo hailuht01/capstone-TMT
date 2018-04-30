@@ -32,9 +32,7 @@
                 <div class="navbar-header">
 
                     <a class="navbar-brand" href="@Url.Action("Home", "Account")">
-
-
-                        <img src="~/Content/img/Bravo! City tour (2).jpg" style="height:100%; float:left;" />
+                        <img src="~/Content/img/Bravo! City tour (6).jpg" style="height:100%; float:left;" />
                     </a>
                 </div>
 
@@ -54,9 +52,19 @@
                         </form>
 
                     </div>
+                    <div class="nav-item dropdown dropleft">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span>My Account</span></a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="@Url.Action("Account", "Profile")">Edit Profile</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")">Login</a>
+                            <a class="dropdown-item" href="@Url.Action("Logout", "Account")">Log Out</a>
+                            <a class="dropdown-item" href="@Url.Action("Register", "Account")">Register</a>
+                        </div>
+                    </div>
                 </div>
-
             </div>
+            
         </nav>
     </header>
     <div class="container-fluid">
@@ -64,12 +72,9 @@
     </div>
     @RenderSection("BottomJS", false)
 </body>
-@Html.Partial("_footer")
+@Html.Partial("_Footer")
 </html>
-
-
-@*
-    <header>
+@* <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="@Url.Action("Home", "Account")">TMT! CityTours</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -84,22 +89,23 @@
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("MockMYItinerary", "Account")">My Itineraries</a>
                     </li>
-
                     <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Landmark")">Manage Landmark</a>
+                        @if (ViewBag.IsAdmin)
+                        {
+                            <a class="nav-link" href="@Url.Action("Index", "Landmark")">Manage Landmark</a>
+                        }
+                        else { }
+
                     </li>
-
-
-
 
                 </ul>
                 <div class="nav-item dropdown dropleft">
 
                     @if (ViewBag.Email == "user@citytour.com")
                     {
-                        <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")" role="button">
-                            <span>Login</span>
-                        </a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")"  role="button" >
+                                <span>Login</span>
+                            </a>
 
                     }
                     else
@@ -129,5 +135,4 @@
                 </div>
             </div>
         </nav>
-    </header> *@
-
+    </header>*@

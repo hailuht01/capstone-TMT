@@ -188,13 +188,7 @@
     <Content Include="Content\css\LandmarkCreate.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\register-login.css" />
-    <Content Include="Content\img\Bravo! City tour %281%29.jpg" />
-    <Content Include="Content\img\Bravo! City tour %282%29.jpg" />
-    <Content Include="Content\img\Bravo! City tour %283%29.jpg" />
-    <Content Include="Content\img\Bravo! City tour %284%29.jpg" />
-    <Content Include="Content\img\Bravo! City tour %285%29.jpg" />
     <Content Include="Content\img\Bravo! City tour %286%29.jpg" />
-    <Content Include="Content\img\Bravo! City tour %287%29.jpg" />
     <Content Include="Content\img\Bravo! City tour.jpg" />
     <Content Include="Content\img\Cincinnati-Museum.jpg" />
     <Content Include="Content\img\Cincinnati-Museum1.jpg" />
@@ -239,7 +233,6 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tsc.out" />
     <Content Include="Models\PlacesModel.json" />
-    <Content Include="Content\img\Bravo! City tour.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -254,6 +247,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -313,9 +307,8 @@
     <Content Include="Views\Account\PopularItineraries.cshtml" />
     <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\About\Contact.cshtml" />
-    <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
-    <Content Include="Views\Itinerary\DzTempCreateItinerary.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

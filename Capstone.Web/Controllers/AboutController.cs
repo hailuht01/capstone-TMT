@@ -1,5 +1,4 @@
-﻿using Capstone.Web.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -7,6 +6,8 @@ using System.Web.Mvc;
 
 namespace Capstone.Web.Controllers
 {
+   
+
     public class AboutController : Controller
     {
 
@@ -17,7 +18,7 @@ namespace Capstone.Web.Controllers
         }
 
         public ActionResult Contact()
-        {
+       {
             return View();
         }
 
