@@ -8,8 +8,8 @@ var prevItinId;
 $("document").ready(function () {
     initMap();
     $('#createItinForm').hide();
-    $("element[id$='Itin-']>#activeItin")
-})
+
+});
 
 function initMap() {
     //Map Options
@@ -84,9 +84,11 @@ function toggleActiveItin(itinId){
 function addToItin(placeIdStr, activeItinId) {
     //$("#markerPlaceId").value();
     {
-        itinArr.push(placeIdStr);
-        console.log("add to itin: " + placeIdStr);
-        console.warn(itinArr);
+        if(!itinArr.includes(placeIdStr)) {
+            itinArr.push(placeIdStr);
+            console.log("add to itin: " + placeIdStr);
+            console.warn(itinArr);
+        }
     }
 }
 

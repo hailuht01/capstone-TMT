@@ -20,14 +20,14 @@ namespace Capstone.Web.Models
         {
       return new List<Itinerary>()
             {
-                new Itinerary(1,"Sample Itinerary", DateTime.Now.AddDays(1), 4.4, "This is a test description", "user@CityTour.io"),
-                new Itinerary(2,"Sample Number two", DateTime.Now.AddDays(1), 4.1, "This is my favorite itinerary", "user@CityTour.io")
+                new Itinerary(1,"Sample Itinerary", DateTime.Now.AddDays(1),  "This is a test description", "user@CityTour.io"),
+                new Itinerary(2,"Sample Number two", DateTime.Now.AddDays(1),  "This is my favorite itinerary", "user@CityTour.io")
             };
         }
 
         public Itinerary() { }
 
-        public Itinerary(int id, string Title, DateTime? DepartureDate, double Rating, string description, string userEmail)
+        public Itinerary(int id, string Title, DateTime? DepartureDate, string description, string userEmail)
         {
       this.Id = id;
             this.Title = Title;
