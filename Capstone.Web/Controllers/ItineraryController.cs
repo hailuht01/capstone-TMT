@@ -33,6 +33,12 @@ namespace Capstone.Web.Controllers
         {
             return View();
         }
+        //Temp ActionResult for Denise to work with 
+        public ActionResult DzTempCreateItinerary()
+        {
+            UserSession userSession = GetActiveUser();
+            return View();
+        }
 
         // GET: Itinerary/Create
         public ActionResult Create()
