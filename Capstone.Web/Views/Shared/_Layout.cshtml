@@ -22,7 +22,7 @@
     <script src="~/Scripts/user-registration.js"></script>
     <script src="~/Scripts/Main.js"></script>
     @RenderSection("topJS", false)
-   
+
 
 </head>
 <body>
@@ -41,23 +41,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("MockMYItinerary", "Account")">My Itineraries</a>
                     </li>
-                    <li class="nav-item">
-                        @if (ViewBag.IsAdmin)
-                        {
-                            <a class="nav-link" href="@Url.Action("Index", "Landmark")">Manage Landmark</a>
-                        }
-                        else { }
 
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Landmark")">Manage Landmark</a>
                     </li>
+
+
+
 
                 </ul>
                 <div class="nav-item dropdown dropleft">
 
                     @if (ViewBag.Email == "user@citytour.com")
                     {
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")"  role="button" >
-                                <span>Login</span>
-                            </a>
+                        <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")" role="button">
+                            <span>Login</span>
+                        </a>
 
                     }
                     else

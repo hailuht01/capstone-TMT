@@ -8,26 +8,34 @@ ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [FK_Itinerary_Users]
 GO
 ALTER TABLE [dbo].[Users] DROP CONSTRAINT [DF_Users_isAdmin]
 GO
-ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itinerary_Title]
+ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [DF_Landmark_ThumbsUp]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 1:04:53 PM ******/
+ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itenerary_Title]
+GO
+/****** Object:  Index [IX_Username]    Script Date: 4/30/2018 11:16:22 AM ******/
+DROP INDEX [IX_Username] ON [dbo].[Users]
+GO
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 4/30/2018 11:16:22 AM ******/
+ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [CH_Landmark_PlaceID]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 4/30/2018 11:16:22 AM ******/
 DROP TABLE [dbo].[Users]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 1:04:53 PM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 4/30/2018 11:16:22 AM ******/
 DROP TABLE [dbo].[Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/24/2018 1:04:53 PM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/30/2018 11:16:22 AM ******/
 DROP TABLE [dbo].[Itinerary_Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/24/2018 1:04:53 PM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/30/2018 11:16:22 AM ******/
 DROP TABLE [dbo].[Itinerary]
 GO
 USE [master]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/24/2018 1:04:53 PM ******/
+/****** Object:  Database [citytour]    Script Date: 4/30/2018 11:16:22 AM ******/
 DROP DATABASE [citytour]
 GO
-/****** Object:  Database [citytour]    Script Date: 4/24/2018 1:04:53 PM ******/
+/****** Object:  Database [citytour]    Script Date: 4/30/2018 11:16:22 AM ******/
 CREATE DATABASE [citytour]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -124,7 +132,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/24/2018 1:04:53 PM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 4/30/2018 11:16:22 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -132,17 +140,17 @@ GO
 CREATE TABLE [dbo].[Itinerary](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Title] [varchar](50) NOT NULL,
-	[User_Email] [varchar](50) NOT NULL,
-	[Rating] [int] NOT NULL,
 	[CreationDate] [date] NOT NULL,
 	[DepartureDate] [date] NULL,
- CONSTRAINT [PK_Itinerary] PRIMARY KEY CLUSTERED 
+	[description] [varchar](250) NULL,
+	[User_Email] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_Itenerary] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/24/2018 1:04:53 PM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 4/30/2018 11:16:22 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -151,14 +159,13 @@ CREATE TABLE [dbo].[Itinerary_Landmark](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Itinerary_Id] [int] NOT NULL,
 	[Landmark_Id] [int] NOT NULL,
-	[DurationInMin] [int] NOT NULL,
- CONSTRAINT [PK_Itinerary_Landmark] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Itenerary_Landmark] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 4/24/2018 1:04:54 PM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 4/30/2018 11:16:22 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -168,16 +175,19 @@ CREATE TABLE [dbo].[Landmark](
 	[Latitude] [float] NOT NULL,
 	[Longitude] [float] NOT NULL,
 	[Name] [varchar](50) NOT NULL,
-	[Description] [varchar](200) NOT NULL,
-	[address] [varchar](100) NOT NULL,
-	[PicName] [varchar](10) NOT NULL,
+	[Description] [varchar](2000) NOT NULL,
+	[PicName] [varchar](50) NOT NULL,
+	[ThumbsUp] [bit] NOT NULL,
+	[Type] [varchar](50) NOT NULL,
+	[Address] [varchar](100) NOT NULL,
+	[PlaceId] [varchar](200) NOT NULL,
  CONSTRAINT [PK_Landmark] PRIMARY KEY CLUSTERED 
 (
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 4/24/2018 1:04:54 PM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 4/30/2018 11:16:22 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -189,7 +199,7 @@ CREATE TABLE [dbo].[Users](
 	[LastName] [varchar](50) NOT NULL,
 	[Password] [varchar](50) NOT NULL,
 	[isAdmin] [bit] NOT NULL,
- CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Users] PRIMARY KEY CLUSTERED 
 (
 	[Email] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
@@ -199,7 +209,23 @@ INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], 
 GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
 GO
-ALTER TABLE [dbo].[Itinerary] ADD  CONSTRAINT [DF_Itinerary_Title]  DEFAULT ('Untitled') FOR [Title]
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 4/30/2018 11:16:22 AM ******/
+ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [CH_Landmark_PlaceID] UNIQUE NONCLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+SET ANSI_PADDING ON
+GO
+/****** Object:  Index [IX_Username]    Script Date: 4/30/2018 11:16:22 AM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Username] ON [dbo].[Users]
+(
+	[Username] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Itinerary] ADD  CONSTRAINT [DF_Itenerary_Title]  DEFAULT ('Untitled') FOR [Title]
+GO
+ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [DF_Landmark_ThumbsUp]  DEFAULT ((1)) FOR [ThumbsUp]
 GO
 ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [DF_Users_isAdmin]  DEFAULT ((0)) FOR [isAdmin]
 GO
