@@ -292,7 +292,6 @@
     <Content Include="Views\Landmark\Index.cshtml" />
     <Content Include="Views\Account\RegisterPartial.cshtml" />
     <Content Include="Views\Landmark\Landmark.cshtml" />
-    <Content Include="Views\Shared\_Landmark.cshtml" />
     <Content Include="Views\Itinerary\Index.cshtml" />
     <Content Include="Views\Shared\_Itinerary.cshtml" />
     <Content Include="Views\Shared\_Landmark.cshtml" />
@@ -310,6 +309,7 @@
     <Content Include="Views\About\Contact.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Itinerary\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

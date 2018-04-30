@@ -21,7 +21,6 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/user-registration.js"></script>
-    <script src="~/Scripts/Main.js"></script>
     @RenderSection("topJS", false)
 
 
@@ -82,8 +81,9 @@
         @RenderBody()
     </div>
     @RenderSection("BottomJS", false)
+    @Html.Partial("_Footer")
 </body>
-@Html.Partial("_Footer")
+
 </html>
 @* <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">

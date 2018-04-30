@@ -12,16 +12,16 @@
                     @Html.TextBoxFor(c => c.Title, new { id = "title", @class = "form-control", placeholder = "Title" })
                 </div>
                 <div>
-                    @Html.LabelFor(c => c.Description)
+                    @Html.LabelFor(c => c.Description, new { @class = "label" })
                     @Html.TextAreaFor(c => c.Description, new { id = "description", @class = "form-control", placeholder = "Description" })
                 </div>
                 <div>
                     @Html.LabelFor(c => c.CreationDate, new { @class = "label" })
-                    @Html.TextBoxFor(c => c.CreationDate, new { id = "creationdate", @class = "form-control", placeholder = "Creation Date" })
+                    @Html.TextBoxFor(c => c.CreationDate, new { id = "creationdate", @class = "form-control", @type = "date", placeholder = "Creation Date" })
                 </div>
                 <div>
                     @Html.LabelFor(c => c.DepartureDate, new { @class = "label" })
-                    @Html.TextBoxFor(c => c.DepartureDate, new {id = "departuredate", @class = "form-control", placeholder = "Departure Date" })
+                    @Html.TextBoxFor(c => c.DepartureDate, new {id = "departuredate", @class = "form-control", @type = "date", placeholder = "Departure Date" })
                 </div>
                 <div>
                     @Html.LabelFor(c => c.UserEmail, new { @class = "label" })

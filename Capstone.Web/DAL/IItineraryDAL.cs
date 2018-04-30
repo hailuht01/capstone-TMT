@@ -16,6 +16,7 @@ namespace Capstone.Web.DAL
         bool UpdateItinerary(Itinerary itinerary);
         bool DeleteItinerary(int id);
 
+
         //Add Landmark to Itinerary
         bool AddLandmarkToItinerary(int landmarkID, int itinId);
         bool RemoveLandmarkFromItinerary(int landmarkID, int itinId);
