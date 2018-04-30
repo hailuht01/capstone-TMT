@@ -316,6 +316,7 @@
     <Content Include="Views\About\Contact.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
+    <Content Include="Views\Itinerary\DzTempCreateItinerary.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

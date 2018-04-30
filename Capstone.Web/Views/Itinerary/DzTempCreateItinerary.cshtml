@@ -1,0 +1,36 @@
+﻿@model Capstone.Web.Models.Itinerary
+@section extraCSS {
+
+    <link href="~/Content/css/ItineraryForm.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col">
+        <form id="itineraryform" method="post" action="@Url.Action("Create", "Itinerary")">
+            <div class="form-group">
+                <div>
+                    @Html.LabelFor(c => c.Title, new { @class = "label" })
+                    @Html.TextBoxFor(c => c.Title, new { id = "title", @class = "form-control", placeholder = "Title" })
+                </div>
+                <div>
+                    @Html.LabelFor(c => c.Description)
+                    @Html.TextAreaFor(c => c.Description, new { id = "description", @class = "form-control", placeholder = "Description" })
+                </div>
+                <div>
+                    @Html.LabelFor(c => c.CreationDate, new { @class = "label" })
+                    @Html.TextBoxFor(c => c.CreationDate, new { id = "creationdate", @class = "form-control", placeholder = "Creation Date" })
+                </div>
+                <div>
+                    @Html.LabelFor(c => c.DepartureDate, new { @class = "label" })
+                    @Html.TextBoxFor(c => c.DepartureDate, new {id = "departuredate", @class = "form-control", placeholder = "Departure Date" })
+                </div>
+                <div>
+                    @Html.LabelFor(c => c.UserEmail, new { @class = "label" })
+                    @Html.TextBoxFor(c => c.UserEmail, new {id = "useremail", @class = "form-control", placeholder = "User Email" })
+                </div>
+
+                <br />
+                <input class="btn btn-primary" type="submit" name="Save" value="Submit Form" />
+            </div>
+        </form>
+    </div>
+</div>
