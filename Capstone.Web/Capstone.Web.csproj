@@ -188,8 +188,16 @@
     <Content Include="Content\css\LandmarkCreate.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\register-login.css" />
+    <Content Include="Content\img\Bravo! City tour %281%29.jpg" />
+    <Content Include="Content\img\Bravo! City tour %282%29.jpg" />
+    <Content Include="Content\img\Bravo! City tour %283%29.jpg" />
+    <Content Include="Content\img\Bravo! City tour %284%29.jpg" />
+    <Content Include="Content\img\Bravo! City tour %285%29.jpg" />
+    <Content Include="Content\img\Bravo! City tour %286%29.jpg" />
+    <Content Include="Content\img\Bravo! City tour %287%29.jpg" />
     <Content Include="Content\img\Bravo! City tour.jpg" />
     <Content Include="Content\img\Cincinnati-Museum.jpg" />
+    <Content Include="Content\img\Cincinnati-Museum1.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.jpg" />
     <Content Include="Content\img\Cincinnati-Zoo.png" />
     <Content Include="Content\img\Cincinnati-Zoo1.jpg" />
@@ -231,6 +239,7 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tsc.out" />
     <Content Include="Models\PlacesModel.json" />
+    <Content Include="Content\img\Bravo! City tour.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -245,6 +254,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+<<<<<<< HEAD
+    <Compile Include="citytour.cs">
+      <SubType>Designer</SubType>
+    </Compile>
+    <Compile Include="Controllers\AboutController.cs" />
+=======
+>>>>>>> bb688b101e48bd9c4ceefd962a589f4af55c77a8
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -303,6 +319,10 @@
     <Content Include="Views\Account\Parks.cshtml" />
     <Content Include="Views\Account\MockMYItinerary.cshtml" />
     <Content Include="Views\Account\PopularItineraries.cshtml" />
+    <Content Include="Views\About\About.cshtml" />
+    <Content Include="Views\About\Contact.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Shared\_Contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

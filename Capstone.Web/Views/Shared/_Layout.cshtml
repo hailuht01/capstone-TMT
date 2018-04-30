@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>TMT! CityTours</title>
     <!--CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/css/site.css" rel="stylesheet" />
     @RenderSection("extraCSS", false)
@@ -26,6 +27,49 @@
 
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-default navbar-main navbar-fixed" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+
+                    <a class="navbar-brand" href="@Url.Action("Home", "Account")">
+
+
+                        <img src="~/Content/img/Bravo! City tour (2).jpg" style="height:100%; float:left;" />
+                    </a>
+                </div>
+
+                <div id="preferred-container" class="row">
+                    <div class="col">
+                        <nav class="nav nav-pills nav-fill">
+                            <a class="nav-item nav-link" href="@Url.Action("About", "About")">About</a>
+                            <a class="nav-item nav-link" href="@Url.Action("PopularItineraries", "Account")">Popular Itineraries</a>
+                            <a class="nav-item nav-link" href="@Url.Action("Contact", "About")">Contact</a>
+                        </nav>
+                    </div>
+                    <div>
+
+                        <form class="form-inline">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+    @RenderSection("BottomJS", false)
+</body>
+@Html.Partial("_footer")
+</html>
+
+
+@*
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="@Url.Action("Home", "Account")">TMT! CityTours</a>
@@ -86,10 +130,5 @@
                 </div>
             </div>
         </nav>
-    </header>
-    <div class="container-fluid">
-        @RenderBody()
-    </div>
-    @RenderSection("BottomJS", false)
-</body>
-</html>
+    </header> *@
+
