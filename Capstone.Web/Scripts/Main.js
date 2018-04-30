@@ -115,6 +115,15 @@ function removeLandmark(i)
     }
 }
 
+function removeItinerary(i)
+{
+    if(landmarkArr.length >= i-1) {
+        confirm("Permanately Delete this Itinerary?");
+        landmarkArr.splice(i, 1);
+        console.log("removed Itin index= "+ i);
+    }
+}
+
 function genLandmarkModalHTML(Id, description) {
     var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=" + APIKey;
 
