@@ -1,0 +1,97 @@
+﻿@model Capstone.Web.Models.Itinerary
+@section extraCSS {
+
+    <link href="~/Content/css/ItineraryForm.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col">
+        <form id="itineraryform" method="post" action="@Url.Action("Create", "Itinerary")">
+            <div class="form-group">
+                @Html.LabelFor(c=> c.Title, new { @class = "label" })
+                @Html.TextBoxFor(c => c.Title, new {  @class = "form-control", placeholder = "Title" })
+ </div>
+            <div>
+                @Html.LabelFor(c => c.Description)
+                @Html.TextArea(Model.Description, new { id = "description", @class = "form-control", placeholder = "Description" })
+                
+            </div>
+            <br />
+            <input class="btn btn-primary" type="submit" name="Save" value="Submit Form" />
+        </form>
+    </div>
+
+</div>
+@*<div id="itinerary-container" class="row">
+        <div id="itin-controls" class="col-md-5">
+            <h2 class="text-center">My Intineraries</h2>
+
+            <button id="new-itn" class="nav-item nav-link btn-warning" href="#">New</button>
+
+            <div class="col">
+                <div class="row">
+                    <div class="form">
+                        <form id="ItineraryForm" method="post" action="@Url.Action(" Create", "Itinerary" )">
+
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="colFormLabel" placeholder="Title">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Departure Date</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="colFormLabel" placeholder="Departure Date">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success" href="#">Save</button>
+
+                        </form>
+
+                        <div class="col">
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Title</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="colFormLabel" placeholder="Title">
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group row">
+                                <label for="colFormLabel" class="col-sm-2 col-form-label">Creation Date</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control" id="colFormLabel" placeholder="Date Created">
+                                </div>
+                            </div>
+                            <br />
+                            <div class="footer">
+                                <div class="Landmark list">
+                                    Landark List
+                                    <ul class="list-group">
+                                        <li class="list-group-item"></li>
+                                        <li class="list-group-item"></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                        <button type="submit" class="btn btn-success">Save</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="map-container" class="col-md-7">
+            <div id="map">
+
+            </div>
+        </div>
+    </div>*@

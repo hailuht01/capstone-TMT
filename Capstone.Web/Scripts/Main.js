@@ -2,6 +2,7 @@
 var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
 var itinArr = [];
 
+
 $("document").ready(function () {
     initMap();
 })
@@ -9,7 +10,7 @@ $("document").ready(function () {
 function initMap() {
     //Map Options
     var options = {
-        zoom: 10,
+        zoom: 13,
         center: {lat: 39.103118, lng: -84.512020},
         clickableIcons: true,
         gestureHandling: 'auto',
@@ -56,47 +57,75 @@ function AddMarker(props) {
     marker.addListener('click', function () {
         $('#landmark-detail').modal('show');
         console.log(props.placeId);
-        var modalHTML = `Description: ${props.description}`;
-        $('.modal-title').text(props.name);
 
-        var modalHTML = genLandmarkModalHTML(props.placeId);
-        $('.modal-body').text(modalHTML);
+        $('.modal-title').text(props.name);
+        genLandmarkModalHTML(props.placeId, props.description);
+
     });
 }
 
-function addToItin() {
-    $("#markerPlaceId").value();
+function addToItin(placeIdSr) {
+    //$("#markerPlaceId").value();
     itinArr.push();
-    console.log("add to itin");
+    console.log("add to itin" + placeIdSr);
 }
 
-$('#addToItin').addListener('click', function () {
-    addToItin(marker.placeId);
+//$('#addToItin').addListener('click', function () {
+//    addToItin(marker.placeId);
 
-});
+//});
 
-function genLandmarkModalHTML(placeId) {
-    var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + placeId + "&key=" + APIKey;
-    //var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
-    var modalHTML = "not assigned";
+function genLandmarkModalHTML(Id, description) {
+    var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+Id+"&key=" + APIKey;
+
     $.ajax({
         url: detailRequest,
         type: "GET",
         dataType: "text"
     })
         .done(function (data) {
-            console.log("ajax Detail placeID: " + placeId);
+            console.log("ajax Detail placeID: " + Id);
             json = JSON.parse(data);
-            console.log(json["result"].name);
+            var j = json['result'];
+
+
+            var website = j.website;  // html var
+            var phone = j.formatted_phone_number;
+            //phone = (phone == "undefined") ? "No Phone Number" : phone;
+            var now = new Date();
+            var days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+            var day = days[ now.getDay() ];
+
+            var todaysHours; // html var
+            try   {
+                todaysHours = j.opening_hours['weekday_text'][days.indexOf(day)];
+            }catch(Exception){console.warn("no open time for this place")}
+
+            console.log(todaysHours + "hrs" + phone);
+            var photoReference = j['photos'][0].photo_reference;
+            console.warn(photoReference);
+            var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="+photoReference+"&key=" + APIKey;
+
+
+            $('.modal-body').html(`
+<div class="row">
+<div class='col-sm-12 col-6'><img src='${photoQuery}'/></div><div class='col-sm-12 col-6'><b>Departure Date ${todaysHours}</b></div>
+
+<div class='col-sm-6 col-6'><b>${phone}</b></div> <div class='col-sm-6 col-3'><h5><a href='${website}' target="_blank">Website</a></h5></div>
+
+
+
+</div>
+<h5>Description:</h5><p>${description}</p>
+`);
         })
 
         .fail(function (data) {
             console.error("ajax fail" + error);
+            ('.modal-body').html("Offline Error");
         });
-
-
-    return modalHTML;
 }
+
 
 
 

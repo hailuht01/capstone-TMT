@@ -1,37 +1,32 @@
 ﻿
-
-
-@model Capstone.Web.Models.Landmark
-<style>
-    .landmark{
-        background-color:lightgray
-    }
-    .img {
-        width: 100px;
-        padding-bottom:5px;
-        clear: both;
-    }
-
-    .detail {
-        display: block;
-    }
-</style>
-
-<div class="landmark">
-
-
-    <div class="img">
-        @*<img src="~/Content/img/@(Model.PicName)*@
-
-        <img src="~/Content/img/Cincinnati-Zoo.jpg" alt="Alternate Text" />
-    </div>
-    <div class="detail">
-
-        <div>  @Model.Name </div>
-        <div>  @Model.Address </div>
-        <div>  @Model.Description </div>
-        <div>  @Model.Rating</div>
+<div class="row">
+    <div class="col-sm-10 Saved Landmarks">
+        <h2 class="text-center">Saved Landmarks</h2>
+        </div>
         
-    </div>
+            <br />
+            <div class="col">
 
-</div>
+                <label for="Title"><strong>Title</strong></label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="Title" placeholder="Title" />
+                </div>
+                <br />
+                <label for="Created date"><strong>Created</strong> </label>
+                <div class="col-sm-5">
+                    <input type="date" class="form-control" id="colFormLabel" placeholder="Departure Date">
+                </div>
+                <br />
+                <label for="Saved Landmarks">Saved Landmarks</label>
+                <div class="col-sm-10">
+                    <ul>
+                        <li><input type="text" /></li>
+                        <li><input type="text" /></li>
+                    </ul>
+                </div>
+                <br />
+                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="submit" class="btn btn-success" href="#">Save</button>
+            </div>
+        </div>
+

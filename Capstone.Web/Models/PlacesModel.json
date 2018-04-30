@@ -1,0 +1,227 @@
+﻿{
+  "html_attributions": [],
+  "result": {
+    "address_components": [
+      {
+        "long_name": "1501",
+        "short_name": "1501",
+        "types": [
+          "street_number"
+        ]
+      },
+      {
+        "long_name": "Eden Park Dr",
+        "short_name": "Eden Park Dr",
+        "types": [
+          "route"
+        ]
+      },
+      {
+        "long_name": "Mount Adams",
+        "short_name": "Mount Adams",
+        "types": [
+          "neighborhood",
+          "political"
+        ]
+      },
+      {
+        "long_name": "Cincinnati",
+        "short_name": "Cincinnati",
+        "types": [
+          "locality",
+          "political"
+        ]
+      },
+      {
+        "long_name": "Hamilton County",
+        "short_name": "Hamilton County",
+        "types": [
+          "administrative_area_level_2",
+          "political"
+        ]
+      },
+      {
+        "long_name": "Ohio",
+        "short_name": "OH",
+        "types": [
+          "administrative_area_level_1",
+          "political"
+        ]
+      },
+      {
+        "long_name": "United States",
+        "short_name": "US",
+        "types": [
+          "country",
+          "political"
+        ]
+      },
+      {
+        "long_name": "45202",
+        "short_name": "45202",
+        "types": [
+          "postal_code"
+        ]
+      },
+      {
+        "long_name": "6030",
+        "short_name": "6030",
+        "types": [
+          "postal_code_suffix"
+        ]
+      }
+    ],
+    "adr_address": "<span class=\"street-address\">1501 Eden Park Dr</span>, <span class=\"locality\">Cincinnati</span>, <span class=\"region\">OH</span> <span class=\"postal-code\">45202-6030</span>, <span class=\"country-name\">USA</span>",
+    "formatted_address": "1501 Eden Park Dr, Cincinnati, OH 45202, USA",
+    "formatted_phone_number": "(513) 421-4086",
+    "geometry": {
+      "location": {
+        "lat": 39.11523500000001,
+        "lng": -84.489999
+      },
+      "viewport": {
+        "northeast": {
+          "lat": 39.1170972802915,
+          "lng": -84.48851911970849
+        },
+        "southwest": {
+          "lat": 39.1143993197085,
+          "lng": -84.49121708029151
+        }
+      }
+    },
+    "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_recreational-71.png",
+    "id": "fc6193c0ee242405578e85b47b829ec83ac3d596",
+    "international_phone_number": "+1 513-421-4086",
+    "name": "Krohn Conservatory",
+    "opening_hours": {
+      "open_now": true,
+      "periods": [
+        {
+          "close": {
+            "day": 0,
+            "time": "1700"
+          },
+          "open": {
+            "day": 0,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 1,
+            "time": "1700"
+          },
+          "open": {
+            "day": 1,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 2,
+            "time": "1700"
+          },
+          "open": {
+            "day": 2,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 3,
+            "time": "1700"
+          },
+          "open": {
+            "day": 3,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 4,
+            "time": "1700"
+          },
+          "open": {
+            "day": 4,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 5,
+            "time": "1700"
+          },
+          "open": {
+            "day": 5,
+            "time": "1000"
+          }
+        },
+        {
+          "close": {
+            "day": 6,
+            "time": "1700"
+          },
+          "open": {
+            "day": 6,
+            "time": "1000"
+          }
+        }
+      ],
+      "weekday_text": [
+        "Monday: 10:00 AM – 5:00 PM",
+        "Tuesday: 10:00 AM – 5:00 PM",
+        "Wednesday: 10:00 AM – 5:00 PM",
+        "Thursday: 10:00 AM – 5:00 PM",
+        "Friday: 10:00 AM – 5:00 PM",
+        "Saturday: 10:00 AM – 5:00 PM",
+        "Sunday: 10:00 AM – 5:00 PM"
+      ]
+    },
+    "photos": [
+      {
+        "height": 3120,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/115216954512759592191/photos\">Nhat Ha Tran</a>"
+        ],
+        "photo_reference": "CmRaAAAAkwqzG-DBwpBPDFI2AFWpCf9FthelOX_RnxUC1xUfLsoI9IOuCJNIKCcdpJU8sUS_NK-FNUmYQHPt6-lSjDsEFgFLG2XQ9fCS9NvIjSgRM2RaJMy81NQBYkEMQ_2ejFJyEhBu9iP-kU9AJ1a38z9Vuh0_GhT0NQTst-ajClyDXWYhxLfE7zpQ6A",
+        "width": 4160
+      },
+      {
+        "height": 1836,
+        "html_attributions": [
+          "<a href=\"https://maps.google.com/maps/contrib/113681703800541445858/photos\">Jason Thielen</a>"
+        ],
+        "photo_reference": "CmRaAAAAqCA_JGYRAArDYb5ON7V3qEUcw9EoDSx0iJzWpikUk-8-OUDamENJPsTn77B5rfz6AVBwadK_jnFDxmV7ZFtktjJ42S2IOPrDoIXZk_t3kOevPRfBSAMk5MkujYIHnMxoEhBN_qhFWCncuw4LnvXFfAibGhS8D4ucd33XXt3z1303fkIRWF9CiA",
+        "width": 3264
+      },
+    ],
+    "place_id": "ChIJi77WfdCzQYgRGbJHVBDHy-g",
+    "rating": 4.7,
+    "reference": "CmRSAAAAO7dujOpCrBgmwafotPK-yYbcXInV7umv0r7TimcMx-Gw6wg0X_x5FHzYC88w0pf_uxyTqcahZLr63NGoS9c2QPGcoinOx5cIXq0ufucMeSbkorY4obYLws9vo3RYVbxyEhAGVcBmujbxD8Gm64b21RW4GhQ3bVJPypo0mfSqHA70r4E516qaLw",
+    "reviews": [
+      {
+        "author_name": "Kristina McB",
+        "author_url": "https://www.google.com/maps/contrib/106674353813990292037/reviews",
+        "language": "en",
+        "profile_photo_url": "https://lh3.googleusercontent.com/-1qwR9SuBNnA/AAAAAAAAAAI/AAAAAAAABo8/MhGlW1tYWlo/s128-c0x00000000-cc-rp-mo-ba4/photo.jpg",
+        "rating": 5,
+        "relative_time_description": "in the last week",
+        "text": "Love this place so much, and not just for the butterfly show! Great place to kill time with kids, especially in the colder times of year! Public restrooms, and water fountain inside. There are vending machines in the office if you need a refreshment, unfortunately there is no restaurant. Wish the park would allow someone, or invest in a food truck or something, I know they would make a ton!",
+        "time": 1524768047
+      },
+
+    ],
+    "scope": "GOOGLE",
+    "types": [
+      "park",
+      "point_of_interest",
+      "establishment"
+    ],
+    "url": "https://maps.google.com/?cid=16774720110018933273",
+    "utc_offset": -240,
+    "vicinity": "1501 Eden Park Dr, Cincinnati",
+    "website": "http://www.cincinnatiparks.com/krohn-conservatory/"
+  },
+  "status": "OK"
+}
