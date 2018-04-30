@@ -9,7 +9,6 @@ namespace Capstone.Web.DAL
 {
     public class AccountDAL : IAccountDAL
     {
-        string GetLastIdCreatedSQL = "SELECT CAST(Scope_Identity as int );";
         private string connectionString;
 
         public AccountDAL(string connectionString)
@@ -27,7 +26,7 @@ namespace Capstone.Web.DAL
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                var cmd = new SqlCommand(createUserQuery + GetLastIdCreatedSQL, conn);
+                var cmd = new SqlCommand(createUserQuery, conn);
                 cmd.Parameters.AddWithValue("@Email", user.Email);
                 cmd.Parameters.AddWithValue("@Username", user.UserName);
                 cmd.Parameters.AddWithValue("@FirstName", user.FirstName);

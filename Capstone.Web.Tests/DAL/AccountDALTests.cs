@@ -36,10 +36,13 @@ namespace Capstone.Web.Tests.DAL
         }
 
         //[TestMethod]
-        //public void GetUserTest()
-        //{
+        public void GetUserTest()
+        {
+            User user = testAccountDAL.GetUser("j.doe@gmail.com");
 
-        //}
+            Assert.IsNotNull(user);
+            Assert.AreEqual("jdoe18", user.UserName);
+        }
 
         [TestCleanup]
         public void Cleanup()
