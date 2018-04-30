@@ -45,7 +45,7 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult Create(Itinerary itin)
         {
-            if(itineraryDAL.CreateItinerary(itin))
+            if(itineraryDAL.CreateItinerary(itin) > 0)
             {
                 return RedirectToAction(Request.UrlReferrer.ToString());
             }

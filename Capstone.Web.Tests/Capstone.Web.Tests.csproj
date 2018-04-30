@@ -85,6 +85,8 @@
   <ItemGroup>
     <Compile Include="Controllers\HomeControllerTests.cs" />
     <Compile Include="DAL\ItineraryDALTests.cs" />
+    <Compile Include="DAL\LandmarkDALTests.cs" />
+    <Compile Include="DAL\AccountDALTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
