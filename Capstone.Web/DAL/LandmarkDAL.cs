@@ -209,7 +209,6 @@ namespace Capstone.Web.DAL
             }
             catch (Exception e)
             {
-
                 Console.WriteLine("Something Went Wrong Try again later." + e.Message);
             }
             return wasSuccessful;
