@@ -1,5 +1,4 @@
-﻿
-<div id="createItinForm" class="row">
+﻿<div id="createItinForm" class="row">
     <div class="col">
         <form id="itineraryform" method="post" action="@Url.Action("Create", "Itinerary")">
 
@@ -13,9 +12,9 @@
                 <textarea type="text" class="form-control" name="Description"></textarea>
             </div>
             <br />
-            <label for="Departure date"><strong>Departure Date</strong></label>
+            <label for="DepartureDate"><strong>Departure Date</strong></label>
             <div class="col-sm-5">
-                <input type="date" class="form-control" id="colFormLabel" placeholder="Departure Date">
+                <input type="date" name="DepartureDate" class="form-control" id="colFormLabel" placeholder="Departure Date">
             </div>
             <br />
             <button type="submit" class="btn btn-success" action="@Url.Action("Create", "Itinerary")">Create Itinerary</button>
@@ -23,26 +22,34 @@
         </form>
     </div>
 </div>
+<br />
+
 @foreach (var itin in Model.Itineraries)
 {
-    <div class="row" id="Itin-@itin.Id" onclick="toggleActiveItin(@itin.Id)">
+<div class="row btn-info round border" id="Itin-@itin.Id" onclick="toggleActiveItin(@itin.Id)" href="#">
         <h3>@itin.Title</h3>created: @itin.CreationDate<br>
         <p>@itin.Description</p>
 
 
         @*toggle active itin*@
-        <div  style="display: none;" class="row " id="activeItin">
+        <div style="display: none;" class="row " id="activeItin">
             <div class="error">Active Itin</div>
             <ol>
                 @foreach (var land in Model.Landmarks)
                 {
 
                     <li id="">@land.Name</li>
-                    
+
 
                 }
             </ol>
+            <div class="row">
+                <div class="col-6">    <input type="button" class="btn-danger" value="Delete" name="Delete" actions="@Url.Action("Home", "Itinerary")" /></div>
+                <div class="col-6">    <input type="button" class="btn-success" value="Submit" name="Submit" actions="@Url.Action("Home", "Itinerary")" /></div>
 
+            </div>
         </div>
+
     </div>
+
 }
