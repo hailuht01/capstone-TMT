@@ -310,6 +310,7 @@
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Itinerary\Create.cshtml" />
+    <Content Include="Views\Itinerary\MyItineraries.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

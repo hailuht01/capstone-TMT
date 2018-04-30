@@ -101,5 +101,11 @@ namespace Capstone.Web.Controllers
                 return View();
             }
         }
+        public ActionResult MyItineraries()
+        {
+            UserSession userSession = GetActiveUser();
+
+            return View();
+        }
     }
 }
