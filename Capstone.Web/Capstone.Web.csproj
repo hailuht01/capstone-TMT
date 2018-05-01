@@ -300,18 +300,17 @@
     <Content Include="Views\Landmark\Create.cshtml" />
     <Content Include="Views\Itinerary\ItineraryForm.cshtml" />
     <Content Include="Views\Account\Home.cshtml" />
-    <Content Include="Views\Account\MockCreateItinerary.cshtml" />
     <Content Include="Views\Account\Museums.cshtml" />
     <Content Include="Views\Account\Restaurants.cshtml" />
     <Content Include="Views\Account\Parks.cshtml" />
-    <Content Include="Views\Account\MockMYItinerary.cshtml" />
-    <Content Include="Views\Account\PopularItineraries.cshtml" />
     <Content Include="Views\About\About.cshtml" />
     <Content Include="Views\About\Contact.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Itinerary\Create.cshtml" />
     <Content Include="Views\Itinerary\MyItineraries.cshtml" />
+    <Content Include="Views\Landmark\PopularLandmarks.cshtml" />
+    <Content Include="Views\Landmark\LandmarkDetail.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

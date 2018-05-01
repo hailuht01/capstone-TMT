@@ -19,6 +19,8 @@ namespace Capstone.Web.Models
         public string Password { get; set; }
         [Required]
         public string UserName { get; set; }
+       // [Required]
+        public string VerifyPassword { get; set; }
 
     }
 }

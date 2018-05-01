@@ -36,11 +36,11 @@
                     @Html.PasswordFor(m => m.Password, new { id = "Password", @class = "form-control", placeholder = "8 charactors, 1 uppercase, 1 lowercase, 1 number" })
                     @Html.ValidationMessageFor(m => m.Password)
                 </div>
-                <div>
+                @*<div> don't we need this?
                     @Html.LabelFor(m => m.VerifyPassword)
                     @Html.PasswordFor(m => m.VerifyPassword, new { id = "VerifyPassword", @class = "form-control", placeholder = "please re-type password to confirm" })
                     @Html.ValidationMessageFor(m => m.VerifyPassword)
-                </div>
+                </div>*@
                 <br />
                 <input class="btn btn-primary" type="submit" name="submitButton" value="Submit Form" />
             </form>
