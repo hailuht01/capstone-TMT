@@ -287,15 +287,13 @@
     <Content Include="Views\Home\Index-ORG.cshtml" />
     <Content Include="Views\Landmark\Index.cshtml" />
     <Content Include="Views\Landmark\Landmark.cshtml" />
-    <Content Include="Views\Itinerary\Index.cshtml" />
     <Content Include="Views\Shared\_Itinerary.cshtml" />
     <Content Include="Views\Shared\LandmarkModal.cshtml" />
     <Content Include="Views\Landmark\Create.cshtml" />
     <Content Include="Views\Itinerary\ItineraryForm.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
-    <Content Include="Views\Itinerary\Create.cshtml" />
-    <Content Include="Views\Itinerary\MyItineraries.cshtml" />
+    <Content Include="Views\Itinerary\PopularItineraries.cshtml" />
     <Content Include="Views\Landmark\LandmarkDetail.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
@@ -304,6 +302,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Landmark\PopularLandmarks.cshtml" />
+    <Content Include="Views\Itinerary\MyItineraries.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
