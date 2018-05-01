@@ -48,22 +48,5 @@ namespace Capstone.Web.Controllers
                 return View();
             }
         }
-
-
-        public ActionResult PopularLandmarks()
-        {
-            UserSession session = GetActiveUser();          
-            List<Landmark> landmarks = landmarkDAL.GetPopularLandmarks();
-
-            return View(landmarks);
-        }
-        public ActionResult LandmarkDetail(string PlaceId)
-        {
-            UserSession session = GetActiveUser();
-            Landmark landmark = landmarkDAL.GetLandmark(PlaceId);
-
-            return View(landmark);
-        }
-
     }
 }
