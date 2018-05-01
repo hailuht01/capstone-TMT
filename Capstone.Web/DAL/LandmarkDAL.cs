@@ -282,41 +282,6 @@ namespace Capstone.Web.DAL
         }
 
         /// <summary>
-        /// Get's all Landmarks ordered by ThumbsUp
-        /// </summary>
-        /// <returns>Returns a list of Landmarks</returns>
-        public List<Landmark> GetPopularLandmarks()
-        {
-            List<Landmark> landmarks = new List<Landmark>();
-            string getPopularLandmarksSQL = "SELECT * FROM Landmark ORDER BY ThumbsUp DESC";
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(getPopularLandmarksSQL, conn);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    while (reader.Read())
-                    {
-                        landmarks.Add(MapLandmarkFromReader(reader));
-                    }
-                }
-            }
-            catch (SqlException e)
-            {
-                Console.WriteLine("Couldn't retrieve landmark." + e.Message);
-            }
-            catch (Exception e)
-            {
-
-                Console.WriteLine("Something Went Wrong Try again later." + e.Message);
-            }
-            return landmarks;
-        }
-
-        /// <summary>
         /// Maps properties from DB to a landmark object
         /// </summary>
         /// <param name="reader"></param>
