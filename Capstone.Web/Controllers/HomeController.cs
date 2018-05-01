@@ -22,6 +22,12 @@ namespace Capstone.Web.Controllers
         }
 
         // GET: Home
+        public ActionResult Home()
+        {
+            UserSession userSession = GetActiveUser();
+            return View();
+        }
+
         public ActionResult Index()
         {
             //Default session if User isn't logged in
@@ -43,6 +49,77 @@ namespace Capstone.Web.Controllers
             }
 
             return View(fullUser);
+        }
+
+        public ActionResult Login()
+        {
+            UserSession userSession = GetActiveUser();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(string email, string password)
+        {
+            User user = acctDAL.AuthUser(email, password);
+
+            Session["User.Session"] = new UserSession(user.Email, user.UserName, user.IsAdmin);
+            UserSession userSession = GetActiveUser();
+            return RedirectToAction("MyItineraries", "Itinerary");
+        }
+
+        public ActionResult Register()
+        {
+            UserSession userSession = GetActiveUser();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Register(RegistrationForm user)
+        {
+            UserSession userSession = GetActiveUser();
+            if (userSession.Email == "user@citytour.com")
+            {
+                try
+                {
+                    acctDAL.CreateUser(user);
+                    Session["User.Session"] = new UserSession(user.Email, user.UserName, false);
+                    userSession = GetActiveUser();
+                    return RedirectToAction("MyItineraries", "Itinerary");
+                }
+                catch
+                {
+                    return RedirectToAction("Register", "Home");
+                }
+
+            }
+            else
+            {
+                return RedirectToAction("MyItineraries", "Itinerary");
+            }
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult UserProfile()
+        {
+            UserSession userSession = GetActiveUser();
+            var user = acctDAL.GetUser(userSession.Email);
+            return View(user);
+        }
+        // GET: About
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
         }
     }
 }

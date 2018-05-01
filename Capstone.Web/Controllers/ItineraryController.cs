@@ -50,11 +50,11 @@ namespace Capstone.Web.Controllers
             itin.UserEmail = userSession.Email; 
             if(itinDAL.CreateItinerary(itin) > 0)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("MyItineraries", "Itinerary");
             }
             else
             {
-                return View(Request.UrlReferrer.ToString());
+                return RedirectToAction("MyItineraries", "Itinerary");
             }
         }
 

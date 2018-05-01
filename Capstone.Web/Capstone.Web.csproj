@@ -248,8 +248,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItineraryController.cs" />
@@ -280,18 +278,14 @@
     <Content Include="packages.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
     <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Scripts\README.md" />
     <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Index-ORG.cshtml" />
     <Content Include="Views\Landmark\Index.cshtml" />
-    <Content Include="Views\Account\RegisterPartial.cshtml" />
     <Content Include="Views\Landmark\Landmark.cshtml" />
     <Content Include="Views\Itinerary\Index.cshtml" />
     <Content Include="Views\Shared\_Itinerary.cshtml" />
@@ -299,18 +293,18 @@
     <Content Include="Views\Shared\LandmarkModal.cshtml" />
     <Content Include="Views\Landmark\Create.cshtml" />
     <Content Include="Views\Itinerary\ItineraryForm.cshtml" />
-    <Content Include="Views\Account\Home.cshtml" />
-    <Content Include="Views\Account\Museums.cshtml" />
-    <Content Include="Views\Account\Restaurants.cshtml" />
-    <Content Include="Views\Account\Parks.cshtml" />
-    <Content Include="Views\About\About.cshtml" />
-    <Content Include="Views\About\Contact.cshtml" />
     <Content Include="Views\Shared\_Contact.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Itinerary\Create.cshtml" />
     <Content Include="Views\Itinerary\MyItineraries.cshtml" />
     <Content Include="Views\Landmark\PopularLandmarks.cshtml" />
     <Content Include="Views\Landmark\LandmarkDetail.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\RegisterPartial.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

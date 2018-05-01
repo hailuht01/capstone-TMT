@@ -30,7 +30,7 @@
             <div class="container">
                 <div class="navbar-header">
 
-                    <a class="navbar-brand" href="@Url.Action("Home", "Account")">
+                    <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                         <img class="img-fluid" src="~/Content/img/Bravo! City tour (6).jpg" style="height:auto; width:100px;  float:left;" />
                     </a>
                 </div>
@@ -38,9 +38,9 @@
                 <div id="preferred-container" class="row">
                     <div class="col">
                         <nav class="nav nav-pills nav-fill">
-                            <a class="nav-item nav-link" href="@Url.Action("About", "About")">About</a>
-                            <a class="nav-item nav-link" href="@Url.Action("PopularItineraries", "Account")">Popular Landmarks</a>
-                            <a class="nav-item nav-link" href="@Url.Action("Contact", "About")">Contact US</a>
+                            <a class="nav-item nav-link" href="@Url.Action("About", "Home")">About</a>
+                            <a class="nav-item nav-link" href="@Url.Action("PopularLandmarks", "Landmark")">Popular Landmarks</a>
+                            <a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Contact US</a>
                         </nav>
                     </div>
                     <div>
@@ -51,10 +51,10 @@
                             <span>My Account</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Account", "Profile")">Anonymous</a>
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")">Login</a>
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Register", "Account")">Register</a>
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Home", "Account")">Log Out</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("UserProfile", "Home")">Anonymous</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Home")">Login</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("Register", "Home")">Register</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("Index", "Home")">Log Out</a>
 
 
                             @*     @ViewBag.Username.ToString()
