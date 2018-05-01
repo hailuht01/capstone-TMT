@@ -91,7 +91,6 @@ namespace Capstone.Web.Controllers
                 {
                     return RedirectToAction("Register", "Home");
                 }
-
             }
             else
             {
@@ -111,14 +110,17 @@ namespace Capstone.Web.Controllers
             var user = acctDAL.GetUser(userSession.Email);
             return View(user);
         }
+
         // GET: About
         public ActionResult About()
         {
+            GetActiveUser();
             return View();
         }
 
         public ActionResult Contact()
         {
+            GetActiveUser();
             return View();
         }
     }
