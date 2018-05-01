@@ -24,7 +24,7 @@ $(document).ready(function () {
                 strongPassword: true
             },
             VerifyPassword: {
-                equalTo: "#password"
+                equalTo: "#Password"
             }
         },
         messages: {

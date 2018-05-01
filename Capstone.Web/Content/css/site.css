@@ -1,9 +1,11 @@
-﻿
-
+﻿html{
+    height: 100%;
+}
 body {
-    
     box-sizing: border-box;
     background-color: aliceblue;
+    height: 100%;
+    margin-bottom: 100px;
 }
 
 header .navbar {
@@ -29,19 +31,23 @@ label {
         color: green;
     }
 
-.footer {
+footer {
     height: 80px;
     background-color: #11BFC1;
     width: 100%;
     color: aliceblue;
-    position: fixed;
+    position: sticky;
     left: 0;
-    bottom: 0;
+    bottom: 0 !important;
   
 }
 
 
-.footer .list-inline {
+footer .list-inline {
         text-align: left;
         display: inline-block;
  }
+
+.container-fluid {
+    margin-bottom: 100px !important;
+}

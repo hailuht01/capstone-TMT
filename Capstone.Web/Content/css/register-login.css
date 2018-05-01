@@ -5,7 +5,7 @@ div {
 }
 .loginImg {
     width: 100%;
-    max-height: 500px;
+    height: auto;
     padding-left: 10px;
     padding-right: 10px
 
@@ -16,4 +16,21 @@ div {
 .container {
   padding-left:0px;
   padding-right:0px;
+}
+
+#landingCarousel{
+    width:100%;
+    height: 75vh;
+}
+
+#header{
+    max-height: 100vh;
+}
+
+.carousel-inner{
+    height: 100%;
+}
+
+.carousel-item{
+    height: 100%;
 }
