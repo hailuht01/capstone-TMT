@@ -304,6 +304,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Landmark\PopularLandmarks.cshtml" />
     <Content Include="Views\Itinerary\MyItineraries.cshtml" />
+    <Content Include="Views\Home\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
