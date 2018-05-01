@@ -331,10 +331,10 @@ namespace Capstone.Web.DAL
                 Latitude = Convert.ToDouble(reader["Latitude"]),
                 Longtiude = Convert.ToDouble(reader["Longitude"]),
                 Name = Convert.ToString(reader["Name"]),
-                Description = Convert.ToString("Description"),
-                Address = Convert.ToString("Address"),
-                PicName = Convert.ToString("PicName"),
-                ThumbsUp = Convert.ToString("ThumbsUp") == "1" ? true : false,
+                Description = Convert.ToString(reader["Description"]),
+                Address = Convert.ToString(reader["Address"]),
+                PicName = Convert.ToString(reader["PicName"]),
+                ThumbsUp = Convert.ToString(reader["ThumbsUp"]) == "1" ? true : false,
             };
             return landmark;
         }
