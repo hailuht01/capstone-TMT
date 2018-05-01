@@ -11,10 +11,10 @@ header .navbar {
     height: 100px;
 }
 
-    header .navbar img {
-        height: 100px;
+header .navbar img {
+        height: auto;
         float: left;
-        width: 100px;
+        width: 120px;
     }
 /*client-side validation css*/
 label {
@@ -31,18 +31,17 @@ label {
     }
 
 .footer {
-    height: 50px;
+    height: 80px;
     background-color: #11BFC1;
-    left: 0;
-    bottom: 0;
     width: 100%;
-    color: white;
+    color: aliceblue;
     position: fixed;
     left: 0;
     bottom: 0;
+  
 }
 
-.footer p {
-        text-align: right;
+.footer .list-inline {
+        text-align: left;
         display: inline-block;
-}
+    }
