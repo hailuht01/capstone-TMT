@@ -29,14 +29,14 @@
         <div class="row">
             <div id="itn-form-control" class="col">
                 <nav class="nav nav-pills">
-                    <a id="new-itn" class="nav-item nav-link btn-warning" href="#" onclick="createItin(@Model.Itineraries.Count+1)">New</a>
+                    <a id="new-itn" class="nav-item nav-link btn-warning" href="#" onclick="createItin(@Model.Landmarks.Count+1)">New</a>
                     @*<a id="save-itn" class="nav-item nav-link btn-success" href="#">Save</a>*@
                 </nav>
             </div>
         </div>
 
 
-        <div class="row">
+        <div class="row"> 
             <div class="col">
                 @Html.Partial("_Itinerary", Model)
 
@@ -51,7 +51,7 @@
 
 
 
-
+               
             </div>
         </div>
     </div>
@@ -70,9 +70,9 @@
 
 <div class="modal fade" id="landmark-detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     @Html.Partial("LandmarkModal", Model.Landmarks)
-</div>
-@section BottomJS{
-    <script>
+    </div>
+    @section BottomJS{
+        <script>
         $('document').ready(function ()
         {
             @foreach (var land in Model.Landmarks)
@@ -80,5 +80,6 @@
                    @: AddMarker({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: "@land.PlaceId" });
             }
     });
-    </script>
-}
+        </script>
+    }
+

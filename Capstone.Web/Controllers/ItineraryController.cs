@@ -50,11 +50,11 @@ namespace Capstone.Web.Controllers
             itin.UserEmail = userSession.Email; 
             if(itineraryDAL.CreateItinerary(itin) > 0)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("MyItineraries", "Itinerary");
             }
             else
             {
-                return View(Request.UrlReferrer.ToString());
+                return RedirectToAction("MyItineraries", "Itinerary");
             }
         }
 
@@ -103,9 +103,25 @@ namespace Capstone.Web.Controllers
         }
         public ActionResult MyItineraries()
         {
+            //Default session if User isn't logged in
             UserSession userSession = GetActiveUser();
+            FullUserModel fullUser = new FullUserModel();
 
-            return View();
+            if (userSession.Email != "user@citytour.com")
+            {
+                fullUser.User = accountDAL.GetUser(userSession.Email);
+                fullUser.Itineraries = itineraryDAL.GetAllItineraries(userSession.Email);
+                fullUser.Landmarks = Landmark.GetSamples();
+
+            }
+            else
+            {
+                fullUser.User = accountDAL.GetUser(userSession.Email);
+                fullUser.Itineraries = Itinerary.GetSamples();
+                fullUser.Landmarks = Landmark.GetSamples();
+            }
+
+            return View(fullUser);
         }
     }
 }
