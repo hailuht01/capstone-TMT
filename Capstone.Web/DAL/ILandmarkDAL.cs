@@ -14,7 +14,8 @@ namespace Capstone.Web.DAL
         Landmark GetLandmark(string Placeid);
         List<Landmark> GetAllLandmarks();
         List<Landmark> GetAllLandmarks(int itinId);
+        List<Landmark> GetPopularLandmarks();
         bool UpdateLandmark(Landmark landmark);
-        bool DeleteLandmark(string id);
+        bool DeleteLandmark(string id);        
     }
 }
