@@ -35,10 +35,18 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <nav class="nav nav-pills nav-fill">
-                    <a class="nav-item nav-link" href="@Url.Action("MyItineraries", "Itinerary")">Create Itinerary</a>
+                    @if (ViewBag.Username != "Anonymous")
+                    {
+                        <a class="nav-item nav-link" href="@Url.Action("MyItineraries", "Itinerary")">Create Itinerary</a>
+                    }
+                    
                     <a class="nav-item nav-link" href="@Url.Action("PopularLandmarks", "Landmark")">Popular Landmarks</a>
                     <a class="nav-item nav-link" href="@Url.Action("About", "Home")">About</a>
                     <a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Contact US</a>
+                    @if (ViewBag.Username == "Admin")
+                    {
+                        <a class="nav-item nav-link" href="@Url.Action("Create", "Landmark")">Manage Landmarks</a>
+                    }
                 </nav>
             </div>
                 <div class="nav-item dropdown dropleft">
@@ -57,7 +65,7 @@
                         }
                         else
                         {
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Home", "Home")">Log Out</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("Logout", "Home")">Log Out</a>
                         }
                     </div>
                 </div>
