@@ -20,7 +20,16 @@ namespace Capstone.Web.Controllers
         UserSession userSession = GetActiveUser();
         return View();
     }
-
+    public ActionResult MockCreateItinerary()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
+    public ActionResult MockMYItinerary()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
     public ActionResult Museums()
     {
         UserSession userSession = GetActiveUser();
@@ -36,7 +45,11 @@ namespace Capstone.Web.Controllers
         UserSession userSession = GetActiveUser();
         return View();
     }
-          
+    public ActionResult PopularItineraries()
+    {
+        UserSession userSession = GetActiveUser();
+        return View();
+    }
     public ActionResult Index()
     {
       UserSession userSession = GetActiveUser();
@@ -56,7 +69,7 @@ namespace Capstone.Web.Controllers
 
       Session["User.Session"] = new UserSession(user.Email, user.UserName, user.IsAdmin);
       UserSession userSession = GetActiveUser();
-      return RedirectToAction("MyItineraries", "Itinerary");
+      return RedirectToAction("Index", "Home");
     }
 
     public ActionResult Logout()

@@ -10,15 +10,15 @@ namespace Capstone.Web.Controllers
 {
     public class ItineraryController : BaseController
     {
-        IItineraryDAL itinDAL;
+        IItineraryDAL itineraryDAL;
         ILandmarkDAL landmarkDAL;
-        IAccountDAL acctDAL;
+        IAccountDAL accountDAL;
 
         public ItineraryController(IItineraryDAL dal, IAccountDAL _accountDAL, ILandmarkDAL _landmarkDAL)
         {
-            this.itinDAL = dal;
+            this.itineraryDAL = dal;
             this.landmarkDAL = _landmarkDAL;
-            this.acctDAL = _accountDAL;
+            this.accountDAL = _accountDAL;
         }
 
 
@@ -48,7 +48,7 @@ namespace Capstone.Web.Controllers
             itin.CreationDate = DateTime.Now;
             UserSession userSession = GetActiveUser();
             itin.UserEmail = userSession.Email; 
-            if(itinDAL.CreateItinerary(itin) > 0)
+            if(itineraryDAL.CreateItinerary(itin) > 0)
             {
                 return RedirectToAction("Index", "Home");
             }
@@ -103,25 +103,9 @@ namespace Capstone.Web.Controllers
         }
         public ActionResult MyItineraries()
         {
-            //Default session if User isn't logged in
             UserSession userSession = GetActiveUser();
-            FullUserModel fullUser = new FullUserModel();
 
-            if (userSession.Email != "user@citytour.com")
-            {
-                fullUser.User = acctDAL.GetUser(userSession.Email);
-                fullUser.Itineraries = itinDAL.GetAllItineraries(userSession.Email);
-                fullUser.Landmarks = Landmark.GetSamples();
-
-            }
-            else
-            {
-                fullUser.User = acctDAL.GetUser(userSession.Email);
-                fullUser.Itineraries = Itinerary.GetSamples();
-                fullUser.Landmarks = Landmark.GetSamples();
-            }
-
-            return View(fullUser);
+            return View();
         }
     }
 }
