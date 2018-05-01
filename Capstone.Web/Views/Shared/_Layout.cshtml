@@ -39,7 +39,7 @@
                     <div class="col">
                         <nav class="nav nav-pills nav-fill">
                             <a class="nav-item nav-link" href="@Url.Action("About", "About")">About</a>
-                            <a class="nav-item nav-link" href="@Url.Action("PopularItineraries", "Account")">Popular Itineraries</a>
+                            <a class="nav-item nav-link" href="@Url.Action("PopularLandmarks", "Landmark")">Popular Landmarks</a>
                             <a class="nav-item nav-link" href="@Url.Action("Contact", "About")">Contact</a>
                         </nav>
                     </div>
@@ -51,7 +51,7 @@
                             <span>My Account</span>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Account", "Profile")">@ViewBag.Username.ToString()</a>
+                            <a class="nav-link btn btn-submit" href="@Url.Action("UserProfile", "Account")">@ViewBag.Username.ToString()</a>
                             @if (ViewBag.Email.ToString() == "user@citytour.com")
                             {
                                 <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Account")">Login</a>
