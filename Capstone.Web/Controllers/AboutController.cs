@@ -8,20 +8,19 @@ namespace Capstone.Web.Controllers
 {
    
 
-    public class AboutController : Controller
+    public class AboutController : BaseController
     {
-
         // GET: About
         public ActionResult About()
         {
+            GetActiveUser();
             return View();
         }
 
         public ActionResult Contact()
-       {
+        {
+            GetActiveUser();
             return View();
         }
-
-
     }
 }
