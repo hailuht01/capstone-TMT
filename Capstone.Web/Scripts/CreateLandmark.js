@@ -43,8 +43,8 @@ function initAutocomplete() {
         // Clear out the old markers.
         markers.forEach(function (marker) {
             marker.setMap(null);
-            marker.addListener('click', function () {
-                infowindow.open(map, marker);
+            marker.addListener('click', function (e) {
+                console.log(e.placeId)
             });
         });
         markers = [];
@@ -86,22 +86,10 @@ function initAutocomplete() {
     });
 }
 
-//function GetPlaceDetails(placeID) {
-//    placeService.getDetails({
-//        placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
-//    }, function (place, status) {
-//        if (status === google.maps.places.PlacesServiceStatus.OK) {
-//            var marker = new google.maps.Marker({
-//                map: map,
-//                position: place.geometry.location
-//            });
-//            google.maps.event.addListener(marker, 'click', function () {
-//                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
-//                    'Place ID: ' + place.place_id + '<br>' +
-//                    place.formatted_address + '</div>');
-//                infowindow.open(map, this);
-//            });
-//        }
-//    });
-//}
+function GetPlaceInfo(placeId) {
+    var details = new google.maps.places.PlaceDetailsRequest(placeId);
+    alert(details.name);
+}
+
+
 

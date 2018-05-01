@@ -13,8 +13,7 @@ header .navbar {
 
 header .navbar img {
         height: auto;
-        float: left;
-        width: 120px;
+        width: 4.2em;
     }
 /*client-side validation css*/
 label {
@@ -41,7 +40,8 @@ label {
   
 }
 
+
 .footer .list-inline {
         text-align: left;
         display: inline-block;
-    }
+ }
