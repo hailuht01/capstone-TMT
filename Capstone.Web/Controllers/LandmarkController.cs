@@ -63,6 +63,7 @@ namespace Capstone.Web.Controllers
             return View(landmarks);
         }
 
+        [HttpPost]
         public ActionResult LandmarkDetail(int Id)
         {
             UserSession session = GetActiveUser();

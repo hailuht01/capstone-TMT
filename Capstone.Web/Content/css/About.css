@@ -1,4 +1,4 @@
-﻿/*body {
+﻿body {
     background-image: url('../img/Logo (11).jpg');
     background-repeat: no-repeat;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@
     background-attachment: fixed;
     background-size: 100%;
 }*/
-.hi {
+.rounded-circle {
     float: right;
 }
 
@@ -27,4 +27,4 @@
     height: 50px;
 }
 body {
-}*/
+}

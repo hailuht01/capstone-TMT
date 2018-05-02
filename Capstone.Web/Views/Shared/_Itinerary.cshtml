@@ -23,33 +23,31 @@
     </div>
 </div>
 <br />
-
+<div class="row"></div>
 @foreach (var itin in Model.Itineraries)
 {
-<div class="row btn-info round border" id="Itin-@itin.Id" onclick="toggleActiveItin(@itin.Id)" href="#">
-        <h3>@itin.Title</h3>created: @itin.CreationDate<br>
-        <p>@itin.Description</p>
+    <div class=" col-12 btn-info round border" id="Itin-@itin.Id" onclick="toggleActiveItin(@itin.Id)" href="#">
+        <h3>@itin.Title</h3>created: @itin.CreationDate <br>
+        <p>@itin.Description</p> <br />
 
 
         @*toggle active itin*@
-        <div style="display: none;" class="row " id="activeItin">
-            <div class="error">Active Itin</div>
+        <div style="display: none;" class="row" id="activeItin">
             <ol>
-                @foreach (var land in Model.Landmarks)
+                @foreach (var l in itin.LandmarkIds)
                 {
 
+                    var land = Model.GetByPlaceId(l);
                     <li id="">@land.Name</li>
 
-
                 }
+
+
             </ol>
-            <div class="row">
-                <div class="col-6">    <input type="button" class="btn-danger" value="Delete" name="Delete" actions="@Url.Action("Home", "Itinerary")" /></div>
-                <div class="col-6">    <input type="button" class="btn-success" value="Submit" name="Submit" actions="@Url.Action("Home", "Itinerary")" /></div>
-
-            </div>
+            <form method="post" action="@Url.Action("Delete", "Itinerary")">
+                <input type="hidden" value="@itin.Id" name="id" />
+                <div class="col-1">    <input type="submit" class="btn-danger" value="Delete" /></div>
+            </form>
         </div>
-
     </div>
-
 }

@@ -1,23 +1,31 @@
 ﻿@using Capstone.Web.Models
 @model List<Landmark>
 
-<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content" id="@*@Model*@">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalCenterTitle"></h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-            <div id="landmarkDescription"></div>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            @foreach (var land in Model)
-            {
-            <input id="addToItin" type="button" class="btn btn-primary" value="Add To Itinerary" onClick="addToItin('@(land.PlaceId)')">
-            }
+
+@foreach (var land in Model)
+{
+<div class="modal landmark-detail" id="landmark-detail-@(land.Id)" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-title-@(land.Id)"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body-@(land.Id)">
+                @*populated in main.js genmodal*@
+                <div id="landmarkDescription"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                <input id="addToItin" type="button" class="btn btn-primary" value="Add To Itinerary" onClick="addToItin('@(land.Id)')">
+
+            </div>
         </div>
     </div>
 </div>
+        }
+  
+

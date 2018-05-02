@@ -7,16 +7,17 @@ namespace Capstone.Web.Models
 {
     public class Itinerary
     {
-        public int? Id { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public DateTime CreationDate { get; set; } // private set?
         public DateTime? DepartureDate { get; set; }
         public string Description { get; set; }
         public string UserEmail { get; set; }
+    public List<string> LandmarkIds { get; set; } = new List<string>();
 
-        //public int Route { get; set; }
+    //public int Route { get; set; }
 
-        public static List<Itinerary> GetSamples()
+    public static List<Itinerary> GetSamples()
         {
       return new List<Itinerary>()
             {
