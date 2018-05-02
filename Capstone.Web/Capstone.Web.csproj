@@ -333,9 +333,6 @@
     <Content Include="Views\Landmark\PopularLandmarks.cshtml" />
     <Content Include="Views\Itinerary\MyItineraries.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
-    <Content Include="Views\Account\MockCreateItinerary.cshtml" />
-    <Content Include="Views\Account\MockMYItinerary.cshtml" />
-    <Content Include="Views\Account\PopularItineraries.cshtml" />
     <Content Include="Views\Landmark\MyItineraries.cshtml" />
     <Content Include="Views\Itinerary\Index.cshtml" />
     <None Include="Web.Debug.config">
