@@ -20,9 +20,22 @@ namespace Capstone.Web.Controllers
             this.landmarkDAL = _landmarkDAL;
             this.accountDAL = _accountDAL;
         }
-    [HttpPost]
-    public ActionResult Edit(string data)
+    [HttpGet]
+    public ActionResult EditLandmark(string value)
     {
+      //var qs = Request.Url.Query;
+      try
+      {
+        var itinId = int.Parse(Request.QueryString["itin_id"].ToString());
+        var landmarkIdArr = Request.QueryString["landmark_id"].ToString().Split(' ');
+
+        itineraryDAL.ResetLandmark_Itinerary(itinId);
+        foreach (var id in landmarkIdArr)
+        {
+          itineraryDAL.AddLandmarkToItinerary(int.Parse(id), itinId);
+        }
+      }catch(Exception e)     { }
+      
       return RedirectToAction("Index", "Itinerary");
     }
     // GET: Itinerary
