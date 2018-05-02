@@ -1,9 +1,8 @@
-﻿/* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
+﻿/************************* Map ***************/
 #map {
     height: 75vh;
 }
-/* Optional: Makes the sample page fill the window. */
+
 html, body {
     height: 100%;
     margin: 0;
@@ -87,22 +86,23 @@ html, body {
     height: 75vh;
 }
 
+/********** Landmark List Container**************/
 #landmark-list-container{
     height:100%;
     overflow-y:scroll;
 }
 
 #landmark-list-container .card{
-    max-height: 12%;
+    height: 7%;
     font-size: .2em;
 }
 
-#landmark-list-container h5 {
-    font-size: 5em;
+#landmark-list-container h5{
+    font-size: 4.2em;
 }
 
-#landmark-list-container .btn {
-    height: 1em;
+#landmark-list-container a{
+  font-size: 5em;
 }
 
 /*Place Details Form*/
