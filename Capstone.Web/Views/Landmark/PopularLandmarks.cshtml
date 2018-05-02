@@ -1,16 +1,6 @@
 ﻿@using Capstone.Web.Models
 @model List<Landmark>
-<style>
-    .img {
-        padding-bottom: 10px;
-        clear: both;
-        overflow: visible !important;
-    }
 
-    .detail {
-        display: block
-    }
-</style>
 <div class="row">
     <div class="col-6 col-md-4">
         <div class="detail">
@@ -18,38 +8,40 @@
 
                 @foreach (var landmark in Model)
                 {
-                    <div class="card">
-                        <div class="card-title">
-                            <h1>@landmark.Name</h1>
-                        </div>
-                        <div class="card-body">
-                            <h5>@landmark.Description</h5>
-                            <p class="card-text">@landmark.Address</p>
-
-                            <img src="~/Content/img/@landmark.PicName" />
-
-                        </div>
-                        <div>
-
-                            <div class="stars">
-                                @landmark.ThumbsUp
-
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>
+                    <a id="@landmark.Id"  href="@Url.Action("LandmarkDetail", "Landmark")" >
+                        <div class="card">
+                            <div class="card-title">
+                                <h1>@landmark.Name</h1>
                             </div>
-                            <div class=" thumbs">
+                            <div class="card-body">
+                                <h5>@landmark.Description</h5>
+                                <p class="card-text">@landmark.Address</p>
 
-                            </div>                          
-                            <span class="glyphicon-thumbs-up"></span>
-                            <span class="fa fa-thumbs-down"></span>
-                            <i class="glyphicon-thumbs-up"></i>
+                                <img src="~/Content/img/@landmark.PicName" />
+
+                            </div>
+                            <div>
+
+                                <div class="stars">
+                                    @landmark.ThumbsUp
+
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>
+                                    <span class="fa fa-star"></span>
+                                </div>
+                                <div class=" thumbs">
+
+                                </div>
+                                <span class="glyphicon-thumbs-up"></span>
+                                <span class="fa fa-thumbs-down"></span>
+                                <i class="glyphicon-thumbs-up"></i>
+                            </div>
                         </div>
-                    </div>
-                    <br>
+                    </a>
                 }
+                <br>
             </div>
         </div>
     </div>
