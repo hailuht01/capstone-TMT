@@ -19,7 +19,7 @@ namespace Capstone.Web.Models
         {
             get
             {
-                return Name.Trim().Replace(' ', '+');
+                return Name.Trim().Replace(' ', '-');
             }
         }
         public bool? ThumbsUp { get; set; }

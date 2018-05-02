@@ -95,6 +95,13 @@ function addToItin(idStr) {
       landmarkArr.push(idStr);
       console.log("add to itin: " + idStr + "  itin: " + activeItinIdIndex);
       console.warn(landmarkArr);
+
+      $('#itin-landmark-array-'+activeItinIdIndex).val( function(){
+          return this.value + " "+idStr
+      })
+
+
+
     } else { console.log("already in itin land:" + idStr + "  itin: " + activeItinIdIndex) }
     $('.landmark-detail').modal('hide');
 
@@ -114,11 +121,13 @@ function saveItin(activeItinId, itinArr) {
 
 }
 
-function removeLandmark(i) {
-  if (landmarkArr.length >= i - 1) {
-    landmarkArr.splice(i, 1);
-    console.log("removed landmark index= " + i);
-  }
+function removeLandmark(idStr) { // remove from value and hide div
+//var val = document.getElementById('demo').getAttribute('data-value');
+      $('#itin-landmark-array-'+activeItinIdIndex).val( function(){
+          console.log("old " + this.value + "new" + this.value.replace(idStr, ''));
+          return this.value.replace(idStr, '');
+      })
+
 }
 
 function removeItinerary(i) {
