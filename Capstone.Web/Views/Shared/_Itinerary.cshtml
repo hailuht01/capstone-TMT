@@ -23,18 +23,16 @@
     </div>
 </div>
 <br />
-
+<div class="row"></div>
 @foreach (var itin in Model.Itineraries)
 {
-    <div class="row btn-info round border" id="Itin-@itin.Id" onclick="toggleActiveItin(@itin.Id)" href="#">
-        <h3>@itin.Title</h3>created: @itin.CreationDate<br>
-        <p>@itin.Description</p>
+    <div class=" col-12 btn-info round border" id="Itin-@itin.Id" onclick="toggleActiveItin(@itin.Id)" href="#">
+        <h3>@itin.Title</h3>created: @itin.CreationDate <br>
+        <p>@itin.Description</p> <br />
 
 
         @*toggle active itin*@
-        <div style="display: none;" class="row " id="activeItin">
-
-            <div>Active Itin</div>
+        <div style="display: none;" class="row" id="activeItin">
             <ol>
                 @foreach (var l in itin.LandmarkIds)
                 {
@@ -46,12 +44,10 @@
 
 
             </ol>
-            <div class="row">
-                <form method="post" action="@Url.Action("Delete", "Itinerary")">
-                    <input type="hidden" value="@itin.Id" name="id" />
-                    <div class="col-6">    <input type="submit" class="btn-danger" value="Delete" /></div>
-                </form>
-            </div>
+            <form method="post" action="@Url.Action("Delete", "Itinerary")">
+                <input type="hidden" value="@itin.Id" name="id" />
+                <div class="col-1">    <input type="submit" class="btn-danger" value="Delete" /></div>
+            </form>
         </div>
     </div>
 }
