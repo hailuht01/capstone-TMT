@@ -27,12 +27,16 @@ namespace Capstone.Web.Controllers
       try
       {
         var itinId = int.Parse(Request.QueryString["itin_id"].ToString());
-        var landmarkIdArr = Request.QueryString["landmark_id"].ToString().Split(' ');
+        var landmarkIdStr = Request.QueryString["landmark_id"].ToString().Replace("  ", " ");
+        var landmarkIdArr = landmarkIdStr.Split(' ');
 
         itineraryDAL.ResetLandmark_Itinerary(itinId);
         foreach (var id in landmarkIdArr)
         {
-          itineraryDAL.AddLandmarkToItinerary(int.Parse(id), itinId);
+          if (int.TryParse(id, out int result))
+          {
+            itineraryDAL.AddLandmarkToItinerary(result, itinId);
+          }
         }
       }catch(Exception e)     { }
       
