@@ -56,7 +56,7 @@
         <h2>Select Landmarks to Add!</h2>
         @foreach (var land in Model.Landmarks)
     {
-        <div class="landmark-item btn-info" id="landmark-@land.Id" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId'})">
+        <div class="landmark-item btn-info" id="landmark-@land.Id" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId', id: '@land.Id'})">
             <h5>@land.Name</h5>
             @*<input type="button" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId'})" name="View Details" />*@
 

@@ -35,7 +35,7 @@ function initAutocomplete() {
     searchBox.addListener('places_changed', function () {
         var places = searchBox.getPlaces();
 
-        if (places.length == 0) {
+        if (places.length === 0) {
             return;
         }
 
@@ -57,6 +57,7 @@ function initAutocomplete() {
 
             markers.forEach(function (marker) {
                 marker.addListener('click', function (event) {
+                    
                     var request = { placeId: place.place_id };
                     service.getDetails(request, function (result, status) {
                         if (status !== google.maps.places.PlacesServiceStatus.OK) {
@@ -70,10 +71,7 @@ function initAutocomplete() {
                         $('#Address').val(result.formatted_address);
                         $('#Name').val(result.name);
                         $('#Type').val(result.types.toString());
-                    });
-
-
-                    
+                    }); 
                 });
             });
 
@@ -94,3 +92,73 @@ function initAutocomplete() {
         map.fitBounds(bounds);
     });
 }
+
+$(function () {
+
+
+    $(".edit-btn").on('click', function () {
+        //Clear
+        $("#LandmarkCreate input").val("");
+        //Set
+        $('#Latitude').val($(this).parent().parent().prev().find('.HiddenLat').val());
+        $('#Longitude').val($(this).parent().parent().prev().find('.HiddenLng').val());
+        $('#PlaceId').val($(this).parent().parent().prev().find('.HiddenPlaceId').val());
+        $('#Address').val($(this).parent().parent().prev().find('.HiddenAddress').val());
+        $('#Name').val($(this).parent().parent().prev().find('.HiddenName').val());
+        $('#Type').val($(this).parent().parent().prev().find('.HiddenType').val());
+        $('#Description').val($(this).parent().parent().prev().find('.HiddenDescription').val());
+    });
+
+    $("#LandmarkCreate").validate({
+        debug: false,
+        rules: {
+            PlaceId: {
+                required: true
+            },
+            Name: {
+                required: true
+            },
+            Address: {
+                required: true,
+            },
+            Type: {
+                required: true
+            },
+            Latitude: {
+                required: true,
+            },
+            Longitude: {
+                required: true,
+            },
+            Description: {
+                required: true,
+            }
+        },
+        messages: {
+            PlaceId: {
+                required: "Please Enter Google API Place ID."
+            },
+            Name: {
+                required: "Please Enter Landmark Name."
+            },
+            Address: {
+                required: "Please Enter An Address",
+            },
+            Type: {
+                required: "Please Enter Landmark types seperated by comma.",
+            },
+            Latitude: {
+                required: "Please Enter Latitude."
+            },
+            Longitude: {
+                required: "Please Enter Longitude"
+            },
+            Description: {
+                required: "Please Enter A Short Description."
+            }
+        },
+        errorClass: "error",
+        validClass: "valid"
+    });
+});
+

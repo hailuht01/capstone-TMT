@@ -137,17 +137,18 @@ function ShowModal(props) {
   //$('.landmark-item>').addListener('click', function () {
   // $('#landmark-detail').modal('show');
 
-  $('.landmark-detail').modal('show');
+  $(`#landmark-detail-${props.id}`).modal('show');
+    $('#landmark-detail').modal('show');
   console.log(props.placeId);
 
-  $('.modal-title').text(props.name);
-  genLandmarkModalHTML(props.placeId, props.description);
+  $("#modal-title-"+props.id).text(props.name);
+  genLandmarkModalHTML(props);
 
   //});
 }
 
-function genLandmarkModalHTML(Id, description) {
-  var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + Id + "&key=" + APIKey;
+function genLandmarkModalHTML(props) {
+  var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + props.placeId + "&key=" + APIKey;
 
   $.ajax({
     url: detailRequest,
@@ -155,7 +156,7 @@ function genLandmarkModalHTML(Id, description) {
     dataType: "text"
   })
     .done(function (data) {
-      console.log("ajax Detail placeID: " + Id);
+      console.log("ajax Detail placeID: " + props.placeId);
       json = JSON.parse(data);
       var j = json['result'];
 
@@ -178,7 +179,7 @@ function genLandmarkModalHTML(Id, description) {
       var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=" + APIKey;
 
 
-      $('.modal-body').html(`
+      $("#modal-body-"+props.id).html(`
 <div class="row">
 <div class='col-sm-12 col-6'><img src='${photoQuery}'/></div><div class='col-sm-12 col-6'><b>Departure Date ${todaysHours}</b></div>
 
@@ -187,13 +188,13 @@ function genLandmarkModalHTML(Id, description) {
 
 
 </div>
-<h5>Description:</h5><p>${description}</p>
+<h5>Description:</h5><p>${props.description}</p>
 `);
     })
 
     .fail(function (data) {
       console.error("ajax fail" + error);
-      ('.modal-body').html("Offline Error");
+      ("#modal-body-"+props.id).html("Offline Error");
     });
 }
 
