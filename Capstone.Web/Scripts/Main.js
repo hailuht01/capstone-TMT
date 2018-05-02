@@ -95,6 +95,9 @@ function addToItin(idStr) {
       landmarkArr.push(idStr);
       console.log("add to itin: " + idStr + "  itin: " + activeItinIdIndex);
       console.warn(landmarkArr);
+
+
+
     } else { console.log("already in itin land:" + idStr + "  itin: " + activeItinIdIndex) }
     $('.landmark-detail').modal('hide');
 

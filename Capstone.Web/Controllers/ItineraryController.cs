@@ -20,8 +20,11 @@ namespace Capstone.Web.Controllers
             this.landmarkDAL = _landmarkDAL;
             this.accountDAL = _accountDAL;
         }
-
-
+    [HttpPost]
+    public ActionResult Edit(string data)
+    {
+      return RedirectToAction("Index", "Itinerary");
+    }
     // GET: Itinerary
     public ActionResult Index()
     {
