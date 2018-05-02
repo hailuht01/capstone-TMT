@@ -22,14 +22,43 @@ namespace Capstone.Web.Controllers
         }
 
 
-        // GET: Itinerary
-        public ActionResult Index()
-        { 
-            return View();
-        }
+    // GET: Itinerary
+    public ActionResult Index()
+    {
+      //Default session if User isn't logged in
+      UserSession userSession = GetActiveUser();
+      FullUserModel fullUser = new FullUserModel();
 
-        // GET: Itinerary/Details/5
-        public ActionResult Details(int id)
+      if (userSession.Email != "user@citytour.com")
+      {
+        fullUser.User = accountDAL.GetUser(userSession.Email);
+        fullUser.Itineraries = itineraryDAL.GetAllItineraries(userSession.Email);
+        fullUser.Landmarks.AddRange(landmarkDAL.GetEveryLandmark());
+
+        foreach (var itin in fullUser.Itineraries)
+        {
+          var itinLandmarks = landmarkDAL.GetAllLandmarks(itin.Id);
+
+          // this needs to be all possible landmarks
+
+          foreach (var land in itinLandmarks)
+          {
+            itin.Landmarks.Add(land.PlaceId);
+          }
+        }
+      }
+      else
+      {
+        fullUser.User = accountDAL.GetUser(userSession.Email);
+        fullUser.Itineraries = Itinerary.GetSamples();
+        fullUser.Landmarks = Landmark.GetSamples();
+      }
+
+      return View(fullUser);
+    }
+
+    // GET: Itinerary/Details/5
+    public ActionResult Details(int id)
         {
             return View();
         }

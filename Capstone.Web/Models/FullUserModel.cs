@@ -9,7 +9,7 @@ namespace Capstone.Web.Models
     {
         public User User { get; set; }
         public List<Itinerary> Itineraries { get; set; }
-        public List<Landmark> Landmarks { get; set; }
+    public List<Landmark> Landmarks { get; set; } = new List<Landmark>();
 
         public FullUserModel() { }
         public FullUserModel(User user, List<Itinerary> itineraries)

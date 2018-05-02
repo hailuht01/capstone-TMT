@@ -204,11 +204,19 @@
     <Content Include="Content\img\Music Hall.jpg" />
     <Content Include="Content\img\Newport On the Levee.jpg" />
     <Content Include="Content\img\zoo.jpg" />
+    <Content Include="Content\Sample images\Cincinnati-Museum.jpg" />
+    <Content Include="Content\Sample images\Cincinnati-Zoo.jpg" />
+    <Content Include="Content\Sample images\Krohn- Conservatory.jpg" />
+    <Content Include="Content\Sample images\zoo.jpg" />
     <Content Include="Global.asax" />
     <Content Include="app.config" />
     <Content Include="obj\Debug\Capstone.Web.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\Capstone.Web.dll" />
     <Content Include="obj\Debug\Capstone.Web.pdb" />
+    <Content Include="Scripts\.idea\misc.xml" />
+    <Content Include="Scripts\.idea\modules.xml" />
+    <Content Include="Scripts\.idea\watcherTasks.xml" />
+    <Content Include="Scripts\.idea\workspace.xml" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Scripts\CreateLandmark.js" />
@@ -236,6 +244,7 @@
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <Content Include="obj\Debug\Tsc.out" />
     <Content Include="Models\PlacesModel.json" />
+    <Content Include="Scripts\.idea\Scripts.iml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -306,6 +315,11 @@
     <Content Include="Views\Landmark\PopularLandmarks.cshtml" />
     <Content Include="Views\Itinerary\MyItineraries.cshtml" />
     <Content Include="Views\Home\UserProfile.cshtml" />
+    <Content Include="Views\Account\MockCreateItinerary.cshtml" />
+    <Content Include="Views\Account\MockMYItinerary.cshtml" />
+    <Content Include="Views\Account\PopularItineraries.cshtml" />
+    <Content Include="Views\Landmark\MyItineraries.cshtml" />
+    <Content Include="Views\Itinerary\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -317,6 +331,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="fonts\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Scripts\.idea\inspectionProfiles\" />
+    <Folder Include="Views\Base\" />
+    <Folder Include="Views\Home\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

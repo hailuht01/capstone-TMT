@@ -60,12 +60,43 @@ namespace Capstone.Web.DAL
             return lastIdCreated;
         }
 
-        /// <summary>
-        /// Retrieves Landmark from DB
-        /// </summary>
-        /// <param name="id">ID of Landmark</param>
-        /// <returns>Returns a Landmark</returns>
-        public Landmark GetLandmark(int id)
+    public List<Landmark> GetEveryLandmark()
+    {
+      List<Landmark> landmarks = new List<Landmark>();
+      string getAllLandmarksSQL = "SELECT Landmark.* FROM Landmark";
+
+      try
+      {
+        using (SqlConnection conn = new SqlConnection(connectionString))
+        {
+          conn.Open();
+          SqlCommand cmd = new SqlCommand(getAllLandmarksSQL, conn);
+          SqlDataReader reader = cmd.ExecuteReader();
+
+          while (reader.Read())
+          {
+            landmarks.Add(MapLandmarkFromReader(reader));
+          }
+        }
+      }
+      catch (SqlException e)
+      {
+        Console.WriteLine("Couldn't retrieve landmark." + e.Message);
+      }
+      catch (Exception e)
+      {
+
+        Console.WriteLine("Something Went Wrong Try again later." + e.Message);
+      }
+      return landmarks;
+    }
+
+    /// <summary>
+    /// Retrieves Landmark from DB
+    /// </summary>
+    /// <param name="id">ID of Landmark</param>
+    /// <returns>Returns a Landmark</returns>
+    public Landmark GetLandmark(int id)
         {
             Landmark landmark = null;
             string getLandMarkDAL = "SELECT * FROM Landmark WHERE Id = @Id";

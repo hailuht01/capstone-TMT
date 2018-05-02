@@ -64,7 +64,7 @@ namespace Capstone.Web.Controllers
 
             Session["User.Session"] = new UserSession(user.Email, user.UserName, user.IsAdmin);
             UserSession userSession = GetActiveUser();
-            return RedirectToAction("MyItineraries", "Itinerary");
+            return RedirectToAction("Index", "Itinerary");
         }
 
         public ActionResult Register()
@@ -85,7 +85,7 @@ namespace Capstone.Web.Controllers
                     acctDAL.CreateUser(user);
                     Session["User.Session"] = new UserSession(user.Email, user.UserName, false);
                     userSession = GetActiveUser();
-                    return RedirectToAction("MyItineraries", "Itinerary");
+                    return RedirectToAction("Index", "Itinerary");
                 }
                 catch
                 {
@@ -94,7 +94,7 @@ namespace Capstone.Web.Controllers
             }
             else
             {
-                return RedirectToAction("MyItineraries", "Itinerary");
+                return RedirectToAction("Index", "Itinerary");
             }
         }
 
