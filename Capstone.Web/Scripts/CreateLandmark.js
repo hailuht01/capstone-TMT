@@ -108,5 +108,57 @@ $(function () {
         $('#Type').val($(this).parent().parent().prev().find('.HiddenType').val());
         $('#Description').val($(this).parent().parent().prev().find('.HiddenDescription').val());
     });
+
+    $("#LandmarkCreate").validate({
+        debug: false,
+        rules: {
+            PlaceId: {
+                required: true
+            },
+            Name: {
+                required: true
+            },
+            Address: {
+                required: true,
+            },
+            Type: {
+                required: true
+            },
+            Latitude: {
+                required: true,
+            },
+            Longitude: {
+                required: true,
+            },
+            Description: {
+                required: true,
+            }
+        },
+        messages: {
+            PlaceId: {
+                required: "Please Enter Google API Place ID."
+            },
+            Name: {
+                required: "Please Enter Landmark Name."
+            },
+            Address: {
+                required: "Please Enter An Address",
+            },
+            Type: {
+                required: "Please Enter Landmark types seperated by comma.",
+            },
+            Latitude: {
+                required: "Please Enter Latitude."
+            },
+            Longitude: {
+                required: "Please Enter Longitude"
+            },
+            Description: {
+                required: "Please Enter A Short Description."
+            }
+        },
+        errorClass: "error",
+        validClass: "valid"
+    });
 });
 
