@@ -13,7 +13,7 @@ namespace Capstone.Web.Models
         public DateTime? DepartureDate { get; set; }
         public string Description { get; set; }
         public string UserEmail { get; set; }
-    public List<string> Landmarks { get; set; } = new List<string>();
+    public List<string> LandmarkIds { get; set; } = new List<string>();
 
     //public int Route { get; set; }
 

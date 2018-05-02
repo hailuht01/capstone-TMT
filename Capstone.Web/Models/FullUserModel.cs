@@ -16,6 +16,17 @@ namespace Capstone.Web.Models
         {
             User = user;
             Itineraries = itineraries;
-        }
     }
+    public Landmark GetByPlaceId(string placeId)
+    {
+      foreach (var land in Landmarks)
+      {
+        if (land.PlaceId == placeId)
+        {
+          return land;
+        }
+      }
+      return null;
+    }
+  }
 }

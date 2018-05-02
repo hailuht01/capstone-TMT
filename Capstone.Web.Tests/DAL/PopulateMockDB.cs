@@ -27,7 +27,7 @@ namespace Capstone.Web.Tests.DAL
                 CreationDate = DateTime.Now,
                 DepartureDate = DateTime.Now.AddDays(3),
                 Description = "This is a mock (admin) Itinerary!",
-                UserEmail = "Admin@citytour.com"
+                UserEmail = "admin@citytour.com"
             });
 
             //Test Itinerary Creation
