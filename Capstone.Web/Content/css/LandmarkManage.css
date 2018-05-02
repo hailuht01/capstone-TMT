@@ -48,11 +48,11 @@ html, body {
     padding: 5px 11px;
 }
 
-    .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-    }
+.pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+}
 
 #pac-input {
     background-color: #fff;
@@ -65,9 +65,9 @@ html, body {
     width: 400px;
 }
 
-    #pac-input:focus {
-        border-color: #4d90fe;
-    }
+#pac-input:focus {
+    border-color: #4d90fe;
+}
 
 #title {
     color: #fff;
@@ -93,7 +93,7 @@ html, body {
 }
 
 #landmark-list-container .card{
-    height: 7%;
+    height: 10%;
     font-size: .2em;
 }
 

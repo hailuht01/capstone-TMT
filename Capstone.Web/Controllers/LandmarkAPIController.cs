@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Capstone.Web.DAL;
+using Capstone.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,6 +11,12 @@ namespace Capstone.Web.Controllers
 {
     public class LandmarkAPIController : ApiController
     {
+        ILandmarkDAL landmarkDAL;
+        public LandmarkAPIController(ILandmarkDAL _landmarkDAL)
+        {
+            this.landmarkDAL = _landmarkDAL;
+        }
+
         // GET api/<controller>
         public IEnumerable<string> Get()
         {
@@ -23,9 +31,16 @@ namespace Capstone.Web.Controllers
 
         // POST api/<controller>
         [HttpPost]
-        [Route("api/Marker/add")]
-        public void Post([FromBody]string value)
+        [Route("api/Landmark/add")]
+        public HttpResponseMessage Post(Landmark landmark)
         {
+            
+
+            if ( !(landmarkDAL.CreateLandmark(landmark) > 0) )
+            {
+                return Request.CreateResponse(HttpStatusCode.ExpectationFailed);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // PUT api/<controller>/5
@@ -34,11 +49,8 @@ namespace Capstone.Web.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete]
-        [Route("api/Marker/delete")]
         public void Delete(int id)
         {
-
         }
     }
 }

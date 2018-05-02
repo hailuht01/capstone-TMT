@@ -1,4 +1,4 @@
-﻿
+﻿var WEBAPI_BASE_URL = "http://localhost:55601/api/";
 
 // This example adds a search box to a map, using the Google Place Autocomplete
 // feature. People can enter geographical searches. The search box will return a
