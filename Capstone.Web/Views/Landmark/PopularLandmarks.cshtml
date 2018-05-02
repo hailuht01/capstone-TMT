@@ -8,40 +8,44 @@
 
                 @foreach (var landmark in Model)
                 {
-                    <a id="@landmark.Id"  href="@Url.Action("LandmarkDetail", "Landmark")" >
-                        <div class="card">
-                            <div class="card-title">
-                                <h1>@landmark.Name</h1>
-                            </div>
-                            <div class="card-body">
-                                <h5>@landmark.Description</h5>
-                                <p class="card-text">@landmark.Address</p>
-
-                                <img src="~/Content/img/@landmark.PicName" />
-
-                            </div>
-                            <div>
-
-                                <div class="stars">
-                                    @landmark.ThumbsUp
-
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
+                    <form  method="GET" action="@Url.Action("LandmarkDetail", "Landmark")">
+                   <input type="submit"  value="id=@landmark.Id"/>
+                            <div class="card" >
+                                <div class="card-title">
+                                    <h1>@landmark.Name</h1>
                                 </div>
-                                <div class=" thumbs">
+                                <div class="card-body">
+                                    <h5>@landmark.Description</h5>
+                                    <p class="card-text">@landmark.Address</p>
+
+                                    <img src="~/Content/img/@landmark.PicName" />
 
                                 </div>
-                                <span class="glyphicon-thumbs-up"></span>
-                                <span class="fa fa-thumbs-down"></span>
-                                <i class="glyphicon-thumbs-up"></i>
+                                <div>
+
+                                    <div class="stars">
+                                        @landmark.ThumbsUp
+
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>
+                                        <span class="fa fa-star"></span>
+                                    </div>
+                                    <div class=" thumbs">
+
+                                    </div>
+                                    <span class="glyphicon-thumbs-up"></span>
+                                    <span class="fa fa-thumbs-down"></span>
+                                    <i class="glyphicon-thumbs-up"></i>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        
+                 
+
+                        <br>
+                    </form>
                 }
-                <br>
             </div>
         </div>
     </div>
