@@ -55,23 +55,28 @@ function initAutocomplete() {
             
             service = new google.maps.places.PlacesService(map);
 
+            function GetLandmarkDetail(event) {
+                var focusedPlace = places.filter(function (place) { return place.geometry.location == event.latLng });
+                console.log(focusedPlace[0].place_id);
+                var request = { placeId: focusedPlace[0].place_id };
+                service.getDetails(request, function (result, status) {
+                    if (status !== google.maps.places.PlacesServiceStatus.OK) {
+                        console.error(status);
+                        return;
+                    }
+                    $("#LandmarkCreate input").val("");
+                    $('#Latitude').val(event.latLng.lat);
+                    $('#Longitude').val(event.latLng.lng);
+                    $('#PlaceId').val(result.place_id);
+                    $('#Address').val(result.formatted_address);
+                    $('#Name').val(result.name);
+                    $('#Type').val(result.types.toString());
+                }); 
+            }
+
             markers.forEach(function (marker) {
                 marker.addListener('click', function (event) {
-                    
-                    var request = { placeId: place.place_id };
-                    service.getDetails(request, function (result, status) {
-                        if (status !== google.maps.places.PlacesServiceStatus.OK) {
-                            console.error(status);
-                            return;
-                        }
-                        $("#LandmarkCreate input").val("");
-                        $('#Latitude').val(event.latLng.lat);
-                        $('#Longitude').val(event.latLng.lng);
-                        $('#PlaceId').val(result.place_id);
-                        $('#Address').val(result.formatted_address);
-                        $('#Name').val(result.name);
-                        $('#Type').val(result.types.toString());
-                    }); 
+                    GetLandmarkDetail(event);
                 });
             });
 

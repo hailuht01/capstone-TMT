@@ -4,72 +4,72 @@
     <link href="~/Content/css/register-login.css" rel="stylesheet" />
 }
 
+@section HeaderBottom{
+    <div id="landingCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#landlingCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#landlingCarousel" data-slide-to="1"></li>
+            <li data-target="#landlingCarousel" data-slide-to="2"></li>
+            <li data-target="#landlingCarousel" data-slide-to="3"></li>
+            <li data-target="#landlingCarousel" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <img src="~/Content/img/Cincinnati-Museum1.jpg" class="loginImg" />
+                <div class="carousel-caption">
+                    <h1>Cincinnati Museum Center</h1>
+                    <p>what a nice place to visit!</p>
+                    <p>
+                        <a class="btn btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
+                    </p>
+                </div>
+            </div>
 
-<div id="landingCarousel" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-        <li data-target="#landlingCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#landlingCarousel" data-slide-to="1"></li>
-        <li data-target="#landlingCarousel" data-slide-to="2"></li>
-        <li data-target="#landlingCarousel" data-slide-to="3"></li>
-        <li data-target="#landlingCarousel" data-slide-to="4"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active">
-            <img src="~/Content/img/Cincinnati-Museum1.jpg" class="loginImg" />
-            <div class="carousel-caption">
-                <h1>Cincinnati Museum Center</h1>
-                <p>what a nice place to visit!</p>
-                <p>
-                    <a class="btn btn-lg btn-primary d-block img-fluid" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
-                </p>
+            <div class="carousel-item">
+                <img src="~/Content/img/Fountain Square.jpg" class="loginImg img-fluid" />
+                <div class="carousel-caption">
+                    <h1>Fountain Square</h1>
+                    <p>baby, if you've ever wondered whatever became of me...</p>
+                    <p>
+                        <a class="btn btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <img src="~/Content/img/Krohn-Conservatory.jpg" class="loginImg img-fluid" />
+                <div class="carousel-caption">
+                    <h1>Krohn Conservatory</h1>
+                    <p>flowers and cactus and butterflies, oh my!</p>
+                    <p>
+                        <a class="btn btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/Content/img/Music Hall.jpg" class="loginImg img-fluid" />
+                <div class="carousel-caption">
+                    <h1>Cincinnati Music Hall</h1>
+                    <p>Queen City Rocks, Rolls and Symphonizes...</p>
+                    <p>
+                        <a class="btn btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
+                    </p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="~/Content/img/Newport On the Levee.jpg" class="loginImg img-fluid" />
+                <div class="carousel-caption">
+                    <h1>Newport On the Levee</h1>
+                    <p>over the river and through the woods...</p>
+                    <p>
+                        <a class="btn btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
+                    </p>
+                </div>
             </div>
         </div>
 
-        <div class="carousel-item">
-            <img src="~/Content/img/Fountain Square.jpg" class="loginImg img-fluid" />
-            <div class="carousel-caption">
-                <h1>Fountain Square</h1>
-                <p>baby, if you've ever wondered whatever became of me...</p>
-                <p>
-                    <a class="btn btn-lg btn-primary d-block" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
-                </p>
-            </div>
-        </div>
-
-        <div class="carousel-item">
-            <img src="~/Content/img/Krohn-Conservatory.jpg" class="loginImg img-fluid" />
-            <div class="carousel-caption">
-                <h1>Krohn Conservatory</h1>
-                <p>flowers and cactus and butterflies, oh my!</p>
-                <p>
-                    <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
-                </p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="~/Content/img/Music Hall.jpg" class="loginImg img-fluid" />
-            <div class="carousel-caption">
-                <h1>Cincinnati Music Hall</h1>
-                <p>Queen City Rocks, Rolls and Symphonizes...</p>
-                <p>
-                    <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
-                </p>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <img src="~/Content/img/Newport On the Levee.jpg" class="loginImg img-fluid" />
-            <div class="carousel-caption">
-                <h1>Newport On the Levee</h1>
-                <p>over the river and through the woods...</p>
-                <p>
-                    <a class="btn btn-lg btn-primary" role="button" href="@Url.Action("Register", "Home")">Click here to get started!</a>
-                </p>
-            </div>
-        </div>
     </div>
-
-</div>
-
+}
 
 <div class="container">
     <div class="row">

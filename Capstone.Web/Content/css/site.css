@@ -1,6 +1,7 @@
-﻿html{
+﻿html {
     height: 100%;
 }
+
 body {
     box-sizing: border-box;
     background-color: aliceblue;
@@ -11,9 +12,10 @@ body {
 header .navbar {
     background-color: #11BFC1;
     height: 100px;
+    color: floralwhite;
 }
 
-header .navbar img {
+    header .navbar img {
         height: auto;
         width: 4.2em;
     }
@@ -58,16 +60,18 @@ footer {
 
 
 footer .list-inline {
-        text-align: left;
-        display: inline-block;
- }
+    text-align: left;
+    display: inline-block;
+}
 
 .container-fluid {
     margin-bottom: 100px !important;
 }
+
 .footer i {
     padding-left: 1rem;
 }
+
 a {
     text-decoration: none;
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -48,6 +49,10 @@ namespace Capstone.Web.Controllers
                 }
                 return RedirectToAction("Create", landmarks);
             }
+            catch(SqlException)
+            {
+                return View("Update", landmark);
+            }
             catch
             {
                 landmarks = landmarkDAL.GetAllLandmarks();
@@ -94,6 +99,21 @@ namespace Capstone.Web.Controllers
                 //Set Error Message
             }
             return View("Create", landmarks);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Landmark landmark)
+        {
+            try
+            {
+                landmarkDAL.UpdateLandmark(landmark);
+            }
+            catch (Exception e)
+            {
+                //Set Error Message
+                Console.WriteLine("Landmark wasn't updated" + e.Message);
+            }
+            return RedirectToAction("Create", "Landmark");
         }
     }
 }

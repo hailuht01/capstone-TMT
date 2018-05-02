@@ -7,6 +7,7 @@
 @section topJS{
     <script src="~/Scripts/CreateLandmark.js"></script>
 }
+<h1 class="text-center">Manage Landmarks</h1>
 <div id="main-container" class="row pt-5">
     <div id="landmark-list-container" class="col-md-3">
         <h3 class="text-left">Landmarks</h3>
@@ -16,7 +17,7 @@
                 <div class="row text-center">
                     <div class="col">
                         <h5 class="card-title">@landmark.Name</h5>
-                       @*Hidden Fields*@
+                        @*Hidden Fields*@
                         <input class="HiddenPlaceId" type="hidden" value="@landmark.PlaceId" />
                         <input class="HiddenName" type="hidden" value="@landmark.Name" />
                         <input class="HiddenAddress" type="hidden" value="@landmark.Address" />
@@ -34,7 +35,7 @@
                         <form id="DeleteLandmark" action="@Url.Action("Delete", "Landmark",new { Id = landmark.PlaceId })" method="Post">
                             <button form="DeleteLandmark" class="delete-btn text-danger  text-center">Delete</button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
@@ -89,7 +90,15 @@
 
 <!------Body-->
 @section BottomJS{
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ&libraries=places&callback=initAutocomplete"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHVLyGpS7gzpWIKhF-1J8fZ4aNmmtjot8&libraries=places&callback=initAutocomplete"
             async defer></script>
 }
 
+
+
+<!--
+AIzaSyBHVLyGpS7gzpWIKhF-1J8fZ4aNmmtjot8
+-->
+<!--
+AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ
+-->
