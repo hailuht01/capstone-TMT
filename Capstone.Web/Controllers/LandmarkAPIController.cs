@@ -18,29 +18,21 @@ namespace Capstone.Web.Controllers
         }
 
         // GET api/<controller>
-        public IEnumerable<string> Get()
+        public Landmark Get()
         {
-            return new string[] { "value1", "value2" };
+            return new Landmark() { };
         }
 
         // GET api/<controller>/5
-        public string Get(int id)
+        [Route("api/Landmark/id")]
+        public Landmark Get(string id)
         {
-            return "value";
+            return landmarkDAL.GetLandmark(id);
         }
 
         // POST api/<controller>
-        [HttpPost]
-        [Route("api/Landmark/add")]
-        public HttpResponseMessage Post(Landmark landmark)
+        public void Post([FromBody]string value)
         {
-            
-
-            if ( !(landmarkDAL.CreateLandmark(landmark) > 0) )
-            {
-                return Request.CreateResponse(HttpStatusCode.ExpectationFailed);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         // PUT api/<controller>/5

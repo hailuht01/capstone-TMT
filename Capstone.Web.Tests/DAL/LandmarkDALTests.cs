@@ -28,7 +28,6 @@ namespace Capstone.Web.Tests.DAL
                 Description = "The second oldest Zoo in the United States. Wide variety of animal collection.The Zoo was founded on 65 acres in the middle of the city, and since then has acquired some of the surrounding blocks and several reserves in Cincinnati’s suburbs.",
                 Latitude = 39.144573,
                 Longtiude = -84.508617,
-                PicName = "Cincinnati-Zoo.jpg",
                 Type = "Attraction",
                 ThumbsUp = true
             };
@@ -84,8 +83,8 @@ namespace Capstone.Web.Tests.DAL
             //Create itinerary & Save To DB
             int itnID = new ItineraryDAL(connectionString).CreateItinerary(new Itinerary(1,"Sample Itinerary", DateTime.Now.AddDays(1), "This is a test description", "Admin@CityTour.com"));
             //Create Landmarks
-            Landmark fSquare = new Landmark("00002", "Fountain Square", " 520 Vine St, Cincinnati, OH 45202", "Fountain Square is the city square; features many shops, restaurants, hotels, and offices.", 39.101789, -84.512794, "Fountain-Square.jpg", true, "Attraction");
-            Landmark newport = new Landmark("00003", "Newport On the Levee", "1 Levee Way, Newport, KY 41071", "Newport on the Levee is a premier dining and attraction destination!", 39.094690, -84.496364, "Newport-On-the-Levee.jpg", true, "Attraction");
+            Landmark fSquare = new Landmark("00002", "Fountain Square", " 520 Vine St, Cincinnati, OH 45202", "Fountain Square is the city square; features many shops, restaurants, hotels, and offices.", 39.101789, -84.512794, true, "Attraction");
+            Landmark newport = new Landmark("00003", "Newport On the Levee", "1 Levee Way, Newport, KY 41071", "Newport on the Levee is a premier dining and attraction destination!", 39.094690, -84.496364, true, "Attraction");
             //Add Landmarks to DB
             int fSquareId = testLandmarkDAL.CreateLandmark(fSquare);
             int newportID = testLandmarkDAL.CreateLandmark(newport);
@@ -110,7 +109,7 @@ namespace Capstone.Web.Tests.DAL
             //Create itinerary & Save To DB
             int itnID = new ItineraryDAL(connectionString).CreateItinerary(new Itinerary(1,"Sample Itinerary", DateTime.Now.AddDays(1), "This is a test description", "Admin@CityTour.com"));
             //Create Landmarks
-            Landmark fSquare = new Landmark("00002", "Fountain Square", " 520 Vine St, Cincinnati, OH 45202", "Fountain Square is the city square; features many shops, restaurants, hotels, and offices.", 39.101789, -84.512794, "Fountain-Square.jpg", true, "Attraction");
+            Landmark fSquare = new Landmark("00002", "Fountain Square", " 520 Vine St, Cincinnati, OH 45202", "Fountain Square is the city square; features many shops, restaurants, hotels, and offices.", 39.101789, -84.512794, true, "Attraction");
             //Add Landmarks to DB
             int fSquareId = testLandmarkDAL.CreateLandmark(fSquare);
             //Add Landmark to Itinerary
