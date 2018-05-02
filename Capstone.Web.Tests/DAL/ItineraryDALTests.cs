@@ -81,7 +81,7 @@ namespace Capstone.Web.Tests.DAL
                 "The second oldest Zoo in the United States. Wide variety of animal collection. " +
                 "The Zoo was founded on 65 acres in the middle of the city, and since then has acquired " +
                 "some of the surrounding blocks and several reserves in Cincinnati’s suburbs.",
-                39.144573, -84.508617, "Cincinnati-Zoo.jpg", true, "Zoo");
+                39.144573, -84.508617, true, "Zoo");
 
         }
 

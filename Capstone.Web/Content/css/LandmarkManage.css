@@ -1,7 +1,4 @@
 ﻿/************************* Map ***************/
-#map {
-    height: 75vh;
-}
 
 html, body {
     height: 100%;
@@ -82,8 +79,16 @@ html, body {
 }
 
 
-#map-container {
-    height: 75vh;
+/***Map***/
+#map {
+    height: 100%;
+}
+#main-container {
+    height: 70vh;
+}
+
+#map-container{
+    height: 100%;
 }
 
 /********** Landmark List Container**************/
@@ -92,8 +97,12 @@ html, body {
     overflow-y:scroll;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
 #landmark-list-container .card{
-    height: 10%;
+    min-height: 10%;
     font-size: .2em;
 }
 
@@ -101,7 +110,7 @@ html, body {
     font-size: 4.2em;
 }
 
-#landmark-list-container a{
+#landmark-list-container button{
   font-size: 5em;
 }
 
@@ -109,4 +118,8 @@ html, body {
 #place-detail-form {
     height: 100%;
     overflow-y: scroll;
+}
+
+#LandmarkCreate{
+    height:100%;
 }

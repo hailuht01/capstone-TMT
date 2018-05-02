@@ -35,17 +35,23 @@ namespace Capstone.Web.Controllers
 
         // POST: Itinerary/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Landmark landmark)
         {
+            List<Landmark> landmarks = null;
             try
             {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
+                if ( !(landmarkDAL.CreateLandmark(landmark) > 0) )
+                {
+                    //Set Error MEssage
+                    landmarks = landmarkDAL.GetAllLandmarks();
+                }
+                return RedirectToAction("Create", landmarks);
             }
             catch
             {
-                return View();
+                landmarks = landmarkDAL.GetAllLandmarks();
+                return View("Create", landmarks);
             }
         }
 
@@ -64,6 +70,30 @@ namespace Capstone.Web.Controllers
             Landmark landmark = landmarkDAL.GetLandmark(Id);
 
             return View(landmark);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(string Id)
+        {
+            List<Landmark> landmarks = landmarkDAL.GetAllLandmarks();
+            try
+            {
+                if (!landmarkDAL.DeleteLandmark(Id))
+                {
+                    //Set Failure Notificaton
+                    Console.WriteLine("Failure");
+                    return View("Create", landmarks);
+                }
+
+                //Get Fresh landmarks
+                landmarks = landmarkDAL.GetAllLandmarks();
+                Console.WriteLine("Success");
+            }
+            catch (Exception)
+            {
+                //Set Error Message
+            }
+            return View("Create", landmarks);
         }
     }
 }
