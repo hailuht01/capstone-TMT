@@ -68,3 +68,14 @@ footer .list-inline {
 .footer i {
     padding-left: 1rem;
 }
+a {
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: none;
+    }
+
+.detail img {
+    width: 100%;
+}
