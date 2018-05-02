@@ -197,6 +197,7 @@
     <Content Include="bin\System.Web.Webpages.xml" />
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="citytour.sql" />
+    <Content Include="Content\ABout.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\LandmarkManage.css" />
@@ -211,10 +212,13 @@
     <Content Include="Content\img\Cincinnati-Zoo1.jpg" />
     <Content Include="Content\img\FionaBaby.png" />
     <Content Include="Content\img\Fountain Square.jpg" />
+    <Content Include="Content\img\Fountain-Square.jpg" />
     <Content Include="Content\img\Johnny_Bravo.png" />
     <Content Include="Content\img\Krohn-Conservatory.jpg" />
     <Content Include="Content\img\Logo %2811%29.jpg" />
+    <Content Include="Content\img\Music-Hall.jpg" />
     <Content Include="Content\img\Music Hall.jpg" />
+    <Content Include="Content\img\Newport-On-the-Levee.jpg" />
     <Content Include="Content\img\Newport On the Levee.jpg" />
     <Content Include="Content\img\zoo.jpg" />
     <Content Include="Global.asax" />
