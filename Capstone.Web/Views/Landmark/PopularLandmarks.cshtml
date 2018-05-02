@@ -19,37 +19,39 @@
                 @foreach (var landmark in Model)
                 {
                     <div class="card">
-                        <div class="card-title">                           
-                                <h1>@landmark.Name</h1>                         
+                        <div class="card-title">
+                            <h1>@landmark.Name</h1>
                         </div>
                         <div class="card-body">
                             <h5>@landmark.Description</h5>
                             <p class="card-text">@landmark.Address</p>
 
-                            <img src="~/Content/img/@(landmark.PicName).jpg" />
-                            <img src="~/Content/img/Cincinnati-Museum.jpg" />
-                            <img src="~/Content/img/Cincinnati-Museum.jpg" />
+                            <img src="~/Content/img/@landmark.PicName" />
+
                         </div>
+                        <div>
 
+                            <div class="stars">
+                                @landmark.ThumbsUp
+
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <div class=" thumbs">
+
+                            </div>                          
+                            <span class="glyphicon-thumbs-up"></span>
+                            <span class="fa fa-thumbs-down"></span>
+                            <i class="glyphicon-thumbs-up"></i>
+                        </div>
                     </div>
+                    <br>
                 }
-            </div>
-
-            <div class="stars">
-                @*@Model.Rating*@
-
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-            </div>
-            <div class=" thumbs">
-
-                <span class="glyphicon-thumbs-up"></span>
-                <span class="fa fa-thumbs-down"></span>
-                <i class="glyphicon-thumbs-up"></i>
             </div>
         </div>
     </div>
 </div>
+

@@ -73,22 +73,18 @@
         </nav>
 
     </header>
-    <div class="container-fluid">
-        @RenderBody()
+    <div class="page-wrap">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
     </div>
-
     @RenderSection("BottomJS", false)
-    <footer class="footer">
+    <footer class="footer site-footer">
         <ul class="list-inline ">
             <li>
-                <i class="fa fa-home"></i>1776 Mentor Ave Suite 355, Cincinnati, OH 45212
-            </li>
-            <li>
-                <i class="fa fa-phone">(800)000-0000</i>
-            </li>
-
-            <li>
-                <i class="fa fa-envelope-o">citytour@gmail.com</i>
+                <i class="fa fa-home"></i> 1776 Mentor Ave Suite 355, Cincinnati, OH 45212
+                <i class="fa fa-phone"> (800) 000-0000</i>
+                <i class="fa fa-envelope-o" >citytour@gmail.com</i>
             </li>
         </ul>
     </footer>
