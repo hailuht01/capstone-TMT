@@ -46,11 +46,16 @@
             </ol>
             <form method="post" action="@Url.Action("Delete", "Itinerary")">
                 <input type="hidden" value="@itin.Id" name="id" />
-                <div class="col-1">    <input type="submit" class="btn-danger" value="Delete" /></div>
+                <div class="col-1">    
+                <input type="submit" class="btn-danger" value="Delete" />
+                </div>
             </form>
-            <form method="post" action="@Url.Action("Edit", "Itinerary")">
-                <input id="edit-landmark-@itin.Id" type="hidden" value="@itin.Id" name="id" />
-                <div class="col-1">    <input type="submit" class="btn-success" value="Save" /></div>
+            <form method="get" action="@Url.Action("EditLandmark", "Itinerary")">
+                <input id="edit-landmark-itinid-@itin.Id" type="hidden" value="@itin.Id" name="itin_id" />
+                <input id="landmark_array" type="hidden" value="15 13 11" name="landmark_id" />
+                <div class="col-1">
+                    <input type="submit" class="btn-success" value="Save" />
+                </div>
             </form>
         </div>
     </div>
