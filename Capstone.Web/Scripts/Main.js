@@ -9,6 +9,7 @@ var prevItinIdIndex;
 $("document").ready(function () {
   initMap();
   $('#createItinForm').hide();
+    $('#landmark-list').hide();
 
 });
 
