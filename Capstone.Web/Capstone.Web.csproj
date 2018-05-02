@@ -183,6 +183,7 @@
     <Content Include="bin\System.Web.Webpages.xml" />
     <Content Include="bin\WebActivatorEx.dll" />
     <Content Include="citytour.sql" />
+    <Content Include="Content\ABout.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\Home.css" />
     <Content Include="Content\css\LandmarkCreate.css" />
