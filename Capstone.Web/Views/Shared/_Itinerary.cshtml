@@ -48,6 +48,10 @@
                 <input type="hidden" value="@itin.Id" name="id" />
                 <div class="col-1">    <input type="submit" class="btn-danger" value="Delete" /></div>
             </form>
+            <form method="post" action="@Url.Action("Edit", "Itinerary")">
+                <input id="edit-landmark-@itin.Id" type="hidden" value="@itin.Id" name="id" />
+                <div class="col-1">    <input type="submit" class="btn-success" value="Save" /></div>
+            </form>
         </div>
     </div>
 }
