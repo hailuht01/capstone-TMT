@@ -25,8 +25,8 @@ namespace Capstone.Web.DAL
         public int CreateLandmark(Landmark landmark)
         {
             int lastIdCreated = 0;
-            string AddLandmarkDAL = "INSERT INTO Landmark (PlaceId, Latitude, Longitude, Name, Description, Address, PicName, ThumbsUp, Type) " +
-                "VALUES (@PlaceId, @Lat, @Lng, @Name, @Description, @Address, @PicName, @ThumbsUp, @Type);";
+            string AddLandmarkDAL = "INSERT INTO Landmark (PlaceId, Latitude, Longitude, Name, Description, Address, Type) " +
+                "VALUES (@PlaceId, @Lat, @Lng, @Name, @Description, @Address, @Type);";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -39,8 +39,6 @@ namespace Capstone.Web.DAL
                     cmd.Parameters.AddWithValue("@Name", landmark.Name);
                     cmd.Parameters.AddWithValue("@Description", landmark.Description);
                     cmd.Parameters.AddWithValue("@Address", landmark.Address);
-                    cmd.Parameters.AddWithValue("@PicName", landmark.PicName);
-                    cmd.Parameters.AddWithValue("@ThumbsUp", landmark.ThumbsUp);
                     cmd.Parameters.AddWithValue("@Type", landmark.Type);
                     lastIdCreated = (int)cmd.ExecuteScalar();
                 }
@@ -219,7 +217,7 @@ namespace Capstone.Web.DAL
         {
             bool wasSuccessful = false;
             string UpdateLandmarkSQL = "UPDATE Landmark SET [Latitude] = @Lat, [Longitude] = @Lng, [Name] = @Name," +
-                "[Description] = @Description, [address] = @address, [PicName] = @PicName, [ThumbsUp] = @ThumbsUp, [Type] = @Type WHERE PlaceId = @PlaceId";
+                "[Description] = @Description, [address] = @address, [ThumbsUp] = @ThumbsUp, [Type] = @Type WHERE PlaceId = @PlaceId";
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -231,7 +229,6 @@ namespace Capstone.Web.DAL
                     cmd.Parameters.AddWithValue("@Name", landmark.Name);
                     cmd.Parameters.AddWithValue("@Description", landmark.Description);
                     cmd.Parameters.AddWithValue("@address", landmark.Address);
-                    cmd.Parameters.AddWithValue("@PicName", landmark.PicName);
                     cmd.Parameters.AddWithValue("@ThumbsUp", landmark.ThumbsUp);
                     cmd.Parameters.AddWithValue("@Type", landmark.Type);
                     cmd.Parameters.AddWithValue("@PlaceId", landmark.PlaceId);
@@ -333,7 +330,6 @@ namespace Capstone.Web.DAL
                 Name = Convert.ToString(reader["Name"]),
                 Description = Convert.ToString(reader["Description"]),
                 Address = Convert.ToString(reader["Address"]),
-                PicName = Convert.ToString(reader["PicName"]),
                 ThumbsUp = Convert.ToString(reader["ThumbsUp"]) == "1" ? true : false,
             };
             return landmark;

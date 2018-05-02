@@ -13,15 +13,28 @@
         @foreach (var landmark in Model)
         {
             <div class="card p-2" style="width: 100%;">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="row text-center">
+                    <div class="col">
                         <h5 class="card-title">@landmark.Name</h5>
+                       @*Hidden Fields*@
+                        <input class="HiddenPlaceId" type="hidden" value="@landmark.PlaceId" />
+                        <input class="HiddenName" type="hidden" value="@landmark.Name" />
+                        <input class="HiddenAddress" type="hidden" value="@landmark.Address" />
+                        <input class="HiddenType" type="hidden" value="@landmark.Type" />
+                        <input class="HiddenLat" type="hidden" value="@landmark.Latitude" />
+                        <input class="HiddenLng" type="hidden" value="@landmark.Longtiude" />
+                        <input class="HiddenDescription" type="hidden" value="@landmark.Description">
                     </div>
-                    <div class="col-md-3 px-2">
-                        <a class="text-success text-center">Edit</a>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-6 px-2">
+                        <button class="edit-btn text-success text-center">Edit</button>
                     </div>
-                    <div class="col-md-3 px-2">
-                        <a class="text-danger  text-center">Delete</a>
+                    <div class="col-md-6 px-2">
+                        <form id="DeleteLandmark" action="@Url.Action("Delete", "Landmark",new { Id = landmark.PlaceId })" method="Post">
+                            <button form="DeleteLandmark" class="delete-btn text-danger  text-center">Delete</button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -66,7 +79,7 @@
                         <label for="Description">Description</label>
                         <textarea id="Description" class="form-control" type="text" name="Description" value=""></textarea>
                     </div>
-                    <input type="submit" value="Save" class="btn btn-info btn-block" />
+                    <input id="SaveLandmark" type="submit" value="Save" class="btn btn-info btn-block" />
                 </form>
 
             </div>
