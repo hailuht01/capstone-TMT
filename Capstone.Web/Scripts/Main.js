@@ -4,6 +4,7 @@ var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
 var landmarkArr = [];
 var activeItinIdIndex;
 var prevItinIdIndex;
+var mapToggle=true;
 
 
 $("document").ready(function () {
@@ -60,13 +61,83 @@ function AddMarker(props) {
 
   //Add Modal Detail
   marker.addListener('click', function () {
-    $('.landmark-detail').modal('show');
+    $('#landmark-detail-' + props.id).modal('show');
     console.log(props.placeId);
 
     $('.modal-title').text(props.name);
-    genLandmarkModalHTML(props.placeId, props.description);
+    showModal(props);
+    //genLandmarkModalHTML(props.placeId, props.description);
 
   });
+}
+
+
+function ShowModal(props) {
+
+    //Add Modal Detail
+
+    //$('.landmark-item>').addListener('click', function () {
+    // $('#landmark-detail').modal('show');
+
+    $(`#landmark-detail-${props.id}`).modal('show');
+    $('#landmark-detail').modal('show');
+    console.log(props.placeId);
+
+    $("#modal-title-"+props.id).text(props.name);
+    genLandmarkModalHTML(props);
+
+    //});
+}
+
+function genLandmarkModalHTML(props) {
+    var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + props.placeId + "&key=" + APIKey;
+
+    $.ajax({
+        url: detailRequest,
+        type: "GET",
+        dataType: "text"
+    })
+        .done(function (data) {
+            console.log("ajax Detail placeID: " + props.placeId);
+            json = JSON.parse(data);
+            var j = json['result'];
+
+
+            var website = j.website;  // html var
+            var phone = j.formatted_phone_number;
+            //phone = (phone == "undefined") ? "No Phone Number" : phone;
+            var now = new Date();
+            var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            var day = days[now.getDay()];
+
+            var todaysHours; // html var
+            try {
+                todaysHours = j.opening_hours['weekday_text'][days.indexOf(day)];
+            } catch (Exception) { console.warn("no open time for this place") }
+
+
+            var photoReference = j['photos'][0].photo_reference;
+
+            var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=" + APIKey;
+
+
+            $("#modal-body-"+props.id).html(`
+<div class="row">
+<div class='col-sm-12 col-6'><img src='${photoQuery}'/></div><div class='col-sm-12 col-6'><b>Departure Date ${todaysHours}</b></div>
+
+<div class='col-sm-6 col-6'><b>${phone}</b></div> <div class='col-sm-6 col-3'><h5><a href='${website}' target="_blank">Website</a></h5></div>
+
+
+
+</div>
+<h5>Description:</h5><p>${props.description}</p>
+`);
+        })
+
+        .fail(function (data) {
+            console.error("ajax fail" + error);
+            ("#modal-body-"+props.id).html("Offline Error");
+        });
 }
 
 
@@ -82,9 +153,25 @@ function toggleActiveItin(itinId) {
 
   prevItinIdIndex = activeItinIdIndex;
 
-  $('#map-container').hide();
-  $('#landmark-list').show();
+}
 
+function toggleMap(){
+    var hide='';
+    var show='';
+
+        if(mapToggle) {
+             hide = '#map-container';
+             show = '#landmark-list';
+             mapToggle=false;
+        }
+        else{
+             hide = '#landmark-list';
+             show = '#map-container';
+             mapToggle=true;
+        }
+
+    $(hide).hide();
+    $(show).show();
 }
 
 function addToItin(idStr, name) {
@@ -142,73 +229,6 @@ function removeItinerary(i) {
   }
 }
 
-function ShowModal(props) {
-
-  //Add Modal Detail
-
-  //$('.landmark-item>').addListener('click', function () {
-  // $('#landmark-detail').modal('show');
-
-  $(`#landmark-detail-${props.id}`).modal('show');
-    $('#landmark-detail').modal('show');
-  console.log(props.placeId);
-
-  $("#modal-title-"+props.id).text(props.name);
-  genLandmarkModalHTML(props);
-
-  //});
-}
-
-function genLandmarkModalHTML(props) {
-  var detailRequest = "https://maps.googleapis.com/maps/api/place/details/json?placeid=" + props.placeId + "&key=" + APIKey;
-
-  $.ajax({
-    url: detailRequest,
-    type: "GET",
-    dataType: "text"
-  })
-    .done(function (data) {
-      console.log("ajax Detail placeID: " + props.placeId);
-      json = JSON.parse(data);
-      var j = json['result'];
-
-
-      var website = j.website;  // html var
-      var phone = j.formatted_phone_number;
-      //phone = (phone == "undefined") ? "No Phone Number" : phone;
-      var now = new Date();
-      var days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-      var day = days[now.getDay()];
-
-      var todaysHours; // html var
-      try {
-        todaysHours = j.opening_hours['weekday_text'][days.indexOf(day)];
-      } catch (Exception) { console.warn("no open time for this place") }
-
-
-      var photoReference = j['photos'][0].photo_reference;
-
-      var photoQuery = "https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=" + photoReference + "&key=" + APIKey;
-
-
-      $("#modal-body-"+props.id).html(`
-<div class="row">
-<div class='col-sm-12 col-6'><img src='${photoQuery}'/></div><div class='col-sm-12 col-6'><b>Departure Date ${todaysHours}</b></div>
-
-<div class='col-sm-6 col-6'><b>${phone}</b></div> <div class='col-sm-6 col-3'><h5><a href='${website}' target="_blank">Website</a></h5></div>
-
-
-
-</div>
-<h5>Description:</h5><p>${props.description}</p>
-`);
-    })
-
-    .fail(function (data) {
-      console.error("ajax fail" + error);
-      ("#modal-body-"+props.id).html("Offline Error");
-    });
-}
 
 
 
