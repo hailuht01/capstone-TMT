@@ -344,6 +344,7 @@ namespace Capstone.Web.DAL
             return landmarks;
         }
 
+
         /// <summary>
         /// Search Landmark Category
         /// </summary>
