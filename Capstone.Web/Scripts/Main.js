@@ -7,10 +7,6 @@ var prevItinIdIndex;
 var mapToggle=true;
 
 
-
-
-
-
 if(localStorage.getItem('genRoute') == 'false' || localStorage.getItem('genRoute') == null) {
 
     $("document").ready(function () {
@@ -18,6 +14,7 @@ if(localStorage.getItem('genRoute') == 'false' || localStorage.getItem('genRoute
         $('#landmark-list').hide();
         initMap();
         console.warn("default map");
+        $('#Itin-' + activeItinIdIndex + '>#activeItin').show();
 
     });
 
@@ -41,12 +38,6 @@ if(localStorage.getItem('genRoute') == 'false' || localStorage.getItem('genRoute
         }
     }
 
-
-
-
-
-
-
 }else{ // gen route
     $("document").ready(function () {
         console.warn("Route map");
@@ -56,8 +47,8 @@ if(localStorage.getItem('genRoute') == 'false' || localStorage.getItem('genRoute
 
 
         calculateAndDisplayRoute(directionsService, directionsDisplay);
-        localStorage.setItem('genRoute', false)
-
+        localStorage.setItem('genRoute', false);
+        $('#Itin-' + activeItinIdIndex + '>#activeItin').show();
 
     });
 
@@ -180,21 +171,6 @@ function AddMarker(props) {
 
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 function ShowModal(props) {
