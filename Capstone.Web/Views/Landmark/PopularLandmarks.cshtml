@@ -2,20 +2,104 @@
 @model List<Landmark>
 
 <div class="row">
-    <div class="col-6 col-md-4">
+
+    <div class="col-4">
         <div class="detail">
-            <div class="card bg-light mb-3" style="max-width: 150rem;">
+
+            @foreach (var landmark in Model)
+            {
+                if (landmark.Type == "Attraction")
+                {
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <div class="card-title">
+                                <h1>@landmark.Name</h1>
+                            </div>
+                            <div class="card-body">
+                                <p>@landmark.Description</p>
+                                <p class="card-text">@landmark.Address</p>
+
+                                <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="detail">
+
+            @foreach (var landmark in Model)
+            {
+                if (landmark.Type == "zoo")
+                {
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <div class="card-title">
+                                <h1>@landmark.Name</h1>
+                            </div>
+                            <div class="card-body">
+                                <p>@landmark.Description</p>
+                                <p class="card-text">@landmark.Address</p>
+
+                                <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="detail">
+
+            @foreach (var landmark in Model)
+            {
+
+                if (landmark.Type == "Hall")
+                {
+
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <div class="card-title">
+                                <h1>@landmark.Name</h1>
+                            </div>
+                            <div class="card-body">
+                                <p>@landmark.Description</p>
+                                <p class="card-text">@landmark.Address</p>
+
+                                <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="detail">
 
                 @foreach (var landmark in Model)
                 {
-                    <form  method="GET" action="@Url.Action("LandmarkDetail", "Landmark")">
-                   <input type="submit"  value="id=@landmark.Id"/>
-                            <div class="card" >
+                    if (landmark.Type == "Conservatory")
+                    {
+
+                        <div class="card bg-light mb-3" style="max-width: 150rem;">
+                            <div class="card">
                                 <div class="card-title">
                                     <h1>@landmark.Name</h1>
                                 </div>
                                 <div class="card-body">
-                                    <h5>@landmark.Description</h5>
+                                    <p>@landmark.Description</p>
                                     <p class="card-text">@landmark.Address</p>
 
                                     <img src="~/Content/img/@(landmark.PicName).jpg" />
@@ -23,31 +107,41 @@
                                 </div>
                                 <div>
 
-                                    <div class="stars">
-                                        @landmark.ThumbsUp
-
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star"></span>
-                                        <span class="fa fa-star"></span>
-                                    </div>
-                                    <div class=" thumbs">
-
-                                    </div>
-                                    <span class="glyphicon-thumbs-up"></span>
-                                    <span class="fa fa-thumbs-down"></span>
-                                    <i class="glyphicon-thumbs-up"></i>
                                 </div>
                             </div>
-                        
-                 
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="detail">
 
-                        <br>
-                    </form>
+                @foreach (var landmark in Model)
+                {
+                    if (landmark.Type == "Museum")
+                    {
+
+                        <div class="card bg-light mb-3" style="max-width: 150rem;">
+                            <div class="card">
+                                <div class="card-title">
+                                    <h1>@landmark.Name</h1>
+                                </div>
+                                <div class="card-body">
+                                    <p>@landmark.Description</p>
+                                    <p class="card-text">@landmark.Address</p>
+
+                                    <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
                 }
             </div>
         </div>
     </div>
 </div>
-

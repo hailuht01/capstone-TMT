@@ -59,6 +59,7 @@ namespace Capstone.Web.Controllers
         {
             UserSession session = GetActiveUser();
             List<Landmark> landmarks = landmarkDAL.GetPopularLandmarks();
+ 
 
             return View(landmarks);
         }
