@@ -12,30 +12,30 @@ ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [DF_Landmark_ThumbsUp]
 GO
 ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itenerary_Title]
 GO
-/****** Object:  Index [IX_Username]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 9:16:41 AM ******/
 DROP INDEX [IX_Username] ON [dbo].[Users]
 GO
-/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 9:16:41 AM ******/
 ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [CH_Landmark_PlaceID]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 9:16:41 AM ******/
 DROP TABLE [dbo].[Users]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 9:16:41 AM ******/
 DROP TABLE [dbo].[Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 9:16:41 AM ******/
 DROP TABLE [dbo].[Itinerary_Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 9:16:41 AM ******/
 DROP TABLE [dbo].[Itinerary]
 GO
 USE [master]
 GO
-/****** Object:  Database [citytour]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Database [citytour]    Script Date: 5/3/2018 9:16:41 AM ******/
 DROP DATABASE [citytour]
 GO
-/****** Object:  Database [citytour]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Database [citytour]    Script Date: 5/3/2018 9:16:41 AM ******/
 CREATE DATABASE [citytour]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -132,7 +132,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 9:16:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[Itinerary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 9:16:41 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[Itinerary_Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 9:16:42 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -176,8 +176,8 @@ CREATE TABLE [dbo].[Landmark](
 	[Longitude] [float] NOT NULL,
 	[Name] [varchar](50) NOT NULL,
 	[Description] [varchar](2000) NOT NULL,
-	[PicName] [varchar](50) NOT NULL,
-	[ThumbsUp] [bit] NOT NULL,
+	[PicName] [varchar](50) NULL,
+	[ThumbsUp] [int] NULL,
 	[Type] [varchar](50) NOT NULL,
 	[Address] [varchar](100) NOT NULL,
 	[PlaceId] [varchar](200) NOT NULL,
@@ -187,7 +187,7 @@ CREATE TABLE [dbo].[Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 9:16:42 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -205,13 +205,23 @@ CREATE TABLE [dbo].[Users](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+SET IDENTITY_INSERT [dbo].[Itinerary] ON 
+GO
+INSERT [dbo].[Itinerary] ([Id], [Title], [CreationDate], [DepartureDate], [description], [User_Email]) VALUES (9, N'Mock Itinerary', CAST(N'2018-05-02' AS Date), CAST(N'2018-05-05' AS Date), N'This is a mock (admin) Itinerary!', N'Admin@citytour.com')
+GO
+INSERT [dbo].[Itinerary] ([Id], [Title], [CreationDate], [DepartureDate], [description], [User_Email]) VALUES (10, N'Mock Itinerary', CAST(N'2018-05-02' AS Date), CAST(N'2018-05-05' AS Date), N'This is a mock (admin) Itinerary!', N'Admin@citytour.com')
+GO
+SET IDENTITY_INSERT [dbo].[Itinerary] OFF
+GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'admin@citytour.com', N'Admin', N'Admin', N'Jones', N'Password', 1)
+GO
+INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'djpowerhouse513@gmail.com', N'Powerhouse', N'Byron', N'THOMPSON', N'BigSPlash513!', 0)
 GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 9:16:42 AM ******/
 ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [CH_Landmark_PlaceID] UNIQUE NONCLUSTERED 
 (
 	[PlaceId] ASC
@@ -219,7 +229,7 @@ ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [CH_Landmark_PlaceID] UNIQUE NONCLU
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Username]    Script Date: 5/2/2018 12:25:26 AM ******/
+/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 9:16:42 AM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Username] ON [dbo].[Users]
 (
 	[Username] ASC
@@ -243,6 +253,7 @@ ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_I
 GO
 ALTER TABLE [dbo].[Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Landmark_Landmark] FOREIGN KEY([Landmark_Id])
 REFERENCES [dbo].[Landmark] ([Id])
+ON DELETE CASCADE
 GO
 ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_Landmark]
 GO
