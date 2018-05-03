@@ -27,7 +27,7 @@ namespace Capstone.Web.Tests.DAL
                 Address = "3400 Vine St, Cincinnati, OH 45220",
                 Description = "The second oldest Zoo in the United States. Wide variety of animal collection.The Zoo was founded on 65 acres in the middle of the city, and since then has acquired some of the surrounding blocks and several reserves in Cincinnati’s suburbs.",
                 Latitude = 39.144573,
-                Longtiude = -84.508617,
+                Longitude = -84.508617,
                 Type = "Attraction",
                 ThumbsUp = true
             };

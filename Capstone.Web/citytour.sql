@@ -12,30 +12,30 @@ ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [DF_Landmark_ThumbsUp]
 GO
 ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itenerary_Title]
 GO
-/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 12:46:14 PM ******/
 DROP INDEX [IX_Username] ON [dbo].[Users]
 GO
-/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 12:46:14 PM ******/
 ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [CH_Landmark_PlaceID]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 12:46:14 PM ******/
 DROP TABLE [dbo].[Users]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 12:46:14 PM ******/
 DROP TABLE [dbo].[Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 12:46:14 PM ******/
 DROP TABLE [dbo].[Itinerary_Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 12:46:14 PM ******/
 DROP TABLE [dbo].[Itinerary]
 GO
 USE [master]
 GO
-/****** Object:  Database [citytour]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Database [citytour]    Script Date: 5/3/2018 12:46:14 PM ******/
 DROP DATABASE [citytour]
 GO
-/****** Object:  Database [citytour]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Database [citytour]    Script Date: 5/3/2018 12:46:14 PM ******/
 CREATE DATABASE [citytour]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -132,7 +132,7 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 12:46:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +150,7 @@ CREATE TABLE [dbo].[Itinerary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 9:16:41 AM ******/
+/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 12:46:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -165,7 +165,7 @@ CREATE TABLE [dbo].[Itinerary_Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 9:16:42 AM ******/
+/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 12:46:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -178,7 +178,7 @@ CREATE TABLE [dbo].[Landmark](
 	[Description] [varchar](2000) NOT NULL,
 	[PicName] [varchar](50) NULL,
 	[ThumbsUp] [int] NULL,
-	[Type] [varchar](50) NOT NULL,
+	[Type] [varchar](200) NOT NULL,
 	[Address] [varchar](100) NOT NULL,
 	[PlaceId] [varchar](200) NOT NULL,
  CONSTRAINT [PK_Landmark] PRIMARY KEY CLUSTERED 
@@ -187,7 +187,7 @@ CREATE TABLE [dbo].[Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 9:16:42 AM ******/
+/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 12:46:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -217,11 +217,13 @@ INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], 
 GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'djpowerhouse513@gmail.com', N'Powerhouse', N'Byron', N'THOMPSON', N'BigSPlash513!', 0)
 GO
+INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'ruptastic@gmail.com', N'chris', N'Chris', N'Rupp', N'Password123!', 0)
+GO
 INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 9:16:42 AM ******/
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 12:46:14 PM ******/
 ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [CH_Landmark_PlaceID] UNIQUE NONCLUSTERED 
 (
 	[PlaceId] ASC
@@ -229,7 +231,7 @@ ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [CH_Landmark_PlaceID] UNIQUE NONCLU
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 9:16:42 AM ******/
+/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 12:46:14 PM ******/
 CREATE UNIQUE NONCLUSTERED INDEX [IX_Username] ON [dbo].[Users]
 (
 	[Username] ASC
