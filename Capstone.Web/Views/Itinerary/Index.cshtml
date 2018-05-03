@@ -11,17 +11,6 @@
 
 }
 
-<div id="preferred-container" class="row">
-    <div class="col">
-        <nav class="nav nav-pills nav-fill">
-            <a class="nav-item nav-link disabled" href="#">Popular Itineraries:</a>
-            <a class="nav-item nav-link" href="#">Museums</a>
-            <a class="nav-item nav-link" href="#">Parks</a>
-            <a class="nav-item nav-link" href="#">Restaurants</a>
-        </nav>
-    </div>
-</div>
-
 <div id="itinerary-container" class="row">
     <div id="itin-controls" class="col-md-5">
         <h2 class="text-center">My Intineraries</h2>
@@ -29,6 +18,7 @@
             <div id="itn-form-control" class="col">
                 <nav class="nav nav-pills">
                     <a id="new-itn" class="nav-item nav-link btn-warning" href="#" onclick="createItin(@(Model.Itineraries.Count+1))">New</a>
+                    <a id="toggleMap" class="nav-item nav-link btn-info" href="#" onclick="toggleMap()">Toggle Map</a>
                     @*<a id="save-itn" class="nav-item nav-link btn-success" href="#">Save</a>*@
                 </nav>
             </div>
@@ -51,13 +41,13 @@
     <div id="landmark-list">
         <h2>Select Landmarks to Add!</h2>
         @foreach (var land in Model.Landmarks)
-    {
-        <div class="landmark-item btn-info" id="landmark-@land.Id" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId', id: '@land.Id'})">
-            <h5>@land.Name</h5>
-            @*<input type="button" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId'})" name="View Details" />*@
+        {
+            <div class="landmark-item btn-info" id="landmark-@land.Id" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId', id: '@land.Id'})">
+                <h5>@land.Name</h5>
+                @*<input type="button" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId'})" name="View Details" />*@
 
-        </div>
-}
+            </div>
+        }
     </div>
 </div>
 
@@ -70,7 +60,7 @@
         {
             @foreach (var land in Model.Landmarks)
             {
-                   @: AddMarker({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: "@land.PlaceId" });
+                   @: AddMarker({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: "@land.PlaceId"});
             }
     });
     </script>
