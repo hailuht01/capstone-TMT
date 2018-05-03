@@ -2,49 +2,72 @@
 @model Capstone.Web.Models.RegistrationForm
 @section extraCSS {
     <link href="~/Content/css/register-login.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('../../Content/img/Travel7.jpg');
+            background-size: cover;
+        }  
+    </style>
 }
 
-<title>Register</title>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col">
-            <h2>Register</h2>
-            <form id="registerform" method="post" action="@Url.Action("Register", "Home")">
-                <div class="form-group">
-                    @Html.LabelFor(m => m.UserName, new { @class = "label" })
-                    @Html.TextBoxFor(m => m.UserName, new { id = "UserName", @class = "form-control", placeholder = "please pick a user name" })
-                    @Html.ValidationMessageFor(m => m.UserName)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.FirstName)
-                    @Html.TextBoxFor(m => m.FirstName, new { id = "FirstName", @class = "form-control", placeholder = "please enter first name" })
-                    @Html.ValidationMessageFor(m => m.FirstName)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.LastName)
-                    @Html.TextBoxFor(m => m.LastName, new { id = "LastName", @class = "form-control", placeholder = "please enter last name" })
-                    @Html.ValidationMessageFor(m => m.LastName)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Email)
-                    @Html.TextBoxFor(m => m.Email, new { id = "Email", @class = "form-control", placeholder = "please enter valid email address" })
-                    @Html.ValidationMessageFor(m => m.Email)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.Password)
-                    @Html.PasswordFor(m => m.Password, new { id = "Password", @class = "form-control", placeholder = "8 charactors, 1 uppercase, 1 lowercase, 1 number" })
-                    @Html.ValidationMessageFor(m => m.Password)
-                </div>
-                <div>
-                    @Html.LabelFor(m => m.VerifyPassword)
-                    @Html.PasswordFor(m => m.VerifyPassword, new { id = "VerifyPassword", @class = "form-control", placeholder = "please re-type password to confirm" })
-                    @Html.ValidationMessageFor(m => m.VerifyPassword)
-                </div>
-                <br />
-                <input class="btn btn-primary" type="submit" name="submitButton" value="Register" />
-            </form>
-        </div>
-        <div class="col"></div>
-        <div class="col"></div>
+<div class="form-container row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6 login-card">
+        <form id="registerform" class="col-lg-12" method="post" action="@Url.Action("Register", "Home")">
+            <div class="col-lg-12 text-center">
+                <h2>Register</h2>
+            </div>
+            <div style="clear:both;"></div>
+
+            <div class="group">
+                @Html.TextBoxFor(m => m.UserName, new { id = "UserName" })
+                @Html.ValidationMessageFor(m => m.UserName)
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><i class="material-icons input-ikon">person_outline</i><span class="span-input">Username</span></label>
+            </div>
+            <div class="group">
+                @Html.TextBoxFor(m => m.FirstName, new { id = "FirstName" })
+                @Html.ValidationMessageFor(m => m.FirstName)
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><i class="material-icons input-ikon">person_outline</i><span class="span-input">First Name</span></label>
+            </div>
+            <div class="group">
+                @Html.TextBoxFor(m => m.LastName, new { id = "LastName" })
+                @Html.ValidationMessageFor(m => m.LastName)
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><i class="material-icons input-ikon">person_outline</i><span class="span-input">Last Name</span></label>
+            </div>
+            <!-- Kayıt Form Email İnput -->
+            <div class="group">
+                @Html.TextBoxFor(m => m.Email, new { id = "Email" })
+                @Html.ValidationMessageFor(m => m.Email)
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><i class="material-icons input-ikon">mail_outline</i><span class="span-input">E-Mail</span></label>
+            </div>
+            <!-- Kayıt Form Şifre İnput -->
+            <div class="group">
+                @Html.PasswordFor(m => m.Password, new { id = "Password" })
+                @Html.ValidationMessageFor(m => m.Password)
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><i class="material-icons input-password-icon">lock</i><span class="span-input">Password</span></label>
+            </div>
+            <!-- Kayıt Form Şifre-Tekrarı İnput -->
+            <div class="group">
+                @Html.PasswordFor(m => m.VerifyPassword, new { id = "VerifyPassword", })
+                @Html.ValidationMessageFor(m => m.VerifyPassword)
+                <span class="highlight"></span>
+                <span class="bar"></span>
+                <label><i class="material-icons input-password-icon">lock</i><span class="span-input">Verify Password</span></label>
+            </div>
+            <!-- Kayıt Ol Buton -->
+            <button type="submit" class="kayit-ol-buton">Register</button>
+        </form>
     </div>
+    <div class="col-md-3"></div>
 </div>
+

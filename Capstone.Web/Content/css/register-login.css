@@ -1,34 +1,252 @@
-/*stylesheet for Registration & Login Views*/
-
-div {
-    margin-bottom: 10px;
+body {
+    /*background-color: rgba(0,0,0,.6);*/ 
+    
 }
-.loginImg {
-    width: 100%;
+
+/***=============Container===============***/
+
+.form-container{
+    margin-top: 3em;
+    
+}
+
+
+/***=============Register/ Login Forms===============***/
+.login-card {
+    min-height: 70vh !important;
     height: auto;
+    background-image: url('../img/Travel14.jpg');
+    background-size: cover;
+    -moz-background-size: cover;
+    -ms-background-size: cover;
+    -wenkit-background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 20px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+    z-index: 2;
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    font-family: roboto !important;
+}
 
-}
-.bravoLogin {
-   background-color: aliceblue;
-}
-.container {
-  padding-left:0px;
-  padding-right:0px;
+    .login-card h2 {
+        color: rgba(255,255,255, 0.9);
+        font-weight: bolder;
+        margin-bottom: 1em;
+    }
+
+
+    .login-card:after {
+        background: -webkit-linear-gradient(225deg, rgb(63, 81, 181), rgb(233, 30, 99));
+        background: -o-linear-gradient(225deg, rgb(63, 81, 181), rgb(233, 30, 99));
+        background: linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99)); /* Login Card Arkaplan Rengi */
+        background: -webkit-linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99)); /* Login Card Arkaplan Rengi */
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        opacity: 0.8;
+        z-index: 3;
+    }
+
+
+    .login-card > form {
+        z-index: 4;
+        position: relative;
+        padding: 0px 10px;
+        width: 100%;
+    }
+
+.logo-kapsul {
+    text-align: center;
+    position: relative;
+    opacity: 0.8;
+    -moz-user-select: none;
 }
 
-#landingCarousel{
-    width:100%;
-    height: 75vh;
+.logo {
+    height: auto;
+    padding: 50px 0px;
+    pointer-events: none;
+    -moz-user-select: none;
 }
 
-#header{
-    max-height: 100vh;
+.group {
+    position: relative;
+    margin-bottom: 25px;
+    padding: .2em
 }
 
-.carousel-inner{
-    height: 100%;
+.group input {
+    font-size: 18px;
+    padding: 10px 10px 10px 10px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255, 0.3);
+    background: none;
+    color: #eee;
 }
 
-.carousel-item{
-    height: 100%;
+        .group input:focus {
+            outline: none;
+        }
+
+    /* LABEL ======================================= */
+    .group label {
+        color: rgba(255,255,255, 0.5);
+        font-size: 18px;
+        font-weight: normal;
+        position: absolute;
+        pointer-events: none;
+        left: 5px;
+        top: 5px;
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .group input:focus ~ label, input:valid ~ label {
+        top: -20px;
+        font-size: 14px;
+        color: rgba(255,255,255, 0.7);
+    }
+
+/* BOTTOM BARS ================================= */
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+    .bar:before, .bar:after {
+        content: '';
+        height: 2px;
+        width: 0;
+        bottom: 1px;
+        position: absolute;
+        background: rgba(255,255,255, 0.7);
+        -o-transition: 0.2s ease all;
+        transition: 0.2s ease all;
+        -moz-transition: 0.2s ease all;
+        -webkit-transition: 0.2s ease all;
+    }
+
+    .bar:before {
+        left: 50%;
+    }
+
+    .bar:after {
+        right: 50%;
+    }
+
+
+.group input:focus ~ .bar:before, .group input:focus ~ .bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+    position: absolute;
+    height: 0%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+/* active durum */
+.group input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+}
+
+
+@-webkit-keyframes inputHighlighter {
+    from {
+        background: rgba(255,255,255, 0.7);
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: rgba(255,255,255, 0.7);
+    }
+
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+.input-password-icon {
+    font-size: 25px !important;
+    position: relative;
+}
+
+.input-password-icon {
+    font-size: 22px !important;
+    position: relative;
+}
+
+.span-input {
+    margin-left: 10px;
+    position: relative;
+    top: -5px;
+}
+
+.giris-yap-buton, .kayit-ol-buton, .sifre-hatirlat-buton {
+    background: -webkit-linear-gradient(225deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    background: -o-linear-gradient(225deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    background: linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    background: -webkit-linear-gradient(-135deg, rgb(63, 81, 181), rgb(233, 30, 99));
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #eee;
+    font-family: roboto;
+    font-weight: 100;
+    padding: 10px;
+    border-radius: 3px;
+    outline: none;
+    opacity: 0.8;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-transition: 200ms;
+    -o-transition: 200ms;
+    transition: 200ms;
+    outline: none !important;
+}
+
+.giris-yap-buton:hover, .kayit-ol-buton:hover, .sifre-hatirlat-buton:hover {
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+/*****Validation********/
+label.error{
+    position: relative;
+    top:9%;
 }
