@@ -10,7 +10,7 @@
     </style>
 }
 
-<div class="form-container row">
+<div class="form-container row text-light">
     <div class="col-md-3"></div>
     <div class="col-md-6 login-card">
         <form id="loginform" method="post" action="@Url.Action("Login", "Home")">
@@ -31,7 +31,10 @@
                 <label><i class="material-icons input-password-icon">lock</i><span class="span-input">Password</span></label>
             </div>
             <!-- Kayıt Ol Buton -->
-            <button type="submit" name="submitButton" class="kayit-ol-buton">Login</button>
+            <button type="submit" name="submitButton" class="kayit-ol-buton text-light">Login</button>
+            <a class="text-light" href="@Url.Action("Register", "Home")" style="width:75%; margin: 0 auto !important;">
+                Need an account? Click here to Register!
+            </a>
         </form>
     </div>
     <div class="col-md-3"></div>

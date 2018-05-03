@@ -45,11 +45,23 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult Login(string email, string password)
         {
+            UserSession userSession = GetActiveUser();
+            if (userSession.UserName != "Anonymous")
+            {
+                SetAlertMessage("Already Logged In!", AlertType.Danger, AlertDisplay.Block);
+                return RedirectToAction("Index", "Home");
+            }
             User user = acctDAL.AuthUser(email, password);
 
+            if (user.UserName == null)
+            {
+                SetAlertMessage("The username or password was incorrect", AlertType.Danger, AlertDisplay.Block);
+                return RedirectToAction("Login");
+            }
+
             Session["User.Session"] = new UserSession(user.Email, user.UserName, user.IsAdmin);
-            UserSession userSession = GetActiveUser();
-            return RedirectToAction("Index", "Itinerary");
+            SetAlertMessage("Successfully Logged In!", AlertType.Success, AlertDisplay.Block);
+            return RedirectToAction("Index");
         }
 
         public ActionResult Register()

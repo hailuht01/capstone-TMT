@@ -65,6 +65,14 @@
     </div>
 </div>
 
+<div id="app-desc" class="card">
+    <div class="card-body">
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam lacinia in dolor id sodales. Cras tortor enim, ornare maximus scelerisque sit amet, ullamcorper id nulla. Duis tempus interdum velit, nec placerat leo ullamcorper nec. Curabitur at pulvinar dolor. Pellentesque sed nisi eros. Nunc fringilla placerat quam, quis auctor risus dignissim et. Donec lacinia scelerisque dui eu elementum. Aenean id mauris auctor, molestie libero a, sagittis dui. Sed ac ante id nibh mattis varius non at orci. Ut ut lectus eleifend leo rutrum mollis. Nulla ornare hendrerit odio vitae eleifend. Nam lacus ante, efficitur quis felis sodales, varius consequat ipsum. Curabitur vitae congue libero, vel iaculis libero. Donec tristique dignissim arcu, eget tincidunt ex rhoncus eget. Quisque feugiat orci quis neque volutpat egestas. Aliquam erat volutpat.
+        </p>
+    </div>
+</div>
+
 <!-----Featured 1------>
 
 <div id="featured-container-1" class="featured-container row">
@@ -75,6 +83,7 @@
 
                 </div>
                 <div class="card-footer  bg-white">
+                    <h3>Jack Casino</h3>
                     <p>
                         The two-story casino has 2,000 slot machines,
                         85 table games and a 31-table World Series of Poker room.
@@ -90,7 +99,7 @@
 
                 </div>
                 <div class="card-footer  bg-white">
-                    <h4>Newport Aquarium </h4>
+                    <h3>Newport Aquarium </h3>
                     <small>The Best Aquarium in the Midwest in the Zagat Survey’s U.S. Family Travel Guide in 2004.</small>
                 </div>
             </div>
@@ -101,43 +110,50 @@
 <!-----Featured 2------>
 <div id="featured-container-2" class="featured-container row">
     <div class="left col-md-4">
-        <div class="card">
-            <div class="card-body">
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJQ9spXUWxQYgRj1GVFSPPYME" } )">
+            <div class="card">
+                <div class="card-body">
 
+                </div>
+                <div class="card-footer  bg-white">
+                    <h3>National Underground Railroad Freedom Center</h3>
+                    <small>
+                        Museum of conscience, a few steps from the banks of the Ohio River,
+                        based on the history of the Underground Railroad.
+                    </small>
+                </div>
             </div>
-            <div class="card-footer  bg-white">
-                <small>
-                    Museum of conscience, a few steps from the banks of the Ohio River,
-                    based on the history of the Underground Railroad.
-                </small>
-            </div>
-        </div>
+        </a>
     </div>
     <div class="right col-md-8">
-        <div class="feature-content">
-            <h3>Great American Ball Park</h3>
-            <p>
-                The home field of Major League Baseball's Cincinnati Reds.
-            </p>
-        </div>
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJLwacWEOxQYgRcu3UJQuLYwc" } )">
+            <div class="feature-content">
+                <h3>Great American Ball Park</h3>
+                <p>
+                    The home field of Major League Baseball's Cincinnati Reds.
+                </p>
+            </div>
+        </a>
     </div>
 </div>
 
 <!-----Featured 3------>
 <div id="featured-container-3" class="featured-container row">
     <div class="left col-md-3">
-        <div class="card">
-            <div class="card-body bg-white">
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJm-dMvsuvQYgR3RiDov2wfDw" } )">
+            <div class="card">
+                <div class="card-body bg-white">
 
+                </div>
+                <div class="card-footer  bg-white">
+                    <h3> Coney Island</h3>
+                    <smal>
+                        Amusement park and waterpark
+                        on the banks of the Ohio River 10 miles east of Downtown Cincinnati.
+                    </smal>
+                </div>
             </div>
-            <div class="card-footer  bg-white">
-                <h4> Coney Island</h4>
-                <smal>
-                    Amusement park and waterpark
-                    on the banks of the Ohio River 10 miles east of Downtown Cincinnati.
-                </smal>
-            </div>
-        </div>
+        </a>
     </div>
     <div class="middle col-md-6">
         <div class="feature-content">
@@ -148,43 +164,54 @@
         </div>
     </div>
     <div class="right col-md-3">
-        <div class="card">
-            <div class="card-body">
-                
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJs6WpavmzQYgRsIRui9n8OiY" } )">
+            <div class="card">
+                <div class="card-body">
+
+                </div>
+                <div class="card-footer  bg-white">
+                    <h3>Findlay Market</h3>
+                    <smal>The state's oldest public market of farm fresh, locally sourced, artisanal and specialty foods.</smal>
+                </div>
             </div>
-            <div class="card-footer  bg-white">
-                <smal>The state's oldest public market of farm fresh, locally sourced, artisanal and specialty foods.</smal>
-            </div>
-        </div>
+        </a>
     </div>
 </div>
 
 <!-----Featured 4------>
 <div id="featured-container-4" class=" featured-container row">
     <div class="left col-md-2">
-        <div class="feature-content">
-            <h4>It's Skyline Time</h4>
-            <small>Enjoy the mouthwatering Cincinnati chili sauce,cheese over spaghetti or hot dogs!</small>
-        </div>
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJ4zsXz1CxQYgRTTQ9jfvk1lc" } )">
+            <div class="feature-content">
+                <h4>It's Skyline Time</h4>
+                <small>Enjoy the mouthwatering Cincinnati chili sauce,cheese over spaghetti or hot dogs!</small>
+            </div>
+        </a>
     </div>
     <div class="middle-left col-md-2">
-        <div class="feature-content">
-            <h4>Kings Island</h4>
-            <small> "Best Kids' Area" in the world. </small>
-        </div>
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJdQgOtQb4QIgRRcsM2MswRBo" } )">
+            <div class="feature-content">
+                <h3>Kings Island</h3>
+                <small> "Best Kids' Area" in the world. </small>
+            </div>
+        </a>
     </div>
     <div class="middle-right col-md-2">
-        <div class="feature-content">
-            <h4>Ride The Street Car</h4>
-            <small>The Cincinnati Bell Connector</small>
-        </div>
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJ6_gdfFqxQYgRZtuVzPWwW0s" } )">
+            <div class="feature-content">
+                <h3>Ride The Street Car</h3>
+                <small>The Cincinnati Bell Connector</small>
+            </div>
+        </a>
     </div>
     <div class="right col-md-6">
-        <div class="feature-content">
-            <h3>Paul Brown Stadium</h3>
-            <p>
-                "The Jungle"  home venue of the Cincinnati Bengals.
-            </p>
-        </div>
+        <a href="@Url.Action("LandmarkDetail", "Landmark", new { PlaceId= "ChIJ6_gdfFqxQYgRZtuVzPWwW0s" } )">
+            <div class="feature-content">
+                <h3>Paul Brown Stadium</h3>
+                <p>
+                    "The Jungle"  home venue of the Cincinnati Bengals.
+                </p>
+            </div>
+        </a>
     </div>
 </div>
