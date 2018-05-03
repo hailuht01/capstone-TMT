@@ -1,5 +1,5 @@
 ﻿var map;
-var APIKey = "AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ";
+var APIKey = "AIzaSyB6eN6z5EglebAQuE7RNTeid-SM2cvdIOM";
 
 var landmarkArr = [];
 var activeItinIdIndex;
