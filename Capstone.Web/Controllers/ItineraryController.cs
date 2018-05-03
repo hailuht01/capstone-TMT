@@ -93,24 +93,30 @@ namespace Capstone.Web.Controllers
             return View();
         }
 
-        // POST: Itinerary/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+    // POST: Itinerary/Edit/5
+    [HttpGet]
+    public ActionResult EditLandmark(string value)
+    {
+      //var qs = Request.Url.Query;
+      try
+      {
+        var itinId = int.Parse(Request.QueryString["itin_id"].ToString());
+        var landmarkIdArr = Request.QueryString["landmark_id"].ToString().Split(' ');
+
+        itineraryDAL.ResetLandmark_Itinerary(itinId);
+        foreach (var id in landmarkIdArr)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+          if(int.TryParse(id, out int result))
+          itineraryDAL.AddLandmarkToItinerary(result, itinId);
         }
+      }
+      catch (Exception e) { }
 
-        // POST: Itinerary/Delete/5
-        [HttpPost]
+      return RedirectToAction("Index", "Itinerary");
+    }
+
+    // POST: Itinerary/Delete/5
+    [HttpPost]
         public ActionResult Delete(int id)
         {
             var userSession = GetActiveUser();
