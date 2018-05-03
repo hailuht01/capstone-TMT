@@ -60,7 +60,7 @@
         {
             @foreach (var land in Model.Landmarks)
             {
-                   @: AddMarker({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: "@land.PlaceId"});
+                   @: AddMarker({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', id: '@land.Id', description: '@land.Description', placeId: "@land.PlaceId"});
             }
     });
     </script>
