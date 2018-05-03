@@ -34,36 +34,48 @@
         @*toggle active itin*@
         <div style="display: none;" class="row" id="activeItin">
             @{
-                string landIds = " ";
+                string landIds = "";
+                string placeIds = "";
             }
 
             @foreach (var l in itin.LandmarkIds)
             {
 
                 var land = Model.GetByPlaceId(l);
-               
-                    <div class=" col-8 btn-success round border" id="itin-landitem-id-@land.Id" data-value="@land.Id" onclick="removeLandmark(@land.Id)">@land.Name</div>
-               
+
+                <div class=" col-8 btn-success round border" id="itin-landitem-id-@land.Id" data-value="@land.Id" onclick="removeLandmark(@land.Id)">@land.Name</div>
+
                 {
 
                     landIds += (land.Id + " ");
+                    placeIds += (land.PlaceId + " ");
                 }
             }
 
+                <div class="row">
+                    <form method="post" action="@Url.Action("Delete", "Itinerary")">
+                        <input type="hidden" value="@itin.Id" name="id" />
+                        <div class="col-1">
+                            <input type="submit" class="btn-danger" value="Delete" />
+                        </div>
+                    </form>
+                    <form method="get" action="@Url.Action("EditLandmark", "Itinerary")">
+                        <input id="edit-landmark-itinid-@itin.Id" type="hidden" value="@itin.Id" name="itin_id" />
+                        <input id="itin-landmark-array-@itin.Id" type="hidden" value="@landIds" name="landmark_id" />
+                        <div class="col-1">
+                            <input type="submit" class="btn-success" value="Save" />
+                        </div>
+                    </form>
+                    <form>
+                        <div class="col-1">
+                            <input type="submit" class="btn-warning" value="Generate Route" onclick="generateRoute(@placeIds)" />
+                        </div>
+                    </form>
 
-            <form method="post" action="@Url.Action("Delete", "Itinerary")">
-                <input type="hidden" value="@itin.Id" name="id" />
-                <div class="col-1">
-                    <input type="submit" class="btn-danger" value="Delete" />
+
+                        @*<div class="landmark-item btn-info" id="landmark-@land.Id" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId', id: '@land.Id'})">*@
+
                 </div>
-            </form>
-            <form method="get" action="@Url.Action("EditLandmark", "Itinerary")">
-                <input id="edit-landmark-itinid-@itin.Id" type="hidden" value="@itin.Id" name="itin_id" />
-                <input id="itin-landmark-array-@itin.Id" type="hidden" value="@landIds" name="landmark_id" />
-                <div class="col-1">
-                    <input type="submit" class="btn-success" value="Save" />
-                </div>
-            </form>
         </div>
     </div>
 }
