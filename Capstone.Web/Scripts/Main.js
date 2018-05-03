@@ -11,14 +11,13 @@ var mapToggle=true;
 
 
 
-if(!localStorage.getItem('genRoute') == true || localStorage.getItem('genRoute') == null) {
+if(localStorage.getItem('genRoute') == 'false' || localStorage.getItem('genRoute') == null) {
 
     $("document").ready(function () {
         $('#createItinForm').hide();
         $('#landmark-list').hide();
         initMap();
-
-
+        console.warn("default map");
 
     });
 
@@ -50,6 +49,7 @@ if(!localStorage.getItem('genRoute') == true || localStorage.getItem('genRoute')
 
 }else{ // gen route
     $("document").ready(function () {
+        console.warn("Route map");
         $('#createItinForm').hide();
         $('#landmark-list').hide();
         initMap();
@@ -58,8 +58,8 @@ if(!localStorage.getItem('genRoute') == true || localStorage.getItem('genRoute')
         calculateAndDisplayRoute(directionsService, directionsDisplay);
         localStorage.setItem('genRoute', false)
 
-    });
 
+    });
 
 
     function initMap() {
@@ -103,16 +103,6 @@ if(!localStorage.getItem('genRoute') == true || localStorage.getItem('genRoute')
         waypts.pop();
 
         directionsService.route({
-         //   origin: {
-         //       'placeId': 'ChIJb4LYpVCxQYgRO54lkCeetLY'},
-         //   destination: {
-         //       'placeId': 'ChIJV0h_FdyzQYgR2CacE0p1ai8'},
-         //   waypoints:[{
-         //       stopover: true,
-         //       location: {
-         //           'placeId':"ChIJkV51b2exQYgRLmkA6uJ5Hpo"
-         //       }
-         //   }],
 
             origin: {
                 'placeId': origin},
@@ -190,6 +180,7 @@ function AddMarker(props) {
 
     });
 }
+
 
 
 
@@ -287,17 +278,17 @@ function toggleActiveItin(itinId) {
 }
 
 function toggleMap() {
-    var hide = '';
-    var show = '';
+    var hide = localStorage.setItem('list', '#landmark-list');
+    var show = localStorage.setItem('map', '#map-container');
 
     if (mapToggle) {
-        hide = '#map-container';
-        show = '#landmark-list';
+        hide = localStorage.getItem('list');
+        show = localStorage.getItem('map');
         mapToggle = false;
     }
     else {
-        hide = '#landmark-list';
-        show = '#map-container';
+        hide = localStorage.getItem('map');
+        show = localStorage.getItem('list');
         mapToggle = true;
     }
 
@@ -308,7 +299,7 @@ function toggleMap() {
 function addToItin(idStr, name) {
     //$("#markerPlaceId").value();
     {
-
+        localStorage.setItem("genRoute", false);
         if (!landmarkArr.includes(idStr)) {
             landmarkArr.push(idStr);
             console.log("add to itin: " + idStr + "  itin: " + activeItinIdIndex);
@@ -320,7 +311,7 @@ function addToItin(idStr, name) {
 
             var landmarkHTML = `<div class=' col-8 btn-success round border' id='itin-landitem-id-${idStr}' data-value='${idStr}' onclick="removeLandmark(${idStr})">${name}</div>`;
 
-            $('#activeItin').append(landmarkHTML);
+            $('#Itin-'+activeItinIdIndex).append(landmarkHTML);
 
         } else {
             console.log("already in itin land:" + idStr + "  itin: " + activeItinIdIndex)
@@ -337,6 +328,7 @@ function createItin(newIndex) {
     activeItinIdIndex = newIndex;
     console.log("create itin new index" + activeItinIdIndex);
     $('#createItinForm').show();
+    localStorage.setItem("genRoute", false);
 }
 
 function saveItin(activeItinId, itinArr) {
@@ -352,6 +344,7 @@ function removeLandmark(idStr) { // remove from value and hide div
 
     $('#itin-landitem-id-' + idStr).hide()
 
+
 }
 
 function removeItinerary(i) {
@@ -359,6 +352,7 @@ function removeItinerary(i) {
         confirm("Permanately Delete this Itinerary?");
         landmarkArr.splice(i, 1);
         console.log("removed Itin index= " + i);
+        localStorage.setItem("genRoute", false);
     }
 }
 
