@@ -90,7 +90,7 @@
 
                 @foreach (var landmark in Model)
             {
-                if (landmark.Type == "restaurant")
+                if (landmark.Type == "store")
                 {
 
                     <div class="card bg-light mb-3" style="max-width: 150rem;">
@@ -143,34 +143,6 @@
         }
             </div>
         </div>
-        <div class="col-4">
-            <div class="detail">
 
-                @foreach (var landmark in Model)
-            {
-                if (landmark.Type == "store")
-                {
-
-                    <div class="card bg-light mb-3" style="max-width: 150rem;">
-                        <div class="card">
-                            <div class="card-title">
-                                <h1>@landmark.Name</h1>
-                            </div>
-                            <div class="card-body">
-                                <p>@landmark.Description</p>
-                                <p class="card-text">@landmark.Address</p>
-
-                                <img src="~/Content/img/@(landmark.PicName)" />
-
-                            </div>
-                            <div>
-
-                            </div>
-                        </div>
-                    </div>
-            }
-        }
-            </div>
-        </div>
     </div>
 </div>
