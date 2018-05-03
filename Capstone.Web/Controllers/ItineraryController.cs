@@ -20,65 +20,45 @@ namespace Capstone.Web.Controllers
             this.landmarkDAL = _landmarkDAL;
             this.accountDAL = _accountDAL;
         }
-    [HttpGet]
-    public ActionResult EditLandmark(string value)
-    {
-      //var qs = Request.Url.Query;
-      try
-      {
-        var itinId = int.Parse(Request.QueryString["itin_id"].ToString());
-        var landmarkIdStr = Request.QueryString["landmark_id"].ToString().Replace("  ", " ");
-        var landmarkIdArr = landmarkIdStr.Split(' ');
 
-        itineraryDAL.ResetLandmark_Itinerary(itinId);
-        foreach (var id in landmarkIdArr)
+
+        // GET: Itinerary
+        public ActionResult Index()
         {
-          if (int.TryParse(id, out int result))
-          {
-            itineraryDAL.AddLandmarkToItinerary(result, itinId);
-          }
+            //Default session if User isn't logged in
+            UserSession userSession = GetActiveUser();
+            FullUserModel fullUser = new FullUserModel();
+
+            if (userSession.Email != "user@citytour.com")
+            {
+                fullUser.User = accountDAL.GetUser(userSession.Email);
+                fullUser.Itineraries = itineraryDAL.GetAllItineraries(userSession.Email);
+                fullUser.Landmarks.AddRange(landmarkDAL.GetEveryLandmark());
+
+                foreach (var itin in fullUser.Itineraries)
+                {
+                    var itinLandmarks = landmarkDAL.GetAllLandmarks(itin.Id);
+
+                    // this needs to be all possible landmarks
+
+                    foreach (var land in itinLandmarks)
+                    {
+                        itin.LandmarkIds.Add(land.PlaceId);
+                    }
+                }
+            }
+            else
+            {
+                fullUser.User = accountDAL.GetUser(userSession.Email);
+                fullUser.Itineraries = Itinerary.GetSamples();
+                fullUser.Landmarks = Landmark.GetSamples();
+            }
+
+            return View(fullUser);
         }
-      }catch(Exception e)     { }
-      
-      return RedirectToAction("Index", "Itinerary");
-    }
-    // GET: Itinerary
-    public ActionResult Index()
-    {
-      //Default session if User isn't logged in
-      UserSession userSession = GetActiveUser();
-      FullUserModel fullUser = new FullUserModel();
 
-      if (userSession.Email != "user@citytour.com")
-      {
-        fullUser.User = accountDAL.GetUser(userSession.Email);
-        fullUser.Itineraries = itineraryDAL.GetAllItineraries(userSession.Email);
-        fullUser.Landmarks.AddRange(landmarkDAL.GetEveryLandmark());
-
-        foreach (var itin in fullUser.Itineraries)
-        {
-          var itinLandmarks = landmarkDAL.GetAllLandmarks(itin.Id);
-
-          // this needs to be all possible landmarks
-
-          foreach (var land in itinLandmarks)
-          {
-            itin.LandmarkIds.Add(land.PlaceId);
-          }
-        }
-      }
-      else
-      {
-        fullUser.User = accountDAL.GetUser(userSession.Email);
-        fullUser.Itineraries = Itinerary.GetSamples();
-        fullUser.Landmarks = Landmark.GetSamples();
-      }
-
-      return View(fullUser);
-    }
-
-    // GET: Itinerary/Details/5
-    public ActionResult Details(int id)
+        // GET: Itinerary/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
@@ -96,8 +76,8 @@ namespace Capstone.Web.Controllers
         {
             itin.CreationDate = DateTime.Now;
             UserSession userSession = GetActiveUser();
-            itin.UserEmail = userSession.Email; 
-            if(itineraryDAL.CreateItinerary(itin) > 0)
+            itin.UserEmail = userSession.Email;
+            if (itineraryDAL.CreateItinerary(itin) > 0)
             {
                 return RedirectToAction("Index", "Itinerary");
             }
@@ -129,21 +109,21 @@ namespace Capstone.Web.Controllers
             }
         }
 
-    // POST: Itinerary/Delete/5
-    [HttpPost]
-    public ActionResult Delete(int id)
-    {
-      var userSession = GetActiveUser();
-      try
-      {
-        // TODO: Add delete logic here
-        itineraryDAL.DeleteItinerary(id);
-        return RedirectToAction("Index", "Itinerary");
-      }
-      catch
-      {
-        return View("Index", "Itinerary");
-      }
+        // POST: Itinerary/Delete/5
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            var userSession = GetActiveUser();
+            try
+            {
+                // TODO: Add delete logic here
+                itineraryDAL.DeleteItinerary(id);
+                return RedirectToAction("Index", "Itinerary");
+            }
+            catch
+            {
+                return View("Index", "Itinerary");
+            }
+        }
     }
-  }
 }

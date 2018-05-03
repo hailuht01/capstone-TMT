@@ -2,20 +2,74 @@
 @model List<Landmark>
 
 <div class="row">
-    <div class="col-6 col-md-4">
-        <div class="detail">
-            <div class="card bg-light mb-3" style="max-width: 150rem;">
 
-                @foreach (var landmark in Model)
+    <div class="col-4">
+        <div class="detail">
+
+            @foreach (var landmark in Model)
+            {
+                if (landmark.Type == "Attraction")
                 {
-                    <form method="GET" action="@Url.Action("LandmarkDetail", "Landmark")">
-                        <input type="hidden" value="id=@landmark.Id" />
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
                         <div class="card">
                             <div class="card-title">
                                 <h1>@landmark.Name</h1>
                             </div>
                             <div class="card-body">
-                                <h5>@landmark.Description</h5>
+                                <p>@landmark.Description</p>
+                                <p class="card-text">@landmark.Address</p>
+
+                                <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="detail">
+
+            @foreach (var landmark in Model)
+            {
+                if (landmark.Type == "zoo")
+                {
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <div class="card-title">
+                                <h1>@landmark.Name</h1>
+                            </div>
+                            <div class="card-body">
+                                <p>@landmark.Description</p>
+                                <p class="card-text">@landmark.Address</p>
+
+                                <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="detail">
+
+            @foreach (var landmark in Model)
+            {
+
+                if (landmark.Type == "Hall")
+                {
+
+                    <div class="card bg-light mb-3" style="max-width: 150rem;">
+                        <div class="card">
+                            <div class="card-title">
+                                <h1>@landmark.Name</h1>
+                            </div>
+                            <div class="card-body">
+                                <p>@landmark.Description</p>
                                 <p class="card-text">@landmark.Address</p>
 
                                 <img src="~/Content/img/@(landmark.PicName).jpg" />
@@ -24,17 +78,70 @@
                             <div>
 
                             </div>
-                            </div>
-
-                    </form>
-                    
+                        </div>
+                    </div>
                 }
-                <div>
-                  
-                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="detail">
 
+                @foreach (var landmark in Model)
+                {
+                    if (landmark.Type == "Conservatory")
+                    {
+
+                        <div class="card bg-light mb-3" style="max-width: 150rem;">
+                            <div class="card">
+                                <div class="card-title">
+                                    <h2>@landmark.Name</h2>
+                                </div>
+                                <div class="card-body">
+                                    <p>@landmark.Description</p>
+                                    <p class="card-text">@landmark.Address</p>
+
+                                    <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="detail">
+
+                @foreach (var landmark in Model)
+                {
+                    if (landmark.Type == "Museum")
+                    {
+
+                        <div class="card bg-light mb-3" style="max-width: 150rem;">
+                            <div class="card">
+                                <div class="card-title">
+                                    <h1>@landmark.Name</h1>
+                                </div>
+                                <div class="card-body">
+                                    <p>@landmark.Description</p>
+                                    <p class="card-text">@landmark.Address</p>
+
+                                    <img src="~/Content/img/@(landmark.PicName).jpg" />
+
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
             </div>
         </div>
     </div>
 </div>
-

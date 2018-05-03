@@ -344,6 +344,44 @@ namespace Capstone.Web.DAL
             return landmarks;
         }
 
+
+        /// <summary>
+        /// Search Landmark Category
+        /// </summary>
+        /// <param name="searchTerm">Type/Category</param>
+        /// <returns>List Of Landmarks that match the search term</returns>
+        public List<Landmark> SearchLandmarkType(string searchTerm)
+        {
+            string SearchLandmarkSQL = "Select * From Landmark Where Type == @Term";
+            List<Landmark> landmarks = new List<Landmark>();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(SearchLandmarkSQL, conn);
+                    cmd.Parameters.AddWithValue("@Term", "%" + searchTerm + "%");
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        landmarks.Add(MapLandmarkFromReader(reader));
+                    }
+                }
+            }
+            catch (SqlException e)
+            {
+                Console.WriteLine("Ran into problem searching for landmarks in DB. Problem code: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Experiencing Technical Difficulty. Problem code: " + e.Message);
+                throw;
+            }
+            return landmarks;
+        }
+
         /// <summary>
         /// Maps properties from DB to a landmark object
         /// </summary>
@@ -365,5 +403,6 @@ namespace Capstone.Web.DAL
             };
             return landmark;
         }
+
     }
 }

@@ -2,13 +2,13 @@
     height: 75vh;
 }
 
-#itin-controls{
-    height:100%;
-    overflow-y:scroll;
+#itin-controls {
+    height: 100%;
+    overflow-y: scroll;
     border: 3px solid black;
 }
 
-#itn-form-control{
+#itn-form-control {
     padding: 2em 0;
 }
 
@@ -20,7 +20,7 @@
     margin: 0 auto;
 }
 
-#map-container{
+#map-container {
     width: 100%;
     height: 100%;
 }
@@ -31,11 +31,244 @@
     height: 100%;
 }
 
-#preferred-container{
+#preferred-container {
     height: 5em;
 }
 
-#preferred-container a{
+#preferred-container a {
     padding-top: 2em;
     padding-bottom: 2em;
 }
+
+
+
+/****Carousel*****/
+#landingCarousel {
+    width: 100%;
+    height: 100vh;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.carousel-inner img{
+    width: 100%;
+
+}
+
+.carousel-caption {
+    text-align: center;
+    position: relative;
+    top: -35%;
+    left: -0%;
+    background-color: rgba(0,0,0,.7);
+    width: 100%;
+    margin: 0 auto;
+    padding: 1em;
+    border-radius: 1%;
+}
+
+.carousel-item .btn {
+    background-color: #2E88F5;
+}
+
+    .carousel-caption h5 {
+        font-size: 4em;
+        font-weight: bolder;
+    }
+
+    .carousel-caption p {
+        font-size: 1em;
+        font-weight: bolder;
+    }
+
+.carousel-item {
+    height: 100%;
+}
+
+#landingCarousel .carousel-item img {
+    min-width: 100%;
+    max-height: 100%;
+}
+
+/*****************************Features*************************************/
+.featured-container {
+    height: 55vh;
+    margin-top: 2em;
+}
+
+.card-body{
+    margin:0;
+}
+
+.featured-container .card {
+    height: 100%;
+    overflow: hidden;
+}
+
+.featured-container .card-body {
+    min-height: 10%;
+}
+
+.featured-container .card img{
+    min-height: 90%;
+    min-width:100%;
+    position: relative;
+    left:0;
+    
+}
+
+.featured-container .left, .right, .middle, .middle-left, .middle-right{
+    height: 100%;
+}
+
+.featured-container .feature-content {
+    background-color: rgba(0,0,0,.6);
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    padding: 4% 18% 4% 4.33%;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fff;
+}
+
+/****1***/
+
+
+#featured-container-1 .left {
+ 
+}
+#featured-container-1 .left .card-body {
+    background-image: url('../img/Travel.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+}
+
+
+#featured-container-1{
+
+}
+
+#featured-container-1 .right .card-body {
+    background-image: url('../img/Travel1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+}
+
+/****2***/
+#featured-container-2 {
+
+}
+
+#featured-container-2 .left {
+
+}
+
+    #featured-container-2 .left .card-body {
+        background-image: url('../img/Travel2.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: top;
+    }
+
+#featured-container-2 .right {
+    background-image: url('../img/Travel3.jpg');
+    background-size: cover;
+    background-position-x: center;
+    width:100%;
+    padding-right: 0;
+    padding-left:0;
+}
+
+    
+
+#featured-container-2 .right .feature-content h3 {
+    font-weight:bolder;
+}
+
+#featured-container-2 .right .feature-content p {
+    font-size: 1em;
+    font-weight: bolder;
+}
+
+/****3***/
+#featured-container-3 {
+
+}
+
+#featured-container-3 .left {
+width: 100%;
+}
+
+#featured-container-3 .left .card-body {
+    background-image: url('../img/Travel4.jpg');
+    background-size: cover;
+    background-position-x:center;
+    background-position-y: top;
+}
+
+#featured-container-3 .middle {
+    background-image: url('../img/Travel8.jpg');
+    background-size: cover;
+    background-position-x: center;
+    width: 100%;
+}
+
+
+#featured-container-3 .right {
+    width: 100%;
+}
+
+#featured-container-3 .right .card-body {
+    background-image: url('../img/Travel9.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
+}
+
+/****4***/
+#featured-container-4 {
+
+}
+#featured-container-4 h4{
+    font-size: 1.1em;
+    text-align: center;
+    font-weight: bolder;
+}
+
+
+#featured-container-4 .left {
+    background-image: url('../img/Travel16.jpg');
+    background-size: cover;
+    background-position-x: center;
+    font-size: 14px;
+}
+
+#featured-container-4 .middle-left {
+    background-image: url('../img/Travel13.jpg');
+    background-size: cover;
+    background-position-x: center;
+}
+
+#featured-container-4 .middle-right {
+    background-image: url('../img/Travel14.jpg');
+    background-size: cover;
+    background-position-x: center;
+}
+
+#featured-container-4 .right {
+    background-image: url('../img/Travel17.jpg');
+    background-size: cover;
+    background-position-x: center;
+}
+

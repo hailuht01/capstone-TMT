@@ -11,6 +11,8 @@
     <!--CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="~/Content/css/site.css" rel="stylesheet" />
     @RenderSection("extraCSS", false)
     <!--JS-->
@@ -24,31 +26,33 @@
 
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                <img class="img-fluid" src="~/Content/img/Bravo!-City-tour.jpg"  />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="@Url.Action("Index", "Home")">
+                    <img class="img-fluid" src="~/Content/img/Bravo!-City-tour.jpg" />
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <nav class="nav nav-pills nav-fill">
-                    @if (ViewBag.Username == "Admin")
-                    {
-                        <a class="nav-item nav-link" href="@Url.Action("Create", "Landmark")">Manage Landmarks</a>
-                    }
-                    @if (ViewBag.Username != "Anonymous")
-                    {
-                        <a class="nav-item nav-link" href="@Url.Action("Index", "Itinerary")">Create Itinerary</a>
-                    }
-                    
-                    <a class="nav-item nav-link" href="@Url.Action("PopularLandmarks", "Landmark")">Popular Landmarks</a>
-                    <a class="nav-item nav-link" href="@Url.Action("About", "Home")">About</a>
-                    <a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Contact us</a>
-                </nav>
-            </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <nav class="nav nav-pills nav-fill">
+                        <a class="nav-item nav-link" href="@Url.Action("Index", "Home")">Home</a>
+                        @if (ViewBag.Username == "Admin")
+                        {
+                            <a class="nav-item nav-link" href="@Url.Action("Create", "Landmark")">Manage Landmarks</a>
+                        }
+                        @if (ViewBag.Username != "Anonymous")
+                        {
+                            <a class="nav-item nav-link" href="@Url.Action("Index", "Itinerary")">Create Itinerary</a>
+                        }
+
+                        <a class="nav-item nav-link" href="@Url.Action("PopularLandmarks", "Landmark")">Popular Landmarks</a>
+                        <a class="nav-item nav-link" href="@Url.Action("About", "Home")">About</a>
+                        <a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Contact US</a>
+                    </nav>
+                </div>
                 <div class="nav-item dropdown dropleft">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span>My Account</span>
@@ -70,11 +74,10 @@
                     </div>
                 </div>
 
-        </nav>
-
-    </header>
-    <div class="page-wrap">
-        <div class="container-fluid">
+            </nav>
+            @RenderSection("HeaderBottom", false)
+        </header>
+        <div class="page-wrap">
             @RenderBody()
         </div>
     </div>
@@ -84,7 +87,7 @@
             <li>
                 <i class="fa fa-home"></i> 1776 Mentor Ave Suite 355, Cincinnati, OH 45212
                 <i class="fa fa-phone"> (800) 000-0000</i>
-                <i class="fa fa-envelope-o" >citytour@gmail.com</i>
+                <i class="fa fa-envelope-o"> citytour@gmail.com</i>
             </li>
         </ul>
     </footer>
