@@ -5,18 +5,17 @@ var landmarkArr = [];
 var activeItinIdIndex;
 var prevItinIdIndex;
 var mapToggle=true;
-var genRoute=false;
-var placeIds
 
 
-
-
-if(!genRoute) {
+if(localStorage.getItem('genRoute') == 'false' || localStorage.getItem('genRoute') == null) {
 
     $("document").ready(function () {
-        initMap();
         $('#createItinForm').hide();
         $('#landmark-list').hide();
+        initMap();
+        console.warn("default map");
+        $('#Itin-' + activeItinIdIndex + '>#activeItin').show();
+
     });
 
     function initMap() {
@@ -39,84 +38,68 @@ if(!genRoute) {
         }
     }
 
-    function AddMarker(props) {
-        var windowHtml = `<h3>${props.name}</h3>
-                        <p>${props.address}</p>
-                        <p>${props.description}</p>
-                        <input id="markerId" type="hidden" value="${props.placeId}"/>
-`;
-        //Add Marker
-        var marker = new google.maps.Marker({
-            map: map,
-            draggable: false,
-            animation: google.maps.Animation.DROP,
-            position: props.coords,
-        });
-
-        //Add InfoWindow
-        var infoWindow = new google.maps.InfoWindow({
-            content: windowHtml
-        });
-        marker.addListener('mouseover', function () {
-            infoWindow.open(map, marker);
-        });
-        marker.addListener('mouseout', function () {
-            infoWindow.close();
-        });
-
-        //Add Modal Detail
-        marker.addListener('click', function () {
-            $('#landmark-detail-' + props.id).modal('show');
-
-
-            $('.modal-title').text(props.name);
-
-            genLandmarkModalHTML(props.placeId, props.description);
-
-        });
-    }
-
-
-
 }else{ // gen route
     $("document").ready(function () {
-        initMap();
+        console.warn("Route map");
         $('#createItinForm').hide();
         $('#landmark-list').hide();
+        initMap();
+
+
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        localStorage.setItem('genRoute', false);
+        $('#Itin-' + activeItinIdIndex + '>#activeItin').show();
 
     });
 
 
     function initMap() {
-        var directionsService = new google.maps.DirectionsService;
-        var directionsDisplay = new google.maps.DirectionsRenderer;
+         directionsService = new google.maps.DirectionsService;
+         directionsDisplay = new google.maps.DirectionsRenderer;
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 6,
+            zoom: 13,
             center: {lat: 39.103118, lng: -84.512020},
         });
         directionsDisplay.setMap(map);
+        calculateAndDisplayRoute(directionsService,directionsDisplay);
 
-        document.getElementById('submit').addEventListener('click', function() {
-            calculateAndDisplayRoute(directionsService, directionsDisplay);
-        });
     }
 
     function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         var waypts = [];
-        var checkboxArray = document.getElementById('waypoints');
+        var checkboxArray = localStorage.getItem('placeIds').replace('  ', ' ').split(' ');
+
         for (var i = 0; i < checkboxArray.length; i++) {
-            if (checkboxArray.options[i].selected) {
-                waypts.push({
-                    location: checkboxArray[i].value,
-                    stopover: true
-                });
+            if (checkboxArray[i].length < 5) {
+                checkboxArray.splice(i, 1);
             }
         }
+        for (var i = 0; i < checkboxArray.length; i++) {
+
+                if(i == 0){
+                   var origin = checkboxArray[i]
+                }
+                waypts.push({
+                    stopover: true,
+                    location:{'placeId': checkboxArray[i]}
+
+                });
+                if(i == checkboxArray.length-1){
+                    var destination = checkboxArray[i]
+                }
+
+           // console.log(waypts[i].location);
+        }
+        waypts.shift();
+        waypts.pop();
 
         directionsService.route({
-            origin: {placeId: placeIds[0]},
-            destination: {placeId: placeIds[placeIds.length() - 1]},
-            waypoints: placeIds[1],
+
+            origin: {
+                'placeId': origin},
+            destination: {
+                'placeId': destination},
+            waypoints:waypts,
             optimizeWaypoints: true,
             travelMode: 'DRIVING'
         }, function(response, status) {
@@ -139,7 +122,54 @@ if(!genRoute) {
             }
         });
     }
+    //genRoute=false;
+    localStorage.setItem("genRoute", false);
+}
+function generateRoute(placeIdStr)
+{
 
+    localStorage.setItem("placeIds", placeIdStr);
+    console.log(localStorage.getItem('placeIds'));
+    localStorage.setItem("genRoute", true);
+    location.reload();
+
+}
+
+function AddMarker(props) {
+    var windowHtml = `<h3>${props.name}</h3>
+                        <p>${props.address}</p>
+                        <p>${props.description}</p>
+                        <input id="markerId" type="hidden" value="${props.placeId}"/>
+`;
+    //Add Marker
+    var marker = new google.maps.Marker({
+        map: map,
+        draggable: false,
+        animation: google.maps.Animation.DROP,
+        position: props.coords,
+    });
+
+    //Add InfoWindow
+    var infoWindow = new google.maps.InfoWindow({
+        content: windowHtml
+    });
+    marker.addListener('mouseover', function () {
+        infoWindow.open(map, marker);
+    });
+    marker.addListener('mouseout', function () {
+        infoWindow.close();
+    });
+
+    //Add Modal Detail
+    marker.addListener('click', function () {
+        $('#landmark-detail-' + props.id).modal('show');
+
+
+        $('.modal-title').text(props.name);
+
+        genLandmarkModalHTML(props);
+
+    });
 }
 
 
@@ -218,21 +248,23 @@ function toggleActiveItin(itinId) {
     }
 
     prevItinIdIndex = activeItinIdIndex;
+    $('#map-container').hide();
+    $('#landmark-list').show();
 
 }
 
 function toggleMap() {
-    var hide = '';
-    var show = '';
+    var hide = localStorage.setItem('list', '#landmark-list');
+    var show = localStorage.setItem('map', '#map-container');
 
     if (mapToggle) {
-        hide = '#map-container';
-        show = '#landmark-list';
+        hide = localStorage.getItem('list');
+        show = localStorage.getItem('map');
         mapToggle = false;
     }
     else {
-        hide = '#landmark-list';
-        show = '#map-container';
+        hide = localStorage.getItem('map');
+        show = localStorage.getItem('list');
         mapToggle = true;
     }
 
@@ -243,7 +275,7 @@ function toggleMap() {
 function addToItin(idStr, name) {
     //$("#markerPlaceId").value();
     {
-
+        localStorage.setItem("genRoute", false);
         if (!landmarkArr.includes(idStr)) {
             landmarkArr.push(idStr);
             console.log("add to itin: " + idStr + "  itin: " + activeItinIdIndex);
@@ -255,7 +287,7 @@ function addToItin(idStr, name) {
 
             var landmarkHTML = `<div class=' col-8 btn-success round border' id='itin-landitem-id-${idStr}' data-value='${idStr}' onclick="removeLandmark(${idStr})">${name}</div>`;
 
-            $('#activeItin').append(landmarkHTML);
+            $('#Itin-'+activeItinIdIndex).append(landmarkHTML);
 
         } else {
             console.log("already in itin land:" + idStr + "  itin: " + activeItinIdIndex)
@@ -272,6 +304,7 @@ function createItin(newIndex) {
     activeItinIdIndex = newIndex;
     console.log("create itin new index" + activeItinIdIndex);
     $('#createItinForm').show();
+    localStorage.setItem("genRoute", false);
 }
 
 function saveItin(activeItinId, itinArr) {
@@ -287,6 +320,7 @@ function removeLandmark(idStr) { // remove from value and hide div
 
     $('#itin-landitem-id-' + idStr).hide()
 
+
 }
 
 function removeItinerary(i) {
@@ -294,18 +328,11 @@ function removeItinerary(i) {
         confirm("Permanately Delete this Itinerary?");
         landmarkArr.splice(i, 1);
         console.log("removed Itin index= " + i);
+        localStorage.setItem("genRoute", false);
     }
 }
 
-function generateRoute(placeIdStr)
-{
 
-    placeIds = placeIdStr.replace('  ', ' ' ).split(' ');
-    console.log(placeIds);
-    genRoute = true;
-    location.reload();
-    calculateAndDisplayRoute(directionsService, directionsDisplay);
-}
 
 
 
