@@ -48,7 +48,7 @@
 </div>
 <!------------Description--------------->
 <div id="place-description-container" class="row">
-    <p>
+    <p class="lead">
         @Model.Description
     </p>
 </div>
@@ -69,16 +69,15 @@
 @section bottomJS{
     <script>
         function initMap() {
-            alert('lat: @Model.Latitude, Lng: @Model.Longitude')
-            var uluru = { lat: @Model.Latitude, Lng: @Model.Longitude };
+            var uluru = { lat: @Model.Latitude, lng: @Model.Longitude };
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 4,
+                zoom: 17,
                 center: uluru
             });
-            var marker = new google.maps.Marker({
-                position: uluru,
-                map: map
-            });
+            //var marker = new google.maps.Marker({
+            //    position: uluru,
+            //    map: map
+            //});
         }
     </script>
     <script async defer
