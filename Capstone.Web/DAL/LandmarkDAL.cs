@@ -35,7 +35,7 @@ namespace Capstone.Web.DAL
                     SqlCommand cmd = new SqlCommand(AddLandmarkDAL + LastIdCreatedSQL, conn);
                     cmd.Parameters.AddWithValue("@PlaceId", landmark.PlaceId);
                     cmd.Parameters.AddWithValue("@Lat", landmark.Latitude);
-                    cmd.Parameters.AddWithValue("@Lng", landmark.Longtiude);
+                    cmd.Parameters.AddWithValue("@Lng", landmark.Longitude);
                     cmd.Parameters.AddWithValue("@Name", landmark.Name);
                     cmd.Parameters.AddWithValue("@Description", landmark.Description);
                     cmd.Parameters.AddWithValue("@Address", landmark.Address);
@@ -133,8 +133,7 @@ namespace Capstone.Web.DAL
         public Landmark GetLandmark(string PlaceId)
         {
             Landmark landmark = null;
-            string getLandMarkDAL = "SELECT [PlaceId],[Latitude],[Longitude],[Name],[Description],[address],[PicName],[ThumbsUp],[Type] " +
-                "FROM [dbo].[Landmark] WHERE PlaceId = @PlaceId";
+            string getLandMarkDAL = "SELECT * FROM [dbo].[Landmark] WHERE PlaceId = @PlaceId";
 
             try
             {
@@ -256,7 +255,7 @@ namespace Capstone.Web.DAL
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(UpdateLandmarkSQL, conn);
                     cmd.Parameters.AddWithValue("@Lat", landmark.Latitude);
-                    cmd.Parameters.AddWithValue("@Lng", landmark.Longtiude);
+                    cmd.Parameters.AddWithValue("@Lng", landmark.Longitude);
                     cmd.Parameters.AddWithValue("@Name", landmark.Name);
                     cmd.Parameters.AddWithValue("@Description", landmark.Description);
                     cmd.Parameters.AddWithValue("@address", landmark.Address);
@@ -395,7 +394,7 @@ namespace Capstone.Web.DAL
                 PlaceId = Convert.ToString(reader["PlaceId"]),
                 Type = Convert.ToString(reader["Type"]),
                 Latitude = Convert.ToDouble(reader["Latitude"]),
-                Longtiude = Convert.ToDouble(reader["Longitude"]),
+                Longitude = Convert.ToDouble(reader["Longitude"]),
                 Name = Convert.ToString(reader["Name"]),
                 Description = Convert.ToString(reader["Description"]),
                 Address = Convert.ToString(reader["Address"]),

@@ -1,56 +1,93 @@
 ﻿@using Capstone.Web.Models
 @model Landmark
 
-<style>
-    .img {
-        padding-bottom: 10px;
-        clear: both;
-        overflow: visible !important;
-    }
+@section extraCSS{
+    <link href="~/Content/css/LandmarkDetail.css" rel="stylesheet" />
+    <style>
+        #header-img-container {
+            background-image: url('../../Content/img/@(Model.PicName).jpg');
+        }
+    </style>
+}
 
-    .detail {
-        display: block
-    }
-</style>
-<div class="row">
-    <div class="col-12 col-md-8">
+@section topJS{
+    <script src="~/Scripts/LandmarkDetail.js"></script>
+}
 
+<!------------Header Img--------------->
+<div id="header-img-container" class="row">
+    <div class="col">
 
-
-        <div class="detail">
-            <div class="card bg-light mb-3" style="max-width: 150rem;">
-                <div class="card">
-                    <div class="card-header">
-                        <h1> @Model.Name</h1>
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">@Model.Address</h5>
-                        <p class="card-text">@Model.Description</p>
-
-
-                    </div>
-                </div>
-
-
-            </div>
-
-            <div class="stars">
-         
-
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star"></span>
-                <span class="fa fa-star"></span>
-            </div>
-            <div class=" thumbs">
-
-                <span class="glyphicon-thumbs-up"></span>
-                <span class="fa fa-thumbs-down"></span>
-                <i class="glyphicon-thumbs-up"></i>
-            </div>
-
-
-        </div>
     </div>
 </div>
+
+<!------------Info--------------->
+<div id="place-detail-info-container" class="row">
+    <div class="col">
+        <h1>
+            @Model.Name
+        </h1>
+    </div>
+    <div class="col">
+        <p>@Model.Address</p>
+    </div>
+    <div class="col">
+        <ul class="d-block">
+            <li class="list-item">Info</li>
+            <li class="list-item">Info</li>
+            <li class="list-item">Info</li>
+        </ul>
+    </div>
+    <div class="col">
+        <ul class="d-block">
+            <li class="list-item">Info</li>
+            <li class="list-item">Info</li>
+            <li class="list-item">Info</li>
+        </ul>
+    </div>
+</div>
+<!------------Description--------------->
+<div id="place-description-container" class="row">
+    <p>
+        @Model.Description
+    </p>
+</div>
+
+<!------------Place On Map--------------->
+<div id="place-map-container" class="row">
+    <div class="col">
+        <div id="map"></div>
+    </div>
+</div>
+
+<!------------reviews--------------->
+<div id="review-container" class="row">
+
+</div>
+
+
+@section bottomJS{
+    <script>
+        function initMap() {
+            alert('lat: @Model.Latitude, Lng: @Model.Longitude')
+            var uluru = { lat: @Model.Latitude, Lng: @Model.Longitude };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 4,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ&callback=initMap">
+    </script>
+}
+
+@*
+    APIs
+    AIzaSyBHVLyGpS7gzpWIKhF-1J8fZ4aNmmtjot8
+    AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ
+*@

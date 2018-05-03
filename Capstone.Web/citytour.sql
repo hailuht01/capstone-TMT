@@ -1,41 +1,41 @@
 USE [citytour]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] DROP CONSTRAINT [FK_Itinerary_Landmark_Landmark]
+ALTER TABLE [Itinerary_Landmark] DROP CONSTRAINT [FK_Itinerary_Landmark_Landmark]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] DROP CONSTRAINT [FK_Itinerary_Landmark_Itinerary]
+ALTER TABLE [Itinerary_Landmark] DROP CONSTRAINT [FK_Itinerary_Landmark_Itinerary]
 GO
-ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [FK_Itinerary_Users]
+ALTER TABLE [Itinerary] DROP CONSTRAINT [FK_Itinerary_Users]
 GO
-ALTER TABLE [dbo].[Users] DROP CONSTRAINT [DF_Users_isAdmin]
+ALTER TABLE [Users] DROP CONSTRAINT [DF_Users_isAdmin]
 GO
-ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [DF_Landmark_ThumbsUp]
+ALTER TABLE [Landmark] DROP CONSTRAINT [DF_Landmark_ThumbsUp]
 GO
-ALTER TABLE [dbo].[Itinerary] DROP CONSTRAINT [DF_Itenerary_Title]
+ALTER TABLE [Itinerary] DROP CONSTRAINT [DF_Itenerary_Title]
 GO
-/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 11:59:44 AM ******/
-DROP INDEX [IX_Username] ON [dbo].[Users]
+/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 1:18:12 PM ******/
+DROP INDEX [IX_Username] ON [Users]
 GO
-/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 11:59:44 AM ******/
-ALTER TABLE [dbo].[Landmark] DROP CONSTRAINT [CH_Landmark_PlaceID]
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 1:18:12 PM ******/
+ALTER TABLE [Landmark] DROP CONSTRAINT [CH_Landmark_PlaceID]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 11:59:44 AM ******/
-DROP TABLE [dbo].[Users]
+/****** Object:  Table [Users]    Script Date: 5/3/2018 1:18:12 PM ******/
+DROP TABLE [Users]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 11:59:44 AM ******/
-DROP TABLE [dbo].[Landmark]
+/****** Object:  Table [Landmark]    Script Date: 5/3/2018 1:18:12 PM ******/
+DROP TABLE [Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 11:59:44 AM ******/
-DROP TABLE [dbo].[Itinerary_Landmark]
+/****** Object:  Table [Itinerary_Landmark]    Script Date: 5/3/2018 1:18:12 PM ******/
+DROP TABLE [Itinerary_Landmark]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 11:59:44 AM ******/
-DROP TABLE [dbo].[Itinerary]
+/****** Object:  Table [Itinerary]    Script Date: 5/3/2018 1:18:12 PM ******/
+DROP TABLE [Itinerary]
 GO
 USE [master]
 GO
-/****** Object:  Database [citytour]    Script Date: 5/3/2018 11:59:44 AM ******/
+/****** Object:  Database [citytour]    Script Date: 5/3/2018 1:18:12 PM ******/
 DROP DATABASE [citytour]
 GO
-/****** Object:  Database [citytour]    Script Date: 5/3/2018 11:59:44 AM ******/
+/****** Object:  Database [citytour]    Script Date: 5/3/2018 1:18:12 PM ******/
 CREATE DATABASE [citytour]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -132,12 +132,12 @@ ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES =
 GO
 USE [citytour]
 GO
-/****** Object:  Table [dbo].[Itinerary]    Script Date: 5/3/2018 11:59:45 AM ******/
+/****** Object:  Table [Itinerary]    Script Date: 5/3/2018 1:18:12 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Itinerary](
+CREATE TABLE [Itinerary](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Title] [varchar](50) NOT NULL,
 	[CreationDate] [date] NOT NULL,
@@ -150,12 +150,12 @@ CREATE TABLE [dbo].[Itinerary](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Itinerary_Landmark]    Script Date: 5/3/2018 11:59:45 AM ******/
+/****** Object:  Table [Itinerary_Landmark]    Script Date: 5/3/2018 1:18:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Itinerary_Landmark](
+CREATE TABLE [Itinerary_Landmark](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Itinerary_Id] [int] NOT NULL,
 	[Landmark_Id] [int] NOT NULL,
@@ -165,12 +165,12 @@ CREATE TABLE [dbo].[Itinerary_Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Landmark]    Script Date: 5/3/2018 11:59:45 AM ******/
+/****** Object:  Table [Landmark]    Script Date: 5/3/2018 1:18:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Landmark](
+CREATE TABLE [Landmark](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[Latitude] [float] NOT NULL,
 	[Longitude] [float] NOT NULL,
@@ -178,7 +178,7 @@ CREATE TABLE [dbo].[Landmark](
 	[Description] [varchar](2000) NOT NULL,
 	[PicName] [varchar](50) NULL,
 	[ThumbsUp] [int] NULL,
-	[Type] [varchar](50) NOT NULL,
+	[Type] [varchar](200) NOT NULL,
 	[Address] [varchar](100) NOT NULL,
 	[PlaceId] [varchar](200) NOT NULL,
  CONSTRAINT [PK_Landmark] PRIMARY KEY CLUSTERED 
@@ -187,12 +187,12 @@ CREATE TABLE [dbo].[Landmark](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Users]    Script Date: 5/3/2018 11:59:45 AM ******/
+/****** Object:  Table [Users]    Script Date: 5/3/2018 1:18:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[Users](
+CREATE TABLE [Users](
 	[Email] [varchar](50) NOT NULL,
 	[Username] [varchar](50) NOT NULL,
 	[FirstName] [varchar](50) NOT NULL,
@@ -205,109 +205,103 @@ CREATE TABLE [dbo].[Users](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-SET IDENTITY_INSERT [dbo].[Itinerary] ON 
+SET IDENTITY_INSERT [Itinerary] ON 
 GO
-INSERT [dbo].[Itinerary] ([Id], [Title], [CreationDate], [DepartureDate], [description], [User_Email]) VALUES (9, N'Mock Itinerary', CAST(N'2018-05-02' AS Date), CAST(N'2018-05-05' AS Date), N'This is a mock (admin) Itinerary!', N'Admin@citytour.com')
+INSERT [Itinerary] ([Id], [Title], [CreationDate], [DepartureDate], [description], [User_Email]) VALUES (9, N'Mock Itinerary', CAST(N'2018-05-02' AS Date), CAST(N'2018-05-05' AS Date), N'This is a mock (admin) Itinerary!', N'Admin@citytour.com')
 GO
-INSERT [dbo].[Itinerary] ([Id], [Title], [CreationDate], [DepartureDate], [description], [User_Email]) VALUES (10, N'Mock Itinerary', CAST(N'2018-05-02' AS Date), CAST(N'2018-05-05' AS Date), N'This is a mock (admin) Itinerary!', N'Admin@citytour.com')
+INSERT [Itinerary] ([Id], [Title], [CreationDate], [DepartureDate], [description], [User_Email]) VALUES (10, N'Mock Itinerary', CAST(N'2018-05-02' AS Date), CAST(N'2018-05-05' AS Date), N'This is a mock (admin) Itinerary!', N'Admin@citytour.com')
 GO
-SET IDENTITY_INSERT [dbo].[Itinerary] OFF
+SET IDENTITY_INSERT [Itinerary] OFF
 GO
-SET IDENTITY_INSERT [dbo].[Landmark] ON 
+SET IDENTITY_INSERT [Landmark] ON 
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (30, 39.0973675, 0, N'Cincinnati Reds Hall of Fame & Museum', N'The Cincinnati Reds Hall of Fame and Museum is an entity established by Major League Baseball''s Cincinnati Reds franchise that pays homage to the team''s past through displays, photographs and multimedia', NULL, 1, N'museum', N'100 Joe Nuxhall Way, Cincinnati, OH 45202, USA', N'ChIJkykqw0SxQYgRavSt4Z7nS7I')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (1, 39.097624, -84.511238999999989, N'National Underground Railroad Freedom Center', N'The National Underground Railroad Freedom Center is a museum in downtown Cincinnati, Ohio based on the history of the Underground Railroad', NULL, 1, N'museum', N'50 E Freedom Way, Cincinnati, OH 45202, USA', N'ChIJQ9spXUWxQYgRj1GVFSPPYME')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (31, 39.1021235, 0, N'Taft Museum of Art', N'The Taft Museum of Art is a historic house museum holding a fine art collection in Cincinnati. It is on the National Register of Historic Places listings in downtown Cincinnati, Ohio and is a contributing property to the Lytle Park Historic District.[2]', NULL, 1, N'museum', N'4214, 316 Pike St, Cincinnati, OH 45202, USA', N'ChIJdyJfwl2xQYgRf7V1A3VCBFU')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (3, 39.1028135, -84.512008900000012, N'Contemporary Arts Center', N'The Contemporary Arts Center is a contemporary art museum in Cincinnati, Ohio and one of the first contemporary art institutions in the United States. ', NULL, 1, N'museum', N'44 E 6th St, Cincinnati, OH 45202, USA', N'ChIJb4LYpVCxQYgRO54lkCeetLY')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (32, 39.1028135, 0, N'Contemporary Arts Center', N'The Contemporary Arts Center impacts regional and global communities by providing changing arts experiences that challenge, entertain and educate.', NULL, 1, N'museum', N'44 E 6th St, Cincinnati, OH 45202, USA', N'ChIJb4LYpVCxQYgRO54lkCeetLY')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (4, 39.1021235, -84.502636600000017, N'Taft Museum of Art', N'The Taft Museum of Art is a historic house museum holding a fine art collection in Cincinnati. It is on the National Register of Historic Places listings in downtown Cincinnati, Ohio and is a contributing property to the Lytle Park Historic District.[2]', NULL, 1, N'museum', N'4214, 316 Pike St, Cincinnati, OH 45202, USA', N'ChIJdyJfwl2xQYgRf7V1A3VCBFU')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (33, 39.097624, 0, N'National Underground Railroad Freedom Center', N'The National Underground Railroad Freedom Center is a museum in downtown Cincinnati, Ohio based on the history of the Underground Railroad.', NULL, 1, N'museum', N'50 E Freedom Way, Cincinnati, OH 45202, USA', N'ChIJQ9spXUWxQYgRj1GVFSPPYME')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (5, 39.1138109, -84.49719060000001, N'Cincinnati Art Museum', N'Located in scenic Eden Park, the Cincinnati Art Museum features a diverse, encyclopedic art collection of more than 67000 works spanning 6000 years. In addition to displaying its own broad collection, the museum also hosts several national and international traveling exhibitions each year.', NULL, 1, N'museum', N'953 Eden Park Dr, Cincinnati, OH 45202, USA', N'ChIJV0h_FdyzQYgR2CacE0p1ai8')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (34, 39.1138109, 0, N'Cincinnati Art Museum', N'The Cincinnati Art Museum is one of the oldest art museums in the United States. Founded in 1881, it was the first purpose-built art museum west of the Alleghenies. Its collection of over 67,000 works spanning 6,000 years of human history make it one of the most comprehensive collections in the Midwest.', NULL, 1, N'museum', N'953 Eden Park Dr, Cincinnati, OH 45202, USA', N'ChIJV0h_FdyzQYgR2CacE0p1ai8')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (6, 39.0949305, -84.511492200000021, N'Smale Riverfront Park', N'Scenic riverside venue with fountains, gardens, walkways, playgrounds, event lawns & restaurants.', NULL, 1, N'park', N'100 Ted Berry Way, Cincinnati, OH 45202, USA', N'ChIJLV6xrkWxQYgRDDJyOKNicwM')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (35, 39.101749300000009, 0, N'Sawyer Point Park', N'1
-
-It was the mighty Ohio River that brought early settlers to the fertile valley that gave birth to Cincinnati. It was also the river that influenced the direction the young city would grow — as a busy riverboat port, as the terminus of the famed Miami-Erie Canal, as a major industrial and commercial center, and, today, as America’s most beautiful inland river city. Therefore, it seems appropriate to honor the Ohio River with this spectacular environmental sculpture by Andrew Leicester which serves as a dramatic gateway to Bicentennial Commons and to the city’s history as it tells the story of our ties to one of the nation’s great waterways.', NULL, 1, N'park', N'705 E Pete Rose Way, Cincinnati, OH 45202, USA', N'ChIJkV51b2exQYgRLmkA6uJ5Hpo')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (7, 39.101749300000009, -84.498661099999993, N'Sawyer Point Park', N'Cincinnati''s Central Riverfront is an outstanding riverfront facility. Located along the shore of the Ohio River just south of downtown Cincinnati, this mile-long linear park features many different spaces serving all segments of the region''s population', NULL, 1, N'park', N'705 E Pete Rose Way, Cincinnati, OH 45202, USA', N'ChIJkV51b2exQYgRLmkA6uJ5Hpo')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (36, 39.1063319, 0, N'Friendship Park', N'The Theodore M. Berry International Friendship Park, completed in 2003 along the Ohio River just east of downtown, is a sumptuous and award-winning display of sculpture and flora representing five continents and also featuring a riverside bike trail and walking paths', NULL, 1, N'park', N'1135 Riverside Dr, Cincinnati, OH 45202, USA', N'ChIJ3QEaHNizQYgR6lDvvgX5BW0')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (8, 39.1163363, -84.496168799999964, N'Eden Park', N'Eden Park is an urban park located in the Walnut Hills and Mt. Adams neighborhoods of Cincinnati, Ohio. The hilltop park occupies 186 acres, and offers numerous overlooks of the Ohio River valley', NULL, 1, N'park', N'950 Eden Park Dr, Cincinnati, OH 45202, USA', N'ChIJ1S65e9qzQYgRMGR4AQFZg9s')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (37, 39.0949305, 0, N'Smale Riverfront Park', N'Located on 45-acres along Cincinnati''s downtown riverfront, park features include splash grounds and water play areas, playground, picnic area, Carol Ann''s Carousel, Moerlein Lager House and more. See this map for all the features', NULL, 1, N'park', N'100 Ted Berry Way, Cincinnati, OH 45202, USA', N'ChIJLV6xrkWxQYgRDDJyOKNicwM')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (9, 39.1039895, -84.494550199999992, N'Montgomery Inn Boathouse', N'The Montgomery Inn Boathouse has an energy all its own. Maybe it''s the striking view of the Ohio River. Maybe it''s the upstairs sports lounge. Maybe it''s the amazing food and incomparable service. Whatever it is, there''s definitely a vibe and it''s contagious (in a good way, of course).', NULL, 1, N'restaurant', N'925 Riverside Dr, Cincinnati, OH 45202, USA', N'ChIJ1YpO6mOxQYgRavAlyMV6XLo')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (38, 39.1043493, 0, N'Piatt Park', N'This two-block long shady park has fountains, plenty of seating for downtown picnics, and Wi-Fi access. It''s got the only equestrian statue in the city (that of North Bend, Ohio settler and 9th U.S. President William Henry Harrison). Nearly 200 years old now, Piatt Park is a treasured oasis in downtown Cincinnati', NULL, 1, N'park', N'30 Garfield Pl, Cincinnati, OH 45202, USA', N'ChIJd5vM2laxQYgRVrHMfERQ1IA')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (10, 39.0969133, -84.5104814, N'Yard House', N'At Yard House enjoy more than 100 taps of the best American craft and import beers, plus a menu with more than 100 dishes made from scratch in our kitchen.', NULL, 1, N'restaurant', N'95 E Freedom Way, Cincinnati, OH 45202, USA', N'ChIJfWU7P0WxQYgR0Z7qRaNJrUI')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (39, 39.1039895, 0, N'Montgomery Inn Boathouse', N'The Montgomery Inn Boathouse has an energy all its own. Maybe it''s the striking view of the Ohio River. Maybe it''s the upstairs sports lounge. Maybe it''s the amazing food and incomparable service. Whatever it is, there''s definitely a vibe and it''s contagious (in a good way, of course)', NULL, 1, N'restaurant', N'925 Riverside Dr, Cincinnati, OH 45202, USA', N'ChIJ1YpO6mOxQYgRavAlyMV6XLo')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (11, 39.102908, -84.511471000000029, N'Nada', N'Trendy Mexican cantina with outdoor seating, festive cocktails & upscale fare in a chic setting.', NULL, 1, N'restaurant', N'600 Walnut St, Cincinnati, OH 45202, USA', N'ChIJ9UWCBlqxQYgRoH9ooQSY_jI')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (40, 39.101325, 0, N'Palomino - Cincinnati', N'A vibrant "Urban Italian" restaurant, bar and rotisserie famous for its style, hardwood fired Mediterranean cooking and versatile, imaginative menu', NULL, 1, N'restaurant', N'Fountain Place, 505 Vine St, Cincinnati, OH 45202, USA', N'ChIJIa5H81CxQYgRKP1f0J-vJhI')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (12, 39.1155538, -84.518907099999979, N'Pho Lang Thang', N'Upbeat Vietnamese joint inside Findlay Market for bowls of pho & banh mi sandwiches.', NULL, 1, N'restaurant', N'114 W Elder St, Cincinnati, OH 45202, USA', N'ChIJvYfkF_mzQYgRHq5iE8daVjE')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (41, 39.1155538, 0, N'Pho Lang Thang', N'Upbeat Vietnamese joint inside Findlay Market for bowls of pho & banh mi sandwiches.', NULL, 1, N'restaurant', N'114 W Elder St, Cincinnati, OH 45202, USA', N'ChIJvYfkF_mzQYgRHq5iE8daVjE')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (13, 39.1092418, -84.517291199999988, N'Washington Park', N'The newly renovated and expanded Washington Park is an important civic space in the heart of Cincinnati that has evolved over the last 150 years to accommodate the needs and aspirations of the community.', NULL, 1, N'park', N'1230 Elm St, Cincinnati, OH 45202, USA', N'ChIJD1M8-VWxQYgRS8uaCQAi7uo')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (42, 39.100793, 0, N'I Love Cincinnati Shop', N'If you are downtown for the parade and/or Opening Day, stop in and see us. We have Reds jackets, tees, ponchos, small purses, hats, blankets, black/red tights and more. Go Reds!', NULL, 1, N'store', N'441 Vine St, Cincinnati, OH 45202, USA', N'ChIJJaWu8tTRcEARPNYJ3thmkMU')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (14, 39.0959805, -84.5114178, N'Anderson Pavilion', N'Anderson Pavilion offers spectacular views, contemporary elegance decor & ambiance, state-of-the art technology and an award-winning in-house culinary group.', NULL, 1, N'venue', N'8 E Mehring Way, Cincinnati, OH 45202, USA', N'ChIJLTILfkWxQYgRzEVMtCPCzzI')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (43, 39.1023291, 0, N'Batsakes Hat Shop', N'Long-standing shop offering an assortment of handcrafted hats in an old-school atmosphere.', NULL, 1, N'store', N'1 W 6th St, Cincinnati, OH 45202, USA', N'ChIJndhJwlCxQYgRLnt_YZqOWDw')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (15, 39.095595, -84.523510999999985, N'Longworth Hall Event Center', N'Longworth Hall is a beautiful adaptation of a quarter mile long warehouse that was built in 1904 on land owned by Nicolas Longworth. * On the National Register of Historic Places.', NULL, 1, N'venue', N'700 W Pete Rose Way #137, Cincinnati, OH 45203, USA', N'ChIJ2c6oIrO2QYgR7gomoDgseow')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (45, 39.0959805, 0, N'Anderson Pavilion', N'Anderson Pavilion offers spectacular views, contemporary elegance decor & ambiance, state-of-the art technology and an award-winning in-house culinary group. The Pavilion will offer a 350+ seat conference facility, ideal for hosting a wide variety of events.', NULL, 1, N'venue', N'8 E Mehring Way, Cincinnati, OH 45202, USA', N'ChIJLTILfkWxQYgRzEVMtCPCzzI')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (16, 39.1079693, -84.5182115, N'The Transept', N'Funky''s Catering is proud to introduce Cincinnati''s premier event space, nestled in the southwest corner of Washington Park, The Transept transforms the historic German gothic church into a world-class venue for weddings, meetings, receptions and social gatherings', NULL, 1, N'venue', N'1205 Elm St, Cincinnati, OH 45202, USA', N'ChIJqfHgllWxQYgRmsT8hvq4C28')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (46, 39.143864, 0, N'Live at the Ludlow Garage', N'The Ludlow Garage began life as an automobile shop and later became a music venue located in the Clifton neighborhood of Cincinnati, Ohio.', NULL, 1, N'venue', N'342 Ludlow Ave, Cincinnati, OH 45220, USA', N'ChIJ1xTCa4ezQYgR2HxQejIcIcc')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (17, 39.1299821, -84.5100266, N'Bogart''s', N'Bogart''s is a venue for local, national, and international live music. Bogart''s has been recognized on the international stage for bringing the newest and best music and events to the public and continues the tradition of quality live entertainment that has been its forté since the building was built.', NULL, 1, N'venue', N'2621 Vine St, Cincinnati, OH 45219, USA', N'ChIJg6GhiFuxQYgRUjOYufKfBLY')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (47, 39.1299821, 0, N'Bogart''s', N'Bogart''s is a venue for local, national, and international live music. Bogart''s has been recognized on the international stage for bringing the newest and best music and events to the public and continues the tradition of quality live entertainment that has been its forté since the building was built.', NULL, 1, N'venue', N'2621 Vine St, Cincinnati, OH 45219, USA', N'ChIJg6GhiFuxQYgRUjOYufKfBLY')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (18, 39.100793, -84.513230000000021, N'I Love Cincinnati Shop', N'I Love Cincinnati Shoppe offers everything you need to represent the Cincy-style with a large selection gifts and souvenirs.', NULL, 1, N'store', N'441 Vine St, Cincinnati, OH 45202, USA', N'ChIJJaWu8tTRcEARPNYJ3thmkMU')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (48, 39.113055500000009, 0, N'Elsinore Arch', N'Elsinore Arch is a registered historic structure in Cincinnati, Ohio, listed in the National Register on March 3, 1980. The building, at Gilbert Avenue and Elsinore Place, was constructed in 1883 for the Cincinnati Water Works', NULL, 1, N'landmark', N'1292-1298 Elsinore Ave, Cincinnati, OH 45202, USA', N'ChIJF2IodN6zQYgRasZSqn9M_gs')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (19, 39.1098918, -84.51000479999999, N'The Snatch Shop', N'Count on us for your fashion accessories/ unisex wears/ beauty products.', NULL, 1, N'store', N'1212 Sycamore St, Cincinnati, OH 45202, USA', N'ChIJo9jH7OKzQYgRwve1y-nDu_0')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (50, 39.1052773, 0, N'Cincinnati Fire Museum', N'Cincinnati Fire Museum. The Cincinnati Fire Museum highlights the significant contributions that Cincinnati has made to the firefighting profession. Cincinnati is the birthplace of professional firefighting and we are proud to display its history', NULL, 1, N'museum', N'315 W Court St #1, Cincinnati, OH 45202, USA', N'ChIJmTZMX1SxQYgR2wuqNwACn_o')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (20, 39.1052203, -84.51328890000002, N'Library Friends'' Shop', N'At The Friends of the Public Library you can find a multitude of unique, comfortably priced gifts for all ages and tastes.', NULL, 1, N'store', N'800 Vine St, Cincinnati, OH 45202, USA', N'ChIJe3UJDFexQYgR3ZQGE4s4XM0')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (51, 39.1020517, 0, N'Rock Bottom Restaurant & Brewery', N'Brewpub chain serving house beers & upscale pub food & American fare in lively environs', NULL, 1, N'restaurant', N'10 Fountain Square Plaza, Cincinnati, OH 45202, USA', N'ChIJTV91kXJXQIgR-Yriq1FpdxU')
+INSERT [Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (21, 39.1101215, -84.512103200000013, N'Libby Shop', N'When you shop at LIBBY Boutique, you''ll find contemporary women''s clothing and accessories', NULL, 1, N'store', N'1307 Main St, Cincinnati, OH 45202, USA', N'ChIJTdf90PyzQYgRx8cFDIt6N7A')
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (52, 39.0969133, 0, N'Yard House', N'At Yard House enjoy more than 100 taps of the best American craft and import beers, plus a menu with more than 100 dishes made from scratch in our kitchen.', NULL, 1, N'restaurant', N'95 E Freedom Way, Cincinnati, OH 45202, USA', N'ChIJfWU7P0WxQYgR0Z7qRaNJrUI')
+SET IDENTITY_INSERT [Landmark] OFF
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (53, 39.1056316, 0, N'Cincinnati Times-Star Building', N'Cincinnati Times-Star Building at 800 Broadway Street in Cincinnati, Ohio 45202, is a registered historic building. It was listed in the National Register on November 25, 1983. It was built in 1933 and was designed by the firm of Samuel Hannaford & Sons in the Art Deco Style.', NULL, 1, N'landmark', N'Reedy St, Cincinnati, OH 45202, USA', N'ChIJnTv6KFmxQYgRmbd2Gwwx0Dg')
+INSERT [Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'admin@citytour.com', N'Admin', N'Admin', N'Jones', N'Password', 1)
 GO
-INSERT [dbo].[Landmark] ([Id], [Latitude], [Longitude], [Name], [Description], [PicName], [ThumbsUp], [Type], [Address], [PlaceId]) VALUES (54, 39.1000838, 0, N'Ingalls Building', N'The Ingalls Building, built in 1903 in Cincinnati, Ohio, is the world''s first reinforced concrete skyscraper. The 16-story building was designed by the Cincinnati architectural firm Elzner & Anderson and was named for its primary financial investor, Melville E. Ingalls', NULL, 1, N'landmark', N'6 E 4th St, Cincinnati, OH 45202, USA', N'ChIJB0oBcFCxQYgRWNRuanmaxj4')
+INSERT [Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'djpowerhouse513@gmail.com', N'Powerhouse', N'Byron', N'THOMPSON', N'BigSPlash513!', 0)
 GO
-SET IDENTITY_INSERT [dbo].[Landmark] OFF
+INSERT [Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'ruptastic@gmail.com', N'chris', N'Chris', N'Rupp', N'Password123!', 0)
 GO
-INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'admin@citytour.com', N'Admin', N'Admin', N'Jones', N'Password', 1)
-GO
-INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'djpowerhouse513@gmail.com', N'Powerhouse', N'Byron', N'THOMPSON', N'BigSPlash513!', 0)
-GO
-INSERT [dbo].[Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
+INSERT [Users] ([Email], [Username], [FirstName], [LastName], [Password], [isAdmin]) VALUES (N'user@citytour.com', N'User', N'User', N'User', N'Password', 0)
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 11:59:45 AM ******/
-ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [CH_Landmark_PlaceID] UNIQUE NONCLUSTERED 
+/****** Object:  Index [CH_Landmark_PlaceID]    Script Date: 5/3/2018 1:18:13 PM ******/
+ALTER TABLE [Landmark] ADD  CONSTRAINT [CH_Landmark_PlaceID] UNIQUE NONCLUSTERED 
 (
 	[PlaceId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
 SET ANSI_PADDING ON
 GO
-/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 11:59:45 AM ******/
-CREATE UNIQUE NONCLUSTERED INDEX [IX_Username] ON [dbo].[Users]
+/****** Object:  Index [IX_Username]    Script Date: 5/3/2018 1:18:13 PM ******/
+CREATE UNIQUE NONCLUSTERED INDEX [IX_Username] ON [Users]
 (
 	[Username] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, IGNORE_DUP_KEY = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 GO
-ALTER TABLE [dbo].[Itinerary] ADD  CONSTRAINT [DF_Itenerary_Title]  DEFAULT ('Untitled') FOR [Title]
+ALTER TABLE [Itinerary] ADD  CONSTRAINT [DF_Itenerary_Title]  DEFAULT ('Untitled') FOR [Title]
 GO
-ALTER TABLE [dbo].[Landmark] ADD  CONSTRAINT [DF_Landmark_ThumbsUp]  DEFAULT ((1)) FOR [ThumbsUp]
+ALTER TABLE [Landmark] ADD  CONSTRAINT [DF_Landmark_ThumbsUp]  DEFAULT ((1)) FOR [ThumbsUp]
 GO
-ALTER TABLE [dbo].[Users] ADD  CONSTRAINT [DF_Users_isAdmin]  DEFAULT ((0)) FOR [isAdmin]
+ALTER TABLE [Users] ADD  CONSTRAINT [DF_Users_isAdmin]  DEFAULT ((0)) FOR [isAdmin]
 GO
-ALTER TABLE [dbo].[Itinerary]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Users] FOREIGN KEY([User_Email])
-REFERENCES [dbo].[Users] ([Email])
+ALTER TABLE [Itinerary]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Users] FOREIGN KEY([User_Email])
+REFERENCES [Users] ([Email])
 GO
-ALTER TABLE [dbo].[Itinerary] CHECK CONSTRAINT [FK_Itinerary_Users]
+ALTER TABLE [Itinerary] CHECK CONSTRAINT [FK_Itinerary_Users]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Landmark_Itinerary] FOREIGN KEY([Itinerary_Id])
-REFERENCES [dbo].[Itinerary] ([Id])
+ALTER TABLE [Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Landmark_Itinerary] FOREIGN KEY([Itinerary_Id])
+REFERENCES [Itinerary] ([Id])
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_Itinerary]
+ALTER TABLE [Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_Itinerary]
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Landmark_Landmark] FOREIGN KEY([Landmark_Id])
-REFERENCES [dbo].[Landmark] ([Id])
+ALTER TABLE [Itinerary_Landmark]  WITH CHECK ADD  CONSTRAINT [FK_Itinerary_Landmark_Landmark] FOREIGN KEY([Landmark_Id])
+REFERENCES [Landmark] ([Id])
 ON DELETE CASCADE
 GO
-ALTER TABLE [dbo].[Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_Landmark]
+ALTER TABLE [Itinerary_Landmark] CHECK CONSTRAINT [FK_Itinerary_Landmark_Landmark]
 GO
 USE [master]
 GO

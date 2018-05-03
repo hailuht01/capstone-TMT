@@ -14,7 +14,7 @@ namespace Capstone.Web.Models
         public string Address { get; set; }
         public string Description { get; set; }
         public double Latitude { get; set; }
-        public double Longtiude { get; set; }
+        public double Longitude { get; set; }
         public string PicName
         {
             get
@@ -33,7 +33,7 @@ namespace Capstone.Web.Models
             this.Address = Address;
             this.Description = Description;
             this.Latitude = Latitude;
-            this.Longtiude = Longitude;
+            this.Longitude = Longitude;
             this.ThumbsUp = thumbsUp;
             this.Type = type;
 

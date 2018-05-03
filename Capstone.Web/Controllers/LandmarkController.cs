@@ -69,11 +69,14 @@ namespace Capstone.Web.Controllers
             return View(landmarks);
         }
 
-        [HttpPost]
-        public ActionResult LandmarkDetail(int Id)
+        public ActionResult LandmarkDetail(string PlaceId)
         {
+            if (PlaceId == null)
+            {
+                return View("Index", "Home");
+            }
             UserSession session = GetActiveUser();
-            Landmark landmark = landmarkDAL.GetLandmark(Id);
+            Landmark landmark = landmarkDAL.GetLandmark(PlaceId);
 
             return View(landmark);
         }

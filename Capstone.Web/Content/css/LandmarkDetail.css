@@ -1,0 +1,51 @@
+﻿body {
+}
+.row, .col {
+    margin: 0;
+}
+
+/**Img Header**/
+#header-img-container {
+    height: 60vh;
+    width: 100%;
+    background-size: cover;
+}
+
+/***Details****/
+#place-detail-info-container{
+    height: 15vh;
+    background-color: rgba(245,64,46,1);
+    color: #fff;
+    font-size: 1em;
+    padding: 1.2em;
+}
+#place-detail-info-container h1{
+    font-size: 1.5em;
+    font-weight:bolder;
+}
+
+/****Description****/
+#place-description-container{
+    min-height: 40vh;
+    background-color:#fff;
+    padding: 1.5em;
+}
+
+#place-description-container p{
+    width: 45%;
+    margin-right: auto;
+}
+
+/****Map****/
+#place-map-container {
+    height: 45vh;
+    width: 100%;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+
+    

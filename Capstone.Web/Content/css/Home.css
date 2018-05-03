@@ -142,26 +142,26 @@
 #featured-container-1 .left {
  
 }
-#featured-container-1 .left .card-body {
-    background-image: url('../img/Travel.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: top;
-}
+    #featured-container-1 .left .card-body {
+        background-image: url('../img/Jack-Cincinnati-Casino.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: top;
+    }
 
 
 #featured-container-1{
 
 }
 
-#featured-container-1 .right .card-body {
-    background-image: url('../img/Travel1.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: top;
-}
+    #featured-container-1 .right .card-body {
+        background-image: url('../img/Newport-Aquarium.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: top;
+    }
 
 /****2***/
 #featured-container-2 {
@@ -173,21 +173,21 @@
 }
 
     #featured-container-2 .left .card-body {
-        background-image: url('../img/Travel2.jpg');
+        background-image: url('../img/National-Underground-Railroad.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position-x: center;
         background-position-y: top;
     }
 
-#featured-container-2 .right {
-    background-image: url('../img/Travel3.jpg');
-    background-size: cover;
-    background-position-x: center;
-    width:100%;
-    padding-right: 0;
-    padding-left:0;
-}
+    #featured-container-2 .right {
+        background-image: url('../img/Great-American-Ballpark.jpg');
+        background-size: cover;
+        background-position-x: center;
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+    }
 
     
 
@@ -209,19 +209,19 @@
 width: 100%;
 }
 
-#featured-container-3 .left .card-body {
-    background-image: url('../img/Travel4.jpg');
-    background-size: cover;
-    background-position-x:center;
-    background-position-y: top;
-}
+    #featured-container-3 .left .card-body {
+        background-image: url('../img/Coney-Island.jpg');
+        background-size: cover;
+        background-position-x: center;
+        background-position-y: top;
+    }
 
-#featured-container-3 .middle {
-    background-image: url('../img/Travel8.jpg');
-    background-size: cover;
-    background-position-x: center;
-    width: 100%;
-}
+    #featured-container-3 .middle {
+        background-image: url('../img/Arial.jpg');
+        background-size: cover;
+        background-position-x: center;
+        width: 100%;
+    }
 
 
 #featured-container-3 .right {
@@ -229,7 +229,7 @@ width: 100%;
 }
 
 #featured-container-3 .right .card-body {
-    background-image: url('../img/Travel9.jpg');
+    background-image: url('../img/Findlay-Market.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: center;
@@ -248,27 +248,27 @@ width: 100%;
 
 
 #featured-container-4 .left {
-    background-image: url('../img/Travel16.jpg');
+    background-image: url('../img/Skyline-Chili.jpg');
     background-size: cover;
     background-position-x: center;
     font-size: 14px;
 }
 
-#featured-container-4 .middle-left {
-    background-image: url('../img/Travel13.jpg');
-    background-size: cover;
-    background-position-x: center;
-}
+    #featured-container-4 .middle-left {
+        background-image: url('../img/Kings-Island.jpg');
+        background-size: cover;
+        background-position-x: center;
+    }
 
-#featured-container-4 .middle-right {
-    background-image: url('../img/Travel14.jpg');
-    background-size: cover;
-    background-position-x: center;
-}
+    #featured-container-4 .middle-right {
+        background-image: url('../img/Street-Car.jpg');
+        background-size: cover;
+        background-position-x: center;
+    }
 
-#featured-container-4 .right {
-    background-image: url('../img/Travel17.jpg');
-    background-size: cover;
-    background-position-x: center;
-}
+    #featured-container-4 .right {
+        background-image: url('../img/Paul-Brown-Stadium.jpg');
+        background-size: cover;
+        background-position-x: center;
+    }
 
