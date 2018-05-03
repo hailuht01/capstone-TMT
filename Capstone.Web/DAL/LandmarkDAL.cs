@@ -344,6 +344,7 @@ namespace Capstone.Web.DAL
             return landmarks;
         }
 
+
         /// <summary>
         /// Maps properties from DB to a landmark object
         /// </summary>
