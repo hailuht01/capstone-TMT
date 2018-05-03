@@ -87,7 +87,7 @@ function toggleActiveItin(itinId) {
 
 }
 
-function addToItin(idStr) {
+function addToItin(idStr, name) {
   //$("#markerPlaceId").value();
   {
 
@@ -100,7 +100,9 @@ function addToItin(idStr) {
           return this.value + " "+idStr
       })
 
+      var landmarkHTML = `<div class=' col-8 btn-success round border' id='itin-landitem-id-${idStr}' data-value='${idStr}' onclick="removeLandmark(${idStr})">${name}</div>`;
 
+        $('#activeItin').append(landmarkHTML);
 
     } else { console.log("already in itin land:" + idStr + "  itin: " + activeItinIdIndex) }
     $('.landmark-detail').modal('hide');
@@ -128,6 +130,8 @@ function removeLandmark(idStr) { // remove from value and hide div
           return this.value.replace(idStr, '');
       })
 
+    $('#itin-landitem-id-'+idStr).hide()
+
 }
 
 function removeItinerary(i) {
@@ -137,7 +141,6 @@ function removeItinerary(i) {
     console.log("removed Itin index= " + i);
   }
 }
-
 
 function ShowModal(props) {
 
