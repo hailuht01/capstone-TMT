@@ -38,7 +38,7 @@ function AddMarker(props) {
   var windowHtml = `<h3>${props.name}</h3>
                         <p>${props.address}</p>
                         <p>${props.description}</p>
-                        <input id="markerPlaceId" type="hidden" value="${props.placeId}"/>
+                        <input id="markerId" type="hidden" value="${props.placeId}"/>
 `;
   //Add Marker
   var marker = new google.maps.Marker({
@@ -61,12 +61,12 @@ function AddMarker(props) {
 
   //Add Modal Detail
   marker.addListener('click', function () {
-    $('#landmark-detail-' + props.id).modal('show');
-    console.log(props.placeId);
+   $('#landmark-detail-' + props.id).modal('show');
 
-    $('.modal-title').text(props.name);
-    showModal(props);
-    //genLandmarkModalHTML(props.placeId, props.description);
+
+  $('.modal-title').text(props.name);
+
+    genLandmarkModalHTML(props.placeId, props.description);
 
   });
 }
