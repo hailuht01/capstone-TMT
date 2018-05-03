@@ -9,14 +9,16 @@ var genRoute=false;
 var placeIds
 
 
-$("document").ready(function () {
-  initMap();
-  $('#createItinForm').hide();
-    $('#landmark-list').hide();
 
-});
 
 if(!genRoute) {
+
+    $("document").ready(function () {
+        initMap();
+        $('#createItinForm').hide();
+        $('#landmark-list').hide();
+
+    });
 
     function initMap() {
         //Map Options
@@ -77,7 +79,13 @@ if(!genRoute) {
 
 
 
-}else{
+}else{ // gen route
+    $("document").ready(function () {
+        initMap();
+        $('#createItinForm').hide();
+        $('#landmark-list').hide();
+
+    });
 
 
     function initMap() {
@@ -107,9 +115,9 @@ if(!genRoute) {
         }
 
         directionsService.route({
-            origin: document.getElementById('start').value,
-            destination: document.getElementById('end').value,
-            waypoints: waypts,
+            origin: {placeId: placeIds[0]},
+            destination: {placeId: placeIds[placeIds.length() - 1]},
+            waypoints: placeIds[1],
             optimizeWaypoints: true,
             travelMode: 'DRIVING'
         }, function(response, status) {
@@ -276,7 +284,7 @@ function removeLandmark(idStr) { // remove from value and hide div
     $('#itin-landmark-array-' + activeItinIdIndex).val(function () {
         console.log("old " + this.value + "new" + this.value.replace(idStr, ''));
         return this.value.replace(idStr, '');
-    })
+    });
 
     $('#itin-landitem-id-' + idStr).hide()
 
@@ -297,6 +305,7 @@ function generateRoute(placeIdStr)
     console.log(placeIds);
     genRoute = true;
     location.reload();
+    calculateAndDisplayRoute(directionsService, directionsDisplay);
 }
 
 
