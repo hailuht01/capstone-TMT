@@ -17,7 +17,6 @@ if(!genRoute) {
         initMap();
         $('#createItinForm').hide();
         $('#landmark-list').hide();
-
     });
 
     function initMap() {

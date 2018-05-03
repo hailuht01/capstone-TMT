@@ -114,3 +114,9 @@ a:hover {
 .detail img {
     width: 100%;
 }
+
+/***Alert Message***/
+#alert-message {
+    height: 20%;
+    padding: 1.5em;
+}

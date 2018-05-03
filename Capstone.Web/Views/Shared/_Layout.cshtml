@@ -1,6 +1,24 @@
 ﻿
 @{
     string username = ViewBag.Username as string;
+
+    string alertMessage = "";
+    if ( TempData["Alert.Message"] != null)
+    {
+        alertMessage = TempData["Alert.Message"].ToString();
+    }
+
+    string alertType = "";
+    if (TempData["Alert.Type"] != null)
+    {
+        alertType = TempData["Alert.Type"].ToString().ToLower();
+    }
+
+    string alertDisplay = "none";
+    if (TempData["Alert.Display"] != null)
+    {
+        alertDisplay = TempData["Alert.Display"].ToString();
+    }
 }
 <!DOCTYPE html>
 
@@ -21,6 +39,7 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/user-registration.js"></script>
+
     @RenderSection("topJS", false)
 
 
@@ -73,15 +92,17 @@
                         }
                     </div>
                 </div>
-
             </nav>
+            <!----Error/Success Message----->
+            <div id="alert-message" class="bg-@(alertType)" style="color:#fff; text-align:center; height:15%; display:@alertDisplay;">@alertMessage</div>
+
             @RenderSection("HeaderBottom", false)
         </header>
         <div class="page-wrap">
             @RenderBody()
         </div>
     </div>
-    @RenderSection("BottomJS", false)
+
     <footer class="footer site-footer">
         <ul class="list-inline ">
             <li>
@@ -91,5 +112,11 @@
             </li>
         </ul>
     </footer>
+    <script>
+        function fadeOut() {
+            $('#alert-message').fadeOut(slow, swing)
+        }
+    </script>
+    @RenderSection("BottomJS", false)
 </body>
 </html>
