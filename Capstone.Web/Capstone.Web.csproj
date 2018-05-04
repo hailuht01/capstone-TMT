@@ -200,10 +200,12 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\About.css" />
     <Content Include="Content\css\Home.css" />
+    <Content Include="Content\css\ItineraryIndex.css" />
     <Content Include="Content\css\LandmarkDetail.css" />
     <Content Include="Content\css\LandmarkManage.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\register-login.css" />
+    <Content Include="Content\img\Anderson-Pavillion.jpg" />
     <Content Include="Content\img\Bogart%27s.jpg" />
     <Content Include="Content\img\Bravo!-City-tour.jpg" />
     <Content Include="Content\img\Byron.jpg" />
@@ -224,6 +226,8 @@
     <Content Include="Content\img\Libby-Shop.jpg" />
     <Content Include="Content\img\Library-Friends%27-Shop.jpg" />
     <Content Include="Content\img\Logo.jpg" />
+    <Content Include="Content\img\Longworth-Hall-Event-Center.jpg" />
+    <Content Include="Content\img\map2.jpg" />
     <Content Include="Content\img\Montgomery-Inn-Boathouse.jpg" />
     <Content Include="Content\img\Music-Hall.jpg" />
     <Content Include="Content\img\Nada.jpg" />
