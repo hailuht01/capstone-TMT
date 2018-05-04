@@ -1,68 +1,36 @@
 ﻿@using Capstone.Web.Models
-@model FullUserModel
-
-@section extraCss{
-    <link href="~/Content/css/Home.css" rel="stylesheet" />
-}
-@section topJS{
-    <script src="~/Scripts/Main.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPzAfumWS9n3IJ-PGos47STA1mp4QuLZQ">
-    </script>
-
+@model List<Landmark>
+    
+@section extraCSS{
+    <link href="~/Content/css/ItineraryIndex.css" rel="stylesheet" />
 }
 
-<div id="itinerary-container" class="row">
-    <div id="itin-controls" class="col-md-5">
-        <h2 class="text-center">My Intineraries</h2>
-        <div class="row">
-            <div id="itn-form-control" class="col">
-                <nav class="nav nav-pills">
-                    <a id="new-itn" class="nav-item nav-link btn-warning" href="#" onclick="createItin(@(Model.Itineraries.Count+1))">New</a>
-                    <a id="toggleMap" class="nav-item nav-link btn-info" href="#" onclick="toggleMap()">Toggle Map</a>
-                    @*<a id="save-itn" class="nav-item nav-link btn-success" href="#">Save</a>*@
-                </nav>
+<div id="itin-container" class="row">
+    <div id="landmarks" class="col-md-2">
+        <h3>Scheduled</h3>
+
+    </div>
+    <div id="itin-details" class="col-md-6">
+        <h3>Itinerary</h3>
+        <div class="card">
+            <div class="card-header">
+
             </div>
-        </div>
+            <div class="card-body">
 
-        <div class="row">
-            <div class="col">
-                @Html.Partial("_Itinerary", Model)
+            </div>
+            <div class="card-footer">
+
             </div>
         </div>
     </div>
-
-    @*google maps iframe*@
-    <div id="map-container" class="col-md-7">
-        <div id="map">
+    <div id="map-container" class="col-md-4">
+        <h3>Landmarks</h3>
+        <div class="row">
 
         </div>
-    </div>
+        <div class="row">
 
-    <div id="landmark-list">
-        <h2>Select Landmarks to Add!</h2>
-        @foreach (var land in Model.Landmarks)
-        {
-            <div class="landmark-item btn-info" id="landmark-@land.Id" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId', id: '@land.Id'})">
-                <h5>@land.Name</h5>
-                @*<input type="button" onclick="ShowModal({ coords: { lat:@land.Latitude, lng:@land.Longtiude}, name: '@land.Name', address: '@land.Address', description: '@land.Description', placeId: '@land.PlaceId'})" name="View Details" />*@
-
-            </div>
-        }
+        </div>
     </div>
 </div>
-<div id="directions-panel"></div>
-<!--Modal-->
-
-@Html.Partial("LandmarkModal", Model.Landmarks)
-@section BottomJS{
-    <script>
-        $('document').ready(function ()
-        {
-            @foreach (var land in Model.Landmarks)
-            {
-                   @: AddMarker({ coords: { lat:@land.Latitude, lng:@land.Longitude}, name: '@land.Name', address: '@land.Address', id: '@land.Id', description: '@land.Description', placeId: "@land.PlaceId"});
-            }
-    });
-    </script>
-}
-

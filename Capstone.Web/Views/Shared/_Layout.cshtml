@@ -31,6 +31,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro:700" rel="stylesheet">
     <link href="~/Content/css/site.css" rel="stylesheet" />
     @RenderSection("extraCSS", false)
     <!--JS-->
@@ -72,26 +73,27 @@
                         @*<a class="nav-item nav-link" href="@Url.Action("Contact", "Home")">Contact US</a>*@
                     </nav>
                 </div>
-                <div class="nav-item dropdown dropleft">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>My Account</span>
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                <ul class="list-inline">
+                    <li class="list-inline-item">
                         @if (ViewBag.Username != "Anonymous")
                         {
-                            <a class="nav-link btn btn-submit" href="@Url.Action("UserProfile", "Home")">@ViewBag.Username</a>
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="#">Hello @(ViewBag.Username)!</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Logout", "Home")">Log Out</a>
+                            </li>
                         }
-                        @if (ViewBag.Username == "Anonymous")
-                        {
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Home")">Login</a>
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Register", "Home")">Register</a>
+                        else {
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Login", "Home")">Login</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link btn btn-submit" href="@Url.Action("Register", "Home")">Register</a>
+                            </li>
                         }
-                        else
-                        {
-                            <a class="nav-link btn btn-submit" href="@Url.Action("Logout", "Home")">Log Out</a>
-                        }
-                    </div>
-                </div>
+                </ul>
             </nav>
             <!----Error/Success Message----->
             <div id="alert-message" class="bg-@(alertType)" style="color:#fff; text-align:center; height:15%; display:@alertDisplay;">@alertMessage</div>

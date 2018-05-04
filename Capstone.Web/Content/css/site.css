@@ -8,11 +8,9 @@ html {
 }
 
 body {
-    box-sizing: border-box;
-    background-color: rgba(45,66,92, .1);
-    height: 100%;
-    margin-bottom: 100px;
-    font-family: roboto;
+    background-color: #000;
+    min-height: 100%;
+    font-family: 'Maven Pro', sans-serif;
 }
 
 /***NavBar****/
@@ -57,11 +55,13 @@ label {
 footer {
     bottom: 0;
     left: 0;
+    position: relative;
     width: 100%;
     color: #11BFC1;
     font-size: 1.2em;
     font-weight: bold;
     background-color: #fff;
+    margin-top: 10%;
 }
 
 .page-wrap {
@@ -70,10 +70,10 @@ footer {
     margin-bottom: -30px;
 }
 
-    .page-wrap:after {
-        content: "";
-        display: block;
-    }
+.page-wrap:after {
+    content: "";
+    display: block;
+}
 
 .site-footer, .page-wrap:after {
     height: 100px;

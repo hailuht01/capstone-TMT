@@ -1,11 +1,13 @@
 ﻿@using Capstone.Web.Models
 @model List<Landmark>
+@section extraCSS {
+    <link href="~/Content/css/register-login.css" rel="stylesheet" />
+    <link href="~/Content/css/Home.css" rel="stylesheet" />
+}
 
 <div class="row">
-
     <div class="col-4">
         <div class="detail">
-
             @foreach (var landmark in Model)
             {
                 if (landmark.Type == "museum")

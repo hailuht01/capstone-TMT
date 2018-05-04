@@ -98,8 +98,13 @@
     margin-top: 2em;
 }
 
-.feature-container h3{
-    font-size: .9em;
+.featured-container h3{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.featured-container small {
+    font-weight: bold;
 }
 
 .card-body{
@@ -112,15 +117,24 @@
 }
 
 .featured-container .card-body {
-    min-height: 10%;
+    min-height: 70%;
+}
+
+.featured-container .card-footer {
+    background-color: #fff;
+    color: #F5402E;
 }
 
 .featured-container .card img{
     min-height: 90%;
     min-width:100%;
     position: relative;
-    left:0;
-    
+    left:0;  
+}
+
+#landingCarousel a {
+    color: #fff;
+    background-color: #F5402E;
 }
 
 .featured-container .left, .right, .middle, .middle-left, .middle-right{
@@ -128,8 +142,8 @@
 }
 
 .featured-container .feature-content {
-    background-color: rgba(0,0,0,.6);
-    height: auto;
+    background-color: rgba(245,64,46,.6);
+    height: 30%;
     width: 100%;
     margin: 0 auto;
     padding: 4% 18% 4% 4.33%;
@@ -177,7 +191,7 @@
 }
 
     #featured-container-2 .left .card-body {
-        background-image: url('../img/National-Underground-Railroad.jpg');
+        background-image: url('../img/National-Underground-Railroad-Freedom-Center.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-position-x: center;
@@ -214,7 +228,7 @@ width: 100%;
 }
 
     #featured-container-3 .left .card-body {
-        background-image: url('../img/Coney-Island.jpg');
+        background-image: url('../img/Coney-Island-Amusement-Park.jpg');
         background-size: cover;
         background-position-x: center;
         background-position-y: top;
@@ -265,7 +279,7 @@ width: 100%;
     }
 
     #featured-container-4 .middle-right {
-        background-image: url('../img/Street-Car.jpg');
+        background-image: url('../img/Cincinnati-Streetcar.jpg');
         background-size: cover;
         background-position-x: center;
     }
