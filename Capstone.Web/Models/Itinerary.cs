@@ -7,30 +7,32 @@ namespace Capstone.Web.Models
 {
     public class Itinerary
     {
-        public int Id { get; set; }
+        DateTime _createDate;
+        public int? Id { get; set; }
         public string Title { get; set; }
-        public DateTime CreationDate { get; set; } // private set?
+        public DateTime CreationDate
+        {
+            get
+            {
+                return DateTime.Now;
+            }
+            set
+            {
+                _createDate = value;
+            }
+        } 
+        
+        // private set?
         public DateTime? DepartureDate { get; set; }
         public string Description { get; set; }
         public string UserEmail { get; set; }
-    public List<string> LandmarkIds { get; set; } = new List<string>();
 
     //public int Route { get; set; }
 
-    public static List<Itinerary> GetSamples()
-        {
-      return new List<Itinerary>()
-            {
-                new Itinerary(1,"Sample Itinerary", DateTime.Now.AddDays(1),  "This is a test description", "user@CityTour.io"),
-                new Itinerary(2,"Sample Number two", DateTime.Now.AddDays(1),  "This is my favorite itinerary", "user@CityTour.io")
-            };
-        }
-
         public Itinerary() { }
 
-        public Itinerary(int id, string Title, DateTime? DepartureDate, string description, string userEmail)
+        public Itinerary(string Title, DateTime? DepartureDate, string description, string userEmail)
         {
-      this.Id = id;
             this.Title = Title;
             this.DepartureDate = DepartureDate;
             this.CreationDate = DateTime.Now;

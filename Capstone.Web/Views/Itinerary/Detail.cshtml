@@ -1,0 +1,156 @@
+﻿@using Capstone.Web.Models
+@model ItineraryLandmarks
+
+
+@section extraCSS{
+    <link href="~/Content/css/ItineraryIndex.css" rel="stylesheet" />
+}
+
+<!--LEft-->
+<div id="itin-container" class="row">
+    <div id="itin-details" class="col-md-4">
+        <h3 class="text-light">Itinerary</h3>
+        <hr />
+        <form action="@Url.Action("Update", "Itinerary", new {UserEmail = ViewBag.Email.ToString(), Model.Itinerary.Id })" method="post">
+            <div class="form-group">
+                <label class="text-light" for="Title">Title</label>
+                <input type="text" name="Title" value="@Model.Itinerary.Title" />
+            </div>
+            <div class="form-group">
+                <label class="text-light" for="Description">Description</label>
+                <textarea id="Description" type="text" name="Description">@Model.Itinerary.Description</textarea>
+            </div>
+            <div class="form-group">
+                <label class="text-light" for="DepartureDate">Departure Date</label>
+                <input id="DepartureDate" type="date" name="DepartureDate" value="@(Model.Itinerary.DepartureDate.Value.Date)" />
+            </div>
+            <input class="btn btn-outline-light btn-block" id="submit" type="submit" value="Update" />
+        </form>
+        <hr />
+        @foreach (var landmark in Model.ItnLandmarks)
+        {
+
+            var counter = 1;
+
+            <div class="card my-4">
+                <div class="card-body">
+                    <p>@counter) @landmark.Name</p>
+                    <p>@landmark.Address</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!--Middle-->
+    <div id="landmark-details" class="col-md-4">
+        <div id="map-container" class="row">
+            <div class="col">
+                <div id="map"></div>
+            </div>
+        </div>
+        <div id="card-container" class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-text" style="min-height: 40px;"></h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <p></p>
+                    </div>
+                    <div class="card-footer text-center" style="min-height: 50px;">
+                        <form action="@Url.Action("AddLandmarkToItinerary", "Itinerary")" method="post">
+                            <input id="AddLandmark" class="btn" type="submit" value="Add To Itinerary" />
+                            <input id="landmarkId" type="hidden" name="landmarkId" value="" />
+                            <input id="itnId" type="hidden" name="itnId" value="@Model.Itinerary.Id" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="landmark-container" class="col-md-4">
+        <h3 class="text-light">Choose Your Landmarks</h3>
+        <hr />
+        <div id="landmarks" class="row">
+            @foreach (var landmark in Model.Landmarks)
+            {
+                <div class=" place col-md-3">
+                    <img class="img-fluid" src="~/Content/img/@(landmark.PicName).jpg" />
+                    <input id="PlaceId" type="hidden" value="@landmark.Id" />
+                    <input id="Description" type="hidden" value="@landmark.Description" />
+                    <input id="Name" type="hidden" value="@landmark.Name" />
+                    <input id="Id" type="hidden" value="@landmark.Id" />
+                    <input id="Lat" type="hidden" value="@landmark.Latitude" />
+                    <input id="Lng" type="hidden" value="@landmark.Longitude" />
+                </div>
+
+            
+            }
+        </div>
+    </div>
+</div>
+
+@section bottomJS{
+    <script>
+        $('.place').on('click', function () {
+            var lat = parseFloat($(this).find('#Lat').val());
+            var lng = parseFloat($(this).find('#Lng').val());
+            var title = $(this).find('#Name').val().toString();
+            SetMarker({ coords: { lat: lat, lng: lng }, title: title})
+            $('#card-container h4').html($(this).find('#Name').val());
+            $('#card-container p').html($(this).find('#Description').val());
+            $('#landmarkId').val($(this).find('#Id').val());
+        })
+
+        $('button#AddLandmark').on('click', function () {
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("AddLandmarkToItinerary", "Itinerary")",
+                data: {
+                    landmarkId: $(this).prev()
+                },
+                success: function (result) {
+                    alert('ok');
+                },
+                error: function (result) {
+                    alert('error');
+                }
+            }) 
+        })
+    </script>
+
+    <!--Google-->
+    <script>
+        var marker;
+        var map;
+        function initMap() {
+            var myLatLng = { lat: 39.103119, lng: -84.512016 };
+
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: myLatLng
+            });
+
+            marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Plan A Trip!',
+                visible: true
+            });
+        }
+
+        function SetMarker(props) {
+            marker.setPosition(props.coords);
+            map.setCenter(props.coords);
+            marker.setTitle(props.title);
+        }
+        document.getElementById("DepartureDate").defaultValue = "2018-05-04";
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHVLyGpS7gzpWIKhF-1J8fZ4aNmmtjot8&callback=initMap">
+    </script>
+
+
+}

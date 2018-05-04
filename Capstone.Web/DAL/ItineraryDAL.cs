@@ -141,10 +141,6 @@ namespace Capstone.Web.DAL
           SqlCommand cmd = new SqlCommand(getAllItinerariesSQL, conn);
           cmd.Parameters.AddWithValue("@Email", userEmail);
           SqlDataReader reader = cmd.ExecuteReader();
-          if (!reader.Read())
-          {
-            itineraries.AddRange(Itinerary.GetSamples());
-          }
           while (reader.Read())
           {
             itineraries.Add(MapItineraryFromReader(reader));

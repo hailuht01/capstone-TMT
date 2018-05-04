@@ -82,7 +82,7 @@ namespace Capstone.Web.Controllers
                     acctDAL.CreateUser(user);
                     Session["User.Session"] = new UserSession(user.Email, user.UserName, false);
                     userSession = GetActiveUser();
-                    return RedirectToAction("Index", "Itinerary");
+                    return RedirectToAction("Detail", "Itinerary");
                 }
                 catch
                 {

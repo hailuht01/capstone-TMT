@@ -21,40 +21,79 @@ namespace Capstone.Web.Controllers
             this.accountDAL = _accountDAL;
         }
 
+        public ActionResult Index()
+        {
+            UserSession session = GetActiveUser();
+            List<Itinerary> itineraries = new List<Itinerary>();
+            if (session.UserName.ToLower() == "anonymous")
+            {
+                return View(itineraries);
+            }
+            itineraries = itineraryDAL.GetAllItineraries(session.Email);
+            return View(itineraries);
+        }
+
+        int? tempId = null;
 
         // GET: Itinerary
-        public ActionResult Index()
+        public ActionResult Detail()
         {
             //Default session if User isn't logged in
             UserSession userSession = GetActiveUser();
-            FullUserModel fullUser = new FullUserModel();
+            ItineraryLandmarks model;
+            
 
-            if (userSession.Email != "user@citytour.com")
+            if (TempData["Temp.ItnId"] == null)
             {
-                fullUser.User = accountDAL.GetUser(userSession.Email);
-                fullUser.Itineraries = itineraryDAL.GetAllItineraries(userSession.Email);
-                fullUser.Landmarks.AddRange(landmarkDAL.GetEveryLandmark());
-
-                foreach (var itin in fullUser.Itineraries)
+                tempId = itineraryDAL.CreateItinerary(new Itinerary("Untitled", DateTime.Now.AddDays(1), "Enter Description", userSession.Email));
+                TempData["Temp.ItnId"] = tempId;
+                model = new ItineraryLandmarks()
                 {
-                    var itinLandmarks = landmarkDAL.GetAllLandmarks(itin.Id);
-
-                    // this needs to be all possible landmarks
-
-                    foreach (var land in itinLandmarks)
-                    {
-                        itin.LandmarkIds.Add(land.PlaceId);
-                    }
-                }
+                    
+                    Landmarks = landmarkDAL.GetAllLandmarks(),
+                    ItnLandmarks = landmarkDAL.GetAllLandmarks(tempId.Value),
+                    Itinerary = itineraryDAL.GetItinerary(tempId.Value)
+                };
             }
             else
             {
-                fullUser.User = accountDAL.GetUser(userSession.Email);
-                fullUser.Itineraries = Itinerary.GetSamples();
-                fullUser.Landmarks = Landmark.GetSamples();
+                model = new ItineraryLandmarks()
+                {
+                    Landmarks = landmarkDAL.GetAllLandmarks(),
+                    Itinerary = itineraryDAL.GetItinerary(Convert.ToInt32(TempData["Temp.ItnId"])),
+                    ItnLandmarks = landmarkDAL.GetAllLandmarks(Convert.ToInt32(TempData["Temp.ItnId"]))
+                };
+                tempId = model.Itinerary.Id;
+                TempData["Temp.ItnId"] = tempId;
             }
 
-            return View(fullUser);
+            return View(model);
+        }
+
+        public ActionResult Detail2(int id)
+        {
+            ItineraryLandmarks model = null;
+            //Default session if User isn't logged in
+            UserSession userSession = GetActiveUser();
+            Itinerary itinerary = itineraryDAL.GetItinerary(id);
+            if (itinerary == null)
+            {
+                SetAlertMessage("Could't retrieve itinerary. Try again soon.", AlertType.Danger, AlertDisplay.Block);
+                return View("Index");
+            }
+            else
+            {
+                model = new ItineraryLandmarks()
+                {
+                    Landmarks = landmarkDAL.GetAllLandmarks(),
+                    Itinerary = itinerary,
+                    ItnLandmarks = landmarkDAL.GetAllLandmarks(id)
+                };
+                tempId = id;
+                TempData["Temp.ItnId"] = id;
+            }
+
+            return View(model);
         }
 
         // GET: Itinerary/Details/5
@@ -74,7 +113,6 @@ namespace Capstone.Web.Controllers
         [HttpPost]
         public ActionResult Create(Itinerary itin)
         {
-            itin.CreationDate = DateTime.Now;
             UserSession userSession = GetActiveUser();
             itin.UserEmail = userSession.Email;
             if (itineraryDAL.CreateItinerary(itin) > 0)
@@ -88,35 +126,32 @@ namespace Capstone.Web.Controllers
         }
 
         // GET: Itinerary/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPost]
+        public ActionResult Update(Itinerary itn)
         {
-            return View();
+            if (itineraryDAL.UpdateItinerary(itn))
+            {
+                SetAlertMessage("Itinerary Updated.", AlertType.Success, AlertDisplay.Block);
+            }
+            else
+            {
+                SetAlertMessage("There was an error updating the itinerary. Please try agin.", AlertType.Danger, AlertDisplay.Block);
+            }
+
+            TempData["Temp.ItnId"] = itn.Id;
+            var model = new ItineraryLandmarks()
+            {
+                Landmarks = landmarkDAL.GetAllLandmarks(),
+                ItnLandmarks = landmarkDAL.GetAllLandmarks(itn.Id.Value),
+                Itinerary = itineraryDAL.GetItinerary(itn.Id.Value)
+            };
+            return RedirectToAction("Index", model);
         }
 
-    // POST: Itinerary/Edit/5
-    [HttpGet]
-    public ActionResult EditLandmark(string value)
-    {
-      //var qs = Request.Url.Query;
-      try
-      {
-        var itinId = int.Parse(Request.QueryString["itin_id"].ToString());
-        var landmarkIdArr = Request.QueryString["landmark_id"].ToString().Split(' ');
 
-        itineraryDAL.ResetLandmark_Itinerary(itinId);
-        foreach (var id in landmarkIdArr)
-        {
-          if(int.TryParse(id, out int result))
-          itineraryDAL.AddLandmarkToItinerary(result, itinId);
-        }
-      }
-      catch (Exception e) { }
 
-      return RedirectToAction("Index", "Itinerary");
-    }
-
-    // POST: Itinerary/Delete/5
-    [HttpPost]
+        // POST: Itinerary/Delete/5
+        [HttpPost]
         public ActionResult Delete(int id)
         {
             var userSession = GetActiveUser();
@@ -130,6 +165,27 @@ namespace Capstone.Web.Controllers
             {
                 return View("Index", "Itinerary");
             }
+        }
+
+        [HttpPost]
+        public ActionResult AddLandmarkToItinerary(int landmarkId, int itnId)
+        {
+            if (itineraryDAL.AddLandmarkToItinerary(landmarkId, itnId))
+            {
+                SetAlertMessage("Landmark Added!.", AlertType.Success, AlertDisplay.Block);
+            }
+            else
+            {
+                SetAlertMessage("Wasn't able to add landmark. Try agin.", AlertType.Danger, AlertDisplay.Block);
+            }
+
+            var model = new ItineraryLandmarks()
+            {
+                Landmarks = landmarkDAL.GetAllLandmarks(),
+                ItnLandmarks = landmarkDAL.GetAllLandmarks(Convert.ToInt32(TempData["Temp.ItnId"])),
+                Itinerary = itineraryDAL.GetItinerary(itnId)
+            };
+            return RedirectToAction("Detail", "Itinerary", model);
         }
     }
 }
