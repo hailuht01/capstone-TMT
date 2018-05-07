@@ -13,6 +13,12 @@
     background-repeat: no-repeat;
 }
 
+#Create{
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1em
+}
+
 /***Details****/
 #place-detail-info-container{
     height: 15vh;
@@ -39,6 +45,7 @@
 }
 
 #cincy {
+    background-image: url('../img/cincymap.png');
 
 }   
 

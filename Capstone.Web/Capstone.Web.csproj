@@ -214,6 +214,8 @@
     <Content Include="Content\img\Cincinnati-Art-Museum.jpg" />
     <Content Include="Content\img\Cincinnati-Museum-Center.jpg" />
     <Content Include="Content\img\Cincinnati-Museum1.jpg" />
+    <Content Include="Content\img\cincymap.png" />
+    <Content Include="Content\img\cincymap2.png" />
     <Content Include="Content\img\Contemporary-Arts-Center.jpg" />
     <Content Include="Content\img\Denise.PNG" />
     <Content Include="Content\img\Eden-Park.jpg" />

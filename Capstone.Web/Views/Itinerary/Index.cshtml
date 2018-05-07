@@ -21,8 +21,12 @@
 
 <div id="itinerary-container" class="row">
 
-
-    <a id="Create" class="btn btn-warning" href="@Url.Action("Detail", "Itinerary")">Create New Itinerary</a>
+    <div class="row">
+        <div class="col">
+            <a id="Create" class="btn btn-warning" href="@Url.Action("Detail", "Itinerary")">Create New Itinerary</a>
+        </div>
+    </div>
+    
 
     <div class="row">
         @foreach (var itinerary in Model)

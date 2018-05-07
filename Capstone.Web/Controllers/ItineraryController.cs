@@ -40,6 +40,10 @@ namespace Capstone.Web.Controllers
         {
             //Default session if User isn't logged in
             UserSession userSession = GetActiveUser();
+            if (userSession.UserName == "Anonymous")
+            {
+                return RedirectToAction("Login", "Home");
+            }
             ItineraryLandmarks model;
             
 
@@ -75,6 +79,10 @@ namespace Capstone.Web.Controllers
             ItineraryLandmarks model = null;
             //Default session if User isn't logged in
             UserSession userSession = GetActiveUser();
+            if (userSession.UserName == "Anonymous")
+            {
+                return RedirectToAction("Login", "Home");
+            }
             Itinerary itinerary = itineraryDAL.GetItinerary(id);
             if (itinerary == null)
             {
